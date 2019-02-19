@@ -1,0 +1,40 @@
+{
+  "@context": "http://schema.org",
+  "@type": "Course",
+  "name": "Web-palvelinohjelmointi Java 2019",
+  "description": "Helsingin yliopiston kaikille avoin ja ilmainen web-palvelinohjelmoinnin perusteet opettava verkkokurssi. Kurssilla perehdytään web-sovellusten perusideoihin sekä niiden toteuttamiseen. Kurssin käyminen edellyttää kurssien Ohjelmoinnin perusteet (TKT10002), Ohjelmoinnin jatkokurssi (TKT10003) ja Tietokantojen perusteet (TKT10004) tuntemisen.",
+  "provider": {
+    "@type": "Organization",
+    "name": "MOOC.fi",
+    "sameAs": "https://mooc.fi"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "University of Helsinki",
+    "sameAs": "https://www.helsinki.fi/"
+  },
+  "hasCourseInstance": [
+    {
+      "@type": "CourseInstance",
+      "name": "Web-palvelinohjelmointi Java 2019",
+      "courseMode": ["MOOC", "online"],
+      "location": {
+        "@type": "Place",
+        "name": "Exactum, Kumpulan kampus",
+        "address": "Gustaf Hällströmin katu 2b 00560 Helsinki, Finland"
+      },
+      "startDate": "2019-03-08",
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "everyone"
+      },
+      "inLanguage": {
+        "@type": "Language",
+        "name": "Finnish",
+        "alternateName": "fi"
+      },
+      "isAccessibleForFree": true
+    }
+  ]
+}
