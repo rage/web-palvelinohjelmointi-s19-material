@@ -11,7 +11,7 @@ Projekti julkaistaan kurssin neljännen osan yhteydessä.
 
 Kurssin lopussa on koe, joka arvostellaan skaalalla hyväksytty / hylätty. Arvosana muodostuu tehdyistä tehtävistä.
 
-Kurssin koe tehdään Moodlessa sekä kurssilla käytössä olevassa TMC-järjestelmässä. Kurssikoe järjestetään 10.5. Uusinnat järjestetään kesä- ja heinäkuussa.
+Kurssin koe tehdään Moodlessa sekä kurssilla käytössä olevassa TMC-järjestelmässä. Kurssikoe järjestetään 10.5. Uusinnat järjestetään 7.6. ja 6.7.
 
 Jokaisen osan kaikista tehtävistä saa tehtäväpisteitä. Löydät osan kaikki tehtävät valitsemalla kyseisen osan yleisnäkymästä "Lista osan tehtävistä". Näet tehtäväpisteesi kurssimateriaalin oikeassa alakulmassa olevasta pistevisualisaatiosta kohdan "Tehtäväpisteet yhteensä" kohdalta.
 
