@@ -3,14 +3,14 @@ import moment from "moment"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
 import withSimpleErrorBoundary from "../util/withSimpleErrorBoundary"
 
-const start = moment("01/01/2018", "DD/MM/YYYY")
-const summerStart = moment("18/03/2019", "DD/MM/YYYY")
-const autumnStart = moment("30/08/2019", "DD/MM/YYYY")
+const start = moment("01/03/2018", "DD/MM/YYYY")
+const summerStart = moment("01/06/2019", "DD/MM/YYYY")
+const autumnStart = moment("01/09/2019", "DD/MM/YYYY")
 
 const springLink =
-  "https://www.avoin.helsinki.fi/palvelut/esittely.aspx?o=127404110"
+  "https://www.avoin.helsinki.fi/palvelut/esittely.aspx?o=128639647"
 const summerLink =
-  "https://www.avoin.helsinki.fi/palvelut/esittely.aspx?o=127952762"
+  "https://www.avoin.helsinki.fi/palvelut/esittely.aspx?o=128639647"
 const autumnLink = "TODO: lisää linkki"
 
 function getLink() {

@@ -9,7 +9,7 @@ Kurssin arvostelu perustuu viikoittain julkaistavan materiaalin tehtäviin sekä
 
 Projekti julkaistaan kurssin neljännen osan yhteydessä.
 
-Kurssin lopussa on koe, joka arvostellaan skaalalla hyväksytty / hylätty. Arvosana muodostuu tehdyistä tehtävistä.
+Kurssin lopussa on koe, joka arvostellaan skaalalla hyväksytty / hylätty. Arvosana muodostuu tehdyistä tehtävistä ja projektista.
 
 Kurssin koe tehdään Moodlessa sekä kurssilla käytössä olevassa TMC-järjestelmässä. Kurssikoe järjestetään 10.5. Uusinnat järjestetään 7.6. ja 6.7.
 
@@ -60,6 +60,7 @@ Kurssin arvosana muodostuu seuraavalla asteikolla:
 
 ## Kokeeseen ilmoittautuminen
 
+
 Kurssilla käytetään Moodlea sekä keskustelualustana että koealustana. Seuraavat ohjeet pätevät sekä halutessasi ilmoittautua Moodle-foorumiin että halutessasi ilmoittautua kurssin kokeeseen. Jos olet aikaisemmin ilmoittautunut kurssin Moodleen, olet myös samalla ilmoittautunut kurssin kokeeseen.
 
 Kurssin kokeeseen osallistuaksesi sinun täytyy tehdä muodollinen kokeeseen ilmoittautuminen, jotta pääset kirjautumaan Helsingin yliopiston Avoimen yliopiston koeympäristöön (Moodle).
@@ -74,4 +75,4 @@ Ilmoittautuminen on pakollinen kaikille niille, jotka haluavat osallistua kurssi
 
 3. Luo Helsingin yliopiston käyttäjätunnukset. Saat tunnukset seuraamalla Helsingin yliopiston ohjetta käyttäjätunnusten aktivointiin: https://helpdesk.it.helsinki.fi/ohjeet/kirjautuminen-ja-yhteydet/kayttajatunnus/ohjeet-yliopiston-kayttajatunnuksen-aktivointiin. Huom! Osa oppilaista on raportoinut, että aktivointi ei toimi Safari-selaimella. Suosittelemme että teet aktivoinnin joko Chromella tai Firefoxilla.
 
-4. Pääset Moodleen osoitteessa (julkaistaan myöhemmin).
+4. Pääset Moodleen osoitteessa <a href="https://moodle.helsinki.fi/course/view.php?id=33156" target="_blank">https://moodle.helsinki.fi/course/view.php?id=33156</a>
