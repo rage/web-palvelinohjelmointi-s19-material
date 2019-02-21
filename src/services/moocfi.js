@@ -102,7 +102,7 @@ export function onLoginStateChanged(callback) {
 
 export async function userDetails() {
   const res = await axios.get(
-    `${BASE_URL}/users/current?show_user_fields=true&extra_fields=ohjelmoinnin-mooc-2019`,
+    `${BASE_URL}/users/current?show_user_fields=true&extra_fields=web-palvelinohjelmointi-java`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -143,7 +143,7 @@ export async function updateUserDetails({ extraFields, userField }) {
     {
       user: {
         extra_fields: {
-          namespace: "ohjelmoinnin-mooc-2019",
+          namespace: "web-palvelinohjelmointi-java",
           data: extraFields,
         },
       },
