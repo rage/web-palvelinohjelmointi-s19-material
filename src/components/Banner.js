@@ -51,7 +51,7 @@ const SubHeading = styled.div`
 const Banner = () => (
   <BannerWrapper>
     <Heading>Web-palvelinohjelmointi Java 2019</Heading>
-    <SubHeading>87.</SubHeading>
+    <SubHeading>Opi tekemään verkossa toimivia sovelluksia</SubHeading>
   </BannerWrapper>
 )
 

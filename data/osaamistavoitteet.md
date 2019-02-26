@@ -5,6 +5,7 @@ hidden: false
 information_page: true
 ---
 
+Kurssilla Web-palvelinohjelmointi Java opit web-sovellusten toimintaperiaatteet sekä perustaidot web-sovellusten kehittämisestä Java-kielellä. Kurssilla on yhteensä seitsemän osaa, joiden osakohtaiset osaamistavoitteet ovat seuraavat. Osaamistavoitteet voivat muuttua kurssin edetessä.
 
 <table>
     <thead>

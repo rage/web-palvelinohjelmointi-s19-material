@@ -5,9 +5,7 @@ hidden: false
 information_page: true
 ---
 
-Kurssin arvostelu perustuu viikoittain julkaistavan materiaalin tehtäviin sekä laajempaan ohjelmointiprojektiin. Viikottaisten tehtävien painoarvo on 70% kurssin arvostelussa ja projektin painoarvo on 30% kurssin arvostelussa.
-
-Projekti julkaistaan kurssin neljännen osan yhteydessä.
+Kurssin arvostelu perustuu viikoittain julkaistavan materiaalin tehtäviin sekä laajempaan ohjelmointiprojektiin. Viikottaisten tehtävien painoarvo on 70% kurssin arvostelussa ja projektin painoarvo on 30% kurssin arvostelussa. Projekti julkaistaan kurssin neljännen osan yhteydessä ja sen palautus vertaisarvioidaan.
 
 Kurssin lopussa on koe, joka arvostellaan skaalalla hyväksytty / hylätty. Arvosana muodostuu tehdyistä tehtävistä ja projektista.
 
