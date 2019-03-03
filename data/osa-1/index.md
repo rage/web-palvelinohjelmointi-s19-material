@@ -7,7 +7,7 @@ hidden: true
 
 <deadline>18.3.2019</deadline>
 
-Tiedät pääpiirteittäin miten Internet toimii. Tunnet käsitteet URI, DNS, HTTP ja HTML. Tunnet käsitteet polku ja pyynnön parametri. Tunnet HTTP-protokollan tasolla GET ja POST-tyyppisten pyyntöjen perusrakenteen ja tunnistat palvelimelta palautettavan HTTP-protokollaa noudattavan vastauksen osat. Tunnet asiakas-palvelin -mallin ja osaat toteuttaa yksinkertaisen palvelimen sekä selaimen. Tunnet pinnallisesti Spring Boot -sovelluskehyksen ja osaat luoda pyyntöihin reagoivan web-sovelluksen.
+Ensimmäisen osan jälkeen tiedät pääpiirteittäin miten internet toimii. Tunnet käsitteet URI, DNS, HTTP ja HTML sekä käsitteeseen URI liittyvät käsitteet polku ja pyynnön parametri. Tunnet web-sovellusten käyttämän HTTP-protokollan tärkeimmät metodit GET ja POST sekä tunnistat muutamia yleisiä pyyntöjä ja vastauksia. Tiedät mitä asiakas-palvelin -malli tarkoittaa. Osaat toteuttaa Javalla yksinkertaisen palvelimen ja selaimen. Otat ensiaskeleet Spring-sovelluskehyksen käyttöön ja luot useita pyyntöihin reagoivia web-sovelluksia Spring-sovellusperheen Spring Boot -projektia hyödyntäen.
 
 <please-login></please-login>
 

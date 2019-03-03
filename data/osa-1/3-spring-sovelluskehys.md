@@ -36,11 +36,6 @@ Lue lisää aiheesta <a href="https://www.jamesshore.com/Blog/Dependency-Injecti
 
 
 
-TODO: quiz
-
-
-
-
 ## Spring Boot -projektin luominen
 
 
@@ -428,3 +423,6 @@ Toteuta tässä tehtävässä pakkauksessa `calculator` sijaitsevaan `Calculator
 Palauta tehtävä TMC:lle kun olet valmis.
 
 </programming-exercise>
+
+
+<quiznator id="5c7c107299236814c5bbe3e3"></quiznator>

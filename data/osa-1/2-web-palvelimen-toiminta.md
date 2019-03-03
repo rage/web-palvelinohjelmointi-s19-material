@@ -82,6 +82,8 @@ Tästä eteenpäin materiaalissa on myös ohjelmointitehtäviä. Ohjelmointiteht
 
 Mikäli et ole aiemmin käyttänyt NetBeans with TMC -järjestelmää, tutustu sen käyttöön osoitteessa <a href="https://materiaalit.github.io/tmc-asennus/netbeans/" target="_blank">https://materiaalit.github.io/tmc-asennus/netbeans/</a> olevia ohjeita noudattaen. Toisin kuin ohjeissa, kurssiksi tulee tällä kurssilla valita "Web-palvelinohjelmointi Java 2019".
 
+Toisin kuin aiemmilla ohjelmointikursseilla, monissa tehtävistä ei ole automaattisia testejä. Yritä saada tehtävä tehtyä ennen sen palauttamista.
+
 </text-box>
 
 
