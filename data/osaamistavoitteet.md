@@ -29,7 +29,7 @@ Kurssilla Web-palvelinohjelmointi Java opit web-sovellusten toimintaperiaatteet 
             Johdanto web-sovellusten toimintaan ja internetin perusosiin.
         </td>
         <td>
-            Tunnet pinnallisesti Spring Boot -sovelluskehyksen ja osaat luoda pyyntöihin reagoivan web-sovelluksen. Tunnet käsitteet polku, kontrolleri, pyynnön parametri ja polkumuuttuja. Tiedät pääpiirteittäin miten Internet toimii. Tunnet käsitteet URI, DNS, HTTP ja HTML. Osaat kertoa HTTP-protokollan tasolla palvelimelle lähetettävän GET ja POST-tyyppisen pyynnön rakenteen ja sisällön. Osaat kertoa HTTP-protokollan tasolla palvelimelta palautuvan vastauksen rakenteen.
+            Tiedät pääpiirteittäin miten Internet toimii. Tunnet käsitteet URI, DNS, HTTP ja HTML. Tunnet käsitteet polku ja pyynnön parametri. Tunnet HTTP-protokollan tasolla GET ja POST-tyyppisten pyyntöjen perusrakenteen ja tunnistat palvelimelta palautettavan HTTP-protokollaa noudattavan vastauksen osat. Tunnet asiakas-palvelin -mallin ja osaat toteuttaa yksinkertaisen palvelimen sekä selaimen. Tunnet pinnallisesti Spring Boot -sovelluskehyksen ja osaat luoda pyyntöihin reagoivan web-sovelluksen.
         </td>
     </tr>
     <tr>

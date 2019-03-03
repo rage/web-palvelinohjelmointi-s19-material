@@ -7,7 +7,7 @@ hidden: true
 
 <deadline>18.3.2019</deadline>
 
-Tässä osassa opit TODO.
+Tiedät pääpiirteittäin miten Internet toimii. Tunnet käsitteet URI, DNS, HTTP ja HTML. Tunnet käsitteet polku ja pyynnön parametri. Tunnet HTTP-protokollan tasolla GET ja POST-tyyppisten pyyntöjen perusrakenteen ja tunnistat palvelimelta palautettavan HTTP-protokollaa noudattavan vastauksen osat. Tunnet asiakas-palvelin -mallin ja osaat toteuttaa yksinkertaisen palvelimen sekä selaimen. Tunnet pinnallisesti Spring Boot -sovelluskehyksen ja osaat luoda pyyntöihin reagoivan web-sovelluksen.
 
 <please-login></please-login>
 
