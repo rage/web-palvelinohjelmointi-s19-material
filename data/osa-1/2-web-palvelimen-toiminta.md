@@ -26,23 +26,7 @@ Asiakas-palvelin -malli mahdollistaa hajautetut ohjelmistot: selainta käyttäv�
 
 
 
-TODO: quiznator
-
-Mene osoitteeseen <a href="https://en.wikipedia.org" target="_blank">https://en.wikipedia.org</a>. Kirjoita sivuston oikeassa ylälaidassa olevaan kenttään "client server model" ja paina Enter-näppäintä. Mitkä seuraavista askeleista tapahtuivat selaimessa, mitkä palvelimella, mitkä muualla?
-
-1. Näppäimistön avulla kirjoittamasi osoitetekstin näyttäminen.
-2. Osoitetta https://en.wikipedia.org vastaavan IP-osoitteen etsiminen.
-3. Sivun https://en.wikipedia.org näyttäminen.
-4. https://en.wikipedia.org/wiki/Client&#8211;server_model -sivun näyttäminen
-
-TODO: quiznator end
-
-TODO: quiznator
-
-Tekstikentästä lähetetään viesti osoitteeseen <a href="https://en.wikipedia.org/w/index.php?search=client+server+model&title=Special%3ASearch&go=Go" target="_blank">https://en.wikipedia.org/w/index.php?search=client+server+model&title=Special%3ASearch&go=Go</a>, mutta päädyt sivulle <a href="https://en.wikipedia.org/wiki/Client&#8211;server_model" target="_blank">https://en.wikipedia.org/wiki/Client&#8211;server_model</a>. Miksi näin tapahtuu?
-
-TODO: quiznator end
-
+<quiznator id="5c7bfc3b3972a91474108770"></quiznator>
 
 
 ###  Yhteyden muodostaminen palvelimelle Java-maailmassa
@@ -90,6 +74,15 @@ Tämän jälkeen ohjelma tulostaa palvelimelta saatavan vastauksen.
 Lisää verkkoliikenteen käsittelystä löytyy mm. <a href="https://docs.oracle.com/javase/tutorial/networking/sockets/" target="_blank">tästä oppaasta</a>.
 
 <br/>
+
+
+<text-box variant='hint' name='Ohjelmointitehtävien tekeminen'>
+
+Tästä eteenpäin materiaalissa on myös ohjelmointitehtäviä. Ohjelmointitehtävät tehdään NetBeans with TMC -järjestelmässä, jonka käyttöä on harjoiteltu esitietovaatimuksena olevilla kursseilla.
+
+Mikäli et ole aiemmin käyttänyt NetBeans with TMC -järjestelmää, tutustu sen käyttöön osoitteessa <a href="https://materiaalit.github.io/tmc-asennus/netbeans/" target="_blank">https://materiaalit.github.io/tmc-asennus/netbeans/</a> olevia ohjeita noudattaen. Toisin kuin ohjeissa, kurssiksi tulee tällä kurssilla valita "Web-palvelinohjelmointi Java 2019".
+
+</text-box>
 
 
 <programming-exercise name='Hello Browser!' tmcname='osa01-Osa01_01.HelloBrowser'>
@@ -226,7 +219,13 @@ Toteuta web-palvelin, joka kuuntelee pyyntöjä porttiin 8080.
 
 Jos pyydetty polku on `/quit`, tulee palvelin sammuttaa.
 
-Muulloin, minkä tahansa pyynnön vastaukseen kirjoitetaan resurssin siirtymisestä kertova (302-alkuinen) HTTP-statuskoodi sekä palvelimen osoite, eli `http://localhost:8080`.
+Muulloin, minkä tahansa pyynnön vastaukseen kirjoitetaan resurssin siirtymisestä kertova (302-alkuinen) HTTP-statuskoodi sekä palvelimen osoite, eli `http://localhost:8080` -- tämä tulee tehdä HTTP-protokollan odottamassa muodossa eli:
+
+<pre>
+HTTP/1.1 302 Found
+Location: http://localhost:8080
+
+</pre>
 
 Ota samalla selvää kuinka monta pyyntöä selaimesi tekee palvelimelle, ennen kuin se ymmärtää että jotain on vialla.
 

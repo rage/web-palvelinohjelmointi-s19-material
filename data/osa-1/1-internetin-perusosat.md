@@ -35,7 +35,7 @@ protokolla://isäntäkone:portti/
 
 - `protokolla`: kyselyssä käytettävä protokolla, esimerkiksi HTTP tai HTTPS.
 - `isäntäkone`: kone tai palvelin johon luodaan yhteys. Voi olla joko IP-osoite tai tekstuaalinen kuvaus (esim `mooc.fi` tai `www.hs.fi`).
-- `portti`: mikäli portin jättää osoitteesta pois, tehdään pyyntö tyypillisesti protokollan oletusporttiin -- esimerkiksi HTTP-protokollan portti on oletuksea 80.
+- `portti`: mikäli portin jättää osoitteesta pois, tehdään pyyntö tyypillisesti protokollan oletusporttiin -- esimerkiksi HTTP-protokollan portti on oletuksea 80. Salatun HTTP-protokollan (HTTPS) portti on onoletuksena 443.
 
 Osoitteissa voi olla lisäksi polku, tietoa haettavasta dokumentista, kyselyparametreja sekä ankkuri. Nämä kaikki, kuten myös portti, ovat valinnaisia.
 
@@ -52,21 +52,7 @@ polku/kohdedokumentti.paate?kyselyparametri=arvo&toinen=arvo#ankkuri
 Yhdessä edellisten avulla tunnistetaan protokolla ja kone sekä koneesta haettava resurssi.
 
 
-TODO: quiznator
-
-Tutki osoitetta <a href="https://fi.wikipedia.org/wiki/OSI-malli" target="_blank">https://fi.wikipedia.org/wiki/OSI-malli</a>. Mitkä tai mikä ovat/on osoitteen:
-
-- protokolla
-- isäntäkone
-- portti
-- polku
-- kohdedokumentti
-- kyselyparametrit
-- ankkuri
-
-Mitkä näistä puuttuvat?
-
-TODO: quiznator end
+<quiznator id="5c7bf342c41ed4148d970b3e"></quiznator>
 
 
 Kun käyttäjä kirjoittaa web-selaimen osoitekenttään osoitteen ja painaa enteriä, web-selain tekee kyselyn annettuun osoitteeseen. Koska tekstimuotoiset osoitteet ovat käytännössä vain ihmisiä varten, kääntää selain ensiksi halutun tekstimuotoisen osoitteen IP-osoitteeksi. Jos IP-osoite on jo tietokoneen tiedossa esimerkiksi aiemmin osoitteeseen tehdyn kyselyjen takia, selain voi ottaa yhteyden IP-osoitteeseen. Jos IP-osoite taas ei ole tiedossa, tekee selain ensin kyselyn <a href="https://fi.wikipedia.org/wiki/DNS" target="_blank">DNS</a>-palvelimelle (*Domain Name System*), jonka tehtävänä on muuntaa tekstuaaliset osoitteet IP-osoitteiksi (esim. Helsingin yliopiston kotisivu `https://www.helsinki.fi` on IP-osoitteessa `128.214.189.90`).
@@ -175,10 +161,10 @@ Content-Type: text/html;charset=UTF-8
 </pre>
 
 
-Kun palvelin vastaanottaa tiettyyn resurssiin liittyvän pyynnön, tekee se resurssiin liittyviä toimintoja ja palauttaa lopulta vastauksen. Kun selain saa vastauksen, tarkistaa se vastaukseen liittyvän statuskoodin ja siihen liittyvät tiedot -- tyypillinen statuskoodi on `200` (OK). Tämän jälkeen selain päättelee, mitä vastauksella tehdään, ja esimerkiksi tuottaa vastaukseen liittyvän web-sivun käyttäjälle.
+Kun palvelin vastaanottaa tiettyyn resurssiin liittyvän pyynnön, tekee se resurssiin liittyviä toimintoja ja palauttaa lopulta vastauksen. Kun selain saa vastauksen, tarkistaa se vastaukseen liittyvän statuskoodin ja siihen liittyvät tiedot -- tyypillinen statuskoodi on `200` (OK). Tämän jälkeen selain päättelee, mitä vastauksella tehdään, ja esimerkiksi näyttää vastaukseen liittyvän sisällön kuten web-sivun käyttäjälle.
 
 
-<text-box variant='hint' name='HTTP-statuskoodit'>
+### HTTP-statuskoodit
 
 Statuskoodit (*status code*) kuvaavat palvelimella tapahtunutta toimintaa kolmella numerolla. Statuskoodien avulla palvelin kertoo mahdollisista ongelmista tai tarvittavista lisätoimenpiteistä. Yleisin statuskoodi on `200`, joka kertoo kaiken onnistuneen oikein. HTTP/1.1 sisältää viisi kategoriaa vastausviesteihin.
 
@@ -188,39 +174,52 @@ Statuskoodit (*status code*) kuvaavat palvelimella tapahtunutta toimintaa kolmel
 - 4**: virhe pyynnössä tai erikoistilanne (esim 401 "Not Authorized" ja 404 "Not Found")
 - 5**: virhe palvelimella (esim 500 "Internal Server Error")
 
-</text-box>
+Lista lähes kaikista HTTP-statuskoodeista löytyy osoitteesta <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes" target="_blank">https://en.wikipedia.org/wiki/List_of_HTTP_status_codes</a>.
 
+<br/>
+
+<quiznator id="5c7bf7fefd9fd71425c682fd"></quiznator>
 
 ### HTTP-liikenteen testaaminen telnet-työvälineellä
 
 Linux-ympäristöissä on käytössä telnet-työkalu, jota voi käyttää yksinkertaisena asiakasohjelmistona pyyntöjen simulointiin. Telnet-yhteyden tietyn koneen tiettyyn porttiin saa luotua komennolla `telnet isäntäkone portti`. Esimerkiksi Helsingin sanomien www-palvelimelle saa yhteyden seuraavasti:
 
-<pre>
-$ telnet www.hs.fi 80
-</pre>
+<sample-output>
+
+$ **telnet www.hs.fi 80**
+
+</sample-output>
 
 Tätä seuraa telnetin infoa yhteyden muodostamisesta, jonka jälkeen pääsee kirjoittamaan pyynnön.
 
-<pre>
+
+<sample-output>
+
 Trying 13.32.56.28...
 Connected to www.hs.fi.
 Escape character is '^]'.
 
-</pre>
+
+</sample-output>
 
 Yritetään pyytää HTTP/1.1 -protokollalla juuridokumenttia. Huom! HTTP/1.1 -protokollassa tulee pyyntöön lisätä aina Host-otsake. Jos yhteys katkaistaan ennen kuin olet saanut kirjoitettua viestisi loppuun, ota apuusi tekstieditori ja copy-paste. Muistathan myös että viesti lopetetaan aina kahdella rivinvaihdolla.
 
-<pre>
-GET / HTTP/1.1
-Host: www.hs.fi
 
-</pre>
+
+<sample-output>
+
+**GET / HTTP/1.1**
+**Host: www.hs.fi**
+
+
+</sample-output>
 
 
 Palvelin palauttaa vastauksen, jossa on statuskoodi ja otsakkeita sekä dokumentin runko.
 
 
-<pre>
+<sample-output>
+
 HTTP/1.1 301 Moved Permanently
 Server: CloudFront
 Date: Sun, 03 Mar 2019 09:20:36 GMT
@@ -239,32 +238,40 @@ X-Amz-Cf-Id: a8UnDgQydT2LUbo-uKy49aeZP-QgDFnMvJ43CRMxvFbuTd1zxDDRIA==
 &lt;hr&gt;&lt;center&gt;CloudFront&lt;/center&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</pre>
+
+</sample-output>
 
 
-Yllä olevassa esimerkissä palvelimelta `www.hs.fi` sisältöä haettaessa palvelin vastaa "HTTP/1.1 301 Moved Permanently". Viestillä palvelin kertoo, että sisältöjä tulee hakea salatun HTTPS-protokollan yli.
+Yllä olevassa esimerkissä palvelimelta `www.hs.fi` sisältöä haettaessa palvelin vastaa "HTTP/1.1 301 Moved Permanently". Viestillä palvelin kertoo, että sisältöjä tulee hakea salatun HTTPS-protokollan yli. HTTPS-protokollaa noudattavien sivujen tarkastelu on hieman haastavampaa telnet-yhteyden yli, sillä viestittelyn tulee olla salattua -- tähän telnet ei tarjoa tukea.
+
+Eräs vaihtoehto on Linux-koneilla HTTPS-yhteyden yli tapahtuvien viestien tarkasteluun on <a href="https://gnutls.org/" target="_blank">GnuTLS</a> kirjasto. Tämän avulla suojatun HTTP-yhteyden muodostaminen ja tarkastelu onnistuu suoraviivaisesti.
+
+<br/>
+
+<sample-output>
+
+$ **gnutls-cli www.hs.fi**
+
+Processed 148 CA certificate(s).
+Resolving 'www.hs.fi'...
+Connecting to '13.32.56.44:443'...
+Certificate type: X.509
+Got a certificate list of 4 certificates.
+...
+
+**GET / HTTP/1.1**
+**Host: www.hs.fi**
+
+
+
+// .. palvelin tulostaa vastauksen tänne
+
+</sample-output>
+
 
 Jos käytössäsi ei ole Linux-konetta, voit käyttää Telnetiä esimerkiksi <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/" target="_blank">PuTTY</a>-ohjelmiston avulla. Voit myös tehdä selailua käsin hieman myöhemmin toteutettavan Java-ohjelman avulla.
 
 <br/>
-
-
-TODO: quiznator
-<% partial 'partials/think', locals: { name: 'Kuinka monta hyppyä?' } do %>
-
-
-Tee telnetillä pyyntö osoitteeseen `hs.fi` (portti 80) ja selvitä kuinka monta hyppyä tarvitaan siihen, että päästään Helsingin sanomien osoitteessa `https://www.hs.fi` olevalle etusivulle. Kuinka monta uudelleenohjausta palvelin palauttaa ennenkuin palvelin lopulta kertoo oikean etusivun osoitteen?
-
-Huom! Mikäli et ehdi kirjoittamaan komentoa telnet-ikkunaan, voit kirjoittaa komennot ensin tekstieditoriin, josta voit sitten kopioida komennot telnet-ikkunaan.
-
-<pre>
-GET / HTTP/1.1
-Host: hs.fi
-
-</pre>
-
-TODO: quiznator end
-
 
 
 <text-box variant='hint' name='Chrome Dev Tools'>
@@ -278,8 +285,7 @@ Yksittäistä sivua avattaessa tehdään jokaista resurssia (kuva, tyylitiedosto
 
 </text-box>
 
-TODO: pakota chrome käyttöön, dev tools..
-
+<quiznator id="5c7bf97914524713f95a6b25"></quiznator>
 
 
 ### HTTP-protokollan pyyntötavat
@@ -311,6 +317,7 @@ Content-Type: application/x-www-form-urlencoded
 Content-Length: 14
 
 parametri=arvo
+
 </pre>
 
 
@@ -322,8 +329,9 @@ Selaimen ja palvelimen välisessä kommunikoinnissa GET- ja POST-tyyppiset pyynn
 - *DELETE* pyytää resurssin poistamista
 - *HEAD* haluaa resurssiin liittyvät otsaketiedot, mutta ei resurssia
 
+<quiznator id="5c7bf71799236814c5bbe399"></quiznator>
 
-<text-box variant='hint' name='HTTP/2'>
+<text-box variant='hint' name='HTTP/2 ja HTTP/3'>
 
 Web-sivustot sisältävät tyypillisesti useita erilaisia asioita: kuvia, tyylitiedostoja, musiikkia, videokuvaa ja niin edelleen. Sivun hakeminen tapahtuu useamman pyynnön aikana, missä ensin haetaan HTML-sivu, missä on viitteet sivun resursseihin kuten kuviin. Tämän jälkeen selain hakee jokaisen sivun resurssin erikseen. HTTP-protokollassa jokaisen resurssin hakemista varten muodostetaan uusi yhteys.
 

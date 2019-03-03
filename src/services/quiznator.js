@@ -18,51 +18,31 @@ export async function fetchQuiznatorProgress() {
   const partToTag = [
     {
       part: "osa01",
-      tag: "web-palvelinohjelmointi-java-1",
+      tag: "web-palvelinohjelmointi-java-19-1",
     },
     {
       part: "osa02",
-      tag: "web-palvelinohjelmointi-java-2",
+      tag: "web-palvelinohjelmointi-java-19-2",
     },
     {
       part: "osa03",
-      tag: "web-palvelinohjelmointi-java-3",
+      tag: "web-palvelinohjelmointi-java-19-3",
     },
     {
       part: "osa04",
-      tag: "web-palvelinohjelmointi-java-4",
+      tag: "web-palvelinohjelmointi-java-19-4",
     },
     {
       part: "osa05",
-      tag: "web-palvelinohjelmointi-java-5",
+      tag: "web-palvelinohjelmointi-java-19-5",
     },
     {
       part: "osa06",
-      tag: "web-palvelinohjelmointi-java-6",
+      tag: "web-palvelinohjelmointi-java-19-6",
     },
     {
       part: "osa07",
-      tag: "web-palvelinohjelmointi-java-7",
-    },
-    {
-      part: "osa08",
-      tag: "web-palvelinohjelmointi-java-8",
-    },
-    {
-      part: "osa09",
-      tag: "web-palvelinohjelmointi-java-9",
-    },
-    {
-      part: "osa010",
-      tag: "web-palvelinohjelmointi-java-10",
-    },
-    {
-      part: "osa11",
-      tag: "web-palvelinohjelmointi-java-11",
-    },
-    {
-      part: "osa12",
-      tag: "web-palvelinohjelmointi-java-12",
+      tag: "web-palvelinohjelmointi-java-19-7",
     },
   ]
   const quizIdInformation = await fetchQuizIds()
@@ -94,7 +74,7 @@ export async function fetchQuiznatorProgress() {
 export async function fetchQuizIds() {
   const res = await axios.post(
     `${BASE_URL}/api/v1/tags/quizids`,
-    { tags: ["web-palvelinohjelmointi-java"] },
+    { tags: ["web-palvelinohjelmointi-java-19"] },
     { headers: { Authorization: `Bearer ${accessToken()}` } },
   )
   return res.data

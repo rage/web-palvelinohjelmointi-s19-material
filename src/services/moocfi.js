@@ -143,7 +143,7 @@ export async function updateUserDetails({ extraFields, userField }) {
     {
       user: {
         extra_fields: {
-          namespace: "web-palvelinohjelmointi-java",
+          namespace: "web-palvelinohjelmointi-java-19",
           data: extraFields,
         },
       },
@@ -240,5 +240,5 @@ async function getCourse() {
   if ((await getCourseVariant()) === "nodl") {
     return "2019-ohjelmointi-nodl"
   }
-  return "2019-ohjelmointi"
+  return "web-palvelinohjelmointi-java-19"
 }
