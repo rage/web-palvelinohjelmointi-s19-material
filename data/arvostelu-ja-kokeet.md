@@ -5,9 +5,9 @@ hidden: false
 information_page: true
 ---
 
-Kurssin arvostelu perustuu viikoittain julkaistavan materiaalin tehtäviin sekä laajempaan ohjelmointiprojektiin. Viikottaisten tehtävien painoarvo on 70% kurssin arvostelussa ja projektin painoarvo on 30% kurssin arvostelussa.
+Kurssin arvostelu perustuu viikoittain julkaistavan materiaalin tehtäviin sekä laajempaan ohjelmointiprojektiin. Viikottaisten tehtävien painoarvo on 70% kurssin arvostelussa ja projektin sekä sen yhteydessä tehtävien vertaisarvioiden painoarvo on 30% kurssin arvostelussa.
 
-Projekti julkaistaan 29.3. kurssin neljännen osan yhteydessä ja se tulee palauttaa 3.5. mennessä. Palautus vertaisarvioidaan -- vertaisarviot tulee palauttaa 9.5. mennessä. Vertaisarviointiin osallistuminen on pakollista mikäli haluaa projektista arvosanan.
+Projekti julkaistaan 29.3. kurssin neljännen osan yhteydessä ja se tulee palauttaa 3.5. mennessä. Palautus vertaisarvioidaan -- vertaisarviot tulee palauttaa 9.5. mennessä.
 
 Kurssin lopussa on koe, joka arvostellaan skaalalla hyväksytty / hylätty. Arvosana muodostuu tehdyistä tehtävistä ja projektista.
 
@@ -58,7 +58,7 @@ Kurssin arvosana muodostuu seuraavalla asteikolla:
 </table>
 
 
-## Kokeeseen ilmoittautuminen
+## Ilmoittautuminen
 
 
 Kurssilla käytetään Moodlea sekä keskustelualustana että koealustana. Seuraavat ohjeet pätevät sekä halutessasi ilmoittautua Moodle-foorumiin että halutessasi ilmoittautua kurssin kokeeseen. Jos olet aikaisemmin ilmoittautunut kurssin Moodleen, olet myös samalla ilmoittautunut kurssin kokeeseen.

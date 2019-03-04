@@ -24,7 +24,10 @@ const Credits = () => (
       <h2>Kurssimateriaali</h2>
 
       <p>
-        Kurssimateriaalin on kirjoittanut Arto Hellas (né Vihavainen) ja Agile Education Research -tutkimusryhmä. Materiaalin syntyyn ja muovautumiseen ovat vaikuttaneet kurssin edelliset versiot, niiden osallistujat, sekä kurssien assistentit.
+        Kurssimateriaalin on kirjoittanut Arto Hellas (né Vihavainen) ja Agile
+        Education Research -tutkimusryhmä. Materiaalin syntyyn ja muovautumiseen
+        ovat vaikuttaneet kurssin edelliset versiot, niiden osallistujat, sekä
+        kurssien assistentit.
       </p>
 
       <p>

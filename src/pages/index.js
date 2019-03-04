@@ -42,8 +42,9 @@ const IndexPage = () => (
         <p>
           Kurssin laskennallinen työkuorma on noin 135 tuntia. Kunkin
           tehtäväsarjan tekemiseen kannattaa varata noin 12 tuntia, projektiin
-          noin 35 tuntia ja kokeeseen kertaamiseen noin 12 tuntia. Varaamme
-          oikeuden aikataulun ja aiheiden muutoksiin.
+          ja siihen liittyviin vertaisarviointeihin noin 40 tuntia, ja kokeeseen
+          kertaamiseen noin 8 tuntia. Varaamme oikeuden aikataulun ja aiheiden
+          muutoksiin.
         </p>
 
         <p>

@@ -106,7 +106,14 @@ var content2 = [
     title: "Arvostelu ja kokeet",
     path: "/arvostelu-ja-kokeet",
   },
-  { title: "Tukiväylät", path: "/tukivaylat" },
+  {
+    title: "Tukiväylät",
+    path: "/tukivaylat",
+  },
+  {
+    title: "Usein kysytyt kysymykset",
+    path: "/usein-kysytyt-kysymykset",
+  },
   { separator: true },
 ]
 
