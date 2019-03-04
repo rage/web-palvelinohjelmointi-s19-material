@@ -18,8 +18,6 @@ Kanavan osallistujat ovat kanssaopiskelijoita sekä vapaaehtoisia ohjaajia. Kana
 
 Kaikki epäasialliset, halventavat ja jotain ihmisryhmää syrjivät kommentit kanavalla ovat kiellettyjä ja tälläisten kommenttien esittäjät poistetaan kanavalta.
 
-Jos kysyt kanavalta apua ohjelmointitehtävään, voit liittää kysymykseesi myös ohjelmasi lähdekoodin. Valitse Netbeanssista "`TMC`" -> "`Send code to TMC Pastebin`" ja valitse avautuvasta ikkunasta "`Send`". Tämän jälkeen saat linkin koodiisi, jonka voit jakaa keskustelukanavalla apupyynnön yhteydessä.
-
 
 ## Pajaohjaus
 
@@ -41,3 +39,10 @@ Exactum-rakennuksen aulassa olevasta infonäytöstä löytää salin tarkemman s
 
 Kurssin osallistujilla on käytössä keskustelufoorumi, joka on Moodle-järjestelmässä. Moodleen ilmoittaudutaan sivulla [Arvostelu ja kokeet](/arvostelu-ja-kokeet) olevia ohjeita noudattaen. Ilmoittautuminen koskee kaikkia kurssilaisia, eli myös Helsingin yliopiston opiskelijoita ja myös niitä, jotka ovat ilmoittautuneet kurssille jossakin muualla.
 
+
+
+## Vinkkejä avun kysymiseen
+
+Kun kysyt apua kurssiin liittyviin ongelmiin, pyri olemaan mahdollisimman tarkka ongelmaan liittyvässäsi kuvauksessasi. On parempi sanoa "Saan ohjelmassani rivillä X virheen Y" kuin "Ohjelmani ei toimi". Virheviestit löytyvät tyypillisesti ohjelmointiympäristön logeista.
+
+Voit myös lähettää ohjelmointitehtävän TMC-pastebiniin ja liittää sen kysymyksesi yhteyteen. Tämä onnistuu valitsemalla Netbeanssista "`TMC`" -> "`Send code to TMC Pastebin`" ja valitse avautuvasta ikkunasta "`Send`". Tämän jälkeen saat linkin koodiisi, jonka voit jakaa keskustelukanavalla apupyynnön yhteydessä.
