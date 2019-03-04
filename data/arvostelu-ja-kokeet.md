@@ -5,13 +5,15 @@ hidden: false
 information_page: true
 ---
 
-Kurssin arvostelu perustuu viikoittain julkaistavan materiaalin tehtäviin sekä laajempaan ohjelmointiprojektiin. Viikottaisten tehtävien painoarvo on 70% kurssin arvostelussa ja projektin painoarvo on 30% kurssin arvostelussa. Projekti julkaistaan kurssin neljännen osan yhteydessä ja sen palautus vertaisarvioidaan.
+Kurssin arvostelu perustuu viikoittain julkaistavan materiaalin tehtäviin sekä laajempaan ohjelmointiprojektiin. Viikottaisten tehtävien painoarvo on 70% kurssin arvostelussa ja projektin painoarvo on 30% kurssin arvostelussa.
+
+Projekti julkaistaan 29.3. kurssin neljännen osan yhteydessä ja se tulee palauttaa 3.5. mennessä. Palautus vertaisarvioidaan -- vertaisarviot tulee palauttaa 9.5. mennessä. Vertaisarviointiin osallistuminen on pakollista mikäli haluaa projektista arvosanan.
 
 Kurssin lopussa on koe, joka arvostellaan skaalalla hyväksytty / hylätty. Arvosana muodostuu tehdyistä tehtävistä ja projektista.
 
-Kurssin koe tehdään Moodlessa sekä kurssilla käytössä olevassa TMC-järjestelmässä. Kurssikoe järjestetään 10.5. Uusinnat järjestetään 7.6. ja 6.7.
+Kurssin koe tehdään Moodlessa sekä kurssilla käytössä olevassa TMC-järjestelmässä. Kurssikoe järjestetään 10.5. Uusinnat järjestetään 7.6. ja 6.7. Kurssin koe kestää 4 tuntia ja sen voi tehdä tenttipäivänä välillä 10-20.
 
-Jokaisen osan kaikista tehtävistä saa tehtäväpisteitä -- kukin osa on kokonaisuudessaan 10% arvoinen kurssiarvostelussa. Löydät osan kaikki tehtävät valitsemalla kyseisen osan yleisnäkymästä "Lista osan tehtävistä". Näet tehtäväpisteesi kurssimateriaalin oikeassa alakulmassa olevasta pistevisualisaatiosta kohdan "Tehtäväpisteet yhteensä" kohdalta.
+Jokaisen osan kaikista tehtävistä (kyselyt, ohjelmointitehtävät, ...) saa tehtäväpisteitä -- kukin osa on kokonaisuudessaan 10% arvoinen kurssiarvostelussa. Löydät osan kaikki tehtävät valitsemalla kyseisen osan yleisnäkymästä "Lista osan tehtävistä". Näet tehtäväpisteesi kurssimateriaalin oikeassa alakulmassa olevasta pistevisualisaatiosta kohdan "Tehtäväpisteet yhteensä" kohdalta.
 
 Täydet pisteet tehtävistä saa tekemällä kaikki kunkin osan tehtävät. Tehtäviksi lasketaan materiaalissa olevat ohjelmointitehtävät, kyselyt, itsearvioinnit, Moodleen laitettavat tehtävät sekä muut mahdollisesti erikseen materiaalissa mainittavat tehtävät. Ohjelmointiprojektin tarkempi arvostelu julkaistaan myöhemmin.
 
