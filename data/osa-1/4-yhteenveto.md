@@ -5,14 +5,8 @@ hidden: true
 ---
 
 
-Itsearviointi
+Tässä osassa...
 
-- käsitteet URI, HTTP ja HTML
-- GET-tyyppisen ja POST-tyyppisen pyynnön ero
-- Osaa tehdä Javalla yksinkertaisen web-palvelimen
-- Osaa tehdä Javalla ohjelman, joka tekee pyynnön palvelimelle
-- Tunnistat käsitteet Dependency Injection ja Inversion of Control
-- Tietää mitä annotaatiot @Controller, @GetMapping, @RequestParam, ja @ResponseBody tarkoittavat
-- Osaa tehdä yksinkertaisen pyyntöön reagoivan sovelluksen Springin avulla
+Vastaa osan lopuksi seuraavaan itsearviointikyselyyn.
 
-
+<quiznator id="5c7edffe14524713f95a71b2"></quiznator>

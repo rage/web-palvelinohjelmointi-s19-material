@@ -281,7 +281,7 @@ Google Chromen DevTools-apuvälineet löytää Tools-valikosta tai painamalla F1
 
 Yksittäistä sivua avattaessa tehdään jokaista resurssia (kuva, tyylitiedosto, skripti) varten erillinen pyyntö. Esimerkiksi <a href="https://www.hs.fi" target="_blank">Helsingin sanomien</a> verkkosivua avattaessa tehdään hyvin monta pyyntöä.
 
-<img src="/img/google-devtools-hs-fi.png" alt="Kuvakaappaus Google Dev Toolsista."/>
+<img src="../img/google-devtools-hs-fi.png" alt="Kuvakaappaus Google Dev Toolsista."/>
 
 </text-box>
 

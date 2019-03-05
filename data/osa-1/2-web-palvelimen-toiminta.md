@@ -231,7 +231,7 @@ Location: http://localhost:8080
 
 Ota samalla selvää kuinka monta pyyntöä selaimesi tekee palvelimelle, ennen kuin se ymmärtää että jotain on vialla.
 
-<img src="/img/mooc/ex20-redirectloop.png"/>
+<img src="../img/exercises/redirectloop.png"/>
 
 </programming-exercise>
 

@@ -151,7 +151,7 @@ Kuten huomattava osa ohjelmointikursseista, tämäkin kurssi alkaa tehtävällä
 
 Toteuta tehtäväpohjan pakkauksessa `helloworld` olevaan `HelloWorldController` luokkaan toiminnallisuus, joka kuuntelee GET-tyyppisiä pyyntöjä. Kun palvelin vastaanottaa pyynnön mihin tahansa polkuun, tulee palvelimen palauttaa merkkijono "Hello World!".
 
-<img class="browser-img" src="img/2016-mooc/ex1.png"/>
+<img src="../img/exercises/hello-world.png"/>
 
 Käynnistä palvelin painamalla NetBeansin play-nappia, suorittamalla `HelloWorldApplication`-luokan `main`-metodi, tai kirjoittamalla projektin juuripolussa `mvn spring-boot:run`. Avaa nettiselain, mene osoitteeseen <a href="http://localhost:8080" target="_blank">http://localhost:8080</a> ja näet selaimessasi tekstin "Hello World!".
 
@@ -266,7 +266,7 @@ Toteuta pakkauksessa `hellopaths` olevaan luokkaan `HelloPathsController` seuraa
 
 Alla olevassa kuvassa on esimerkki tilanteesta, missä selaimella on tehty pyyntö polkuun `/hello`
 
-<img class="browser-img" src="/img/2016-mooc/ex2.png"/>
+<img src="../img/exercises/hello.png"/>
 
 Palauta tehtävä TMC:lle kun olet valmis.
 
@@ -383,7 +383,7 @@ Toteuta pakkauksessa `wad.hellorequestparams` olevaan luokkaan `HelloRequestPara
 Alla olevassa kuvassa on esimerkki tilanteesta, missä selaimella on tehty pyyntö polkuun `/params?hello=world&it=works`
 
 
-<img class="browser-img" src="/img/2016-mooc/ex3.png"/>
+<img src="../img/exercises/params-it-works.png"/>
 
 </programming-exercise>
 
