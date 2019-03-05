@@ -47,19 +47,15 @@ const StyledIcon = styled(FontAwesomeIcon)`
 class CourseOptionsEditor extends React.Component {
   async componentDidMount() {
     const data = await userDetails()
-    const courseVariant = await getCourseVariant()
     this.setState(
       {
         first_name: data.user_field?.first_name,
         last_name: data.user_field?.last_name,
         student_number: data.user_field?.organizational_id,
-        applies_for_study_right:
-          data.extra_fields?.applies_for_study_right === "t",
         digital_education_for_all:
           data.extra_fields?.digital_education_for_all === "t",
         marketing: data.extra_fields?.marketing === "t",
         research: data.extra_fields?.research,
-        currentCourseVariant: courseVariant,
         loading: false,
       },
       () => {
@@ -142,46 +138,6 @@ class CourseOptionsEditor extends React.Component {
   render() {
     return (
       <FormContainer>
-        <Loading loading={this.state.loading} heightHint="5px">
-          <div>
-            {this.props.courseVariant === "nodl" && (
-              <InfoBox>
-                <Card>
-                  <CardContent>
-                    <StyledIcon icon={icon} />
-                    Olet tekemässä kurssin aikataulutonta versiota, koska
-                    aikataulutetun kurssin ensimmäinen deadline on jo mennyt.
-                  </CardContent>
-                </Card>
-              </InfoBox>
-            )}
-          </div>
-
-          <div>
-            {!this.props.courseVariant &&
-              this.state.currentCourseVariant === "nodl" && (
-                <InfoBox>
-                  <Card>
-                    <CardContent>
-                      <StyledIcon icon={icon} />
-                      Olet tekemässä kurssin aikataulutonta versiota.
-                    </CardContent>
-                  </Card>
-                </InfoBox>
-              )}
-            {!this.props.courseVariant &&
-              this.state.currentCourseVariant !== "nodl" && (
-                <InfoBox>
-                  <Card>
-                    <CardContent>
-                      <StyledIcon icon={icon} />
-                      Olet tekemässä kurssin aikataulutettua versiota.
-                    </CardContent>
-                  </Card>
-                </InfoBox>
-              )}
-          </div>
-        </Loading>
         <h1>Opiskelijan tiedot</h1>
         <Form>
           <InfoBox>
@@ -249,20 +205,6 @@ class CourseOptionsEditor extends React.Component {
                   helperText="Jätä tyhjäksi, jos et ole tällä hetkellä Helsingin yliopiston opiskelija."
                   onFocus={this.handleFocus}
                   onBlur={this.handleUnFocus}
-                />
-              </Row>
-
-              <Row>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={this.state.applies_for_study_right}
-                      onChange={this.handleCheckboxInput}
-                      name="applies_for_study_right"
-                      value="1"
-                    />
-                  }
-                  label="Aion hakea aikataulutetun Ohjelmoinnin MOOCin kautta opinto-oikeutta Helsingin yliopistoon."
                 />
               </Row>
 

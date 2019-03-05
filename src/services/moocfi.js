@@ -102,7 +102,7 @@ export function onLoginStateChanged(callback) {
 
 export async function userDetails() {
   const res = await axios.get(
-    `${BASE_URL}/users/current?show_user_fields=true&extra_fields=web-palvelinohjelmointi-java`,
+    `${BASE_URL}/users/current?show_user_fields=true&extra_fields=web-palvelinohjelmointi-19`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -143,7 +143,7 @@ export async function updateUserDetails({ extraFields, userField }) {
     {
       user: {
         extra_fields: {
-          namespace: "web-palvelinohjelmointi-java-19",
+          namespace: "web-palvelinohjelmointi-19",
           data: extraFields,
         },
       },
@@ -237,8 +237,5 @@ export async function getCourseVariant() {
 }
 
 async function getCourse() {
-  if ((await getCourseVariant()) === "nodl") {
-    return "2019-ohjelmointi-nodl"
-  }
   return "web-palvelinohjelmointi-java-19"
 }
