@@ -19,8 +19,18 @@ Internetin perustana ovat (1) palveluiden, palvelinohjelmistojen ja resurssien y
 
 Näiden kolmen peruspilarin -- URI, HTTP ja HTML -- lisäksi internetin mahdollistaa verkkoliikenne sekä siihen liittyvät protokollat kuten TCP ja TCP/IP. Jälkimmäisiin syvennytään tarkemmin kurssilla Tietoliikenteen perusteet (TKT-20004).
 
-% TODO: kuva tai slidet, jotka kuvaavat pyynnön kulkua -- kirjoitetaan osoite selaimeen, selain hakee DNS:ltä vastaavan IP:n, pyyntö lähtee verkon yli (näkyy pilvi tms missä reitittimiä), pyyntö päätyy koneelle, pyynnön payload (http-muotoinen) viesti kirjoitetaan koneen porttiin, kone tekee prosessointia, pyyntöön lähtee http+html -vastaus.
+Yksinkertaisenkin verkkosivun hakemiseen liittyy monta askelta. Kun kirjoitat osoitteen selaimen osoitepalkkiin ja painat enteriä, seuraavat tapahtumat tapahtuvat.
 
+1. Käyttäjä kirjoittaa osoitteen (URI, URL) selaimen osoitepalkkiin ja painaa hae.
+2. Jos osoite on tekstimuotoinen osoite, esim. mooc.fi, selain ottaa yhteyden DNS-palvelimeen ja hakee DNS-palvelimelta tekstimuotoista osoitetta vastaavan IP-osoitteen.
+3. Selain ottaa yhteyden IP-osoitteessa toimivaan palvelimeen ja lähettää sinne HTTP-pyynnön.
+4. Palvelin vastaanottaa pyynnön ja käsittelee sen. Jos käyttäjän pyytämä sivu -- esimerkiksi HTML-sivu -- löytyy palvelimelta, palvelin palauttaa sivun käyttäjälle. Jos sivua ei löydy, palvelin palauttaa virheviestin.
+5. Selain vastaanottaa palvelimen palauttaman vastauksen ja yhteys palvelimelle suljetaan.
+6. Selain käsittelee palvelimen palauttaman vastauksen. Mikäli vastaus on HTML-sivu, selain käy sen läpi elementti elementiltä erikseen haettavia resursseja kuten kuvia, tyylitiedostoja, javascript-tiedostoja, ym, tunnistaen. Käyttäjälle voidaan näyttää tässä vaiheessa jo osa sivusta.
+7. Selain hakee jokaisen erikseen haettavan resurssin erillisessä resurssikohtaisessa HTTP-pyynnössä.
+8. Kun sivu on käsitelty ja kaikki siihen liittyvät resurssit on haettu ja käsitelty, sivu näkyy käyttäjälle kokonaan ladattuna
+
+Tarkastellaan edellisessä tapahtumaketjussa esiintyneitä termejä hieman tarkemmin.
 
 ## URI ja DNS: Osoitteet ja niiden tulkinta
 
