@@ -1,14 +1,12 @@
 import { fetchProgrammingProgress } from "./moocfi"
-import { fetchCrowdsorcererProgress } from "./crowdsorcerer"
 import { zip } from "../util/arrays"
 import { fetchQuiznatorProgress } from "./quiznator"
 
 export async function fetchProgress() {
-  const serviceIdentifiers = ["Ohjelmointitehtävät", "Kyselyt", "Crowdsorcerer"]
+  const serviceIdentifiers = ["Ohjelmointitehtävät", "Kyselyt"]
   const progressesCollection = await Promise.all([
     fetchProgrammingProgress(),
     fetchQuiznatorProgress(),
-    fetchCrowdsorcererProgress(),
   ])
   const progressByGroup = {}
 
