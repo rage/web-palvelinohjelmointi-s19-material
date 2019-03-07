@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Bruce from "../images/banner.svg"
+import Bruce from "../images/tree.jpg"
 import withSimpleErrorBoundary from "../util/withSimpleErrorBoundary"
 
 const BannerWrapper = styled.header`
@@ -14,6 +14,7 @@ const BannerWrapper = styled.header`
   background-color: #c0392b;
   background-image: url(${Bruce});
   text-align: center;
+  background-size: cover;
   h1 {
   }
   h2 {
