@@ -61,16 +61,14 @@ Kurssin arvosana muodostuu seuraavalla asteikolla:
 ## Ilmoittautuminen
 
 
-Kurssilla käytetään Moodlea sekä keskustelualustana että koealustana. Seuraavat ohjeet pätevät sekä halutessasi ilmoittautua Moodle-foorumiin että halutessasi ilmoittautua kurssin kokeeseen. Jos olet aikaisemmin ilmoittautunut kurssin Moodleen, olet myös samalla ilmoittautunut kurssin kokeeseen.
+Kurssilla käytetään Moodlea keskustelualustana, kurssiprojektin palautus- ja vertaisarviointialustana, ja koealustana.
 
-Kurssin kokeeseen osallistuaksesi sinun täytyy tehdä muodollinen kokeeseen ilmoittautuminen, jotta pääset kirjautumaan Helsingin yliopiston Avoimen yliopiston koeympäristöön (Moodle).
+Kurssin suorittamiseksi sinun täytyy tehdä muodollinen ilmoittautuminen, jotta pääset kirjautumaan Moodle-ympäristöön. Ilmoittautuminen on pakollinen kaikille niille, jotka haluavat osallistua Moodle-keskusteluun, palauttaa kurssiprojektin, tai osallistua kurssin kokeeseen. Ilmoittautuminen koskee kaikkia kurssilaisia, eli myös Helsingin yliopiston opiskelijoita ja myös niitä, jotka ovat ilmoittautuneet kurssille jossakin muualla.
 
-Ilmoittautuminen on pakollinen kaikille niille, jotka haluavat osallistua kurssin kokeeseen. Ilmoittautuminen koskee kaikkia kurssilaisia, eli myös Helsingin yliopiston opiskelijoita ja myös niitä, jotka ovat ilmoittautuneet kurssille jossakin muualla.
+1. Jos olet Helsingin yliopiston läsnäoleva opiskelija, ja olet ilmoittautunut kurssille WebOodissa, siirry kohtaan 5.
 
-1. Ensiksi tee Avoimen yliopiston ilmainen koeilmoittautuminen täältä: <registration-link></registration-link>.
-<br><br>Huom 1! Ilmoittautumisen jälkeen Avoimen sivu tarjoaa Avoimen Yliopiston yleisiä tentti-ilmoittautumiskäytäntöjä. Nämä käytännöt eivät koske tätä kurssia.<br><br>
-
-2. Jos sinulla on jo Helsingin yliopiston käyttäjätunnukset, siirry kohtaan 5.
+2. Tee Avoimen yliopiston ilmainen ilmoittautuminen täältä: <registration-link></registration-link>.
+<br>Huom 1! Ilmoittautumisen jälkeen Avoimen sivu tarjoaa Avoimen Yliopiston yleisiä tentti-ilmoittautumiskäytäntöjä. Nämä käytännöt eivät koske tätä kurssia.<br/><br/>
 
 3. Odota 24h, jotta tietosi voi siirtyä seuraavana yönä järjestelmien välillä
 
