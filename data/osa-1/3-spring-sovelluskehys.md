@@ -1,7 +1,7 @@
 ---
 path: '/osa-1/3-spring-sovelluskehys'
 title: 'Spring-sovelluskehys'
-hidden: true
+hidden: false
 ---
 
 

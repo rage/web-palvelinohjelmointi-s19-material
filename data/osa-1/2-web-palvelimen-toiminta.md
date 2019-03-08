@@ -1,7 +1,7 @@
 ---
 path: '/osa-1/2-web-palvelimen-toiminta'
 title: 'Web-palvelimen toiminta'
-hidden: true
+hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>

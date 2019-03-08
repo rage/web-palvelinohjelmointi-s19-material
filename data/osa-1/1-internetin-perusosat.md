@@ -1,7 +1,7 @@
 ---
 path: '/osa-1/1-internetin-perusosat'
 title: 'Internetin perusosat'
-hidden: true
+hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>

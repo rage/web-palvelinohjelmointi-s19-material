@@ -1,7 +1,7 @@
 ---
 path: '/osa-1/4-yhteenveto'
 title: 'Yhteenveto'
-hidden: true
+hidden: false
 ---
 
 Tässä osassa tutustuttiin internetin toimintaan sekä siihen liittyviin oleellisiin käsitteisiin kuten URI, DNS, HTTP ja HTML. Tutustuimme yksinkertaisen web-palvelimen sekä web-selaimen toimintaan sellaiset myös Java-kielellä toteuttaen. Harjoittelimme lisäksi yksinkertaisten web-sovellusten toteutusta Spring-sovelluskehyksellä.
