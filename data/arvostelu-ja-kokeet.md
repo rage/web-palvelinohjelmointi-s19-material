@@ -65,14 +65,15 @@ Kurssilla käytetään Moodlea sekä keskustelualustana että koealustana. Seura
 
 Kurssin kokeeseen osallistuaksesi sinun täytyy tehdä muodollinen kokeeseen ilmoittautuminen, jotta pääset kirjautumaan Helsingin yliopiston Avoimen yliopiston koeympäristöön (Moodle).
 
-Ilmoittaudu kokeeseen vähintään kaksi päivää ennen koepäivää, johon olet aikeissa osallistua.
-
 Ilmoittautuminen on pakollinen kaikille niille, jotka haluavat osallistua kurssin kokeeseen. Ilmoittautuminen koskee kaikkia kurssilaisia, eli myös Helsingin yliopiston opiskelijoita ja myös niitä, jotka ovat ilmoittautuneet kurssille jossakin muualla.
 
-1. Ensiksi ilmoittaudu Avoimen yliopiston järjestelmään, jotta saat käyttöoikeuden Moodleen: <registration-link></registration-link>. Huom! Avoimen yliopiston sivuille on tullut epähuomiossa muita ilmoittautumisivuja, joissa on tämän sivun kanssa ristiriitaista tietoa. Kuitenkin tämä meidän tarjoama ilmottautumislinkki on se minne sinun täytyy ilmoittautua -- ei väliä oletko aikataulullisella tai aikatauluttomalla kurssilla.
+1. Ensiksi tee Avoimen yliopiston ilmainen koeilmoittautuminen täältä: <registration-link></registration-link>.
+<br><br>Huom 1! Ilmoittautumisen jälkeen Avoimen sivu tarjoaa Avoimen Yliopiston yleisiä tentti-ilmoittautumiskäytäntöjä. Nämä käytännöt eivät koske tätä kurssia.<br><br>
 
-2. Odota 24h, jotta avoin voi seuraavana yönä siirtää tietosi järjestelmiensä välillä
+2. Jos sinulla on jo Helsingin yliopiston käyttäjätunnukset, siirry kohtaan 5.
 
-3. Luo Helsingin yliopiston käyttäjätunnukset. Saat tunnukset seuraamalla Helsingin yliopiston ohjetta käyttäjätunnusten aktivointiin: https://helpdesk.it.helsinki.fi/ohjeet/kirjautuminen-ja-yhteydet/kayttajatunnus/ohjeet-yliopiston-kayttajatunnuksen-aktivointiin. Huom! Osa oppilaista on raportoinut, että aktivointi ei toimi Safari-selaimella. Suosittelemme että teet aktivoinnin joko Chromella tai Firefoxilla.
+3. Odota 24h, jotta tietosi voi siirtyä seuraavana yönä järjestelmien välillä
 
-4. Pääset Moodleen osoitteessa <a href="https://moodle.helsinki.fi/course/view.php?id=33156" target="_blank">https://moodle.helsinki.fi/course/view.php?id=33156</a>
+4. Luo Helsingin yliopiston käyttäjätunnukset. Saat tunnukset seuraamalla Helsingin yliopiston ohjetta käyttäjätunnusten aktivointiin: https://helpdesk.it.helsinki.fi/ohjeet/kirjautuminen-ja-yhteydet/kayttajatunnus/ohjeet-yliopiston-kayttajatunnuksen-aktivointiin. Huom! Osa oppilaista on raportoinut, että aktivointi ei toimi Safari-selaimella. Suosittelemme että teet aktivoinnin joko Chromella tai Firefoxilla.
+
+5. Pääset Moodleen osoitteessa <a href="https://moodle.helsinki.fi/course/view.php?id=33156" target="_blank">https://moodle.helsinki.fi/course/view.php?id=33156</a>
