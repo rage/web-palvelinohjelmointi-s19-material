@@ -4,183 +4,29 @@ title: 'Tietokantojen käsittely ohjelmallisesti'
 hidden: true
 ---
 
-TODO: koko tietokantakertojen perusteisiin liittyvä sisältö pois?
 
-Suurin osa web-sovelluksista tarvitsee tiedon tallentamis- ja hakutoiminnallisuutta. Tietoa voidaan tallentaa levylle tiedostoihin, tai sitä voidaan tallentaa erilaisiin tietokantaohjelmistoihin. Nämä tietokantaohjelmistot voivat sijaita erillisellä koneella web-sovelluksesta, tai ne voivat itsekin olla web-sovelluksia. Toteutusperiaatteista riippumatta näiden sovellusten ensisijainen tehtävä on varmistaa, ettei käytettävä tieto katoa.
+<text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-
-Käytämme tällä kurssilla <a href="http://www.h2database.com/html/main.html" target="_blank">H2-tietokantamoottoria</a>, joka tarjoaa rajapinan SQL-kyselyiden tekemiseen. H2-tietokantamoottorin saa käyttöön lisäämällä projektin `pom.xml`-tiedostoon seuraavan riippuvuuden.
-
-
-```xml
-<dependency>
-    <groupId>com.h2database</groupId>
-    <artifactId>h2</artifactId>
-    <version>1.4.196</version>
-</dependency>
-```
-
-
-Tietokantaa käyttävä ohjelma sisältää tyypillisesti tietokantayhteyden luomisen, tietokantakyselyn tekemisen tietokannalle, sekä tietokannan palauttamien vastausten läpikäynnin. Javalla edellämainittu näyttää esimerkiksi seuraavalta -- alla oletamme, että käytössä on tietokantataulu "Book", jossa on sarakkeet "id" ja "name".
-
-
-```java
-// Open connection to database
-Connection connection = DriverManager.getConnection("jdbc:h2:./database", "sa", "");
-
-// Create query and retrieve result set
-ResultSet resultSet = connection.createStatement().executeQuery("SELECT * FROM Book");
-
-// Iterate through results
-while (resultSet.next()) {
-    String id = resultSet.getString("id");
-    String name = resultSet.getString("name");
-
-    System.out.println(id + "\t" + name);
-}
-
-// Close the resultset and the connection
-resultSet.close();
-connection.close();
-```
-
-
-Oleellisin tässä on luokka <a href="https://docs.oracle.com/javase/8/docs/api/java/sql/ResultSet.html" target="_blank">ResultSet</a>, joka tarjoaa pääsyn rivikohtaisiin tuloksiin. Kurssin <a href="http://tietokantojen-perusteet.github.io/" target="_blank">tietokantojen perusteet</a> oppimateriaali sisältää myös hieman tietoa ohjelmallisista tietokantakyselyistä.
-
-
-
-<text-box variant='hint' name='Tietokantayhteyden luomisesta'>
-
-Komento `DriverManager.getConnection("jdbc:h2:./database", "sa", "");` luo JDBC-yhteyden tietokantaan nimeltä "database". Käyttäjätunnuksena käytetään tunnusta "sa", jonka salasana on "".
-
-Jos "database"-nimistä tietokantaa ei ole, luodaan se levyjärjestelmään projektin juureen. Tässä tapauksessa luodaan tiedosto `database.mv.db` sekä mahdollisesti `database.trace.db`. Tietokantayhteyden voi luoda myös muistiin ladattavaan tietokantaan, jolloin tietokantaa ei luoda levyjärjestelmään -- tällöin tietokannassa oleva tieto kuitenkin katoaa ohjelman sammutuksen yhteydessä.
-
-Tarkempi opas H2-tietokannan tarjoamiin toimintoihin löytyy osoitteesta <a href="http://www.h2database.com/html/tutorial.html" target="_blank">http://www.h2database.com/html/tutorial.html</a>.
-
+TODO
 
 </text-box>
 
-Tietokannalla on tyypillisesti skeema, joka määrittelee tietokantataulujen rakenteen. Rakenteen lisäksi tietokantatauluissa on dataa. Kun tietokantasovellus käynnistetään ensimmäistä kertaa, nämä tyypillisesti ladataan myös käyttöön. H2-tietokantamoottori tarjoaa tätä varten työvälineitä <a href="http://www.h2database.com/javadoc/org/h2/tools/RunScript.html" target="_blank">RunScript</a>-luokassa. Alla olevassa esimerkissä tietokantayhteyden avaamisen jälkeen yritetään lukea tekstitiedostoista `database-schema.sql` ja `database-import.sql` niiden sisältö tietokantaan.
 
-Tiedosto `database-schema.sql` sisältää tietokantataulujen määrittelyt, ja tiedosto `database-import.sql` tietokantaan lisättävää tietoa. Järjestys on oleellinen -- jos tietokantataulujen määrittelyiden syöttämisessä tapahtuu virhe, ovat tietokantataulut olemassa. Tällöin tietoa ei myöskään ladata tietokantaan.
+Tietokantataulut ja luokat ovat hyvin samankaltaisia. Tietokantatauluissa määritellään sarakkeet ja viiteavaimet, luokissa määritellään attribuutit ja viitteet. Ei liene yllättävää, että tietokantatauluja kuvataan usein luokkien avulla.
 
+Relaatiotietokantojen ja olio-ohjelmoinnin välimaastossa sijaitsee tarve olioiden muuntamiseen tietokantataulun riveiksi ja takaisin. Tähän käytetään ORM (<a href="https://en.wikipedia.org/wiki/Object-relational_mapping" target="_blank">Object-relational mapping</a>) -ohjelmointitekniikkaa, jota varten löytyy merkittävä määrä valmiita työvälineitä sekä kirjastoja.
 
-```java
-// Open connection to database
-Connection connection = DriverManager.getConnection("jdbc:h2:./database", "sa", "");
+<br/>
 
-try {
-    // If database has not yet been created, create it
-    RunScript.execute(connection, new FileReader("database-schema.sql"));
-    RunScript.execute(connection, new FileReader("database-import.sql"));
-} catch (Throwable t) {
-    System.out.println(t.getMessage());
-}
-// ...
-```
+ORM-työvälineet tarjoavat ohjelmistokehittäjälle mm. toiminnallisuuden tietokantataulujen luomiseen luokista, jonka lisäksi ne helpottavat kyselyjen muodostamista ja hallinnoivat luokkien välisiä viittauksia. Ohjelmoijan vastuulle jää parhaassa tapauksessa sovellukselle tarpeellisten kyselyiden toteuttaminen vain niiltä osin kuin ORM-kehykset eivät valmiina tarjoa.
 
+Relaatiotietokantojen käsittelyyn Javalla löytyy joukko ORM-sovelluksia. Oracle/Sun standardoi olioiden tallentamisen relaatiotietokantoihin <a href="http://en.wikipedia.org/wiki/Java_Persistence_API" target="_blank">JPA</a> (Java Persistence API) -standardilla. JPA:n toteuttavat kirjastot (esim. <a href="http://www.hibernate.org/" target="_blank">Hibernate</a>) abstrahoivat relaatiotietokannan ja helpottavat kyselyjen tekemistä suoraan ohjelmakoodista.
 
-<programming-exercise name='Hello Database'>
+<br/>
 
-Käytössäsi on agenttien tietoja sisältävä tietokantataulu, joka on määritelty seuraavasti:
+Koska huomattava osa tietokantatoiminnallisuudesta on hyvin samankaltaista ("tallenna", "lataa", "poista", ...), voidaan perustoiminnallisuus piilottaa käytännössä kokonaan ohjelmoijalta. Tällöin ohjelmoijalle jää tehtäväksi usein tietokantatauluja kuvaavien luokkien sekä tietokantakyselyistä vastaavien rajapintojen määrittely. Tutustutaan tähän seuraavaksi.
 
-
-```sql
-CREATE TABLE Agent (
-    id varchar(9) PRIMARY KEY,
-    name varchar(200)
-);
-```
-
-Kirjoita ohjelma, joka tulostaa kaikki tietokannassa olevat agentit.
-
-Tehtävässä ei ole testejä. Palauta tehtävä kun se toimii halutulla tavalla.
-
-</programming-exercise>
-
-
-<programming-exercise name='Hello Insert'>
-
-Käytössäsi on edellisessä tehtävässä käytetty agenttien tietoja sisältävä tietokantataulu. Toteuta tässä tehtävässä tietokantaan lisäämistoiminnallisuus. Ohjelman tulee toimia seuraavasti:
-
-<sample-output>
-
-Agents in database:
-Secret	Clank
-Gecko	Gex
-Robocod	James Pond
-Fox	Sasha Nein
-
-Add one:
-What id? **Riddle**
-What name? **Voldemort**
-
-Agents in database:
-Secret	Clank
-Gecko	Gex
-Robocod	James Pond
-Fox	Sasha Nein
-Riddle	Voldemort
-
-</sample-output>
-
-Seuraavalla käynnistyskerralla agentti Voldemort on tietokannassa heti sovelluksen käynnistyessä.
-
-
-<sample-output>
-
-Agents in database:
-Secret	Clank
-Gecko	Gex
-Robocod	James Pond
-Fox	Sasha Nein
-Riddle	Voldemort
-
-Add one:
-What id? **Feather**
-What name? **Major Tickle**
-
-Agents in database:
-Secret	Clank
-Gecko	Gex
-Robocod	James Pond
-Fox	Sasha Nein
-Riddle	Voldemort
-Feather	Major Tickle
-
-</sample-output>
-
-Tehtävässä ei ole testejä. Palauta tehtävä kun se toimii halutulla tavalla.
-
-</programming-exercise>
-
-Edelliset tehtävät antavat vain pienen pintaraapaisun siihen teknologiaan, minkä päälle nykyaikaisten web-sovellusten käyttämät tietokantakirjastot rakentuvat. Vaikka web-sovelluksia voi toteuttaa ilman suurempaa tietämystä niihin liittyvistä taustateknologioista ja ratkaisuista, syventyminen teemaan kannattaa.
-
-
-
-# Oliot ja relaatiotietokannat
-
-Relaatiotietokantojen ja olio-ohjelmoinnin välimaastossa sijaitsee tarve olioiden muuntamiseen tietokantataulun riveiksi ja takaisin. Tähän tehtävään käytetään ORM (<a href="https://en.wikipedia.org/wiki/Object-relational_mapping" target="_blank">Object-relational mapping</a>) -ohjelmointitekniikkaa, jota varten löytyy merkittävä määrä valmiita työvälineitä sekä kirjastoja.
-
-ORM-työvälineet tarjoavat ohjelmistokehittäjälle mm. toiminnallisuutta tietokantataulujen luomiseen määritellyistä luokista, jonka lisäksi ne helpottavat kyselyjen muodostamista ja hallinnoivat luokkien välisiä viittauksia. Tällöin ohjelmoijan vastuulle jää sovellukselle tarpeellisten kyselyiden toteuttaminen vain niiltä osin kun ORM-kehykset eivät niitä pysty automaattisesti luomaan.
-
-Relaatiotietokantojen käsittelyyn Javalla löytyy joukko ORM-sovelluksia. Oracle/Sun standardoi olioiden tallentamisen relaatiotietokantoihin <a href="http://en.wikipedia.org/wiki/Java_Persistence_API" target="_blank">JPA</a> (*Java Persistence API*) -standardilla. JPA:n toteuttavat kirjastot (esim. <a href="http://www.hibernate.org/" target="_blank">Hibernate</a>) abstrahoivat relaatiotietokannan ja helpottavat kyselyjen tekemistä suoraan ohjelmakoodista.
-
-Koska huomattava osa tietokantatoiminnallisuudesta on hyvin samankaltaista ("tallenna", "lataa", "poista", ...), voidaan perustoiminnallisuus piilottaa käytännössä kokonaan ohjelmoijalta. Tällöin ohjelmoijalle jää tehtäväksi usein vain sopivan rajapintaluokan määrittely. Esimerkiksi aiemmin nähdyn `Henkilo`-luokan tallentamistoiminnallisuuteen tarvitaan seuraavanlainen rajapinta.
-
-TODO: katso flow, voi olla parempi että repo mainitaan vasta myöhemmin
-
-
-```java
-// pakkaus ja importit
-public interface HenkiloRepository extends JpaRepository<Henkilo, Long> {
-}
-```
-
-Kun rajapintaa käytetään, Spring osaa tuoda sopivan toteutuksen ohjelman käyttöön. Käytössä tulee olla Maven-riippuvuus Spring-projektin Data JPA -kirjastoon.
-
-TODO: tähän dependency injectionista taas muistutus
-
+Tietokantatoiminnallisuuden saa sovelluksen käyttöön lisäämällä sovellukseen seuraavat riippuvuudet. Kuten aiemmin, riippuvuudet on valmiiksi määritelty tehtäväpohjiin.
 
 ```xml
 <dependency>
@@ -193,15 +39,16 @@ TODO: tähän dependency injectionista taas muistutus
 </dependency>
 ```
 
+Tietokantaa käyttävät tehtäväpohjamme ovat lisäksi määritelty siten, että sovellus luo oletuksena tehtäväpohjan juuripolkuun tietokantatiedostot `database.mv.db` ja `database.trace.db`. Jos haluat tyhjentää tietokannan, poista nämä tiedostot ja käynnistä sovellus uudestaan. Voit vaihtoehtoisesti aina toteuttaa ohjelmaan toiminnallisuuden tietokannan tyhjentämiseksi.
+
 
 ## Luokan määrittely tallennettavaksi
 
+JPA-standardin mukaan luokka tulee määritellä entiteetiksi, jotta siitä tehtyjä olioita voi tallentaa JPA:n avulla tietokantaan.
 
-JPA-standardin mukaan luokka tulee määritellä *entiteetiksi*, jotta siitä tehtyjä olioita voi tallentaa JPA:n avulla tietokantaan.
+Jokaisella tietokantaan tallennettavalla luokalla tulee olla annotaatio `@Entity` sekä `@Id`-annotaatiolla merkattu attribuutti, joka toimii tietokantataulun pääavaimena. JPA:ta käytettäessä pääavain on tyypillisesti numeerinen (`Long` tai `Integer`). Näiden lisäksi luokan tulee toteuttaa `Serializable`-rajapinta -- tämä ei vaadi muuta kuin luokkamäärittelyyn lisätyn `implements Serializable` osan.
 
-Jokaisella tietokantaan tallennettavalla luokalla tulee olla annotaatio `@Entity` sekä `@Id`-annotaatiolla merkattu attribuutti, joka toimii tietokantataulun ensisijaisena avaimena. JPA:ta käytettäessä `id`-attribuutti on usein numeerinen (`Long` tai `Integer`), mutta merkkijonojen käyttö on yleistymässä. Näiden lisäksi, luokan tulee toteuttaa `Serializable`-rajapinta.
-
-Numeeriselle avainattribuutille voidaan lisäksi määritellä annotaatio `@GeneratedValue(strategy = GenerationType.AUTO)`, joka antaa id-kentän arvojen luomisen vastuun tietokannalle. Tietokantatauluun tallennettava luokka näyttää seuraavalta:
+Numeeriselle pääavaimelle voidaan lisäksi määritellä annotaatio `@GeneratedValue(strategy = GenerationType.AUTO)`, joka antaa vastuun pääavaimen arvojen luomisesta tietokannalle. Tietokantatauluun tallennettava luokka näyttää seuraavalta:
 
 
 ```java
@@ -251,8 +98,7 @@ public class Henkilo implements Serializable {
     // getterit ja setterit
 ```
 
-
-Ylläoleva konfiguraatio määrittelee luokasta `Henkilo` tietokantataulun nimeltä "Henkilo", jolla on sarakkeet "id" ja "nimi". Sarakkeiden tyypit päätellään muuttujien tyyppien perusteella.
+Yllä oleva luokka määrittelee tietokantataulun nimeltä "Henkilo", jolla on sarakkeet "id" ja "nimi". Sovelluskehys päättelee sarakkeiden tyypit automaattisesti muuttujien tyyppien perusteella. Näihin voi kuitenkin vaikuttaa -- esimerkiksi tietokantaan tallennettavan merkkijonon pituuteen voi vaikuttaa `@Column`-annotaation attribuutilla `length`.
 
 Spring Data JPA:n <a href="http://docs.spring.io/autorepo/docs/spring-data-jpa/current/api/org/springframework/data/jpa/domain/AbstractPersistable.html" target="_blank">AbstractPersistable</a>-luokkaa käytettäessä ylläolevan luokan määrittely kutistuu hieman. Yläluokka AbstractPersistable määrittelee pääavaimen, jonka lisäksi luokka toteuttaa myös rajapinnan Serializable.
 
@@ -281,17 +127,38 @@ public class Henkilo extends AbstractPersistable<Long> {
     // getterit ja setterit
 ```
 
+Koska käytämme myös Lombok-projektia, luokkamme ei tarvitse oikeastaan edes gettereitä tai settereitä.
+
+```java
+// pakkaus ja importit
+
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class Henkilo extends AbstractPersistable<Long> {
+
+    private String nimi;
+}
+```
+
+Yllä oleva luokka määrittelee tietokantataulun, jolla on pääavaimena toimiva `id`-niminen sarake. Yllä pääavaimen tyypiksi on annettu `Long` (`... extends AbstractPersistable<Long>`). Pääavaimen arvot luodaan automaattisesti. Tämän lisäksi tietokantataululla on merkkijonomuotoinen sarake `nimi`. Luokalla on myös konstruktorit, getterit, setterit sekä hashCode, equals, ja toString-metodit.
 
 
-### Rajapinta tallennettavan luokan käsittelyyn
 
-Kun käytössämme on tietokantaan tallennettava luokka, voimme luoda tietokannan käsittelyyn käytettävän *rajapinnan*. Kutsutaan tätä rajapintaoliota nimellä `HenkiloRepository`.
+## Rajapinta tietokannan käsittelyyn
+
+Kun käytössämme on tietokantataulua kuvaava luokka, voimme luoda tietokannan käsittelyyn käytettävän *rajapinnan*. Spring-sovelluskehystä ja JPA-standardia käyttäessämme tietokannan käsittelyyn tarkoitettu rajapintamme perii valmiin `JpaRepository`-rajapinnan, joka määrittelee normaalin CRUD-toiminnallisuuden (create, read, update, delete) sekä joukon muita metodeja.
+
+Perittävälle `JpaRepository`-rajapinnalle annetaan kaksi tyyppiparametria. Ensimmäisellä tyyppiparametrilla kerrotaan tietokantataulua kuvaava luokka ja toinella tyyppiparametrilla tietokantataulun pääavaimen tyyppi.
+
+Alla on luotu `Henkilo`-oliota Kutsutaan tätä rajapintaoliota nimellä `HenkiloRepository`. Esimerkissä oletetaan, että luokka `henkilo` sijaitsee pakkauksessa `domain`.
 
 
 ```java
 // pakkaus
 
-import wad.domain.Henkilo;
+import domain.Henkilo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface HenkiloRepository extends JpaRepository<Henkilo, Long> {
@@ -299,16 +166,12 @@ public interface HenkiloRepository extends JpaRepository<Henkilo, Long> {
 }
 ```
 
-Rajapinta perii Spring Data-projektin `JpaRepository`-rajapinnan; samalla kerromme, että tallennettava olio on tyyppiä `Henkilo` ja että tallennettavan olion pääavain on tyyppiä `Long`. Tämä tyyppi on sama kuin aiemmin `AbstractPersistable`-luokan perinnässä parametriksi asetettu tyyppi. Spring osaa käynnistyessään etsiä mm. `JpaRepository`-rajapintaluokan periviä luokkia. Jos niitä löytyy, se luo niiden pohjalta tietokannan käsittelyyn sopivan olion sekä asettaa olion ohjelmoijan haluamiin muuttujiin.
-
-TODO: DI ja IoC maininta
+Emme tee rajapinnasta konkreettista toteutusta. Spring luo automaattisesti rajapinnan toteuttavan olion sovelluksemme käynnistyksen yhteydessä.
 
 
-### Tietokanta-abstraktion tuominen kontrolleriin
+### Tietokantaa käsittelevän olion tuominen kontrolleriin
 
-Kun olemme luoneet rajapinnan `HenkiloRepository`, voimme lisätä sen kontrolleriluokkaan. Tämä tapahtuu määrittelemällä tietokanta-abstraktiota kuvaavan rajapinnan olio kontrollerin oliomuuttujaksi. Oliomuuttujalle asetetaan lisäksi annotaatio `@Autowired`, mikä kertoo Springille, että rajapintaan tulee asettaa olio.
-
-TODO: lyhyesti autowired Palaamme annotaation @Autowired merkitykseen tarkemmin myöhemmin.
+Kun olemme luoneet rajapinnan `HenkiloRepository`, voimme lisätä sen kontrolleriluokkaan. Tämä tapahtuu määrittelemällä tietokanta-abstraktiota kuvaavan rajapinnan olio kontrollerin oliomuuttujaksi. Oliomuuttujalle asetetaan lisäksi annotaatio `@Autowired`. Tämä `@Autowired` liittyy ensimmäisessä osassa käsiteltyihin termeihin Inversion of Control ja Dependency Injection. Spring luo käynnistyksen yhteydessä `HenkiloRepository` rajapinnan toteuttavan olion, jonka se sitten injektoi `@Autowired`-annotaatiolla merkittyihin `HenkiloRepository`-muuttujiin.
 
 
 ```java
@@ -324,9 +187,9 @@ public class HenkiloController {
 }
 ```
 
-Nyt tietokantaan pääsee käsiksi `HenkiloRepository`-olion kautta. Osoitteessa <a href="http://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html" target="_blank">http://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html</a> on JpaRepository-rajapinnan API-kuvaus, mistä löytyy rajapinnan tarjoamien metodien kuvauksia. Voimme esimerkiksi toteuttaa tietokannassa olevien olioiden listauksen sekä yksittäisen olion haun seuraavasti:
+Nyt tietokantaan pääsee käsiksi `HenkiloRepository`-olion kautta. Katso <a href="http://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html" target="_blank">JpaRepository</a>-luokan API, joka sisältää rajapinnan tarjoamien metodien kuvauksia. Huomaa, että JpaRepository perii mm. rajapinnan CrudRepository, jonka metodit ovat myös ohjelmiemme käytössä.
 
-TODO: pathvariablet eivät vielä tuttuja
+Voimme esimerkiksi toteuttaa tietokannassa olevien olioiden listauksen sekä yksittäisen olion lisäämisen seuraavalla tavalla.
 
 ```java
 // ...
@@ -340,21 +203,17 @@ public class HenkiloController {
     @GetMapping("/")
     public String list(Model model) {
         model.addAttribute("list", henkiloRepository.findAll());
-        return "henkilot"; // erillinen henkilot.html
+        return "henkilot"; // tässä oletetaan erillinen tiedosto henkilot.html
     }
 
-    @GetMapping("/{id}")
-    public String findOne(Model model, @PathVariable Long id) {
-        Henkilo henkilo = henkiloRepository.getOne(id);
-
-        model.addAttribute("henkilo", henkilo);
-        return "henkilo"; // erillinen henkilo.html
+    @PostMapping("/")
+    public String create(@RequestParam String nimi) {
+        henkiloRepository.save(new Henkilo(nimi));
+        return "redirect:/";
     }
 }
 ```
 
-
-Pääavaimella etsittäessä tulee löytyä korkeintaan yksi henkilö Spring Data JPA:n API käyttää osassa kyselyitä Java 8:n tarjoamaa <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html" target="_blank" norel>Optional</a>-luokkaa tämän rajoitteen varmistamiseen.
 
 
 <programming-exercise name='Item Database'>
@@ -365,35 +224,54 @@ Toteuta siis kontrolleriluokkaan sopiva metodi (tarkista parametrin tai parametr
 
 Alla esimerkki sovelluksesta kun tietokantaan on lisätty muutama rivi:
 
-<img class="browser-img" src="/img/2016-mooc/ex15.png"/>
+<img src="../img/exercises/itemdatabase.png"/>
+
+Huom! Älä muokkaa tehtäväpohjassa olevaa HTML-sivua.
+
+Sovellus luo oletuksena tehtäväpohjan juuripolkuun tietokantatiedostot database.mv.db ja database.trace.db. Jos haluat tyhjentää tietokannan, poista nämä tiedostot ja käynnistä sovellus uudestaan (tai, vaihtoehtoisesti, lisää ohjelmaan poistotoiminnallisuus..)
 
 </programming-exercise>
+
+
+<text-box variant='hint' name='H2-tietokannanhallintajärjestelmän konsoli'>
+
+H2-tietokannanhallintajärjestelmässä tulee mukana konsoli, jota voi käyttää sovelluksen tietokannan tarkasteluun. Kun menet selaimella sovelluksen polkuun "/h2-console", eteesi aukeaa konsoli-ikkuna. Voit avata sovelluksen käyttämän tietokannan.
+
+Tietokantaa käyttävät tehtäväpohjat on määritelty siten, että pääset niiden käyttämään tietokantaan käsiksi seuraavilla H2-konsolin asetuksilla:
+
+* Driver class: org.h2.Driver
+* JDBC URL: jdbc:h2:file:./database
+* User name: sa
+* Password:
+
+Salasana jätetään siis tyhjäksi.
+
+Konsoli on käynnissä aina sovelluksen ollessa käynnissä. Opimme myöhemmin menetelmiä konsolin poistamiseen.
+
+</text-box>
+
+
+<programming-exercise name='Person Database (2 osaa)'>
+
+Seuraa edellä kuvattua esimerkkiä ja luo sovellus henkilöiden tallentamiseen ja listaamiseen. Tehtäväpohjassa on valmiina mukana `index.html`-tiedosto, joka sisältää listaustoiminnallisuuden sekä lomakkeen uuden henkilön lisäämiseksi.
+
+Tehtävässä sinun tulee:
+
+1. Luoda luokka `Person`. Lisää luokalle merkkijonomuotoinen attribuutti `name` ja tee luokasta entiteetti.
+2. Luoda henkilöiden tallentamiseen tarkoitettu rajapinta `PersonRepository`, joka perii rajapinnan `JpaRepository`. Käytä rajapinnan `JpaRepository` tyyppiparametreina luokkaa `Person` sekä luokan `Person` pääavaimen tyyppiä.
+3. Muokata luokkaa `PersonController` siten, että luokalla on kaksi metodia:
+    * Sovelluksen juuripolkuun tulevan GET-pyynnön käsittelevä metodi hakee tietokannasta kaikki henkilöoliot, lisää ne modeliin (`Model`-tyyppinen olio) avaimella "persons", ja siirtää käsittelyvastuun Thymeleafille.
+    * Sovelluksen juuripolkuun tulevan POST-pyynnön käsittelevä metodi luo uuden henkilöolion, tallentaa sen tietokantaan, ja uudelleenohjaa selaimen tekemään uuden GET-tyyppisen pyynnön sovelluksen juuripolkuun.
 
 
 Sovellus luo oletuksena tehtäväpohjan juuripolkuun tietokantatiedostot database.mv.db ja database.trace.db. Jos haluat tyhjentää tietokannan, poista nämä tiedostot ja käynnistä sovellus uudestaan (tai, vaihtoehtoisesti, lisää ohjelmaan poistotoiminnallisuus..)
 
-
-
-<programming-exercise name='Todo Database (2 osaa)'>
-
-Luo tässä ensimmäisen osan TodoApplication-tehtävässä nähty tehtävien hallintaan tarkoitettu toiminnallisuus mutta siten, että tehtävät tallennetaan tietokantaan. Tässä entiteettiluokan nimeksi tulee asettaa `TodoItem` ja avaimen tyypin tulee olla `Long`.
-
-
-```java
-@Entity
-public class TodoItem extends AbstractPersistable<Long> {
-    ...
-```
-
-Noudata lisäksi tehtäväpohjassa annettujen HTML-sivujen rakennetta ja toiminnallisuutta.
-
-Sovellus luo tehtäväpohjan juuripolkuun tietokantatiedostot database.mv.db ja database.trace.db. Tietokannan skeema alustetaan kuitenkin uudestaan jokaisen palvelimen käynnistyksen yhteydessä, joten voit hyvin muuttaa tietokantaan tallennettavan tiedon muotoa. Palaamme olemassaolevan tietokannan päivittämiseen myöhemmin kurssilla.
-
-Tehtävä on kahden yksittäisen tehtävän arvoinen.
+Tehtäväpohjassa ei ole automaattisia testejä. Palauta tehtävä palvelimelle kun ohjelma toimii tehtävänannossa kuvatulla tavalla. Tehtävä on kahden yksittäisen tehtäväpisteen arvoinen.
 
 </programming-exercise>
 
 
-##
+TODO: quiz, essee // kuvaa tietokantatallennukseen tarvittavat luokat ja niiden roolit
 
-TODO: tarkemmin JpaRepository-luokan tarjoamat toiminnallisuudet
+
+
