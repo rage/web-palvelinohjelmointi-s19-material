@@ -4,8 +4,20 @@ title: 'Näkymät ja data'
 hidden: true
 ---
 
-# TODO: heti alkuun lombok?
 
+<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+TODO
+
+- Osaat näyttää käyttäjälle HTML-sivun.
+- Osaat tuoda palvelimelta tietoa HTML-sivulle.
+- Osaat käydä kokoelman läpi thymeleafin avulla.
+- yleishyödyllinen lombok
+- olion näyttäminen sivulla
+- olioiden näyttäminen sivulla
+- Tiedät mitä @ResponseBody-annotaatio tekee ja tiedät mitä tapahtuu jos sitä ei ole asetettu.
+- Tunnet HTML-kielen peruskomennot.
+
+</text-box>
 
 Sovelluksemme ovat vastaanottaneet tiettyyn polkuun tulevan pyynnön ja palauttaneet käyttäjälle merkkijonomuodossa olevaa tietoa. Palvelin voi myös luoda käyttäjälle näkymän, jonka selain lopulta näyttää käyttäjälle.
 
@@ -13,31 +25,25 @@ Näkymät luodaan tyypillisesti apukirjastojen avulla siten, että ohjelmoija lu
 
 Tällä kurssilla käyttämämme apuväline näkymän luomiseen on <a href="http://www.thymeleaf.org/" target="_blank">Thymeleaf</a>, joka tarjoaa välineitä datan lisäämiseen HTML-sivuille. Käytännössä näkymiä luodessa luodaan ensin HTML-sivu, jonka jälkeen sivulle lisätään komentoja Thymeleafin käsiteltäväksi.
 
+<br/>
+
 Thymeleaf-sivut ("templatet") sijaitsevat projektin kansiossa `src/main/resources/templates` tai sen alla olevissa kansioissa. NetBeansissa kansio löytyy kun klikataan "Other Sources"-kansiota.
 
 
 <text-box variant='hint' name='Thymeleafin käyttöönotto'>
 
-Thymeleafin käyttöönotto vaatii `pom.xml`-tiedostossa olevien riippuvuuksien muokkaamista. Web-sovellusten perustoiminnallisuus saatiin käyttöön lisäämällä `org.springframework.boot`-ryhmän komponentti `spring-boot-starter-web` pom.xml-tiedoston dependencies-osioon. Kun vaihdamme riippuvuuden muotoon `spring-boot-starter-thymeleaf`, pääsemme käyttämään Thymeleafia.
+Thymeleafin käyttöönotto vaatii uuden riippuvuuden (eli kirjaston tai kirjastojen) lisäämistä `pom.xml`-tiedoston `dependencies`-osioon. Kun lisäämme `dependencies`-osioon riippuvuuden `spring-boot-starter-thymeleaf`, pääsemme käyttämään Thymeleafia.
 
 
 ```xml
-<dependencies>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-thymeleaf</artifactId>
-    </dependency>
-</dependencies>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
 ```
 
-Jos edellämainittu riippuvuus ei ole aiemmin ladattuna koneelle, tulee se myös hakea. Tämä onnistuu joko kirjoittamalla komentorivillä projektin juuressa komento `mvn dependency:resolve` tai valitsemalle NetBeansissa projektiin liittyvä kansio <em>Dependencies</em> oikealla hiirennapilla ja painamalla <em>Download Declared Dependencies</em>.
+Tehtäväpohjissa määrittely on tehty valmiiksi.
 
-Aiemmat Thymeleafin versiot ovat lisäksi vaatineet, että jokaisen HTML-sivun `html`-elementin määrittelyssä tulee olla seuraavat määrittelyt.
-
-
-```xml
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-```
 </text-box>
 
 
@@ -59,19 +65,21 @@ public class ThymeleafController {
 }
 ```
 
-Pyyntöjä käsittelevällä metodilla ei ole annotaatiota `@ResponseBody`. Emme siis tässä halua, että metodin palauttama arvo näytetään suoraan käyttäjälle, vaan haluamme, että käyttäjälle näytetään merkkijonon osoittama näkymä. Näkymä luodaan Thymeleafin avulla.
+Toisin kuin aiemmin, pyyntöjä käsittelevällä metodilla ei ole annotaatiota `@ResponseBody`. Mikäli metodilla olisi annotaatio `@ResponseBody`, palautettaisiin käyttäjälle merkkijono "index".
+
+Kun annotaatiota `@ResponseBody` ei ole määritelty metodille, Spring tietää, että palautettu merkkijono liittyy käyttäjälle näytettävään näkymään. Projektin `pom.xml`-tiedostossa olevan `spring-boot-starter-thymeleaf` riippuvuuden takia Spring tietää tarkemmin, että kyse on Thymeleaf-kirjastolle käsiteltäväksi annettavasta näkymästä -- se siis etsii "index"-merkkijonoon liittyvän tiedoston ja antaa sen Thymeleafin käsiteltäväksi. Lopullinen tulos ohjataan sitten käyttäjälle.
 
 
 <programming-exercise name='Hello Thymeleaf'>
 
-Toteuta tässä tehtävässä pakkauksessa `wad.hellothymeleaf` sijaitsevaan `HelloThymeleafController`-luokkaan seuraava toiminnallisuus:
+Toteuta tässä tehtävässä pakkauksessa `hellothymeleaf` sijaitsevaan `HelloThymeleafController`-luokkaan seuraava toiminnallisuus:
 
 - Pyyntö juuripolkuun `/` palauttaa käyttäjälle Thymeleafin avulla kansiossa `src/main/resources/templates/` olevan `index.html`-tiedoston.
 - Pyyntö polkuun `/video` palauttaa käyttäjälle Thymeleafin avulla kansiossa `src/main/resources/templates/` olevan `video.html`-tiedoston.
 
 Alla on esimerkki ohjelman toiminnasta, kun selaimella on tehty pyyntö sovelluksen juuripolkuun.
 
-<img class="browser-img" src="/img/2016-mooc/ex5.png"/>
+<img src="../img/exercises/hellothymeleaf.png"/>
 
 </programming-exercise>
 
@@ -83,9 +91,23 @@ Jos mietit mistä ihmeestä tuossa HTML-lyhenteessä on kyse tai haluat verestä
 </text-box>
 
 
+<programming-exercise name='Html practice'>
+
+Toteuta tehtäväpohjan kansiossa `src/main/resources/templates/` olevaan tiedostoon `index.html` sivu, joka käyttää `h1`, `h2`, `ul`, `li`, `p`, `table`, `tr`, ja `td` elementtejä järkevällä tavalla.
+
+Eräs mahdollinen lopputulos näyttää seuraavalta.
+
+<img src="../img/exercises/htmlpractice.png"/>
+
+Tehtävässä ei ole testejä. Palauta tehtävä TMC:lle kun olet toteuttanut tehtävänannossa toivotun toiminnallisuuden.
+
+</programming-exercise>
+
 ## Tiedon lisääminen näkymään Model-luokan avulla
 
 Palvelinohjelmistossa luodun tai haetun datan lisääminen näkymään tapahtuu <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/ui/Model.html" target="_blank">Model</a>-olion avulla.
+
+<br/>
 
 Kun lisäämme Model-olion pyyntöjä käsittelevän metodin parametriksi, lisää Spring-sovelluskehys sen automaattisesti käyttöömme.
 
@@ -106,7 +128,7 @@ public class ThymeleafJaDataController {
 }
 ```
 
-Model on Spring-sovelluskehyksen käyttämä hajautustaulun toimintaa jäljittelevä olio. Alla olevassa esimerkissä määrittelemme pyyntöjä käsittelevälle metodille Model-olion, jonka jälkeen lisäämme lokeroon nimeltä `teksti` arvon `"Hei mualima!"`.
+Model on Spring-sovelluskehyksen käyttämä hajautustaulun toimintaa jäljittelevä olio. Alla olevassa esimerkissä määrittelemme pyyntöjä käsittelevälle metodille Model-olion, jonka jälkeen lisäämme lokeroon nimeltä `teksti` arvon `"Hei mualima!"`. Tämän jälkeen palautetaan merkkijono "index", jonka perusteella Spring päättelee että pyyntö ohjataan Thymeleafille.
 
 
 ```java
@@ -150,16 +172,20 @@ Kun Thymeleaf käsittelee HTML-sivun, se etsii sieltä elementtejä, joilla on `
 
 Käytännössä Thymeleaf etsii -- koska sivulla olevasta elementistä löytyy attribuutti `th:text="${teksti}"` -- Model-oliosta lokeron nimeltä `teksti` ja asettaa siinä olevan arvon elementin tekstiarvoksi. Tässä tapauksessa teksti `testi` korvataan Model-olion lokerosta teksti löytyvällä arvolla, eli aiemman esimerkkimme tekstillä `Hei mualima!`.
 
+Annotaatiolla `@Controller` merkityssä luokassa oleville metodeille voi määritellä parametrit hyvin vapaasti. Esimerkiksi `Model`-olio ja pyynnön mukana tulevat parametrit käsitellään määrittelemällä metodi, jolla on parametrina sekä `Model`-olio, että parametrit.
+
 
 <programming-exercise name='Hello Model'>
 
-Tehtäväpohjan mukana tulevaan HTML-tiedostoon on toteutettu tarina, joka tarvitsee otsikon ja päähenkilön. Toteuta pakkauksessa `wad.hellomodel` sijaitsevaan `HelloModelController`-luokkaan toiminnallisuus, joka käsittelee juuripolkuun tulevia pyyntöjä ja käyttää pyynnössä tulevia parametreja tarinan täydentämiseen. Voit olettaa, että pyynnön mukana tulevien parametrien nimet ovat `title` ja `person`.
+Tehtäväpohjan mukana tulevaan HTML-tiedostoon on toteutettu tarina, joka tarvitsee otsikon ja päähenkilön. Toteuta pakkauksessa `hellomodel` sijaitsevaan `HelloModelController`-luokkaan toiminnallisuus, joka käsittelee juuripolkuun tulevia pyyntöjä ja käyttää pyynnössä tulevia parametreja `index.html`-tiedostossa olevan tarinan täydentämiseen.
 
-Lisää pyynnön mukana tulevien parametrien arvot Thymeleafille annettavaan HashMappiin. Otsikon avaimen tulee olla `"title"` ja henkilön avaimen tulee olla `"person"`. Palautettava sivu on `index.html`.
+Pyynnön mukana tulevat parametrit ovat nimeltään `title` ja `person`. Molemmat ovat merkkijonomuotoisia.
+
+Lisää pyynnön mukana tulevien parametrien arvot Thymeleafille annettavaan Model-olioon. Otsikon avaimen tulee olla `"title"` ja henkilön avaimen tulee olla `"person"`. Palautettava sivu on kansiossa `src/main/resources/templates/` oleva `index.html`.
 
 Alla on esimerkki ohjelman toiminnasta, kun juuripolkuun tehdyssä pyynnössä on annettuna otsikoksi `Mökkielämää` ja henkilöksi `Leena`.
 
-<img class="browser-img" src="/img/2016-mooc/ex6.png"/>
+<img class="browser-img" src="../img/exercises/hellomodel.png"/>
 
 Palauta tehtävä TMC:lle kun olet valmis.
 
@@ -168,7 +194,7 @@ Palauta tehtävä TMC:lle kun olet valmis.
 
 ## Kokoelmien näyttäminen Thymeleaf-sivulla
 
-Thymeleafille annettavalle Model-oliolle voi asettaa tekstin sijaan arvokokoelmia. Alla luomme "pääohjelmassa" listan, joka asetetaan Thymeleafin käsiteltäväksi menevään Model-olioon jokaisen juuripolkuun tehtävän pyynnön yhteydessä. Jos juuripolkuun lähetetään parametri nimeltä `"content"`, lisätään se myös listaan.
+Model-oliolle voi asettaa myös arvokokoelmia. Alla luomme "pääohjelmassa" listan, joka asetetaan Thymeleafin käsiteltäväksi menevään Model-olioon jokaisen juuripolkuun tehtävän pyynnön yhteydessä.
 
 
 ```java
@@ -188,18 +214,13 @@ public class ListaController {
     public ListaController() {
         this.lista = new ArrayList<>();
         this.lista.add("Hello world!");
+        this.lista.add("+[-[<<[+[--->]-[<<<]]]>>>-]>-.---.>..>.<<<<-.<+.>>>>>.>.<<.<-.");
     }
 
     @GetMapping(value = "/")
     public String home(Model model) {
         model.addAttribute("list", lista);
         return "index";
-    }
-
-    @PostMapping(value = "/")
-    public String post(Model model, String content) {
-        this.lista.add(content);
-        return "redirect:/";
     }
 }
 ```
@@ -224,37 +245,113 @@ Yllä käytämme attribuuttia nimeltä `lista` ja luomme jokaiselle sen sisält�
 </ul>
 ```
 
-<em>Huom! Eräs klassinen virhe on määritellä iteroitava joukko merkkijonona `th:each="alkio : lista"`. Tämä ei luonnollisesti toimi.</em>
+Klassisin virhe `th:each`ia käytettäessä on iteroitavan joukon määrittely merkkijonona `th:each="alkio : lista"`. Tämä ei luonnollisesti toimi.
+
+
+<text-box variant='hint' name='Konstruktorit ja annotoidut luokat'>
+
+Spring luo automaattisesti esimerkiksi `@Controller`-määreellä annotoidusta luokasta olion, joka sitten injektoidaan sovelluksen käyttöön. Jotta tämä luokkien automaattinen luominen toimii, tulee luokalla olla parametriton konstruktori (tai ei lainkaan konstruktoreja). Mikäli luot luokalle parametrillisen konstruktorin, luo myös parametriton konstruktori. Näin varmistat, että sovelluskehys pystyy käyttämään luokkiasi osana toimintaansa.
+
+</text-box>
 
 
 <programming-exercise name='Hello List'>
 
-Tehtäväpohjassa on palvelinpuolen toiminnallisuus, jossa käsitellään juuripolkuun tuleva pyyntö, sekä lisätään lista Thymeleafille sivun käsittelyyn. Tehtäväpohjaan liittyvä HTML-sivu ei kuitenkaan sisällä juurikaan toiminnallisuutta.
+Tehtäväpohjassa on lähtökohta sovellukseen, johon voi lisätä dataa ja joka voi listata dataa.
 
-Lisää HTML-sivulle (1) listalla olevien arvojen tulostaminen `th:each`-komennon avulla ja (2) lomake, jonka avulla palvelimelle voidaan lähettää uusia arvoja.
+Lisää (1) juuripolkuun tulevan GET-tyyppisen käsittelevään metodiin toiminnallisuus, jonka avulla kontrollerissa oleva listamuuttuja on Thymeleafin käytettävissä. Tämän jälkeen, lisää (2) sovellukseen liittyvälle HTML-sivulle listalla olevien arvojen tulostaminen `th:each`-komennon avulla.
+
+Tehtäväpohjassa näkyy myös toiminnallisuus tiedon lähettämiseen palvelimelle. Syvennymme tähän tarkemmin seuraavassa aliluvussa.
 
 </programming-exercise>
+
+## Lombok-projekti ja boilerplaten vähentäminen
+
+Tutustumme kohta olioiden näyttämiseen sivuilla. Tarkastellaan ennen sitä kuitenkin erästä varsin näppärää kirjastoa.
+
+Javan tietokohteita kuvaavat luokat tarvitsevat oletuksena konstruktoreita sekä gettereitä ja settereitä. Esimerkiksi Thymeleaf hyödyntää luokan get-metodeja HTML-sivuja täydentäessä.
+
+Hyvin yksinkertainenkin luokka -- kuten alla oleva tapahtumaa kuvaava `Event` -- sisältää paljon ohjelmakoodia.
+
+
+```java
+public class Event {
+
+    private String name;
+
+    public Event() {
+    }
+
+    public Event(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+```
+
+Suurin osa ohjelmakoodista on oleellista vallitsevien käytänteiden takia -- esimerkiksi Thymeleaf tarvitsee getterit -- mutta samalla epäoleellista. Edellä kuvattujen luokkien sekä niiden attribuuttien määrän lisääntyessä projekteissa tulee olemaan lopulta satoja ellei tuhansia rivejä "turhahkoa" lähdekoodia.
+
+<a href="https://projectlombok.org/" target="_blank" norel>Lombok</a> on kirjasto, joka on suunniteltu vähentämään projekteissa esiintyvien toisteisten konstruktorien, getterien ja setterien määrää. Lombokin saa projektin käyttöön lisäämällä projektin `pom.xml`-tiedostoon lombok-riippuvuuden.
+
+
+```xml
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <scope>provided</scope>
+</dependency>
+```
+
+Projekti tarjoaa mahdollisuuden gettereiden ja settereiden automaattiseen luomiseen siten, että ohjelmoijan ei tarvitse määritellä niitä itse. Ohjelmoijan näkökulmasta edellä kuvattu luokka `Event` toimii täysin samalla tavalla, jos konstruktorit ja metodit poistetaan ja luokkaan lisätään muutama annotaatio.
+
+
+```java
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class Event {
+    private String name;
+}
+```
+
+Edellä käytetyt annotaatiot toimivat seuraavasti: Annotaatio `@NoArgsConstructor` luo luokalle parametrittoman konstruktorin, annotaatio `@AllArgsConstructor` luo luokalle kaikki attribuutit sisältävän konstruktorin, ja annotaatio `@Data` luo attribuuteille getterit, setterit, `equals`-metodin, `hashcode`-metodin, ja `toString`-metodin.
+
+
+<img src="../img/lombok.gif" />
+
+
+
+<text-box variant='hint' name='IntelliJ Idea'>
+
+Jos käytössäsi on NetBeansin sijaan IntelliJ Idea ohjelmointiympäristö joudut edellisen lisäksi asentamaan 'Lombok Plugin' liitännäisen. Ohjeet tähän löydät <a href="https://projectlombok.org/setup/intellij" target="_blank" norel>täältä</a>. Liitännäisen asentamisen jälkeen voit asetuksista (Build, Execute, Deployment > Compiler > Annotation Processors) laittaa rastin kohtaan "Enable Annotation processing" jonka jälkeen Lombok annotaatioiden pitäisi toimia.
+
+</text-box>
 
 
 ## Olioiden käsittely
 
 Modeliin voi lisätä kokoelmien lisäksi myös muunlaisia olioita. Oletetaan, että käytössämme on henkilöä kuvaava luokka.
 
+
 ```java
+// importit
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Henkilo {
     private String nimi;
-
-    public Henkilo(String nimi) {
-        this.nimi = nimi;
-    }
-
-    public String getNimi() {
-        return this.nimi;
-    }
-
-    public void setNimi(String nimi) {
-        this.nimi = nimi;
-    }
 }
 ```
 
@@ -271,14 +368,13 @@ public String home(Model model) {
 
 Kun sivua luodaan, henkilöön päästään käsiksi modeliin asetetun avaimen perusteella. Edellä luotu "Le Pigeon"-henkilö on tallessa avaimella "henkilo". Kuten aiemminkin, avaimella pääsee olioon käsiksi.
 
-
 ```xml
 <h2 th:text="${henkilo}">Henkilön nimi</h2>
 ```
 
-Ylläolevaa henkilön tulostusta kokeillessamme saamme näkyville (esim.) merkkijonon `Henkilo@29453f44` -- ei ihan mitä toivoimme. Käytännössä Thymeleaf kutsuu edellisessä tapauksessa olioon liittyvää `toString`-metodia, jota emme ole määritelleet.
+Ylläolevaa henkilön tulostusta kokeillessamme saamme näkyville olion `toString`-metodin palauttaman arvon.
 
- Pääsemme oliomuuttujiin käsiksi olemassaolevien `get<em>Muuttuja</em>`-metodien kautta. Jos haluamme tulostaa Henkilo-olioon liittyvän nimen, kutsumme metodia `getNimi`. Thymeleafin käyttämässä notaatiossa kutsu muuntuu muotoon `henkilo.nimi`. Saamme siis halutun tulostuksen seuraavalla tavalla:
+Pääsemme oliomuuttujiin käsiksi `get*Muuttuja*`-metodien kautta. Jos haluamme tulostaa Henkilo-olioon liittyvän `nimi`-muuttujan, kutsumme metodia `getNimi`, jonka Lombok-projekti generoi käyttöömme automaattisesti mikäli luokalle on määritelty `@Data`-annotaatio. Thymeleafin käyttämässä notaatiossa kutsu muuntuu muotoon `henkilo.nimi`. Saamme siis halutun tulostuksen seuraavalla tavalla:
 
 
 ```xml
@@ -288,7 +384,7 @@ Ylläolevaa henkilön tulostusta kokeillessamme saamme näkyville (esim.) merkki
 
 ## Olioita listalla
 
-Listan läpikäynti Thymeleafissa tapahtuu attribuutin `th:each` avulla. Sen määrittely saa muuttujan nimen, johon kokoelmasta otettava alkio kullakin iteraatiolla tallennetaan, sekä läpikäytävän kokoelman. Perussyntaksiltaan `th:each` on jo tullut aiemmin tutuksi.
+Perussyntaksiltaan `th:each` on tuli jo hetki sitten tutuksi: listan läpikäynti Thymeleafissa tapahtuu attribuutin `th:each` avulla. Sen määrittely saa muuttujan nimen, johon kokoelmasta otettava alkio kullakin iteraatiolla tallennetaan, sekä läpikäytävän kokoelman.
 
 ```xml
 <p th:each="alkio : ${lista}">
@@ -345,17 +441,17 @@ Käyttäjälle lähetettävä sivu näyttää palvelimella tapahtuneen prosessoi
 </ol>
 ```
 
-
 <programming-exercise name='Hello Objects'>
 
-Tehtäväpohjassa on sovellus, jossa käsitellään `Item`-tyyppisiä olioita. Tehtävänäsi on lisätä sovellukseen lisätoiminnallisuutta:
+Tehtäväpohjassa on sovellus, jossa käsitellään `Item`-tyyppisiä olioita. Tehtävänäsi on lisätä sovellukseen seuraava lisätoiminnallisuutta:
 
-- Kun käyttäjä avaa selaimella sovelluksen juuripolun, tulee hänen lomakkeen lisäksi nähdä lista esineistä. Jokaisesta esineestä tulee tulla ilmi sen nimi (name) ja tyyppi (type).
-- Kun käyttäjä lähettää lomakkeella uuden esineen palvelimelle, tulee palvelimen säilöä esine listalle seuraavaa näyttämistä varten. Huomaa, että lomake lähettää tiedot POST-pyynnöllä sovelluksen juureen. Kun esine on säilötty, uudelleenohjaa käyttäjän pyyntö siten, että käyttäjän selain tekee GET-tyyppisen pyynnön sovelluksen juuripolkuun.
+- Kun käyttäjä avaa selaimella sovelluksen juuripolun (eli tekee sovelluksen juuripolkuun GET-tyyppisen pyynnön), tulee hänen lomakkeen lisäksi nähdä lista esineistä. Jokaisesta esineestä tulee tulla ilmi sen nimi (name) ja tyyppi (type).
 
 Alla olevassa esimerkissä sovellukseen on lisätty olemassaolevan taikurin hatun lisäksi <a href="https://en.wikipedia.org/wiki/Party_hat" target="_blank">Party hat</a>, eli bilehattu.
 
-<img class="browser-img" src="/img/2016-mooc/ex11.png"/>
+<br/>
+
+<img src="../img/exercises/helloobjects.png"/>
 
 </programming-exercise>
 
