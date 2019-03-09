@@ -374,7 +374,7 @@ Tämä parametrien käsittely voi tuntua aluksi magialta. Todellisuudessa kuiten
 
 <programming-exercise name='Hello Request Params' tmcname='osa01-Osa01_09.HelloRequestParams'>
 
-Toteuta pakkauksessa `wad.hellorequestparams` olevaan luokkaan `HelloRequestParamsController` seuraava toiminnallisuus:
+Toteuta pakkauksessa `hellorequestparams` olevaan luokkaan `HelloRequestParamsController` seuraava toiminnallisuus:
 
 - Pyyntö polkuun `/hello` palauttaa käyttäjälle merkkijonon "Hello ", johon on liitetty `param`-nimisen parametrin sisältämä arvo.
 
