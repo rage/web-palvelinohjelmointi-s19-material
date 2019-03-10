@@ -90,7 +90,7 @@ const IndexPage = () => (
             <TableRow>
               <TableCell>Osa 6</TableCell>
               <TableCell>12.4.2019</TableCell>
-              <TableCell>22.2.2019</TableCell>
+              <TableCell>29.4.2019</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>Osa 7</TableCell>
