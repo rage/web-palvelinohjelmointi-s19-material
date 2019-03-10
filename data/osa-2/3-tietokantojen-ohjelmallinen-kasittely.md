@@ -46,9 +46,7 @@ Tietokantaa käyttävät tehtäväpohjamme ovat lisäksi määritelty siten, ett
 
 ## Luokan määrittely tallennettavaksi
 
-JPA-standardin mukaan luokka tulee määritellä entiteetiksi, jotta siitä tehtyjä olioita voi tallentaa JPA:n avulla tietokantaan.
-
-Jokaisella tietokantaan tallennettavalla luokalla tulee olla annotaatio `@Entity` sekä `@Id`-annotaatiolla merkattu attribuutti, joka toimii tietokantataulun pääavaimena. JPA:ta käytettäessä pääavain on tyypillisesti numeerinen (`Long` tai `Integer`). Näiden lisäksi luokan tulee toteuttaa `Serializable`-rajapinta -- tämä ei vaadi muuta kuin luokkamäärittelyyn lisätyn `implements Serializable` osan.
+JPA-standardin mukaan jokaisella tietokantaan tallennettavalla luokalla tulee olla annotaatio `@Entity` sekä `@Id`-annotaatiolla merkattu attribuutti, joka toimii tietokantataulun pääavaimena. JPA:ta käytettäessä pääavain on tyypillisesti numeerinen (`Long` tai `Integer`). Näiden lisäksi luokan tulee toteuttaa `Serializable`-rajapinta -- tämä ei vaadi muuta kuin luokkamäärittelyyn lisätyn `implements Serializable` osan. Tällaisia tietokantataulun määritteleviä luokkia kutsutaan entiteeteiksi.
 
 Numeeriselle pääavaimelle voidaan lisäksi määritellä annotaatio `@GeneratedValue(strategy = GenerationType.AUTO)`, joka antaa vastuun pääavaimen arvojen luomisesta tietokannalle. Tietokantatauluun tallennettava luokka näyttää seuraavalta:
 
@@ -191,6 +189,8 @@ public class HenkiloController {
 
 Nyt tietokantaan pääsee käsiksi `HenkiloRepository`-olion kautta. Katso <a href="http://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html" target="_blank">JpaRepository</a>-luokan API, joka sisältää rajapinnan tarjoamien metodien kuvauksia. Huomaa, että JpaRepository perii mm. rajapinnan CrudRepository, jonka metodit ovat myös ohjelmiemme käytössä.
 
+<br/>
+
 Voimme esimerkiksi toteuttaa tietokannassa olevien olioiden listauksen sekä yksittäisen olion lisäämisen seuraavalla tavalla.
 
 ```java
@@ -272,7 +272,5 @@ Tehtäväpohjassa ei ole automaattisia testejä. Palauta tehtävä palvelimelle 
 </programming-exercise>
 
 
-TODO: quiz, essee // kuvaa tietokantatallennukseen tarvittavat luokat ja niiden roolit
-
-
+<quiznator id="5c8517713972a91474109725"></quiznator>
 

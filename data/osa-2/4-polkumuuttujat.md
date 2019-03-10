@@ -20,6 +20,8 @@ Yksi vaihtoehto tällaisen tilanteen ratkaisemiseksi on kontrolleriluokassa olev
 
 Toinen vaihtoehto on ajatella polkua haettavan resurssin tunnistajana. Annotaatiolle `@GetMapping` määriteltävään polkuun voidaan määritellä polkumuuttuja aaltosulkujen avulla. Esimerkiksi polku `"/{arvo}"` ottaisi vastaan minkä tahansa juuripolun alle tulevan kyselyn ja tallentaisi arvon myöhempää käyttöä varten. Tällöin jos käyttäjä tekee pyynnön esimerkiksi osoitteeseen `http://localhost:8080/kirja`, tallentuu arvo "kirja" myöhempää käyttöä varten. Polkumuuttujiin pääsee käsiksi pyyntöä käsittelevälle metodille määriteltävän annotaation <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/PathVariable.html" target="_blank">@PathVariable</a> avulla.
 
+<br/>
+
 Jatketaan aiemman henkilöesimerkin kanssa. Nyt yksittäisen henkilön hakeminen onnistuisi esimerkiksi seuraavalla tavalla.
 
 ```java
@@ -49,11 +51,7 @@ public class HenkiloController {
 }
 ```
 
-Yllä olevassa esimerkissä metodi `getOne` käsittelee pyyntöjä ennalta määrittelemättömään osoitteeseen `/{id}`. Tässä `{id}` tarkoittaa käytännössä sitä, että Spring ottaa polusta osan talteen ja asettaa sen pyynnön käsittelevän metodin `id`-nimiseen muuttujaan, jolle on määritelty `@PathVariable`-annotaatio.
-
-TODO: polkumuuttujaan linkkaaminen html-tiedostosta
-
-TODO: polkumuuttujan arvo -- esimerkiksi tietokantataulun id:stä
+Yllä olevassa esimerkissä metodi `getOne` käsittelee pyyntöjä ennalta määrittelemättömään osoitteeseen `/{id}`. Tässä `{id}` tarkoittaa käytännössä sitä, että Spring ottaa polusta osan talteen ja asettaa sen pyynnön käsittelevän metodin `id`-nimiseen muuttujaan, jolle on määritelty `@PathVariable`-annotaatio. Kun metodia kutsutaan, se saa parametrinaan polkuun asetetun muuttujan, joka muunnetaan Long-tyyppiseksi. Metodissa haetaan tietokantataulusta Henkilo rivi pääavaimen `id` perusteella -- palautettu arvo lisätään Modeliin, jonka jälkeen tietokannasta haettu tieto näytetään osana `henkilo.html`-tiedostoa.
 
 
 <programming-exercise name='Hello Path Variables' tmcname='osa02-Osa02_10.HelloPathVariables'>
@@ -94,19 +92,15 @@ Jos sivulta klikkaa hattua, pääsee tietyn hatun tiedot sisältävälle sivulle
 
 <programming-exercise name='Todo Application (2 osaa)' tmcname='osa02-Osa02_12.TodoApplication'>
 
-TODO: avaa tarkemmin
-
-TOOD: sano tietokannan käytöstä
-
-Tässä tehtävässä tulee rakentaa tehtävien hallintaan tarkoitettu sovellus. Sovelluksen käyttämät html-sivut ovat valmiina, itse sovelluksen pääset toteuttamaan itse.
+Tässä tehtävässä tulee rakentaa tehtävien hallintaan tarkoitettu sovellus. Sovelluksen käyttämät html-sivut ovat valmiina, sovelluksen muut osat pääset toteuttamaan itse.
 
 Sovellukseen tulee lisätä seuraavat toiminnallisuudet:
 
-- Kaikkien tehtävien listaaminen. Kun käyttäjä tekee pyynnön sovelluksen juuripolkuun, tulee hänelle näyttää sivu, missä tehtävät on listattuna. Sivulla on myös lomake tehtävien lisäämiseen.
+- Kaikkien tehtävien listaaminen. Kun käyttäjä tekee pyynnön sovelluksen juuripolkuun, tulee hänelle näyttää sivu, missä tehtävät on listattuna. Tehtäväpohjan mukana tuleva HTML-sivu sisältää tiedon Modeliin lisättävän listan nimestä sekä valmiin HTML-lomakkeen.
 
-- Yksittäisen tehtävän lisääminen. Kun käyttäjä täyttää lomakkeen sivulla ja lähettää tiedot palvelimelle, tulee sovelluksen lisätä tehtävä näytettävään listaan.
+- Yksittäisen tehtävän lisääminen. Kun käyttäjä täyttää lomakkeen ja lähettää tiedot palvelimelle, tulee sovelluksen lisätä tehtävä näytettävään listaan.
 
-- Yksittäisen tehtävän näyttäminen. Kun käyttäjä klikkaa tehtävään liittyvää linkkiä, tulee käyttäjälle näyttää tehtäväsivu. Huom! Tehtävään liittyvien tarkistusten määrä tulee kasvaa aina yhdellä kun sivulla vieraillaan.
+- Yksittäisen tehtävän näyttäminen. Kun käyttäjä klikkaa tehtävään liittyvää linkkiä, tulee käyttäjälle näyttää yhden tehtävän tiedot näyttävä sivu. Tämän lisäksi, tehtävän näyttämisen yhteydessä, tehtävään liittyvien tarkastusten eli katselukertojen määrän tulee kasvaa yhdellä. Toteuta tämä niin, että haet tietokannasta olion (rajapinnan metodi `getOne`), päivität siihen liittyvää katselukertoja kuvaavan muuttujan arvoa, ja tallennat olion tietokantaan (rajapinnan metodi `save`).
 
 Alla kuva tehtävien listauksesta:
 

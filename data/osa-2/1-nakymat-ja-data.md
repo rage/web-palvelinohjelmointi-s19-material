@@ -189,6 +189,8 @@ Palauta tehtävä TMC:lle kun olet valmis.
 
 </programming-exercise>
 
+<quiznator id="5c8512b33972a9147410971c"></quiznator>
+
 
 ## Kokoelmien näyttäminen Thymeleaf-sivulla
 
@@ -242,6 +244,10 @@ Yllä käytämme attribuuttia nimeltä `lista` ja luomme jokaiselle sen sisält�
     </li>
 </ul>
 ```
+
+Lisää kokoelmien läpikäynnistä löytyy Thymeleafin dokumentaatiosta, kts. <a href="https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#iteration" target="_blank">https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#iteration</a>.
+
+<br/>
 
 Klassisin virhe `th:each`ia käytettäessä on iteroitavan joukon määrittely merkkijonona `th:each="alkio : lista"`. Tämä ei luonnollisesti toimi.
 
@@ -441,9 +447,9 @@ Käyttäjälle lähetettävä sivu näyttää palvelimella tapahtuneen prosessoi
 
 <programming-exercise name='Hello Objects' tmcname='osa02-Osa02_05.HelloObjects'>
 
-Tehtäväpohjassa on sovellus, jossa käsitellään `Item`-tyyppisiä olioita. Tehtävänäsi on lisätä sovellukseen seuraava lisätoiminnallisuutta:
+Tehtäväpohjassa on sovellus, jossa käsitellään `Item`-tyyppisiä olioita. Tehtävänäsi on lisätä sovellukseen seuraava lisätoiminnallisuus:
 
-- Kun käyttäjä avaa selaimella sovelluksen juuripolun (eli tekee sovelluksen juuripolkuun GET-tyyppisen pyynnön), tulee hänen lomakkeen lisäksi nähdä lista esineistä. Jokaisesta esineestä tulee tulla ilmi sen nimi (name) ja tyyppi (type).
+- Kun käyttäjä avaa selaimella sovelluksen juuripolun (eli tekee sovelluksen juuripolkuun GET-tyyppisen pyynnön), tulee hänen olemassaolevan lomakkeen lisäksi nähdä lista esineistä. Jokaisesta esineestä tulee tulla ilmi sen nimi (name) ja tyyppi (type).
 
 Alla olevassa esimerkissä sovellukseen on lisätty olemassaolevan taikurin hatun lisäksi <a href="https://en.wikipedia.org/wiki/Party_hat" target="_blank">Party hat</a>, eli bilehattu.
 
