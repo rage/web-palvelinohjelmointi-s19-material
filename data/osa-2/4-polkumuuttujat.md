@@ -56,7 +56,7 @@ TODO: polkumuuttujaan linkkaaminen html-tiedostosta
 TODO: polkumuuttujan arvo -- esimerkiksi tietokantataulun id:stä
 
 
-<programming-exercise name='Hello Path Variables'>
+<programming-exercise name='Hello Path Variables' tmcname='osa02-Osa02_10.HelloPathVariables'>
 
 Tehtäväpohjassa on sovellus, jossa käsitellään `Item`-tyyppisiä olioita. Kun sovelluksen juureen tehdään pyyntö, käyttäjälle näytetään oletushattu ("default"). Tehtäväpohjaan on määritelty hajautustaulu, joka sisältää erilaisia hattuja.
 
@@ -75,7 +75,7 @@ Muihin osoitteisiin tehtävät pyynnöt taas palauttavat tehtäväpohjassa oleva
 </programming-exercise>
 
 
-<programming-exercise name='Hello Individual Pages'>
+<programming-exercise name='Hello Individual Pages' tmcname='osa02-Osa02_11.HelloIndividualPages'>
 
 Edellisessä tehtävässä käytössämme oli vain yksi sivu. Olisi kuitenkin hienoa, jos jokaiselle hatulle olisi oma sivu -- ainakin sovelluksen käyttäjän näkökulmasta. Tehtäväpohjassa on valmiina sovellus, joka listaa olemassaolevat hatut ja näyttää ne käyttäjälle. Jokaisen hatun yhteydessä on linkki, jota klikkaamalla pitäisi päästä hatun omalle sivulle.
 
@@ -92,7 +92,7 @@ Jos sivulta klikkaa hattua, pääsee tietyn hatun tiedot sisältävälle sivulle
 </programming-exercise>
 
 
-<programming-exercise name='Todo Application (2 osaa)'>
+<programming-exercise name='Todo Application (2 osaa)' tmcname='osa02-Osa02_12.TodoApplication'>
 
 TODO: avaa tarkemmin
 

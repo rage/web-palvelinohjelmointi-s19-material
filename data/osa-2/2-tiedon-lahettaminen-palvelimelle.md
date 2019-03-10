@@ -4,8 +4,6 @@ title: 'Tiedon lähettäminen palvelimelle'
 hidden: true
 ---
 
-
-
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
 - Osaat luoda HTML-muotoisen lomakkeen ja tiedät mitä lomakkeen attribuutit `action` ja `method` tekevät.
@@ -58,7 +56,7 @@ public String post(@RequestParam String nimi) {
 Yllä oleva metodi kuuntelee POST-tyyppisiä pyyntöjä sovelluksen juuripolkuun. Se saa merkkijonotyyppisen `nimi`-nimisen parametrin pyynnön mukana. Metodi tulostaa parametrin arvon `System.out.println`-kutsun avulla ja pyytää Thymeleafia näyttämään kansiosta `src/main/resources/templates/` tiedoston `index.html`.
 
 
-<programming-exercise name='Hello Form'>
+<programming-exercise name='Hello Form' tmcname='osa02-Osa02_06.HelloForm'>
 
 Tehtäväpohjassa on toiminnallisuus, jonka avulla sivulla voi näyttää tietoa, ja jonka avulla sivulta lähetetty tieto voidaan myös käsitellä. Tiedon lähettämiseen tarvitaan sivulle kuitenkin lomake.
 
@@ -129,7 +127,7 @@ Alla kuvatussa sekvenssikaaviossa näyttään lomakkeen lähettäminen POST / Re
 <img src="../img/post-redirect-get.png" alt="title POST / Redirect / GET;note left of Client: User types in an address and presses enter;Client->Server: GET /index.html HTTP/1.1;note right of Server: Server determines what\nto do with the request;Server->Client: HTTP/1.1 200 OK\n// headers\n\n&lt;html&gt;...;note left of Client: User looks at the page, fills the\nform, and submits it;Client->Server: POST /form HTTP/1.1\n\n// content;note right of Server: Server processes the request\nand sends a redirect response;Server->Client: HTTP/1.1 302 Found\nLocation: /index.html\n// other headers;note left of Client: Browser receives a redirect\nmessage and proceeds to\nretrieve the new page immediately;Client->Server: GET /index.html HTTP/1.1;Server->Client: HTTP/1.1 200 OK\n// headers\n\n&lt;html&gt;...">
 
 
-<programming-exercise name='Hello POST/Redirect/GET'>
+<programming-exercise name='Hello POST/Redirect/GET' tmcname='osa02-Osa02_07.HelloPostRedirectGet'>
 
 Tehtäväpohjassa on sekä muistilappujen listaamistoiminnallisuus, että lomake, jonka avulla voidaan lähettää POST-tyyppisiä pyyntöjä palvelimelle. Toteuta sovellukseen toiminnallisuus, missä palvelin kuuntelee POST-tyyppisiä pyyntöjä, lisää pyynnön yhteydessä tulevan tiedon sovelluksessa olevaan listaan ja uudelleenohjaa käyttäjän tekemään GET-tyyppisen pyynnön juuriosoitteeseen.
 

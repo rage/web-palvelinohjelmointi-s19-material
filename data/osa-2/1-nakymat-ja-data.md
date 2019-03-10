@@ -14,6 +14,9 @@ hidden: true
 
 </text-box>
 
+<quiznator id="5c850ca5c41ed4148d971b7c"></quiznator>
+
+
 Sovelluksemme ovat vastaanottaneet tiettyyn polkuun tulevan pyynnön ja palauttaneet käyttäjälle merkkijonomuodossa olevaa tietoa. Palvelin voi myös luoda käyttäjälle näkymän, jonka selain lopulta näyttää käyttäjälle.
 
 Näkymät luodaan tyypillisesti apukirjastojen avulla siten, että ohjelmoija luo HTML-näkymät ja upottaa HTML-koodiin kirjastospesifejä komentoja. Nämä komennot mahdollistavat mm. tiedon lisäämisen sivuille. Tällaisia HTML-sivuja, joihin on upotettu kirjastokohtaisia tiedon lisäämiseen tarkoitettuja komentoja kutsutaan näkymätemplateiksi (jatkossa template).
@@ -65,7 +68,7 @@ Toisin kuin aiemmin, pyyntöjä käsittelevällä metodilla ei ole annotaatiota 
 Kun annotaatiota `@ResponseBody` ei ole määritelty metodille, Spring tietää, että palautettu merkkijono liittyy käyttäjälle näytettävään näkymään. Projektin `pom.xml`-tiedostossa olevan `spring-boot-starter-thymeleaf` riippuvuuden takia Spring tietää tarkemmin, että kyse on Thymeleaf-kirjastolle käsiteltäväksi annettavasta näkymästä -- se siis etsii "index"-merkkijonoon liittyvän tiedoston ja antaa sen Thymeleafin käsiteltäväksi. Lopullinen tulos ohjataan sitten käyttäjälle.
 
 
-<programming-exercise name='Hello Thymeleaf'>
+<programming-exercise name='Hello Thymeleaf' tmcname='osa02-Osa02_01.HelloThymeleaf'>
 
 Toteuta tässä tehtävässä pakkauksessa `hellothymeleaf` sijaitsevaan `HelloThymeleafController`-luokkaan seuraava toiminnallisuus:
 
@@ -86,7 +89,7 @@ Jos mietit mistä ihmeestä tuossa HTML-lyhenteessä on kyse tai haluat verestä
 </text-box>
 
 
-<programming-exercise name='Html practice'>
+<programming-exercise name='Html Practice' tmcname='osa02-Osa02_02.HtmlPractice'>
 
 Toteuta tehtäväpohjan kansiossa `src/main/resources/templates/` olevaan tiedostoon `index.html` sivu, joka käyttää `h1`, `h2`, `ul`, `li`, `p`, `table`, `tr`, ja `td` elementtejä järkevällä tavalla.
 
@@ -170,7 +173,7 @@ Käytännössä Thymeleaf etsii -- koska sivulla olevasta elementistä löytyy a
 Annotaatiolla `@Controller` merkityssä luokassa oleville metodeille voi määritellä parametrit hyvin vapaasti. Esimerkiksi `Model`-olio ja pyynnön mukana tulevat parametrit käsitellään määrittelemällä metodi, jolla on parametrina sekä `Model`-olio, että parametrit.
 
 
-<programming-exercise name='Hello Model'>
+<programming-exercise name='Hello Model' tmcname='osa02-Osa02_03.HelloModel'>
 
 Tehtäväpohjan mukana tulevaan HTML-tiedostoon on toteutettu tarina, joka tarvitsee otsikon ja päähenkilön. Toteuta pakkauksessa `hellomodel` sijaitsevaan `HelloModelController`-luokkaan toiminnallisuus, joka käsittelee juuripolkuun tulevia pyyntöjä ja käyttää pyynnössä tulevia parametreja `index.html`-tiedostossa olevan tarinan täydentämiseen.
 
@@ -250,7 +253,7 @@ Spring luo automaattisesti esimerkiksi `@Controller`-määreellä annotoidusta l
 </text-box>
 
 
-<programming-exercise name='Hello List'>
+<programming-exercise name='Hello List' tmcname='osa02-Osa02_04.HelloList'>
 
 Tehtäväpohjassa on lähtökohta sovellukseen, johon voi lisätä dataa ja joka voi listata dataa.
 
@@ -436,7 +439,7 @@ Käyttäjälle lähetettävä sivu näyttää palvelimella tapahtuneen prosessoi
 </ol>
 ```
 
-<programming-exercise name='Hello Objects'>
+<programming-exercise name='Hello Objects' tmcname='osa02-Osa02_05.HelloObjects'>
 
 Tehtäväpohjassa on sovellus, jossa käsitellään `Item`-tyyppisiä olioita. Tehtävänäsi on lisätä sovellukseen seuraava lisätoiminnallisuutta:
 

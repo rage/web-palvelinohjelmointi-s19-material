@@ -217,8 +217,7 @@ public class HenkiloController {
 ```
 
 
-
-<programming-exercise name='Item Database'>
+<programming-exercise name='Item Database' tmcname='osa02-Osa02_08.ItemDatabase'>
 
 Tässä tehtävässä on valmiiksi toteutettuna tietokantatoiminnallisuus sekä esineiden noutaminen tietokannasta. Lisää sovellukseen toiminnallisuus, jonka avulla esineiden tallentaminen tietokantaan onnistuu valmiiksi määritellyllä lomakkeella.
 
@@ -253,7 +252,7 @@ Konsoli on käynnissä aina sovelluksen ollessa käynnissä. Opimme myöhemmin m
 </text-box>
 
 
-<programming-exercise name='Person Database (2 osaa)'>
+<programming-exercise name='Person Database (2 osaa)' tmcname='osa02-Osa02_09.PersonDatabase'>
 
 Seuraa edellä kuvattua esimerkkiä ja luo sovellus henkilöiden tallentamiseen ja listaamiseen. Tehtäväpohjassa on valmiina mukana `index.html`-tiedosto, joka sisältää listaustoiminnallisuuden sekä lomakkeen uuden henkilön lisäämiseksi.
 
