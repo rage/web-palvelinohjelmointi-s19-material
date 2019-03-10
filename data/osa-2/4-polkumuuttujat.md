@@ -4,6 +4,15 @@ title: 'Polkumuuttujat'
 hidden: true
 ---
 
+<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+
+- Tiedät, että polkuja käytetään resurssien tunnistamiseen.
+- Tunnet käsitteen polkumuuttuja.
+- Osaat määritellä pyyntöjä käsitteleviin metodeihin polkumuuttujia.
+- Osaat käyttää polkumuuttujia tietokantaa käyttävissä web-sovelluksissa.
+
+</text-box>
+
 
 Polkuja käytetään resurssien tunnistamiseen ja yksilöintiin. Usein vastaan tulee tilanne, missä luodut resurssit ovat uniikkeja, emmekä tiedä niiden tietoja ennen sovelluksen käynnistymistä -- emme voi siis määritellä eksaktia polkua, joka tunnistaisi vielä tuntemattoman resurssin.
 

@@ -7,15 +7,13 @@ hidden: true
 
 <deadline>25.3.2019</deadline>
 
-TODO:
-toisen osan...
 
-Osaat muodostaa Thymeleaf-kirjastoa käyttäen sivuja, joita käytetään käyttäjälle näytettävien näkymien luontiin. Tunnet menetelmiä tietokantojen ohjelmalliseen käsittelyyn. Tunnet käsitteen ORM ja osaat hyödyntää Javan ja Spring Bootin tietokanta-abstraktiota tiedon käsittelyyn. Käsittelet yhden tietokantataulun sisältäviä sovelluksia. Tunnet POST/Redirect/GET-suunnittelumallin, ja osaat luoda em. suunnittelumallia seuraavan sovelluksen.
+Toisen osan jälkeen osaat muodostaa HTML-muotoisia näkymätemplateja ja käyttää Thymeleaf-kirjastoa käyttäjälle palautettavien näkymien luontiin. Opit käyttämään lomakkeita tiedon lähettämiseen palvelimelle, ja opit luomaan lähetettyä tietoa käsitteleviä palvelinohjelmistoja. Opit POST/Redirect/GET-suunnittelumallin ja osaat palauttaa palvelimelta uudelleenohjauspyynnön. Tutustut tietokantojen käyttöön web-sovelluksissa ORM-kirjastoja käyttäen ja opit luomaan web-sovelluksia, jotka käyttävät yhtä tietokantataulua. Opit käsitteen polkumuuttuja ja käytät polkumuuttujia sovelluksissasi.
 
 <please-login></please-login>
 
 <pages-in-this-section></pages-in-this-section>
 
-Yllä oleva sisällysluettelo sisältää kurssin toisen osan aihealueet. Ensimmäinen osa on suunniteltu siten, että siinä on työtä yhden viikon ajaksi.
+Yllä oleva sisällysluettelo sisältää kurssin toisen osan aihealueet. Toinen osa on suunniteltu siten, että siinä on työtä yhden viikon ajaksi.
 
 <exercises-in-this-section></exercises-in-this-section>

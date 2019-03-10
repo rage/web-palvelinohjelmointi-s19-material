@@ -4,24 +4,19 @@ title: 'Näkymät ja data'
 hidden: true
 ---
 
-
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
-TODO
 
-- Osaat näyttää käyttäjälle HTML-sivun.
-- Osaat tuoda palvelimelta tietoa HTML-sivulle.
-- Osaat käydä kokoelman läpi thymeleafin avulla.
-- yleishyödyllinen lombok
-- olion näyttäminen sivulla
-- olioiden näyttäminen sivulla
-- Tiedät mitä @ResponseBody-annotaatio tekee ja tiedät mitä tapahtuu jos sitä ei ole asetettu.
-- Tunnet HTML-kielen peruskomennot.
+- Harjoittelet HTML-kielen käyttöä ja tunnet HTML-kielen peruskomennot.
+- Tunnet käsitteen näkymätemplate.
+- Tiedät Thymeleaf-kirjaston ja osaat muodostaa Thymeleafia käyttäviä HTML-muotoisia näkymätemplateja.
+- Osaat näyttää palvelimelta palautettua tietoa (muuttujat, listat, oliot) HTML-sivulla.
+- Tiedät mitä `@ResponseBody`-annotaatio tekee ja tiedät mitä tapahtuu jos sitä ei ole asetettu pyyntöä käsittelevään metodiin.
 
 </text-box>
 
 Sovelluksemme ovat vastaanottaneet tiettyyn polkuun tulevan pyynnön ja palauttaneet käyttäjälle merkkijonomuodossa olevaa tietoa. Palvelin voi myös luoda käyttäjälle näkymän, jonka selain lopulta näyttää käyttäjälle.
 
-Näkymät luodaan tyypillisesti apukirjastojen avulla siten, että ohjelmoija luo HTML-näkymät ja upottaa HTML-koodiin kirjastospesifejä komentoja. Nämä komennot mahdollistavat mm. tiedon lisäämisen sivuille.
+Näkymät luodaan tyypillisesti apukirjastojen avulla siten, että ohjelmoija luo HTML-näkymät ja upottaa HTML-koodiin kirjastospesifejä komentoja. Nämä komennot mahdollistavat mm. tiedon lisäämisen sivuille. Tällaisia HTML-sivuja, joihin on upotettu kirjastokohtaisia tiedon lisäämiseen tarkoitettuja komentoja kutsutaan näkymätemplateiksi (jatkossa template).
 
 Tällä kurssilla käyttämämme apuväline näkymän luomiseen on <a href="http://www.thymeleaf.org/" target="_blank">Thymeleaf</a>, joka tarjoaa välineitä datan lisäämiseen HTML-sivuille. Käytännössä näkymiä luodessa luodaan ensin HTML-sivu, jonka jälkeen sivulle lisätään komentoja Thymeleafin käsiteltäväksi.
 

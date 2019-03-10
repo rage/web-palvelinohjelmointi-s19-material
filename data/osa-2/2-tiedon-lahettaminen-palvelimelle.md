@@ -4,9 +4,15 @@ title: 'Tiedon lähettäminen palvelimelle'
 hidden: true
 ---
 
+
+
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-TODO
+- Osaat luoda HTML-muotoisen lomakkeen ja tiedät mitä lomakkeen attribuutit `action` ja `method` tekevät.
+- Ymmärrät minkälaisessa muodossa lomakkeen tieto lähetetään palvelimelle.
+- Osaat kirjoittaa palvelinohjelmistoon metodin, joka käsittelee lomakkeella lähetetyn tiedon.
+- Tiedät mitä POST/Redirect/GET -suunnittelumalli tarkoittaa ja tiedät miksi sitä käytetään.
+- Osaat kirjoittaa POST/Redirect/GET -suunnittelumallia noudattavia ohjelmia.
 
 </text-box>
 

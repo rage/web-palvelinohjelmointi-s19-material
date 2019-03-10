@@ -4,10 +4,12 @@ title: 'Tietokantojen käsittely ohjelmallisesti'
 hidden: true
 ---
 
-
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-TODO
+- Tunnet käsitteen Object-relational Mapping (ORM) ja tiedät mitä sillä tarkoitetaan.
+- Osaat määritellä luokan siten, että luokasta luodaan Spring-sovelluskehyksen avulla tietokantataulu.
+- Osaat käyttää Springin tarjoamaa tietokantataulun käsittelyyn tarkoitettua rajapintaa sekä luoda Springin rajapinnan perivän rajapinnan.
+- Osaat kirjoittaa yhtä tietokantataulua käyttävän web-sovelluksen, joka tarjoaa mahdollisuuden tiedon lisäämiseen sekä tiedon listaamiseen.
 
 </text-box>
 

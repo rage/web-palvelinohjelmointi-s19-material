@@ -38,7 +38,7 @@ Kurssilla Web-palvelinohjelmointi Java opit web-sovellusten toimintaperiaatteet 
             Näkymät, tietokannat ja tietokanta-abstraktiot.
         </td>
         <td>
-            Osaat muodostaa Thymeleaf-kirjastoa käyttäen sivuja, joita käytetään käyttäjälle näytettävien näkymien luontiin. Tunnet menetelmiä tietokantojen ohjelmalliseen käsittelyyn. Tunnet käsitteen ORM ja osaat hyödyntää Javan ja Spring Bootin tietokanta-abstraktiota tiedon käsittelyyn. Käsittelet yhden tietokantataulun sisältäviä sovelluksia. Tunnet POST/Redirect/GET-suunnittelumallin, ja osaat luoda em. suunnittelumallia seuraavan sovelluksen.
+            Osaat muodostaa Thymeleaf-kirjastoa käyttäen sivuja, joita käytetään käyttäjälle palautettavien näkymien luontiin. Osaat lähettää tietoa palvelimelle ja käsitellä palvelimelle lähetettyä tietoa. Tunnet POST/Redirect/GET-suunnittelumallin. Tunnet käsitteen ORM ja osaat hyödyntää Javan ja Spring Bootin tietokanta-abstraktiota tiedon käsittelyyn. Käsittelet yhden tietokantataulun sisältäviä sovelluksia. Tunnet käsitteen polkumuuttuja ja osaat käyttää polkumuuttujia sovelluksissasi.
         </td>
     </tr>
     <tr>
