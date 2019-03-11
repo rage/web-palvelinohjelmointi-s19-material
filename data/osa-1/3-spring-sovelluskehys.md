@@ -142,6 +142,8 @@ Luokalle `HeiMaailmaController` on määritelty metodi `home`, jolla on kaksi an
 
 Tästä eteenpäin materiaalissa on myös ohjelmointitehtäviä. Tehtävien tekeminen ja palautus tapahtuu NetBeans-ympäristössä Test My Code-liitännäisen avulla. Test My Code lataa tehtäväpohjat sinulle valmiiksi.
 
+**Huom!** NetBeans with TMC:n "testinappula" ei toistaiseksi toimi oikein Spring-tehtävien kanssa. Voit ajaa testit paikallisesti klikkaamalla projektia oikealla hiirennapilla ja valitsemalla test project. Testien ajaminen palvelimella toimii normaalisti, eli tämä ei vaikuta pisteiden ym saamiseen -- voit palauttaa tehtävät suoraan submit-napista.
+
 </text-box>
 
 
