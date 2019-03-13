@@ -147,7 +147,7 @@ public class ThymeleafJaDataController {
 }
 ```
 
-Kun käyttäjä tekee pyynnön, joka ohjautuu ylläolevaan metodiin, ohjautuu pyyntö `return`-komennon jälkeen Thymeleafille, joka saa käyttöönsä Model-olion ja siihen lisätyt arvot sekä tiedon näytettävästä sivusta.
+Kun käyttäjä tekee pyynnön, joka ohjautuu yllä olevaan metodiin, ohjautuu pyyntö `return`-komennon jälkeen Thymeleafille, joka saa käyttöönsä Model-olion ja siihen lisätyt arvot sekä tiedon näytettävästä sivusta.
 
 Oletetaan, että käytössämme olevan `index.html`-sivun lähdekoodi on seuraavanlainen:
 
@@ -166,7 +166,7 @@ Oletetaan, että käytössämme olevan `index.html`-sivun lähdekoodi on seuraav
 </html>
 ```
 
-Kun Thymeleaf käsittelee HTML-sivun, se etsii sieltä elementtejä, joilla on `th:`-alkuisia attribuutteja. Ylläolevasta sivusta Thymeleaf löytää `h2`-elementin, jolla on attribuutti `th:text` -- `<h2 th:text="${teksti}">testi</h2>`. Attribuutti `th:text` kertoo Thymeleafille, että elementin tekstiarvo (tässä "testi") tulee korvata attribuutin arvon ilmaisemalla muuttujalla. Attribuutin `th:text` arvona on `${teksti}`, jolloin Thymeleaf etsii `model`-oliosta arvoa avaimella `"teksti"`.
+Kun Thymeleaf käsittelee HTML-sivun, se etsii sieltä elementtejä, joilla on `th:`-alkuisia attribuutteja. Yllä olevasta sivusta Thymeleaf löytää `h2`-elementin, jolla on attribuutti `th:text` -- `<h2 th:text="${teksti}">testi</h2>`. Attribuutti `th:text` kertoo Thymeleafille, että elementin tekstiarvo (tässä "testi") tulee korvata attribuutin arvon ilmaisemalla muuttujalla. Attribuutin `th:text` arvona on `${teksti}`, jolloin Thymeleaf etsii `model`-oliosta arvoa avaimella `"teksti"`.
 
 Käytännössä Thymeleaf etsii -- koska sivulla olevasta elementistä löytyy attribuutti `th:text="${teksti}"` -- Model-oliosta lokeron nimeltä `teksti` ja asettaa siinä olevan arvon elementin tekstiarvoksi. Tässä tapauksessa teksti `testi` korvataan Model-olion lokerosta teksti löytyvällä arvolla, eli aiemman esimerkkimme tekstillä `Hei mualima!`.
 
