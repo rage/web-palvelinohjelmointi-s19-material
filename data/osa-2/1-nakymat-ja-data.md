@@ -7,8 +7,8 @@ hidden: true
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
 - Harjoittelet HTML-kielen käyttöä ja tunnet HTML-kielen peruskomennot.
-- Tunnet käsitteen näkymätemplate.
-- Tiedät Thymeleaf-kirjaston ja osaat muodostaa Thymeleafia käyttäviä HTML-muotoisia näkymätemplateja.
+- Tunnet käsitteen näkymä-template.
+- Tiedät Thymeleaf-kirjaston ja osaat muodostaa Thymeleafia käyttäviä HTML-muotoisia näkymä-templateja.
 - Osaat näyttää palvelimelta palautettua tietoa (muuttujat, listat, oliot) HTML-sivulla.
 - Tiedät mitä `@ResponseBody`-annotaatio tekee ja tiedät mitä tapahtuu jos sitä ei ole asetettu pyyntöä käsittelevään metodiin.
 
@@ -19,7 +19,7 @@ hidden: true
 
 Sovelluksemme ovat vastaanottaneet tiettyyn polkuun tulevan pyynnön ja palauttaneet käyttäjälle merkkijonomuodossa olevaa tietoa. Palvelin voi myös luoda käyttäjälle näkymän, jonka selain lopulta näyttää käyttäjälle.
 
-Näkymät luodaan tyypillisesti apukirjastojen avulla siten, että ohjelmoija luo HTML-näkymät ja upottaa HTML-koodiin kirjastospesifejä komentoja. Nämä komennot mahdollistavat mm. tiedon lisäämisen sivuille. Tällaisia HTML-sivuja, joihin on upotettu kirjastokohtaisia tiedon lisäämiseen tarkoitettuja komentoja kutsutaan näkymätemplateiksi (jatkossa template).
+Näkymät luodaan tyypillisesti apukirjastojen avulla siten, että ohjelmoija luo HTML-näkymät ja upottaa HTML-koodiin kirjastospesifejä komentoja. Nämä komennot mahdollistavat mm. tiedon lisäämisen sivuille. Tällaisia HTML-sivuja, joihin on upotettu kirjastokohtaisia tiedon lisäämiseen tarkoitettuja komentoja kutsutaan näkymä-templateiksi (jatkossa template).
 
 Tällä kurssilla käyttämämme apuväline näkymän luomiseen on <a href="http://www.thymeleaf.org/" target="_blank">Thymeleaf</a>, joka tarjoaa välineitä datan lisäämiseen HTML-sivuille. Käytännössä näkymiä luodessa luodaan ensin HTML-sivu, jonka jälkeen sivulle lisätään komentoja Thymeleafin käsiteltäväksi.
 
@@ -300,7 +300,7 @@ public class Event {
 }
 ```
 
-Suurin osa ohjelmakoodista on oleellista vallitsevien käytänteiden takia -- esimerkiksi Thymeleaf tarvitsee getterit -- mutta samalla epäoleellista. Edellä kuvattujen luokkien sekä niiden attribuuttien määrän lisääntyessä projekteissa tulee olemaan lopulta satoja ellei tuhansia rivejä "turhahkoa" lähdekoodia.
+Suurin osa ohjelmakoodista on oleellista vallitsevien käytänteiden takia -- esimerkiksi Thymeleaf tarvitsee getterit -- mutta samalla epäoleellista. Edellä kuvattujen luokkien sekä niiden attribuuttien määrän lisääntyessä projekteissa tulee olemaan lopulta satoja ellei tuhansia rivejä "turhahkoa" lähdekoodia. Tällaista usein toistuvaa, samankaltaista koodia kutsutaan termillä boilerplate.
 
 <a href="https://projectlombok.org/" target="_blank" norel>Lombok</a> on kirjasto, joka on suunniteltu vähentämään projekteissa esiintyvien toisteisten konstruktorien, getterien ja setterien määrää. Lombokin saa projektin käyttöön lisäämällä projektin `pom.xml`-tiedostoon lombok-riippuvuuden.
 
