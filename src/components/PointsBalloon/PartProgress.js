@@ -100,7 +100,7 @@ const PartProgress = ({ name, data, appliesForStudyRight }) => {
         </StyledBarChart>
         <LargeP>
           Osasta saadut kurssipisteet:{" "}
-          {Math.floor(Math.min(100, 100*totalProgress))}
+          {Math.floor(Math.min(100, 100.0*totalProgress))}
           /100.
         </LargeP>
         {appliesForStudyRight &&
