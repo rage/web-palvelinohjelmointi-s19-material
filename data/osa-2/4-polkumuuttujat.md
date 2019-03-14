@@ -1,7 +1,7 @@
 ---
 path: '/osa-2/4-polkumuuttujat'
 title: 'Polkumuuttujat'
-hidden: true
+hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>

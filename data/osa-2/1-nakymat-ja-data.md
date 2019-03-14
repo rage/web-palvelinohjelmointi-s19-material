@@ -1,7 +1,7 @@
 ---
 path: '/osa-2/1-nakymat-ja-data'
 title: 'Näkymät ja data'
-hidden: true
+hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>

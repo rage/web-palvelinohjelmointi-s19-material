@@ -1,7 +1,7 @@
 ---
 path: '/osa-2/3-tietokantojen-kasittely'
 title: 'Tietokantojen käsittely ohjelmallisesti'
-hidden: true
+hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
@@ -41,7 +41,9 @@ Tietokantatoiminnallisuuden saa sovelluksen käyttöön lisäämällä sovelluks
 </dependency>
 ```
 
-Tietokantaa käyttävät tehtäväpohjamme ovat lisäksi määritelty siten, että sovellus luo oletuksena tehtäväpohjan juuripolkuun tietokantatiedostot `database.mv.db` ja `database.trace.db`. Jos haluat tyhjentää tietokannan, poista nämä tiedostot ja käynnistä sovellus uudestaan. Voit vaihtoehtoisesti aina toteuttaa ohjelmaan toiminnallisuuden tietokannan tyhjentämiseksi.
+Tietokantaa käyttävät tehtäväpohjamme ovat lisäksi määritelty siten, että sovellus luo oletuksena tehtäväpohjan juuripolkuun tietokantatiedostot `database.mv.db` ja `database.trace.db`. Nämä määrittelyt löytyvät tehtäväpohjan kansiossa `src/main/resources` olevasta tiedostosta `application.properties`.
+
+Jos haluat tyhjentää tietokannan, poista nämä tiedostot ja käynnistä sovellus uudestaan. Voit vaihtoehtoisesti aina toteuttaa ohjelmaan toiminnallisuuden tietokannan tyhjentämiseksi.
 
 
 ## Luokan määrittely tallennettavaksi
@@ -71,7 +73,7 @@ public class Henkilo implements Serializable {
     // getterit ja setterit
 ```
 
-Tietokantaan luotavien sarakkeiden ja tietokantataulun nimiä voi muokata annotaatioiden `@Column` ja `@Table` avulla.
+Tietokantaan luotavien sarakkeiden ja tietokantataulujen nimiä voi muokata annotaatioiden `@Column` ja `@Table` avulla.
 
 
 ```java
@@ -98,7 +100,9 @@ public class Henkilo implements Serializable {
     // getterit ja setterit
 ```
 
-Yllä oleva luokka määrittelee tietokantataulun nimeltä "Henkilo", jolla on sarakkeet "id" ja "nimi". Sovelluskehys päättelee sarakkeiden tyypit automaattisesti muuttujien tyyppien perusteella. Näihin voi kuitenkin vaikuttaa -- esimerkiksi tietokantaan tallennettavan merkkijonon pituuteen voi vaikuttaa `@Column`-annotaation attribuutilla `length`.
+Yllä oleva luokka määrittelee tietokantataulun nimeltä "Henkilo", jolla on sarakkeet "id" ja "nimi". Oletuksena taulujen ja sarakkeiden nimet luodaan muuttujien nimien perusteella, joten yllä oleva määrittely ei oikeastaan muuta mitään.
+
+Sovelluskehys päättelee sarakkeiden tyypit automaattisesti muuttujien tyyppien perusteella. Näihin voi kuitenkin vaikuttaa -- esimerkiksi tietokantaan tallennettavan merkkijonon pituuteen voi vaikuttaa `@Column`-annotaation attribuutilla `length`.
 
 Spring Data JPA:n <a href="http://docs.spring.io/autorepo/docs/spring-data-jpa/current/api/org/springframework/data/jpa/domain/AbstractPersistable.html" target="_blank">AbstractPersistable</a>-luokkaa käytettäessä ylläolevan luokan määrittely kutistuu hieman. Yläluokka AbstractPersistable määrittelee pääavaimen, jonka lisäksi luokka toteuttaa myös rajapinnan Serializable.
 
@@ -152,7 +156,7 @@ Kun käytössämme on tietokantataulua kuvaava luokka, voimme luoda tietokannan 
 
 Perittävälle `JpaRepository`-rajapinnalle annetaan kaksi tyyppiparametria. Ensimmäisellä tyyppiparametrilla kerrotaan tietokantataulua kuvaava luokka ja toinella tyyppiparametrilla tietokantataulun pääavaimen tyyppi.
 
-Alla on luotu `Henkilo`-oliota Kutsutaan tätä rajapintaoliota nimellä `HenkiloRepository`. Esimerkissä oletetaan, että luokka `henkilo` sijaitsee pakkauksessa `domain`.
+Kutsutaan tätä rajapintaoliota nimellä `HenkiloRepository`. Esimerkissä oletetaan, että luokka `Henkilo` sijaitsee pakkauksessa `domain`.
 
 
 ```java

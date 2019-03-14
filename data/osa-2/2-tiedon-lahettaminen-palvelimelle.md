@@ -1,7 +1,7 @@
 ---
 path: '/osa-2/2-tiedon-lahettaminen-palvelimelle'
 title: 'Tiedon lähettäminen palvelimelle'
-hidden: true
+hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
