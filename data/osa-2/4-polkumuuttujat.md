@@ -92,7 +92,7 @@ Jos sivulta klikkaa hattua, pääsee tietyn hatun tiedot sisältävälle sivulle
 
 <programming-exercise name='Todo Application (2 osaa)' tmcname='osa02-Osa02_12.TodoApplication'>
 
-Tässä tehtävässä tulee rakentaa tehtävien hallintaan tarkoitettu sovellus. Sovelluksen käyttämät html-sivut ovat valmiina, sovelluksen muut osat pääset toteuttamaan itse.
+Tässä tehtävässä tulee rakentaa tietokantaa käyttävä tehtävien hallintaan tarkoitettu sovellus. Sovelluksen käyttämät html-sivut ovat valmiina, sovelluksen muut osat pääset toteuttamaan itse.
 
 Sovellukseen tulee lisätä seuraavat toiminnallisuudet:
 
