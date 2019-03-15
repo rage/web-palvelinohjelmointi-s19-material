@@ -264,7 +264,7 @@ Tehtävässä sinun tulee:
 
 1. Luoda luokka `Person`. Lisää luokalle merkkijonomuotoinen attribuutti `name` ja tee luokasta entiteetti.
 2. Luoda henkilöiden tallentamiseen tarkoitettu rajapinta `PersonRepository`, joka perii rajapinnan `JpaRepository`. Käytä rajapinnan `JpaRepository` tyyppiparametreina luokkaa `Person` sekä luokan `Person` pääavaimen tyyppiä.
-3. Muokata luokkaa `PersonController` siten, että luokalla on kaksi metodia:
+3. Muokata luokkaa `PersonDatabaseController` siten, että luokalla on kaksi metodia:
     * Sovelluksen juuripolkuun tulevan GET-pyynnön käsittelevä metodi hakee tietokannasta kaikki henkilöoliot, lisää ne modeliin (`Model`-tyyppinen olio) avaimella "persons", ja siirtää käsittelyvastuun Thymeleafille.
     * Sovelluksen juuripolkuun tulevan POST-pyynnön käsittelevä metodi luo uuden henkilöolion, tallentaa sen tietokantaan, ja uudelleenohjaa selaimen tekemään uuden GET-tyyppisen pyynnön sovelluksen juuripolkuun.
 
