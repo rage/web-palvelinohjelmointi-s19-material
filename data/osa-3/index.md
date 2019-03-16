@@ -10,6 +10,8 @@ hidden: true
 TODO:
 Käsittelet useampia tietokantatauluja sisältäviä sovelluksia ja tiedät miten tietokantataulujen väliset viitteet määritellään. Osaat käsitellä transaktioita ohjelmallisesti. Tunnet N+1 kyselyn ongelman. Osaat järjestää ja rajata tietokannasta haettavaa tietoa. Osaat käsitellä eri muodossa olevaa tietoa ja tunnet käsitteen mediatyyppi.
 
+TODO: esimerkeissä käsitelty ohjelma löytyy osoitteesta...
+
 <please-login></please-login>
 
 <pages-in-this-section></pages-in-this-section>

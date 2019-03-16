@@ -5,57 +5,62 @@ hidden: true
 ---
 
 
-Tietokanta-abstraktioita tarjoavat kirjastot päättävät miten haettavaan olioon liittyvät viitteet haetaan. Yksi vaihtoehto on hakea viitatut oliot automaattisesti kyselyn yhteydessä ("Eager"), toinen vaihtoehto taas on hakea viitatut oliot vasta kun niitä pyydetään eksplisiittisesti esimerkiksi get-metodin kautta ("Lazy").
-
-Tyypillisesti one-to-many ja many-to-many -viitteet haetaan vasta niitä tarvittaessa, ja one-to-one ja many-to-one viitteet heti. Oletuskäyttäytymistä voi muuttaa `@ManyToOne`, `@OneToMany` ym annotaatioihin lisättävän <a href="http://docs.oracle.com/javaee/6/api/javax/persistence/FetchType.html" target="_blank">FetchType</a>-parametrin avulla.
-
-<br/>
-
-Alla olevassa esimerkissä ehdotamme, että henkilöön liittyvät tilit haetaan tietokannasta samalla kun henkilö haetaan.
-
-```java
-@Entity
-@Data @NoArgsConstructor @AllArgsConstructor
-public class Henkilo extends AbstractPersistable<Long> {
-
-    private String nimi;
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<Tili> tilit = new ArrayList<>();
-
-}
-```
-
-Springin käyttämä tietokanta-abstraktiokirjasto Hibernate toteuttaa tiedon hakemisen siten, että se luo tietokantaa kuvaavien luokkien get-metodeille metodit kapseloivat "Proxy"-metodit. Kun get-metodia kutsutaan, tarvittavat tiedot haetaan tietokannasta. Edellä kuvatun `FetchType`-parametrin avulla vaikutetaan tähän toimintaan.
-
-
-## N+1 Kyselyn ongelma
+Tietokanta-abstraktioita tarjoavat kirjastot päättävät miten haettavaan olioon liittyvät viitteet haetaan. Käytössä on pääsääntöisesti kaksi vaihtehtoa. Ensimmäinen vaihtoehto on hakea viitatut oliot samalla kun viittaavaa oliota haetaan (Eager). Toinen vaihtoehto on hakea viitatut oliot vasta kun niitä pyydetään eksplisiittisesti esimerkiksi olion get-metodin kautta (Lazy).
 
 Viitattujen olioiden lataaminen vasta niitä tarvittaessa on yleisesti ottaen hyvä idea, mutta sillä on myös kääntöpuolensa.
 
-Pankkijärjestelmässämme yksittäiseen pankkiin liittyvät konttorit tulostetaan HTML-sivulla Thymeleafin avulla seuraavasti.
+Pohditaan pankkijärjestelmäämme, missä henkilöllä voi olla monta tiliä, ja yhdellä tilillä voi olla monta omistajaa -- `@ManyToMany`.
+
+Luodaan sovellukseen sivu, joka tulostaa jokaisen tilin yhteydessä tilin omistajien lukumäärän. Kontrollerin puolella toteutus on helppo -- haemme tilit tietokannasta ja lisäämme ne modeliin.
+
+```java
+model.addAttribute("tilit", tiliRepository.findAll());
+return "tilit";
+```
+
+HTML-sivullakin toteutus on suhteellisen suoraviivainen.
 
 ```html
-Pankin konttorit:
+<h1>Tilit</h1>
+
 <ul>
-    <li th:each="konttori: ${pankki.konttorit}">
-        <span th:text="${konttori.osoite}">Konttorin osoite</span>
+    <li th:each="tili: ${tilit}">
+        <a th:href="@{/tilit/{id}(id=${tili.id})}">
+            Tili: <span th:text="${tili.id}">tilin id</span>,
+            Saldo: <span th:text="${tili.saldo}">saldo</span>,
+            Omistajia <span th:text="${tili.omistajat.size()}">lukumäärä</span>
+        </a>
     </li>
 </ul>
 ```
 
-- TÄSSÄ EI n+1 -kyselyn ongelmaa, sillä konttorit-kutsu selkeä
+Kun haemme kontrollerissa tilit, sovellus tekee yhden tietokantakyselyn. Kun tulostamme tiliin liittyvien omistajien lukumäärän, tulee omistajat hakea. Tämä tehdään tilikohtaisesti, joten kyselyitä tehdään yksi jokaista tiliä kohden. Tätä ongelmaa, missä näennäisesti yksinkertainen tiedon näyttäminen paisuu isoksi joukoksi tietokantakyselyitä kutsutaan N+1 -kyselyn ongelmaksi -- ongelmassa tehdään N-kyselyä alkuperäisen yhden kyselyn lisäksi.
 
-- TODO: esimerkki, missä ongelma esiintyy
+Ongelman voi ratkaista useammalla tavalla. Ensimmäinen ratkaisu on poistaa N+1 -kyselyn ongelman aiheuttava osa sovelluksestamme -- kuinka tärkeää on näyttää tilin omistajien lukumäärä? Toinen ratkaisu on denormalisoida tietokantaa hieman, jolloin tauluun Tili lisättäisiin oma sarake omistajien lukumäärälle -- tämä vaatisi uuden sarakkeen tiedon ylläpidot automaattisesti. Kolmas ratkaisu on toteuttaa sivulle erillinen kysely, joka hakee sekä tilit että tilin omistajien lukumäärän -- tietokanta-abstraktio ei tiedä että haluamme vain omistajien lukumäärän, joten se yrittää hakea kaikki tiedot; yksinkertainen yhteenvetokysely ajaisi täysin saman asian. Neljäs vaihtoehto -- joka on tulossa yhä suositummaksi -- on käyttää ns. Entity Grapheja kyselyssä. Tästä lisää mm. osoitteessa <a href="https://www.baeldung.com/jpa-entity-graph" target="_blank">https://www.baeldung.com/jpa-entity-graph</a>.
 
+<br/>
 
-```html
-Pankin konttorit:
-<ul>
-    <li th:each="konttori: ${pankki.konttorit}">
-        <span th:text="${konttori.pankki.nimi}">Konttorin nimi</span>
-    </li>
-</ul>
+Neljännessä vaihtoehdossa kuvatun Entity Graphien avulla metodin `findAll` voisi korvata uudella toteutuksella, joka hakee tilien haun yhteydessä myös tilien omistajat. Tämä näyttäisi seuraavalta.
+
+```java
+public interface TiliRepository extends JpaRepository<Tili, Long> {
+
+    @EntityGraph(attributePaths = {"omistajat"})
+    List<Tili> findAll();
+}
 ```
+
+Teemaan voi tarkemmin syventyä Spring Data JPA-projektin <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/" target="_blank">dokumentaatiossa</a>.
+
+<br/>
+
+Kantamme tässä materiaalissa on kuitenkin se, ettei sovelluksen ennenaikaiseen optimointiin kannata juurikaan käyttää aikaa -- korjataan ongelmat sitä mukaa kun niitä kohdataan. <a href="https://en.wikipedia.org/wiki/Donald_Knuth" target="_blank">Knuthin</a> sanoin, *Programmers waste enormous amounts of time thinking about, or worrying about, the speed of noncritical parts of their programs, and these attempts at efficiency actually have a strong negative impact when debugging and maintenance are considered. We should forget about small efficiencies, say about 97% of the time: premature optimization is the root of all evil. Yet we should not pass up our opportunities in that critical 3%.*
+
+<br/>
+
+
+TODO: tehtävä
+
 
 ```
 
@@ -63,10 +68,9 @@ spring.jpa.show-sql=true
 ```
 
 
-Pohditaan tilannetta, missä kirjalla voi olla monta kirjoittajaa, ja kirjoittajalla monta kirjaa -- `@ManyToMany`. Jos haemme tietokannasta listan kirjoja (1 kysely), ja haluamme tulostaa kirjoihin liittyvät kirjoittajat, tehdään jokaisen kirjan kohdalla erillinen kysely kyseisen kirjan kirjoittajille (n kyselyä). Tätä ongelmaa kutsutaan N+1 -kyselyn ongelmaksi.
 
 
-Jos kirjoja tarvitaan sekä ilman kirjoittajaa että kirjoittajan kanssa, on FetchType-parametrin asettaminen `EAGER`-tyyppiseksi yksi vastaus. Tällöin kuitenkin osassa tapauksista haetaan ylimääräistä dataa tietokannasta. Toinen vaihtoehto on luoda erillinen kysely yhdelle vaihtoehdoista, ja lisätä kyselyyn vinkki (<a href="http://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-hints" target="_blank">Spring Data JPA, applying query hints</a>) kyselyn toivotusta toiminnallisuudesta.
+Jos kirjoja tarvitaan sekä ilman kirjoittajaa että kirjoittajan kanssa, on FetchType-parametrin asettaminen `EAGER`-tyyppiseksi yksi vastaus.
 
 
 

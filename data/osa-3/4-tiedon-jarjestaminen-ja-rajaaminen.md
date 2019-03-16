@@ -4,62 +4,50 @@ title: 'Tiedon järjestäminen ja rajaaminen'
 hidden: true
 ---
 
+Tietokantakyselyn tulokset halutaan usein tietynlaisessa järjestyksessä tai niin, että kysely palauttaa vain rajatun joukon kaikista tuloksista. Jos järjestäminen tai rajaus toteutetaan web-sovelluksessa (eli ei tietokannassa), sovelluksessa tehdään juuri se työ, mihin tietokannat on tarkoitettu. Lisäksi, jos tietokannan tieto noudetaan sovellukseen järjestämistä tai rajausta varten, käytetään tiedon kopiointiin paikasta toiseen turhaan aikaa ja resursseja.
 
+TODO: jaa järjestämimiseen ja rajaamiseen erikseen
 
-##
-  Tulosten järjestäminen ja rajoittaminen
+Spring Data JPAn rajapinta <a href="http://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html" target="_blank">JpaRepository</a> mahdollistaa muutaman lisäparametrin käyttämisen osassa pyyntöjä. Voimme esimerkiksi käyttää parametria <a href="http://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/domain/PageRequest.html" target="_blank">PageRequest</a>, joka tarjoaa apuvälineet sivuttamiseen sekä pyynnön hakutulosten rajoittamiseen. Alla olevalla `PageRequest`-oliolla ilmoitamme haluavamme ensimmäiset 10 hakutulosta attribuutin `nimi` mukaan käänteisessä järjestyksessä.
 
-
-
-  Tietokantakyselyn tulokset halutaan usein tietynlaisessa järjestyksessä tai niin, että kysely palauttaa vain rajatun joukon kaikista tuloksista. Jos järjestäminen tai rajaus toteutetaan web-sovelluksessa (eli ei tietokannassa), sovelluksessa tehdään juuri se työ, mihin tietokannat on tarkoitettu. Samalla, jos tietokannan tieto noudetaan sovellukseen järjestämistä tai rajausta varten, käytetään tiedon kopiointiin paikasta toiseen turhaan aikaa ja resursseja.
-
-
-
-  Spring Data JPAn rajapinta <a href="http://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html" target="_blank">JpaRepository</a> mahdollistaa muutaman lisäparametrin käyttämisen osassa pyyntöjä. Voimme esimerkiksi käyttää parametria <a href="http://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/domain/PageRequest.html" target="_blank">PageRequest</a>, joka tarjoaa apuvälineet sivuttamiseen sekä pyynnön hakutulosten rajoittamiseen. Alla olevalla PageRequest-oliolla haluasimme ensimmäiset 10 hakutulosta attribuutin name mukaan käänteisessä järjestyksessä.
+<br/>
 
 
 ```java
-  Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "name");
+Pageable pageable = PageRequest.of(0, 10, Sort.by("nimi").descending());
 ```
 
-
-  Pageable-olion voi antaa parametrina suurelle osasta JpaRepositoryn valmiista metodeista. Esimerkiksi findAll-metodille tarjottuna tietokannasta haettaisiin vain kymmenen ensimmäistä tulosta sarakkeen name mukaan järjestettynä.
-
-
+`Pageable`-olion voi antaa parametrina suurelle osalle tietokantarajapinnan valmiista metodeista. Esimerkiksi listattavien pankkien rajaus `findAll`-metodin kautta näyttäisi seuraavalta.
 
 ```java
-  // ...
 
-  public PersonController {
+@Controller
+public class PankkiController {
 
-      @Autowired
-      private PersonRepository personRepository;
+    @Autowired
+    private PankkiRepository pankkiRepository;
 
-      public String list(Model model) {
-          Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "name");
-          model.addAttribute("persons", personRepository.findAll(pageable));
-          return "index";
-      }
+    // ...
 
-      // ...
+    @GetMapping("/pankit")
+    public String list(Model model) {
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("nimi").descending());
 
-  }
+        model.addAttribute("pankit", pankkiRepository.findAll(pageable));
+        return "pankit";
+    }
+    // ...
+
+}
 ```
 
+TODO: tehtävä
 
-  Oletetaan, että edellä käytössämme on seuraavanlainen PersonRepository-toteutus.
+## Kyselyn tulosten rajaaminen
 
+Oletetaan, että edellä käytössämme on seuraavanlainen PersonRepository-toteutus.
 
-```java
-  import org.springframework.data.jpa.repository.JpaRepository;
-
-  public interface PersonRepository extends JpaRepository&lt;Person, Long&gt; {
-
-  }
-```
-
-
-  Kyselyiden rajoittaminen on suoraviivaista. Jos tuloksia halutaan hakea tietyllä attribuutin arvolla, rajapinnalle voidaan lisätä muotoa `findBy<em>Attribuutti(Tyyppi arvo)</em>`. Esimerkiksi päivämäärän perusteella tapahtuva haku onnistuu seuraavasti.
+Kyselyiden rajoittaminen on suoraviivaista. Jos tuloksia halutaan hakea tietyllä attribuutin arvolla, rajapinnalle voidaan lisätä muotoa `findBy<em>Attribuutti(Tyyppi arvo)</em>`. Esimerkiksi päivämäärän perusteella tapahtuva haku onnistuu seuraavasti.
 
 
 ```java
@@ -74,7 +62,7 @@ hidden: true
 ```
 
 
-  Tarkemmin kyselyiden luomisesta löytyy osoitteessa <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods" target="_blank" norel>https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods</a> olevan dokumentaation kohdasta <em>Query creation</em>. Edellistä esimerkkiä voidaan laajentaa siten, että rajapinnalla on myös metodi nimen ja syntymäpäivän mukaan etsimiselle.
+Tarkemmin kyselyiden luomisesta löytyy osoitteessa <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods" target="_blank" norel>https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods</a> olevan dokumentaation kohdasta <em>Query creation</em>. Edellistä esimerkkiä voidaan laajentaa siten, että rajapinnalla on myös metodi nimen ja syntymäpäivän mukaan etsimiselle.
 
 
 ```java
