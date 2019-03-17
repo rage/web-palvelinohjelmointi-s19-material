@@ -101,7 +101,7 @@ Kun tietokannasta tilit kutsulla `findAll`, sovellus hakee tilien yhteydessä my
 Hibernate: select tili0_.id as id1_4_0_, henkilo2_.id as id1_0_1_, tili0_.pankki_id as pankki_i3_4_0_, tili0_.saldo as saldo2_4_0_, henkilo2_.nimi as nimi2_0_1_, omistajat1_.tilit_id as tilit_id2_1_0__, omistajat1_.omistajat_id as omistaja1_1_0__ from tili tili0_ left outer join henkilo_tilit omistajat1_ on tili0_.id=omistajat1_.tilit_id left outer join henkilo henkilo2_ on omistajat1_.omistajat_id=henkilo2_.id
 ```
 
-Mutta! (Ainakin Spring Bootin versiossa 2.1.3) Sovellus hakee nyt myös henkilöiden pankit, vaikkei niitä eksplisiittisesti tarvita. Edellinen muutos aiheuttaa jostain syystä uuden N+1 -kyselyn ongelman. Onneksi logitus oli päällä. Korjataan tilanne pienellä purkkaratkaisulla -- pyydetään tilejä haettaessa myös tileihin liittyvät pankit.
+Mutta! (Ainakin Spring Bootin versiossa 2.1.3) Sovellus hakee nyt myös henkilöiden pankit, vaikkei niitä eksplisiittisesti tarvita. Edellinen muutos aiheuttaa jostain syystä uuden N+1 -kyselyn ongelman. Onneksi kyselyjen logitus oli päällä. Korjataan tilanne pienellä purkkaratkaisulla -- pyydetään tilejä haettaessa myös tileihin liittyvät pankit.
 
 ```java
 public interface TiliRepository extends JpaRepository<Tili, Long> {
@@ -161,5 +161,20 @@ public interface TiliRepository extends JpaRepository<Tili, Long> {
     List<Tili> findByIdNotNull();
 }
 ```
+
+
+<programming-exercise name='Names and Addresses' tmcname='osa03-Osa03_05.NamesAndAddresses'>
+
+Tehtäväpohja sisältää sovelluksen, joka sisältää henkilöitä ja osoitteita. Jokainen henkilö asuu tietyssä osoitteessa ja osoitteessa voi asua useita henkilöitä. Sovelluksessa tulostetaan kaikki tietokannassa olevat henkilöt sekä heidän osoitteensa.
+
+Tämän hetkinen ratkaisu ei ole kovin optimaalinen, sillä sovelluksen toteutuksessa on N+1 -kyselyn ongelma.
+
+Korjaa ongelma. Muokkaa sovellusta siten, että henkilöiden ja heidän osoitteidensa tulostaminen tapahtuu sovelluksessa yhdellä SQL-kyselyllä.
+
+Tehtävässä ei ole testejä. Mielenkiintoisesti omalla koneella testattaessa voi käydä niin, ettei hitautta huomaa -- huomaat ongelman vähintäänkin sovelluksen lokeista.
+
+</programming-exercise>
+
+
 
 Tarkastellaan seuraavaksi mistä tämä `findByIdNotNull` oikeastaan tuleekaan...

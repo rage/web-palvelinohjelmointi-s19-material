@@ -151,18 +151,10 @@ public String addOmistaja(@PathVariable Long tiliId, @PathVariable Long henkiloI
 ```
 
 
-<programming-exercise name='Bank Transfer'>
+<programming-exercise name='Bank Transfer' tmcname='osa03-Osa03_04.BankTransfer'>
 
-Tehtäväpohjassa on valmiina yksinkertainen sovellus tilien hallintaan ja tilisiirtojen tekemiseen. Sovelluksen tilisiirtotoiminnallisuudessa on kuitenkin vielä viilattavaa. Mitä tietokantamuutoksille tapahtuisi jos sovellus kaatuu kesken suorituksen?
+Tehtäväpohjassa on valmiina yksinkertainen sovellus tilien hallintaan ja tilisiirtojen tekemiseen. Sovelluksen tilisiirtotoiminnallisuudessa on kuitenkin vielä viilattavaa -- jos sovellus kaatuu kesken tilisiirron, rahaa voi kadota.
 
-
-Selvitä minkälaisia korjauksia tilisiirtotoiminnallisuus tarvitsee ja toteuta ne.
-
-
-Tehtävässä ei ole automaattisia testejä. Palauta tehtävä TMC:lle kun olet ratkaissut oleellisimmat tilisiirtoon liittyvät ongelmat. Huom! Tässä ei tarvitse miettiä esimerkiksi tunnistautumista.
-
+Selvitä minkälaisia korjauksia tilisiirtotoiminnallisuus tarvitsee ja toteuta ne. Tehtävässä ei ole automaattisia testejä -- palauta tehtävä TMC:lle kun olet ratkaissut oleellisimmat tilisiirtoon liittyvät ongelmat.
 
 </programming-exercise>
-
-
-TODO: tehtäviä

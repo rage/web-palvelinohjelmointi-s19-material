@@ -304,26 +304,18 @@ Kuten huomaamme, tietokannassa on vielä muutamia hassuuksia. Automaattisesti lu
 
 <br/>
 
-<programming-exercise name='Simple Banking'>
 
+<programming-exercise name='New Tables' tmcname='osa03-Osa03_01.NewTables'>
 
-Sovelluksessa on toteutettuna entiteetit tilien ja asiakkaiden hallintaan, mutta niiden väliltä puuttuu kytkös. Muokkaa sovellusta siten, että asiakkaalla voi olla monta tiliä, mutta jokaiseen tiliin liittyy tasan yksi asiakas.
+Luo sovellukseen toiminnallisuus, jonka avulla sovelluksessa luodaan kaksi tietokantataulua sekä niiden välinen liitostaulu. Tietokantataulujen nimien tulee olla `Student` ja `Course`. Liitostaulun nimen tulee olla `Enrollment`.
 
-Tilin lisäämisen tulee kytkeä tili myös asiakkaaseen. Alla olevassa esimerkissä tietokannassa on kaksi asiakasta ja kolme tiliä.
+Tietokantataulussa `Student` tulee olla sarakkeet `id`, `first_name` ja `last_name`. Tietokantataulussa `Course` tulee olla sarakkeet `id` ja `name`. Liitostaulussa `Enrollment` tulee olla sarakkeet `course_id` ja `student_id`, jotka ovat nimensä mukaisesti viiteavaimia taulujen `Course` ja `Student` pääavaimiin.
 
-<img class="browser-img" src="/img/2016-mooc/ex24.png"/>
+Tietokantakaaviona lopputilanteen tulee olla seuraavanlainen.
 
-Kun olet valmis, lähetä sovellus TMC:lle tarkistettavaksi.
+<img src="../img/exercises/newtables.png" alt="Table Student { id BIGINT(19) first_name VARCHAR(255) last_name VARCHAR(255) } Table Course { id BIGINT(19)  name VARCHAR(255) } Table Enrollment { student_id BIGINT(19) course_id BIGINT(19) } Ref { Enrollment.student_id > Student.id } Ref { Enrollment.course_id > Course.id }"/>
 
-
-</programming-exercise>
-
-
-
-
-<programming-exercise name='helppo'>
-
-- luo tietokantataulut annetun tietokantakaavion perusteella
+Hyödyt sarakkeiden nimeämisessä annotaatioista `@Column`, `@JoinColumn` ja `@JoinTable`. Kannattaa käyttää H2-tietokannanhallintajärjestelmän konsolia tietokannan tarkasteluun -- tietokannan voi tyhjentää poistamalla tehtäväpohjassa olevat `database`-alkuiset tiedostot.
 
 </programming-exercise>
 
@@ -334,6 +326,7 @@ Annotaatioille `@OneToMany`, `@ManyToOne` ja niin edelleen määriteltävä mä�
 
 
 </text-box>
+
 
 ## Tietokantataulujen käsittely ohjelmallisesti
 
@@ -509,7 +502,18 @@ Yllä olevalla yksittäisen pankin näyttämistä kuvaavalla sivulla näemme hyv
 Kun Thymeleaf kohtaa komennon `<li th:each="konttori: ${pankki.konttorit}">`, se kutsuu "pankki"-avaimella `Model`-olioon lisätyn `Pankki`-olion metodia `getKonttorit()`. Tämä johtaa siihen, että tietokannasta haetaan pankkiin liittyvät konttorit, jotka käydään sivulla yksitellen läpi. Tiedot haetaan tietokannasta oletuksena vasta kun niitä tarvitaan -- palaamme tämän toiminnan tietokantojen perusteistakin tuttuihin hyötyihin ja haittoihin myöhemmin.
 
 
-TOOD: tehtävä
+
+<programming-exercise name='Simple Banking' tmcname='osa03-Osa03_02.SimpleBanking'>
+
+
+Sovelluksessa on toteutettuna entiteetit tilien ja asiakkaiden hallintaan, mutta niiden väliltä puuttuu kytkös. Muokkaa sovellusta siten, että asiakkaalla voi olla monta tiliä, mutta jokaiseen tiliin liittyy tasan yksi asiakas.
+
+Tilin ja asiakkaan välisen yhteyden luomisen lisäksi tilin lisäämisen tulee kytkeä tili asiakkaaseen. Alla olevassa esimerkissä tietokannassa on kaksi asiakasta ja kolme tiliä.
+
+<img src="../img/exercises/simple-banking.png"/>
+
+</programming-exercise>
+
 
 ### Monesta moneen -yhteyden lisääminen ohjelmallisesti
 
@@ -730,6 +734,30 @@ Vastaavasti sivu `tili.html` sisältäisi toiminnallisuuden tilin tietojen näyt
 </html>
 ```
 
-TODO: quiznator -- kerro yllä kuvattujen sivujen sisältö omin sanoin.
+<quiznator id="5c8e636799236814c5bc03d5"></quiznator>
 
-TOOD: tehtävä
+<programming-exercise name='Airports and aircrafts (2 osaa)' tmcname='osa03-Osa03_03.AirportsAndAircrafts'>
+
+
+Jatkokehitetään tässä tehtävässä sovellusta lentokoneiden ja lentokenttien hallintaan. Projektissa on jo valmiina ohjelmisto, jossa voidaan lisätä ja poistaa lentokoneita. Tavoitteena on lisätä toiminnallisuus lentokoneiden kotikenttien asettamiseksi.
+
+Huom! Älä muokkaa tehtävän mukana tulevia HTML-sivuja.
+
+
+<h2>Tallennettavat: `Aircraft` ja `Airport`.</h2>
+
+Lisää luokkaan `Aircraft` attribuutti `airport`, joka kuvaa lentokoneen kotikenttää ja on tyyppiä `Airport`. Määrittele yhteys siten, että jokaisella koneella on yksi kotikenttä, mutta usealla lentokoneella voi olla sama kotikenttä.
+
+Lisää seuraavaksi `Airport`-luokkaan attribuutti `aircrafts`, joka kuvaa kaikkia koneita, joiden kotikenttä kyseinen kenttä on. Attribuutin tyyppi on  `List<Aircraft>`. Lisää yhteyteen sopiva annotaatio ja määrittele yhteys siten, että yhteyden omistaja on luokassa `Aircraft` (tämä tehdään attribuutilla `mappedBy`.
+
+
+<h2>Lentokentän asetus lentokoneelle</h2>
+
+Lisää sovellukselle toiminnallisuus lentokentän lisäämiseen lentokoneelle. Käyttöliittymä sisältää jo tarvittavan toiminnallisuuden, joten tässä tulee toteuttaa kontrolleriluokalle `AircraftController` uusi metodi. Käytä metodin nimenä `assignAirport` ja paluutyyppinä `String`. Kun käyttäjä lisää lentokoneelle lentokenttää, käyttöliittymä lähettää POST-tyyppisen kyselyn osoitteeseen `/aircrafts/{aircraftId}/airports`, missä `aircraftId` on lentokoneen tietokantatunnus. Pyynnön mukana tulee pyyntöparametri `airportId`, joka sisältää lentokentän tietokantatunnuksen.
+
+Toteuta metodi siten, että haet aluksi pyynnössä saatuja tunnuksia käyttäen lentokoneen ja lentokentän, tämän jälkeen asetat lentokoneelle lentokentän ja lentokentälle lentokoneen, ja lopuksi tallennat lentokoneen.
+
+Ohjaa lopuksi pyyntö osoitteeseen `/aircrafts`
+
+</programming-exercise>
+

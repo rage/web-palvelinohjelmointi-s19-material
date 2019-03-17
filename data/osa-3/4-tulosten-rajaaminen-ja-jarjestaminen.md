@@ -6,9 +6,8 @@ hidden: true
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- Osaat kyselyn tuloksia rajaavia kriteerejä tietokantakyselyistä vastaavaan tietokantarajapintaan.
+- Osaat määritellä kyselyn tuloksia rajaavia kriteerejä tietokantakyselyistä vastaavaan tietokantarajapintaan.
 - Osaat järjestää kyselyn tuloksia.
-- Osaat rajata kyselyn tuloksia.
 
 </text-box>
 
@@ -44,14 +43,11 @@ public interface KonttoriRepository extends JpaRepository<Konttori, Long> {
 
 Metodi `findByOsoiteAndPankki` muuntuu muotoon `SELECT * FROM Konttori WHERE osoite = '?' AND pankki_id = '?'` -- parametrit asetetaan metodikutsun yhteydessä annetuista arvoista.
 
-Springin dokumentaatiossa käsitellään kyselyiden muodostamista tarkemmin, kts. <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.details" target="_blank">Spring Data JPA: Defining Query Methods</a>.
+Springin dokumentaatiossa käsitellään kyselyiden muodostamista tarkemmin, kts. <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods" target="_blank">Spring Data JPA: Query Methods</a>.
 
 </br>
 
-
-TODO: quiznator
-
-TODO: tehtävä
+<quiznator id="5c8e799d99236814c5bc0405"></quiznator>
 
 
 #### Tietokantakyselyiden tulosten rajaaminen ja järjestäminen
@@ -114,71 +110,24 @@ Nyt tehdessämme pyynnön polkuun `/pankit` näemme ensimmäiset 10 pankkia. Pyy
 Tässä on oleellista huomata että tulosten hakeminen ja rajaaminen tapahtuu tietokannassa. Tämän johdosta sovellus toimii paljon tehokkaammin jos toteutustapaa vertaa naiiviin lähestymistapaan, missä sovellukseen haetaan kaikki tiedot tietokannasta ja tiedon järjestäminen ja rajaaminen tapahtuu vasta sovelluksessa.
 
 
-TODO: tehtävä
+<programming-exercise name='Last Messages' tmcname='osa03-Osa03_06.LastMessages'>
 
-
-<programming-exercise name='Last Messages' } do %>
-
-
-    Tehtävässä on käytössä viestien lähetykseen käytettävä sovellus. Muokkaa sovellusta siten, että sovelluksessa näkyy aina vain uusimmat 5 viestiä. Käytä tässä hyödyksi yllä nähtyä Pageable-oliota.
-
-
-
-    Sovelluksessa ei ole testejä. Palauta se kun se toimii toivotulla tavalla.
-
-
-<% end %>
-
-
-<programming-exercise name='Exams and Questions' } do %>
-
-
-    Tehtävänäsi on täydentää kokeiden ja koekysymysten hallintaan tarkoitettua sovellusta. Sovellukseen on toteutettu valmiiksi rungot kokeiden ja koekysymysten lisäämiseen tarvittaviin kontrollereihin, jonka lisäksi sovelluksessa on osittain valmiina tarvitut `Exam` ja `Question` -entiteetit.
-
-
-
-    Lisää sovellukseen tarvittavat Repository-rajapinnat ja täydennä Exam- ja Question-entiteettejä niin, että yhteen kokeeseen monta kysymystä ja yksi kysymys voi liittyä useampaan kokeeseen. Toteuta myös kontrollereille tarvittavat metodit ja toiminnallisuudet -- saat näitä selville HTML-sivuja tarkastelemalla.
-
-
-
-    Muokkaa sovellusta lopulta niin, että osoitteessa "/exams" näytettävät kokeet järjestetään koepäivämäärän mukaan.
-
-
-
-    Huomaa, että testit eivät käsittele päivämääriä. Kokeile sovelluksen toimintaa -- myös tässäkin tehtävässä -- myös manuaalisesti.
-
-
-<% end %>
-
-
-<programming-exercise name='Airports and aircrafts (2 osaa)'>
-
-
-Jatkokehitetään tässä tehtävässä sovellusta lentokoneiden ja lentokenttien hallintaan. Projektissa on jo valmiina ohjelmisto, jossa voidaan lisätä ja poistaa lentokoneita. Tavoitteena on lisätä toiminnallisuus lentokoneiden kotikenttien asettamiseksi.
-
-
-<h2>Tallennettavat: `Aircraft` ja `Airport`.</h2>
-
-Lisää luokkaan `Aircraft` attribuutti `airport`, joka kuvaa lentokoneen kotikenttää, ja on tyyppiä `Airport`. Koska usealla lentokoneella voi olla sama kotikenttä, käytä attribuutille `airport` annotaatiota `@ManyToOne`. Lisää attribuutille myös `@JoinColumn`-annotaatio, jonka avulla kerrotaan että tämä attribuutti viittaa toiseen tauluun. Lisää luokalle myös oleelliset get- ja set-metodit.
-
-Lisää seuraavaksi `Airport`-luokkaan attribuutti `aircrafts`, joka kuvaa kaikkia koneita, keiden kotikenttä kyseinen kenttä on, ja joka on tyyppiä `List&lt;Aircraft&gt;`. Koska yhdellä lentokentällä voi olla useita koneita, lisää attribuutille annotaatio `@OneToMany`. Koska luokan `Aircraft` attribuutti `airport` viittaa tähän luokkaan, aseta annotaatioon `@OneToMany` parametri `mappedBy="airport"`. Nyt luokka `Airport` tietää että attribuuttiin `aircrafts` tulee ladata kaikki `Aircraft`-oliot, jotka viittaavat juuri tähän kenttään.
-
-Lisää lisäksi `Airport`-luokan `@OneToMany`-annotaatioon parametri `fetch = FetchType.EAGER`, jolloin lentokenttään liittyvät lentokoneet haetaan kyselyn yhteydessä.
-
-Lisää lopuksi luokalle `Airport` oleelliset get- ja set-metodit.
-
-
-<h2>Lentokentän asetus lentokoneelle</h2>
-
-Lisää sovellukselle toiminnallisuus lentokentän lisäämiseen lentokoneelle. Käyttöliittymä sisältää jo tarvittavan toiminnallisuuden, joten käytännössä tässä tulee toteuttaa luokalle `AircraftController` metodi `String assignAirport`. Kun käyttäjä lisää lentokoneelle lentokenttää, käyttöliittymä lähettää POST-tyyppisen kyselyn osoitteeseen `/aircrafts/{aircraftId}/airports`, missä `aircraftId` on lentokoneen tietokantatunnus. Pyynnön mukana tulee lisäksi parametri `airportId`, joka sisältää lentokentän tietokantatunnuksen.
-
-
-Toteuta metodi siten, että haet aluksi pyynnössä saatuja tunnuksia käyttäen lentokoneen ja lentokentän, tämän jälkeen asetat lentokoneelle lentokentän ja lentokentälle lentokoneen, ja lopuksi tallennat haetut oliot.
-
-Ohjaa lopuksi pyyntö osoitteeseen `/aircrafts`
-
-Kun olet valmis, lähetä sovellus TMC:lle tarkistettavaksi.
-
+Tehtävässä on käytössä viestien lähetykseen käytettävä sovellus. Muokkaa sovellusta siten, että osoitteeseen `/messages` tehdyn GET-tyyppisen pyynnön vastaus sisältää aina uusimmat 5 viestiä (lisäysajan perusteella järjestettynä). Käytä tässä hyödyksi yllä nähtyä Pageable-oliota.
 
 </programming-exercise>
 
+
+<programming-exercise name='Exams and Questions (2 osaa)'  tmcname='osa03-Osa03_07.ExamsAndQuestions'>
+
+Tehtävänäsi on täydentää kokeiden ja koekysymysten hallintaan tarkoitettua sovellusta. Sovellukseen on toteutettu valmiiksi rungot kokeiden ja koekysymysten lisäämiseen tarvittaviin kontrollereihin, jonka lisäksi sovelluksessa on osittain valmiina tarvitut `Exam` ja `Question` -entiteetit.
+
+
+Lisää sovellukseen tarvittavat Repository-rajapinnat ja täydennä Exam- ja Question-entiteettejä niin, että yhteen kokeeseen monta kysymystä ja yksi kysymys voi liittyä useampaan kokeeseen. Toteuta myös kontrollereille tarvittavat metodit ja toiminnallisuudet -- saat näitä selville HTML-sivuja tarkastelemalla (älä muuta HTML-sivujen rakennetta).
+
+Muokkaa sovellusta lopulta niin, että osoitteessa "/exams" näytettävät kokeet järjestetään koepäivämäärän mukaan.
+
+Tehtävä on kahden yksittäisen tehtäväpisteen arvoinen.
+
+Huomaa, että testit eivät käsittele päivämääriä. Kokeile sovelluksen toimintaa -- myös tässäkin tehtävässä -- myös manuaalisesti.
+
+</programming-exercise>
