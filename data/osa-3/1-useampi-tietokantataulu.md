@@ -4,6 +4,14 @@ title: 'Useampi tietokantataulu ja taulujen väliset viitteet'
 hidden: true
 ---
 
+
+<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+
+TODO
+
+</text-box>
+
+
 Otimme edellisessä osassa ensiaskeleet tietokantojen käyttöön. Sovelluksemme ovat tähän mennessä luoneet ja käyttäneet yhtä tietokantataulua -- yhden tietokantataulun käyttö vaatii tietokantataulua kuvaavan entiteetin luomisen ja tietokantataulua käsittelevän rajapinnan luomisen.
 
 Edellisessä osassa käsittelimme mm. henkilöä.
@@ -19,15 +27,11 @@ public class Henkilo extends AbstractPersistable<Long> {
 }
 ```
 
-Yllä oleva määrittely luo tietokantataulun, johon on määritelty sekä pääavain `id` että sarake `nimi`. Sarakkeiden tyypit riippuvat hieman käytetystä tietokannanhallintajärjestelmästä. Käyttämässämme H2-tietokannanhallintajärjestelmässä sarakkeen `id` tyypiksi määritellään oletuksena `BIGINT` ja sarakkeen `nimi` tyypiksi määritellään oletuksena `VARCHAR` -- näiden tarkemmat tiedot löytyy mm. H2-tietokannanhallintajärjestelmän konsolista kun entiteetin sisältävä sovellus on käynnissä.
+Yllä oleva määrittely luo tietokantataulun, johon on määritelty sekä pääavain `id` että sarake `nimi`. Sarakkeiden tyypit riippuvat hieman käytetystä tietokannanhallintajärjestelmästä. Käyttämässämme H2-tietokannanhallintajärjestelmässä sarakkeen `id` tyypiksi määritellään oletuksena `BIGINT` ja sarakkeen `nimi` tyypiksi määritellään oletuksena `VARCHAR` -- automaattisesti luotujen taulujen tarkemmat tiedot löytyvät tietokannasta, jota voi tarkastella mm. H2-tietokannanhallintajärjestelmän konsolista kun entiteetin sisältävä sovellus on käynnissä.
 
 <img src="../img/h2-konsoli-henkilo.png" alt="Kuva H2-tietokannahallintajärjestelmän konsolista. Kuvassa tietokantataulun Henkilo sisältö.">
 
-Tietokantakaaviona tietokantamme on hyvin suoraviivainen.
-
-<img src="../img/tietokantataulu-henkilo.png" alt="Table Henkilo {  id BIGINT(19)  nimi VARCHAR(255) }">
-
-Tietokannan käsittelyyn käytettävä rajapinta on myös simppeli. Olemme käyttäneet Springin tarjoamaa `JpaRepository`-rajapintaa toteutuksen pohjana, jolloin yksinkertaiset tietokantaoperaatiot ovat olleet valmiina käytössämme.
+Tietokannan käsittelyyn käytetään Springin tarjoamaa `JpaRepository`-abstraktiota. Kun käytämme `JpaRepository`-rajapintaa oman toteutuksemme pohjana, saamme yksinkertaiset tietokantaoperaatiot käyttöömme hyvin helposti.
 
 ```java
 // pakkaus
@@ -42,14 +46,18 @@ public interface HenkiloRepository extends JpaRepository<Henkilo, Long> {
 
 Aloitamme nyt useamman tietokantataulun sisältävän sovelluksen toteutuksen ja tarkastelun. Sovelluksen teemana on pankkijärjestelmä.
 
-Sovelluksessamme on henkilöitä, tilejä, pankkeja sekä pankkien konttoreita. Jokaisella henkilöllä on yksi tai useampi tili, ja jokaisella tilillä voi olla yksi tai useampi omistaja. Tili liittyy aina tiettyyn pankkiin ja pankissa voi olla useampia tilejä. Pankilla on konttoreita, ja jokainen konttori liittyy tiettyyn pankkiin.
+## Pankkijärjestelmä
+
+Pankkijärjestelmässämme on henkilöitä, tilejä, pankkeja sekä pankkien konttoreita. Jokaisella henkilöllä on yksi tai useampi tili, ja jokaisella tilillä voi olla yksi tai useampi omistaja. Tili liittyy aina tiettyyn pankkiin ja pankissa voi olla useampia tilejä. Pankilla on konttoreita ja jokainen konttori liittyy tiettyyn pankkiin.
 
 Pankkijärjestelmämme käsitteet ja niiden yhteydet ovat luokkakaaviossa seuraavat.
 
 
 <img src="../img/luokkakaavio-pankkijarjestelma.png" alt="[Henkilo|-nimi:String], [Konttori|-osoite:String], [Tili|-saldo:BigDecimal], [Pankki|-nimi:String], [Konttori]*-1[Pankki], [Pankki]1-*[Tili], [Tili]*-*[Henkilo]">
 
-Käytämme tilin saldon näyttämiseen Javan <a href="https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html" target="_blank">BigDecimal</a>-luokkaa.
+<br/>
+
+Koska liukuluvut ovat epätarkkoja, käytämme tilin saldon näyttämiseen Javan <a href="https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html" target="_blank">BigDecimal</a>-luokkaa. H2-tietokannanhallintajärjestelmässä tämä muuntuu SQL:n DECIMAL-tyypiksi.
 
 <br/>
 
@@ -90,13 +98,13 @@ public class Henkilo {
 }
 ```
 
-Listat on luokissa alustettu ArrayList-tyyppisiksi. Listojen alustaminen tehdään suoraviivaisuuden takia -- emme listoja käytettäessä nyt törmää (niin helposti) `NullPointerException`-vitteeseen. Vastaavasti tilin saldo-muuttujalla on oletusalkuarvona 0.
+Listat on luokissa alustettu `ArrayList`-tyyppisiksi ja `BigDecimal`-muuttujan arvoksi on asetettu oletusarvona 0. Tämä tehdään sen takia, että vältämme `null`-viitteiden tallentamista tietokantaan.
 
 ## Luokista tietokantatauluiksi
 
-Aloitetaan luokkien määrittely tietokantatauluiksi. Muistamme edellisestä osasta, että jokainen tietokantatauluksi muunnettava luokka tulee määritellä `@Entity`-annotaation avulla. Perimme jokaisella luokalla myös luokan `AbstractPersistable`, jolloin annamme vastuun luokasta luotavan tietokantataulun pääavaimen määrittelystä käyttämällemme sovelluskehykselle.
+Aloitetaan luokkien määrittely tietokantatauluiksi. Muistamme edellisestä osasta, että jokainen tietokantatauluksi muunnettava luokka tulee määritellä `@Entity`-annotaation avulla. Perimme jokaisella luokalla luokan `AbstractPersistable`, jolloin annamme vastuun tietokantataulun pääavaimen määrittelystä käyttämällemme sovelluskehykselle.
 
-Alla jokaiselle luokalle on em. muunnosten lisäksi määritelty Lombokin vaatimat annotaatiot.
+Alla jokaiselle luokalle on edellä mainittujen lisäysten lisäksi määritelty Lombokin vaatimat annotaatiot, jolloin luokilla on valmiina konstruktorit, getterit ja setterit, hashCodet ymym.
 
 
 ```java
@@ -142,10 +150,10 @@ public class Henkilo extends AbstractPersistable<Long> {
 }
 ```
 
-Tällä hetkellä sovelluksemme ei vielä toimisi, sillä se ei tiedä miten yhteydet tietokantataulujen välillä tulee toteuttaa.
+Mikäli käynnistäisimme sovelluksemme tällä hetkellä, se ei toimisi. Tämä johtuu siitä, että emme vielä kerro miten tietokantataulujen väliset yhteydet tulee toteuttaa.
 
 
-## Yhteydet ja oasllistumisrajoitteet tietokantataulujen välillä
+## Yhteydet ja osallistumisrajoitteet tietokantataulujen välillä
 
 Osallistumisrajoitteet -- yksi moneen (one to many), moni yhteen (many to one), moni moneen (many to many) lisätään annotaatioiden avulla.
 
@@ -211,9 +219,10 @@ public class Henkilo extends AbstractPersistable<Long> {
 
 Yllä olevassa esimerkissä luokat eivät vielä kerro sovelluskehykselle _mihin_ liitos tulee tehdä. Sovelluskehys ei esimerkiksi tiedä, että henkilön tilit kytkeytyvät tilin omistajiin.
 
-Loppusilaus tietokantatauluihimme on `mappedBy`-määreen lisääminen annotaatioihin. Määreellä kerrotaan mihin toisen luokan muuttujaan arvot kytketään ja kuka yhteyden omistaa -- yhteyden omistaa aina `mappedBy`-määreen määrittelemä muuttuja.
+Loppusilaus on `mappedBy`-määreen lisääminen. Määreellä kerrotaan mihin toisen luokan muuttujaan arvot kytketään ja kuka yhteyden omistaa -- yhteyden omistaa aina `mappedBy`-määreen määrittelemä muuttuja, eli ei se muuttuja, jonka yläpuolella olevassa annotaatiossa esiintyy `mappedBy`-määre.
 
-Alla olevassa esimerkissä luokan Henkilo muuttuja tilit kytketään luokan Tili muuttujaan omistajat. Vastaavasti luokan Pankki muuttuja konttorit kytketään luokan Konttori muuttujaan pankki, ja luokan pankki muuttuja tilit kytketään luokan Tili muuttujaan pankki. Määre `mappedBy` tulee asettaa vain jompaan kumpaan yhteyden päätyyn, ei kumpaankin.
+Haluamme kytkeä luokan Henkilo muuttujan tilit luokan Tili muuttujaan omistajat. Vastaavasti haluamme kytkeä luokan Pankki muuttujan konttorit luokan Konttori muuttujaan pankki, ja luokan pankki muuttuja tilit luokan Tili muuttujaan pankki. Määre `mappedBy` asetetaan vain toiseen yhteyden päädyistä, ei kumpaankin.
+
 
 Lopulta luokkamme näyttävät seuraavilta.
 
@@ -317,6 +326,13 @@ Kun olet valmis, lähetä sovellus TMC:lle tarkistettavaksi.
 </programming-exercise>
 
 
+<text-box variant="hint" name="MappedBy">
+
+Annotaatioille `@OneToMany`, `@ManyToOne` ja niin edelleen määriteltävä määre `mappedBy` kertoo yhteyden omistavan olion. Määrettä tarvitaan vain, mikäli yhteys määritellään luokkiin kaksisuuntaisesti eli mikäli luokka A sisältää listan luokan B olioita ja luokka B listan luokan A olioita. Mikäli yhteys on yksisuuntainen, määrettä `mappedBy` ei tarvita lainkaan.
+
+
+</text-box>
+
 ## Tietokantataulujen käsittely ohjelmallisesti
 
 Useamman tietokantataulun käsittely ei juurikaan poikkea yhden tietokantataulun käsittelystä. Luomme jokaiselle entiteetille taulun käsittelyyn tarkoitetun rajapinnan ja hyödynnämme näitä rajapintoja osana sovellustamme.
@@ -374,7 +390,11 @@ Yllä haemme ensin pankki-olion, jonka asetamme sitten konttorin pankiksi. Kun y
 <img src="../img/pankkijarjestelma-konttori-lisatty.png" alt="Tietokantatauluun Konttori on lisätty rivi. Konttorin nimi on 'Kujapolkutie 7' ja pankki_id-viiteavaimen arvoksi on määritelty 1.">
 
 
-Laajemmassa kontekstissa pankkien ja konttorien lisäys kannattaa toteuttaa siten, että pankkeihin liittyviä pyyntöjä käsittelevä luokka `PankkiController`tarjoaa pääsyn pankin tietoihin sekä mahdollisuuden konttorien lisäämiseen. Alla kuvattu luokka `PankkiController` käsittelee polkuun `/pankit` tulevia pyyntöjä seuraavasti:
+#### Pankkien ja konttorien käsittely
+
+Tarkastellaan edellä nähtyä yhdestä moneen -yhteyden lisäämistä osana pankkijärjestelmäämme.
+
+Pankkien ja konttorien lisäys on järjestelmässämme toteutettu siten, että pankkeihin liittyviä pyyntöjä käsittelevä luokka `PankkiController` tarjoaa pääsyn pankin tietoihin sekä mahdollisuuden konttorien lisäämiseen. Alla kuvattu luokka `PankkiController` käsittelee polkuun `/pankit` tulevia pyyntöjä seuraavasti:
 
 - GET-tyyppinen pyyntö polkuun `/pankit` listaa kaikki tietokannassa olevat pankit.
 - POST-tyyppinen pyyntö polkuun `/pankit` lisää pankin tietokantaan.
@@ -484,7 +504,7 @@ Vastaavasti sivu `pankki.html` sisältäisi toiminnallisuuden pankin tietojen n�
 
 Yllä olevalla yksittäisen pankin näyttämistä kuvaavalla sivulla näemme hyvin mielenkiintoisen tapahtuman. Sivulla listataan pankkeihin liittyvät konttorit, mutta konttoreita ei ole haettu tietokannasta -- ainakaan eksplisiittisesti.
 
-Kun Thymeleaf kohtaa komennon `<li th:each="konttori: ${pankki.konttorit}">`, se kutsuu "pankki"-avaimella `Model`-olioon lisätyn `Pankki`-olion metodia `getKonttorit()`. Tämä johtaa siihen, että tietokannasta haetaan pankkiin liittyvät konttorit, jotka käydään sivulla yksitellen läpi. Tiedot haetaan tietokannasta siis vasta kun niitä tarvitaan -- palaamme tämän toiminnan tietokantojen perusteistakin tuttuihin hyötyihin ja haittoihin myöhemmin.
+Kun Thymeleaf kohtaa komennon `<li th:each="konttori: ${pankki.konttorit}">`, se kutsuu "pankki"-avaimella `Model`-olioon lisätyn `Pankki`-olion metodia `getKonttorit()`. Tämä johtaa siihen, että tietokannasta haetaan pankkiin liittyvät konttorit, jotka käydään sivulla yksitellen läpi. Tiedot haetaan tietokannasta oletuksena vasta kun niitä tarvitaan -- palaamme tämän toiminnan tietokantojen perusteistakin tuttuihin hyötyihin ja haittoihin myöhemmin.
 
 
 TOOD: tehtävä
@@ -565,15 +585,16 @@ public String lisaaOmistaja() {
 
 Nyt lisäys tapahtuu oikeaan muuttujaan ja yhteys tilin ja henkilön välille lisätään liitostauluun tallennuksen yhteydessä.
 
+#### Tilien ja omistajien käsittely
 
-Tarkastellaan tilien lisäämistä hieman laajemmassa kontekstissa. Luomme luokan `TiliController`, jota voidaan käyttää tilien lisäämiseen ja listaamiseen sekä tilien omistajien lisäämiseen. Alla kuvattu luokka `TiliController` käsittelee polkuun `/tilit` tulevia pyyntöjä seuraavasti:
+Tarkastellaan tilien lisäämistä pankkisovelluksessamme. Luokkaa `TiliController` käytetään tilien lisäämiseen ja listaamiseen sekä tilien omistajien lisäämiseen. Alla kuvattu luokka `TiliController` käsittelee polkuun `/tilit` tulevia pyyntöjä seuraavasti:
 
 - GET-tyyppinen pyyntö osoitteeseen `/tilit` listaa kaikki tilit sekä tarjoaa mahdollisuuden tilin lisäämiseen. Tilin lisäämisessä tarjotaan mahdollisuus pankin valintaan.
 - POST-tyyppinen pyyntö osoitteeseen `/tilit` lisää tilin. Pyyntö sisältää pankin tunnuksen pyyntöparametrina.
 - GET-tyyppinen pyyntö osoitteeseen `/tilit/{id}` näyttää tietyn tilin tiedot. Tilin tiedot näyttävä sivu mahdollistaa myös omistajien lisäämisen tilille.
 - POST-tyyppinen pyyntö osoitteeseen `/tilit/{tiliId}/omistajat/{henkiloId}` lisää polkumuuttujassa annetulle tilille toisessa polkumuuttujassa lisätyn omistajan.
 
-*Huom! Tässä oiotaan hieman -- todellisuudessa tilien hallinta tehtäisiin todennäköisemmin pankkiin liittyvän polun alta, esim. `/pankit/{pankkiId}/tilit`*
+*Huom! Tässä oiotaan hieman -- koska tilit liittyvät aina tiettyyn pankkiin, todellisuudessa tilien hallinta tehtäisiin todennäköisemmin pankkiin liittyvän polun alta, esim. `/pankit/{pankkiId}/tilit`.*
 
 ```java
 @Controller

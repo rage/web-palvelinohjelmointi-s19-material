@@ -4,16 +4,23 @@ title: 'Tietokantatransaktiot'
 hidden: true
 ---
 
+<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+
+TODO
+
+</text-box>
+
+
 Kurssilla <a href="https://tietokantojen-perusteet-19.mooc.fi/osa-4/2-eheys-ja-tietokantatransaktiot" target="_blank">tietokantojen perusteet</a> todettiin seuraavaa: *Tietokantatransaktio sisältää yhden tai useamman tietokantaan kohdistuvan operaation, jotka suoritetaan (järjestyksessä) kokonaisuutena. Jos yksikin operaatio epäonnistuu, kaikki operaatiot perutaan, ja tietokanta palautetaan tilaan, missä se oli ennen transaktion aloitusta.*
 
 <br/>
 
-Transaktioiden avulla pidetään yllä tietokannan eheyttä ja varmistetaan, ettei käyttäjälle näytetä epätoivottua tilaa.
+Käytännössä transaktioiden avulla pidetään yllä tietokannan eheyttä ja varmistetaan, ettei käyttäjälle näytetä epätoivottua tilaa.
 
-Tietokantatransaktiot määritellään Spring-sovelluskehyksen avulla toteutetuissa web-sovelluksissa metodi- tai luokkatasolla annotaation `@Transactional` avulla. Annotaatiolla `@Transactional` merkittyä metodia suoritettaessa metodin alussa aloitetaan tietokantatransaktio, jossa tehdyt muutokset viedään tietokantaan metodin lopussa. Jos annotaatio `@Transactional` määritellään luokkatasolla, se koskee jokaista luokan metodia.
+Tietokantatransaktiot määritellään Spring-sovelluskehyksen avulla toteutetuissa sovelluksissa metodi- tai luokkatasolla annotaation `@Transactional` avulla. Annotaatiolla `@Transactional` merkittyä metodia suoritettaessa metodin alussa aloitetaan tietokantatransaktio, jossa tehdyt muutokset viedään tietokantaan metodin lopussa. Jos annotaatio `@Transactional` määritellään luokkatasolla, se koskee jokaista luokan metodia.
 
 
-Rajapinnalla `JpaRepository` on määriteltynä transaktiot luokkatasolle. Tämä tarkoittaa sitä, että yksittäiset tallennusoperaatiot toimivat myös ilman `@Transactional`-annotaatiota.
+Rajapinnalle `JpaRepository` on valmiina määriteltynä transaktiot luokkatasolle. Tämä tarkoittaa sitä, että yksittäiset tallennusoperaatiot toimivat myös ilman `@Transactional`-annotaatiota.
 
 
 Alla on kuvattuna tilisiirto, joka on ehkäpä klassisin transaktiota vaativa tietokantaesimerkki. Jos ohjelmakoodin suoritus epäonnistuu (esim. päätyy poikkeukseen) sen jälkeen kun toiselta tililtä on otettu rahaa, mutta toiselle sitä ei vielä ole lisätty, rahaa katoaa.
@@ -33,7 +40,7 @@ public String siirra(@PathVariable Long mistaId,
     tiliRepository.save(mista);
 
     // jos täällä tapahtuu poikkeus,
-    // rahaa katoaa
+    // tietokannasta katoaa rahaa
 
     tiliRepository.save(minne);
 
@@ -58,7 +65,8 @@ public String siirra(@PathVariable Long mistaId,
     tiliRepository.save(mista);
 
     // jos täällä tapahtuu poikkeus,
-    // rahaa katoaa
+    // metodissa tehtyjä muutoksia
+    // ei viedä tietokantaan
 
     tiliRepository.save(minne);
 
@@ -72,7 +80,7 @@ public String siirra(@PathVariable Long mistaId,
 Annotaatiolle `@Transactional` voidaan määritellä parametri `readOnly`, jonka avulla määritellään kirjoitetaanko muutokset tietokantaan. Jos parametrin `readOnly` arvo on `true`, metodiin liittyvä transaktio perutaan metodin lopussa (rollback) eikä metodissa mahdollisesti tehtyjä muutoksia viedä tietokantaan.
 
 
-## Entiteettien automaattinen hallinta
+## Transaktiot ja entiteettien automaattinen hallinta
 
 Kun metodille määritellään annotaatio `@Transactional`, tietokannasta ladatuista entiteeteistä pidetään kirjaa ja muutokset tallennetaan tietokantaan automaattisesti metodin suorituksen jälkeen.
 
