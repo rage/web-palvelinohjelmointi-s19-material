@@ -6,7 +6,10 @@ hidden: true
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-TODO
+- Tiedät mitä N+1 -kyselyn ongelma tarkoittaa.
+- Osaat antaa esimerkkejä tilanteista, joissa N+1 -kyselyn ongelma voi esiintyä.
+- Tunnet menetelmiä N+1 -kyselyn ongelman kiertämiseen.
+- Tunnet tietokantakyselyiden ohjeistamiseen käytetyt annotaatiot `@EntityGraph` ja `@NamedEntityGraph` ja olet kokeillut niiden käyttöä.
 
 </text-box>
 
@@ -76,7 +79,9 @@ Lokissa nähdään ensin tilien hakeminen, jota seuraa tilien hakeminen yksitell
 
 Edellä kuvattiin muutamia vaihtoehtoja N+1 -kyselyn ongelman poistamiseksi. Tarkastellaan tässä neljättä vaihtoehtoa eli entity grapheja, jotka esiteltiin vuonna 2013 julkaistussa JPA 2.1 standardissa. Entity graphien avulla ohjelmoija voi määritellä kyselyn tuloksena haettavat oliot ym. tiedot.
 
-Teemaan voi tarkemmin syventyä Spring Data JPA-projektin <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/" target="_blank">dokumentaatiossa</a> sekä esimerkiksi osoitteessa <a href="https://www.baeldung.com/jpa-entity-graph" target="_blank">https://www.baeldung.com/jpa-entity-graph</a>.
+Teemaan voi tarkemmin syventyä Spring Data JPA-projektin <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/" target="_blank">dokumentaatiossa</a> sekä mm. osoitteissa <a href="https://www.baeldung.com/jpa-entity-graph" target="_blank">https://www.baeldung.com/jpa-entity-graph</a> ja <a href="https://www.radcortez.com/jpa-entity-graphs/" target="_blank">https://www.radcortez.com/jpa-entity-graphs/</a>.
+
+<br/>
 
 Voimme korvata `JpaRepository`-luokan tarjoaman `findAll`-toteutuksen omalla metodillamme. Alla olevassa toteutuksessa kerrotaan, että haluamme hakea tilien yhteydessä myös tilien `omistajat`-muuttujaan liityvät tiedot.
 

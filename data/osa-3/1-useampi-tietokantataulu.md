@@ -7,7 +7,9 @@ hidden: true
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-TODO
+- Osaat määritellä tietokantatauluja sekä tietokantataulujen välisiä yhteyksiä.
+- Tiedät mitä annotaatiot `@ManyToMany`, `@ManyToOne` ja `@OneToMany` tarkoittavat, ja tiedät mitä annotaatioille annettava parametri `mappedBy` tarkoittaa.
+- Osaat tallentaa tietokantaan olioita, jotka viittaavat toisiin olioihin.
 
 </text-box>
 

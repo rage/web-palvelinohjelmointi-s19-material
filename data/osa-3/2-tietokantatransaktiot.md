@@ -6,7 +6,9 @@ hidden: true
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-TODO
+- Tiedät miten tietokantatransaktio määritellään sovelluksessa.
+- Tiedät miten tietokantatransaktion määrittely vaikuttaa tietokannasta haettuihin olioihin ja erityisesti niihin tehtyihin muutoksiin.
+- Osaat luoda ohjelman, jossa käytetään useamman kyselyn niputtavia tietokantatransaktioita.
 
 </text-box>
 

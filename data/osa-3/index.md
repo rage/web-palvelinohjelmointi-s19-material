@@ -7,10 +7,9 @@ hidden: true
 
 <deadline>1.4.2019</deadline>
 
-TODO:
-Käsittelet useampia tietokantatauluja sisältäviä sovelluksia ja tiedät miten tietokantataulujen väliset viitteet määritellään. Osaat käsitellä transaktioita ohjelmallisesti. Tunnet N+1 kyselyn ongelman. Osaat järjestää ja rajata tietokannasta haettavaa tietoa. Osaat käsitellä eri muodossa olevaa tietoa ja tunnet käsitteen mediatyyppi.
+Kolmannen osan jälkeen osaat luoda useampia tietokantatauluja sisältäviä ja käsitteleviä web-sovelluksia. Osaat määritellä yhdestä moneen ja monesta moneen -yhteyksiä luokkien välille ja tiedät miten näihin yhteyksiin lisätään tietoa sovelluksessa. Tiedät miten sovelluksessa voidaan määritellä tietokantatransaktio.  Tunnet N+1 kyselyn ongelman ja tiedät joitakin menetelmiä sen välttämiseen. Osaat järjestää ja rajata tietokannasta haettavaa tietoa.
 
-TODO: esimerkeissä käsitelty ohjelma löytyy osoitteesta...
+Kurssin kolmannessa osassa käsiteltävä pankkijärjestelmä löytyy kokonaisuudessaan osoitteesta TODO.
 
 <please-login></please-login>
 

@@ -44,10 +44,10 @@ Kurssilla Web-palvelinohjelmointi Java opit web-sovellusten toimintaperiaatteet 
     <tr>
         <td>3</td>
         <td>
-            Tietokannat ja tietokanta-abstraktiot. Tulosten järjestäminen, viitteet tietokantataulujen välillä.
+            Tietokannat ja tietokanta-abstraktiot. Viitteet tietokantataulujen välillä, tulosten rajaaminen ja järjestäminen.
         </td>
         <td>
-            Käsittelet useampia tietokantatauluja sisältäviä sovelluksia ja tiedät miten tietokantataulujen väliset viitteet määritellään. Osaat käsitellä transaktioita ohjelmallisesti. Tunnet N+1 kyselyn ongelman. Osaat järjestää ja rajata tietokannasta haettavaa tietoa. Osaat käsitellä eri muodossa olevaa tietoa ja tunnet käsitteen mediatyyppi.
+            Käsittelet useampia tietokantatauluja sisältäviä sovelluksia ja tiedät miten tietokantataulujen väliset viitteet määritellään. Osaat käsitellä transaktioita ohjelmallisesti. Tunnet N+1 kyselyn ongelman ja tiedät joitakin menetelmiä sen välttämiseen. Osaat järjestää ja rajata tietokannasta haettavaa tietoa.
         </td>
     </tr>
     <tr>
@@ -74,7 +74,7 @@ Kurssilla Web-palvelinohjelmointi Java opit web-sovellusten toimintaperiaatteet 
             REST. Javascript-pohjaisten selainohjelmistojen ja palvelinohjelmistojen yhteistyö.
         </td>
         <td>
-            Ymmärrät REST-arkkitehtuurimallin perusperiaatteet. Osaat toteuttaa palvelun, joka tarjoaa dataa REST-muotoisen rajapinnan yli. Osaat toteuttaa palvelun, joka hyödyntää REST-rajapintaa. Tiedät, että Javascript-koodia voi suorittaa selaimessa käyttäjän koneella. Osaat tehdä selainohjelmistosta Javascript-pyynnön palvelimelle. Osaat päivittää näkymää Javascript-pyynnön vastauksen perusteella.
+            Osaat käsitellä eri muodossa olevaa tietoa ja tunnet käsitteen mediatyyppi. Ymmärrät REST-arkkitehtuurimallin perusperiaatteet. Osaat toteuttaa palvelun, joka tarjoaa dataa REST-muotoisen rajapinnan yli. Osaat toteuttaa palvelun, joka hyödyntää REST-rajapintaa. Tiedät, että Javascript-koodia voi suorittaa selaimessa käyttäjän koneella. Osaat tehdä selainohjelmistosta Javascript-pyynnön palvelimelle. Osaat päivittää näkymää Javascript-pyynnön vastauksen perusteella.
         </td>
     </tr>
     <tr>

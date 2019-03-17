@@ -5,6 +5,16 @@ hidden: true
 ---
 
 
+Tässä osassa harjoiteltiin useamman tietokantataulun luomista ja käyttöä sekä tutustuttiin ohjelmalliseen määrittelyyn. Tarkastelimme N+1 -kyselyn ongelmaa sekä sen ratkaisemiseen liittyviä menetelmiä. Harjoittelimme lisäksi tietokantakyselyiden tulosten rajaamista sekä järjestämistä.
+
+Vastaa lopuksi seuraavaan itsearviointikyselyyn ja keksi kurssimateriaalin kolmannesta osasta monivalintakysymys.
+
+<quiznator id="5c7edffe14524713f95a71b2"></quiznator>
+
+<quiznator id="5c7fb72e244fe21455cbcfdc"></quiznator>
+
+
+
 
 <programming-exercise name='Movie database (4 osaa)'>
 

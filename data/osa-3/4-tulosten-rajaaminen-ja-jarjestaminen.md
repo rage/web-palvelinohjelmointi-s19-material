@@ -6,7 +6,9 @@ hidden: true
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-TODO
+- Osaat kyselyn tuloksia rajaavia kriteerejä tietokantakyselyistä vastaavaan tietokantarajapintaan.
+- Osaat järjestää kyselyn tuloksia.
+- Osaat rajata kyselyn tuloksia.
 
 </text-box>
 
