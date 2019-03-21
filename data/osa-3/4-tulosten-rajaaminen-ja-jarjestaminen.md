@@ -1,7 +1,7 @@
 ---
 path: '/osa-3/4-tulosten-rajaaminen-ja-jarjestaminen'
 title: 'Tietokantakyselyiden tulosten rajaaminen ja järjestäminen'
-hidden: true
+hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
