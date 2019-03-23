@@ -13,6 +13,6 @@ Ensimmäisen osan jälkeen tiedät pääpiirteittäin miten internet toimii. Tun
 
 <pages-in-this-section></pages-in-this-section>
 
-Yllä oleva sisällysluettelo sisältää kurssin ensimmäisen osan aihealueet. Ensimmäinen osa on suunniteltu siten, että siinä on työtä yhden viikon ajaksi.
+Yllä oleva sisällysluettelo sisältää kurssin ensimmäisen osan aihealueet. Osa on suunniteltu siten, että siinä on työtä yhden viikon ajaksi.
 
 <exercises-in-this-section></exercises-in-this-section>

@@ -15,6 +15,6 @@ Kurssin kolmannessa osassa käsiteltävä pankkijärjestelmä löytyy kolmannen 
 
 <pages-in-this-section></pages-in-this-section>
 
-Yllä oleva sisällysluettelo sisältää kurssin kolmannen osan aihealueet. Toinen osa on suunniteltu siten, että siinä on työtä yhden viikon ajaksi.
+Yllä oleva sisällysluettelo sisältää kurssin kolmannen osan aihealueet. Osa on suunniteltu siten, että siinä on työtä yhden viikon ajaksi.
 
 <exercises-in-this-section></exercises-in-this-section>

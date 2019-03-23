@@ -14,6 +14,6 @@ Toisen osan jälkeen osaat muodostaa HTML-muotoisia näkymätemplateja ja käytt
 
 <pages-in-this-section></pages-in-this-section>
 
-Yllä oleva sisällysluettelo sisältää kurssin toisen osan aihealueet. Toinen osa on suunniteltu siten, että siinä on työtä yhden viikon ajaksi.
+Yllä oleva sisällysluettelo sisältää kurssin toisen osan aihealueet. Osa on suunniteltu siten, että siinä on työtä yhden viikon ajaksi.
 
 <exercises-in-this-section></exercises-in-this-section>
