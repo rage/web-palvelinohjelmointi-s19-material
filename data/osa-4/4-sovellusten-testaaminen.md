@@ -5,87 +5,81 @@ hidden: true
 ---
 
 
+<text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-#
-  Sovellusten testaaminen
+- TODO
 
-
-
-  Sovellusten testaaminen helpottaa sekä kehitystyötä että tulevaa ylläpitotyötä. Testaaminen voidaan karkeasti jakaa kolmeen osaan: yksikkötestaukseen, integraatiotestaukseen ja järjestelmätestaukseen. Tämän lisäksi on mm. myös käytettävyys- ja tietoturvatestaus, joita emme tässä käsittele tarkemmin.
+</text-box>
 
 
-
-  Yksikkötestauksessa tarkastellaan sovellukseen kuuluvia yksittäisiä komponentteja ja varmistetaan että niiden tarjoamat rajapinnat toimivat tarkoitetulla tavalla. Integraatiotestauksessa pyritään varmistamaan, että komponentit toimivat yhdessä kuten niiden pitäisi. Järjestelmätestauksessa varmistetaan, että järjestelmä toimii vaatimusten mukaan järjestelmän käyttäjille tarjotun rajapinnan (esim. selain) kautta.
-
+Sovellusten testaaminen helpottaa sekä kehitystyötä että tulevaa ylläpitotyötä. Testaaminen voidaan karkeasti jakaa kolmeen osaan: yksikkötestaukseen, integraatiotestaukseen ja järjestelmätestaukseen. Tämän lisäksi on mm. myös käytettävyys- ja tietoturvatestaus, joita emme tässä käsittele tarkemmin.
 
 
-##
-  Yksikkötestaus
+Yksikkötestauksessa tarkastellaan sovellukseen kuuluvia yksittäisiä komponentteja ja varmistetaan että niiden tarjoamat rajapinnat toimivat tarkoitetulla tavalla. Integraatiotestauksessa pyritään varmistamaan, että komponentit toimivat yhdessä kuten niiden pitäisi. Järjestelmätestauksessa varmistetaan, että järjestelmä toimii vaatimusten mukaan järjestelmän käyttäjille tarjotun rajapinnan (esim. selain) kautta.
 
 
-
-  Yksikkötestauksella tarkoitetaan lähdekoodiin kuuluvien yksittäisten osien testausta. Termi yksikkö viittaa ohjelman pienimpiin mahdollisiin testattaviin toiminnallisuuksiin, kuten olion tarjoamiin metodeihin. Seuratessamme <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle" target="_blank">single responsibility principle</a>ä, jokaisella oliolla ja metodilla on yksi selkeä vastuu, jota voi myös testata. Testaus tapahtuu yleensä testausohjelmistokehyksen avulla, jolloin luodut testit voidaan suorittaa automaattisesti. Yleisin Javalla käytettävä testauskehys on JUnit, jonka saa käyttöön lisäämällä siihen liittyvän riippuvuuden `pom.xml`-tiedostoon.
-
-
-<pre class="sh_xml">
-&lt;dependency&gt;
-    &lt;groupId&gt;junit&lt;/groupId&gt;
-    &lt;artifactId&gt;junit&lt;/artifactId&gt;
-&lt;/dependency&gt;
-</pre>
+Kaikkien kolmen testaustyypin automaatioon löytyy Springistä välineitä. Tarkastellaan näitä seuraavaksi.
 
 
-  Yksittäisen riippuvuuden määre `scope` kertoo milloin riippuvuutta tarvitaan. Määrittelemällä `scope`-elementin arvoksi `test` on riippuvuudet käytössä vain testejä ajettaessa. Uusia testiluokkia voi luoda NetBeansissa valitsemalla New -&gt; Other -&gt; JUnit -&gt; JUnit Test. Tämän jälkeen NetBeans kysyy testiluokalle nimeä ja pakkausta. Huomaa että lähdekoodit ja testikoodit päätyvät erillisiin kansioihin -- juurin näin sen pitääkin olla. Kun testiluokka on luotu, on projektin rakenne kutakuinkin seuraavanlainen.
+### Yksikkötestaus
 
 
-<pre>
-.
-|-- pom.xml
-`-- src
-    |-- main
-    |   |-- java
-    |   |   `-- wad
-    |   |       `-- ... oman projektin koodit
-    |   |-- resources
-    |           `-- ... resurssit, mm. konfiguraatio ja thymeleafin templatet
-    |
-    `-- test
-        `-- java
-            `-- wad
-                `-- ... testikoodit!
-</pre>
+Yksikkötestauksella tarkoitetaan lähdekoodiin kuuluvien yksittäisten osien testausta. Termi yksikkö viittaa ohjelman pienimpiin mahdollisiin testattaviin toiminnallisuuksiin, kuten olion tarjoamiin metodeihin. Seuratessamme <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle" target="_blank">single responsibility principle</a>ä, jokaisella oliolla ja metodilla on yksi selkeä vastuu, jota voi myös testata. Testaus tapahtuu yleensä testausohjelmistokehyksen avulla, jolloin luodut testit voidaan suorittaa automaattisesti. Yleisin Javalla käytettävä testauskehys on JUnit, jonka saa käyttöön lisäämällä siihen liittyvän riippuvuuden `pom.xml`-tiedostoon.
 
-
-  Tehtäväpohjissa JUnit-testikirjasto on valmiina mukana. Yksikkötestauksesta JUnit-kirjaston avulla löytyy pieni opas kurssin <a href="https://github.com/mluukkai/OTM2015/wiki/JUnit-ohje" target="_blank">Ohjelmistotekniikan menetelmät</a> sivuilta.
-
-
-
-##
-  Integraatiotestaus
-
-
-
-  Spring tarjoaa `spring-test`-kirjaston, jonka avulla JUnit-kirjasto saa `@Autowired`-annotaatiot toimimaan. Tämän kautta pääsemme tilanteeseen, missä voimme injektoida testimetodille esimerkiksi repository-rajapinnan toteuttavan olion sekä testata sen tarjoamien metodien toimintaa. Testattava palvelu voi hyödyntää muita komponentteja, jolloin testauksen kohteena on kokonaisuuden toiminta yhdessä.
-
-
-
-  Spring test-komponentista on olemassa Spring Boot -projekti, jonka voimme ottaa käyttöömme lisäämällä seuraavan riippuvuuden pom.xml-tiedostoon. Käytetyn riippuvuuden versio liittyy Spring Boot -projektin versioon, eikä sitä tarvitse määritellä tarkemmin.
+<br/>
 
 
 ```xml
-&lt;dependency&gt;
-  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-  &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
-  &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+</dependency>
 ```
 
 
-  Yksittäisten palvelujen testaamisessa tarvitsemme testiluokkien alkuun kaksi annotaatiota. Annotaatio `@RunWith(SpringRunner.class)` kertoo että käytämme Springiä yksikkötestien ajamiseen ja annotaatio `@SpringBootTest` lataa sovelluksen osat käyttöön.
+Yksittäisen riippuvuuden määre `scope` kertoo milloin riippuvuutta tarvitaan. Määrittelemällä `scope`-elementin arvoksi `test` on riippuvuudet käytössä vain testejä ajettaessa. Uusia testiluokkia voi luoda NetBeansissa valitsemalla New -> Other -> JUnit -> JUnit Test. Tämän jälkeen NetBeans kysyy testiluokalle nimeä ja pakkausta. Huomaa että lähdekoodit ja testikoodit päätyvät erillisiin kansioihin -- juurin näin sen pitääkin olla. Kun testiluokka on luotu, on projektin rakenne kutakuinkin seuraavanlainen.
 
 
+```
+.
+|-- pom.xml
+`-- src
+  |-- main
+  |   |-- java
+  |   |   `-- ... oman projektin koodit
+  |   |-- resources
+  |       `-- ... resurssit, mm. konfiguraatio ja thymeleafin templatet
+  |
+  `-- test
+      `-- java
+          `-- ... testikoodit!
+```
 
-  Alla on esimerkkinä testiluokka, johon injektoidaan automaattisesti `BankingService`-olio sekä `AccountRepository`-rajapinnan toteuttama repository-olio.
+
+Tehtäväpohjissa JUnit-testikirjasto on valmiina mukana. Yksikkötestauksesta JUnit-kirjaston avulla löytyy ohjeistusta aiemmin käydyiltä ohjelmointikursseilta sekä kursseilta Ohjelmistotekniikan menetelmät (TKT-20002) ja Ohjelmistotuotanto (TKT-20006).
+
+
+### Integraatiotestaus
+
+Spring tarjoaa `spring-test`-kirjaston, jonka avulla JUnit-kirjasto saa `@Autowired`-annotaatiot toimimaan. Tämän kautta pääsemme tilanteeseen, missä voimme injektoida testimetodille esimerkiksi repository-rajapinnan toteuttavan olion sekä testata sen tarjoamien metodien toimintaa. Testattava palvelu voi hyödyntää muita komponentteja, jolloin testauksen kohteena on kokonaisuuden toiminta yhdessä.
+
+
+Spring test-komponentista on olemassa Spring Boot -projekti, jonka voimme ottaa käyttöömme lisäämällä seuraavan riippuvuuden pom.xml-tiedostoon. Käytetyn riippuvuuden versio liittyy Spring Boot -projektin versioon, eikä sitä tarvitse määritellä tarkemmin.
+
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-test</artifactId>
+    <scope>test</scope>
+</dependency>
+```
+
+
+Yksittäisten palvelujen testaamisessa tarvitsemme testiluokkien alkuun kaksi annotaatiota. Annotaatio `@RunWith(SpringRunner.class)` kertoo että käytämme Springiä yksikkötestien ajamiseen ja annotaatio `@SpringBootTest` lataa sovelluksen osat käyttöön.
+
+
+Alla on esimerkkinä testiluokka, johon injektoidaan automaattisesti `BankingService`-olio sekä `AccountRepository`-rajapinnan toteuttama repository-olio.
 
 
 ```java
@@ -93,26 +87,23 @@ hidden: true
 @SpringBootTest
 public class ApplicationTest {
 
-    @Autowired
-    private BankingService bankingService;
+  @Autowired
+  private BankingService bankingService;
 
-    @Autowired
-    private AccountRepository accountRepository;
+  @Autowired
+  private AccountRepository accountRepository;
 
-    // ... testit jne
+  // ... testit jne
 }
 ```
 
-
-  Käynnistämällä Springin osana testejä, saamme käyttöömme oliokontekstin, jonka avulla voimme asettaa testattavat oliot testiluokkiin testaamista varten. Testattavien olioiden riippuvuudet asetetaan myös automaattisesti, eli jos `BankingService` sisältää muita komponentteja, on ne myös automaattisesti asetettu.
-
+Käynnistämällä Springin osana testejä, saamme käyttöömme oliokontekstin, jonka avulla voimme asettaa testattavat oliot testiluokkiin testaamista varten. Testattavien olioiden riippuvuudet asetetaan myös automaattisesti, eli jos `BankingService` sisältää muita komponentteja, on ne myös automaattisesti asetettu.
 
 
-  Voimme ylläolevalla lähestymistavalla testata myös sitä, että sovelluksemme eri osat toimivat yhteen toivotusti. Oletetaan, että käytössämme on aiemmin esitelty luokka `BankingService`, joka tarjoaa metodin `transfer`. Metodin pitäisi siirtää annettu summan kahden tilin välillä. Tämän lisäksi käytössämme on `AccountRepository`, jonka avulla voimme hakea tietokannasta tietoa tilien nimien perusteella.
+Voimme ylläolevalla lähestymistavalla testata myös sitä, että sovelluksemme eri osat toimivat yhteen toivotusti. Oletetaan, että käytössämme on aiemmin esitelty luokka `BankingService`, joka tarjoaa metodin `transfer`. Metodin pitäisi siirtää annettu summan kahden tilin välillä. Tämän lisäksi käytössämme on `AccountRepository`, jonka avulla voimme hakea tietokannasta tietoa tilien nimien perusteella.
 
 
-
-  Kummatkin toteutukset voidaan injektoida testiluokkaan. Alla oleva testi tarkastaa, että luokan `BankingService` toteutus toimii toivotulla tavalla.
+Kummatkin toteutukset voidaan injektoida testiluokkaan. Alla oleva testi tarkastaa, että luokan `BankingService` toteutus toimii toivotulla tavalla.
 
 
 ```java
@@ -122,58 +113,82 @@ public class ApplicationTest {
 @SpringBootTest
 public class ApplicationTest {
 
-    @Autowired
-    private BankingService bankingService;
+  @Autowired
+  private BankingService bankingService;
 
-    @Autowired
-    private AccountRepository accountRepository;
+  @Autowired
+  private AccountRepository accountRepository;
 
-    @Test
-    public void testBankTransfer() {
-        Account first = new Account();
-        first.setBalance(200);
-        first.setIban("first");
-        Account second = new Account();
-        second.setIban("second");
-        second.setBalance(0);
+  @Test
+  public void testBankTransfer() {
+      Account first = new Account();
+      first.setBalance(200);
+      first.setIban("first");
+      Account second = new Account();
+      second.setIban("second");
+      second.setBalance(0);
 
-        accontRepository.save(first);
-        accontRepository.save(second);
+      accontRepository.save(first);
+      accontRepository.save(second);
 
-        bankingService.transfer("first", "second", 200);
+      bankingService.transfer("first", "second", 200);
 
-        assertEquals(0, accountRepository.findByIban("first").getBalance());
-        assertEquals(200, accountRepository.findByIban("second").getBalance());
-    }
+      assertEquals(0, accountRepository.findByIban("first").getBalance());
+      assertEquals(200, accountRepository.findByIban("second").getBalance());
+  }
 
-    // ja muita testejä
+  // ja muita testejä
 }
 ```
 
 
-  Yllä oleva testi testaa vain tilisiirron onnistumista. Se ei kuitenkaan tarkasta esimerkiksi sivuvaikutuksia. Auki jäävät muunmuassa kysymykset: siirtääkö palvelu rahaa jollekin toiselle tilille? Mitä käy jos tilillä ei ole rahaa?
+Yllä oleva testi testaa vain tilisiirron onnistumista. Se ei kuitenkaan tarkasta esimerkiksi sivuvaikutuksia. Auki jäävät muunmuassa kysymykset: siirtääkö palvelu rahaa jollekin toiselle tilille? Mitä käy jos tilillä ei ole rahaa?
 
 
+#### Testiprofiili
 
-##
-  Järjestelmätestaus
+Edellisessä esimerkissä on myös toinenkin ongelma. Kun testissä luodaan uudet tilit ja siirretään rahaa niiden välillä, muutokset tapahtuvat oletuksena käytössä olevaan tietokantaan. Tähän asti käytössämme olevissa sovelluksissa käytössä on ollut H2-tietokannanhallintajärjestelmän tiedostoon kirjoittava versio. Tämä tarkoittaa sitä, että myös yllä toteutetuissa testeissä on käytössä sama tietokannanhallintajärjestelmä. Tämä ei ole toivottu tilanne.
+
+Luodaan uusi konfiguraatiotiedosto nimeltä `application-test.properties`. Konfiguraatiotiedoston pääte `-test` kertoo Springille, että kyseinen konfiguraatiotiedosto tulee ladata käyttöön mikäli käytössä on profiili `test`.
+
+Määritellään konfiguraatio siten, että tietokantana on muistiin ladattava tietokanta. Tämä onnistuu seuraavasti:
+
+```
+```
+
+Kun lisäämme testit sisältävään lähdekoodiin annotaation `@ActiveProfiles("test")`, käytetään testeissä `test`-profiiliin liittyvää konfiguraatiota.
+
+```java
+// importit
+
+@ActiveProfiles("test")
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class ApplicationTest {
+
+  @Autowired
+  private BankingService bankingService;
+
+  // jne...
+```
+
+Nyt testien käytössä on tietokanta, joka luodaan aina testien käynnistyksen yhteydessä ja poistetaan testien suorituksen jälkeen.
 
 
-
-  Järjestelmätestauksessa pyritään varmistamaan, että järjestelmä toimii toivotulla tavalla. Järjestelmää testataan saman rajapinnan kautta, kuin mitä sen loppukäyttäjät käyttävät. Järjestelmätestaukseen on monenlaisia työkaluja, joista käsittelemme tässä kahta. Tutustumme ensin integraatiotestauksessa käytetyn `spring-test`-komponenttiin järjestelmätason testaustoiminnallisuuteen, jonka jälkeen tutustumme harjoitustehtävän kautta `Selenium` ja `FluentLenium` -kirjastoihin.
-
-
-###
-  MockMvc
+### Järjestelmätestaus
 
 
+Järjestelmätestauksessa pyritään varmistamaan, että järjestelmä toimii toivotulla tavalla. Järjestelmää testataan saman rajapinnan kautta, kuin mitä sen loppukäyttäjät käyttävät. Järjestelmätestaukseen on monenlaisia työkaluja, joista käsittelemme tässä kahta. Tutustumme ensin integraatiotestauksessa käytetyn `spring-test`-komponenttiin järjestelmätason testaustoiminnallisuuteen, jonka jälkeen tutustumme harjoitustehtävän kautta `Selenium` ja `FluentLenium` -kirjastoihin.
 
 
-  Springin tarjoama `spring-test` tarjoaa tuen järjestelmätestaamiseen. Annotaatiolla `@SpringBootTest` testeillä on käytössä myös web-sovelluksen konteksti, jonka avulla voidaan luoda <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/test/web/servlet/MockMvc.html" target="_blank">MockMvc</a>-olio. MockMvc-oliolla pystymme tekemään pyyntöjä sovelluksen tarjoamiin osoitteisiin, tarkistelemaan pyyntöjen onnistumista, sekä tarkastelemaan vastauksena saatua dataa.
+#### MockMvc
+
+Springin tarjoama `spring-test` tarjoaa tuen järjestelmätestaamiseen. Annotaatiolla `@SpringBootTest` testeillä on käytössä myös web-sovelluksen konteksti, jonka avulla voidaan luoda <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/test/web/servlet/MockMvc.html" target="_blank">MockMvc</a>-olio. MockMvc-oliolla pystymme tekemään pyyntöjä sovelluksen tarjoamiin osoitteisiin, tarkistelemaan pyyntöjen onnistumista, sekä tarkastelemaan vastauksena saatua dataa.
 
 
+TODO: määrittele siten, että mockmvc automaattisesti käytössä
 
-  Alla oleva esimerkki käynnistää sovelluksen ja tekee kolme GET-pyyntöä osoitteeseen `/messages`. Ensimmäinen pyyntö liittyy testiin, missä varmistetaan että vastaus on sisältää statuskoodin `200` eli "OK", toinen pyyntö liittyy testiin joka varmistaa että vastauksen tyyppi on JSON-muotoista dataa, ja kolmas pyyntö tarkistaa että vastauksessa on merkkijono "Awesome". Alun `setUp`-metodi luo `MockMvc`-olion injektoidun palveinkontekstin perusteella.
+Alla oleva esimerkki käynnistää sovelluksen ja tekee kolme GET-pyyntöä osoitteeseen `/messages`. Ensimmäinen pyyntö liittyy testiin, missä varmistetaan että vastaus on sisältää statuskoodin `200` eli "OK", toinen pyyntö liittyy testiin joka varmistaa että vastauksen tyyppi on JSON-muotoista dataa, ja kolmas pyyntö tarkistaa että vastauksessa on merkkijono "Awesome". Alun `setUp`-metodi luo `MockMvc`-olion injektoidun palveinkontekstin perusteella.
 
 
 ```java
@@ -183,238 +198,202 @@ public class ApplicationTest {
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MessagesTest {
 
-    @Autowired
-    private WebApplicationContext webAppContext;
+  @Autowired
+  private WebApplicationContext webAppContext;
 
-    private MockMvc mockMvc;
+  private MockMvc mockMvc;
 
-    @Before
-    public void setUp() {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(webAppContext).build();
-    }
+  @Before
+  public void setUp() {
+      this.mockMvc = MockMvcBuilders.webAppContextSetup(webAppContext).build();
+  }
 
-    @Test
-    public void statusOk() throws Exception {
-        mockMvc.perform(get("/messages"))
-                .andExpect(status().isOk());
-    }
+  @Test
+  public void statusOk() throws Exception {
+      mockMvc.perform(get("/messages"))
+              .andExpect(status().isOk());
+  }
 
 
-    @Test
-    public void responseTypeApplicationJson() throws Exception {
-        mockMvc.perform(get("/messages"))
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
-    }
+  @Test
+  public void responseTypeApplicationJson() throws Exception {
+      mockMvc.perform(get("/messages"))
+              .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+  }
 
-    @Test
-    public void responseContainsTextAwesome() throws Exception {
-        MvcResult res = mockMvc.perform(get("/messages"))
-                .andReturn();
+  @Test
+  public void responseContainsTextAwesome() throws Exception {
+      MvcResult res = mockMvc.perform(get("/messages"))
+              .andReturn();
 
-        String content = res.getResponse().getContentAsString();
-        Assert.assertTrue(content.contains("Awesome"));
-    }
+      String content = res.getResponse().getContentAsString();
+      Assert.assertTrue(content.contains("Awesome"));
+  }
 }
 ```
 
 
-  Voit myös testata modeliin asetettujen attribuuttien olemassaoloa ja oikeellisuutta. Olemassaolon voi tarkistaa `model()`-metodin kautta, ja `MvcResult`-olion kautta pääsee käsiksi modelin sisältöön.
+Voit myös testata modeliin asetettujen attribuuttien olemassaoloa ja oikeellisuutta. Olemassaolon voi tarkistaa `model()`-metodin kautta, ja `MvcResult`-olion kautta pääsee käsiksi modelin sisältöön.
 
 
 ```java
-    @Test
-    public void modelHasAttributeMessages() throws Exception {
-        mockMvc.perform(get("/messages"))
-                .andExpect(model().attributeExists("messages"));
-    }
+  @Test
+  public void modelHasAttributeMessages() throws Exception {
+      mockMvc.perform(get("/messages"))
+              .andExpect(model().attributeExists("messages"));
+  }
 
-    @Test
-    public void messagesCorrect() throws Exception {
-        MvcResult res = mockMvc.perform(get("/messages"))
-                .andReturn();
+  @Test
+  public void messagesCorrect() throws Exception {
+      MvcResult res = mockMvc.perform(get("/messages"))
+              .andReturn();
 
-        // oletetaan, että kontrolleri asettaa kokoelman Message-tyyppisiä olioita
-        // modeliin
+      // oletetaan, että kontrolleri asettaa kokoelman Message-tyyppisiä olioita
+      // modeliin
 
-        Collection&lt;Message&gt; messages = (Collection) res.getModelAndView().getModel().get("messages");
+      Collection<Message> messages = (Collection) res.getModelAndView().getModel().get("messages");
 
-        // tarkista kokoelma
-    }
+      // tarkista kokoelma
+  }
 ```
 
 
-  MockMvc:n avulla voi testata käytännössä suurinta osaa palvelinsovellusten toiminnallisuudesta, mutta samalla se tarjoaa pääsyn samaan rajapintaan kuin mitä selain käsitteelee.
+MockMvc:n avulla voi testata käytännössä suurinta osaa palvelinsovellusten toiminnallisuudesta, mutta samalla se tarjoaa pääsyn samaan rajapintaan kuin mitä selain käsitteelee.
 
 
 
 
-<programming-exercise name='Airports and Airplanes Redux' } do %>
+<programming-exercise name='Airports and Airplanes Redux'>
+
+Muistamme edellisestä osiosta tehtävän, missä tehtiin sovellus lentokoneiden ja lentokenttien hallintaan. Tässä tehtävässä harjoitellaan hieman sekä integraatio- että järjestelmätestausta.
+
+Huom! Tässä tehtävässä ei ole automaattisia testejä, joilla testattaisiin kirjoittamiasi testejä. Palauttaessasi tehtävän olet tarkistanut, että kirjoittamasi testit toimivat kuten tehtävänannossa on kuvattu.
 
 
-    Muistamme edellisestä osiosta tehtävän, missä tehtiin sovellus lentokoneiden ja lentokenttien hallintaan. Tässä tehtävässä harjoitellaan hieman sekä integraatio- että järjestelmätestausta.
+<h2>AirportServiceTest</h2>
 
 
+Sovelluksessa on luokka `AirportService`, mikä sijaitsee pakkauksessa `wad.service`. Sille ei kuitenkaan ole yhtäkään testiä :(
 
-    Huom! Tässä tehtävässä ei ole automaattisia testejä, joilla testattaisiin kirjoittamiasi testejä. Palauttaessasi tehtävän olet tarkistanut, että kirjoittamasi testit toimivat kuten tehtävänannossa on kuvattu.
+Lisää testikansioon (`Test Packages`) pakkaus `wad.service`, ja luo sinne luokka `AirportServiceTest`.
 
+Lisää luokalle tarvittavat annotaatiot sekä oliomuuttujat, ja toteuta luokalle testimetodit, joiden avulla testataan että haluttu lentokone todellakin lisätään lentokentälle. Haluat ainakin tietää että:
 
-  <h2>AirportServiceTest</h2>
+- Kun lentokone on lisätty lentokentälle, tietokannasta samalla tunnuksella haettavalla lentokoneella on asetettu lentokenttä, ja se on juuri se lentokenttä mihin kone on lisätty.
+- Kun lentokone on lisätty lentokentälle, lentokentältä löytyy myös kyseinen kone.
+- Kun lentokone on lisätty yhdelle lentokentälle, se ei ole muilla lentokentillä.
+- Lentokoneen lisääminen samalle lentokentälle useasti ei johda siihen, että lentokenttä sisältää saman koneen monta kertaa.
 
-
-    Sovellusessa on luokka `AirportService`, mikä sijaitsee pakkauksessa `wad.service`. Sille ei kuitenkaan ole yhtäkään testiä :(
-
-
-
-    Lisää testikansioon (`Test Packages`) pakkaus `wad.service`, ja luo sinne luokka `AirportServiceTest`.
-
-
-
-    Lisää luokalle tarvittavat annotaatiot sekä oliomuuttujat, ja toteuta luokalle testimetodit, joiden avulla testataan että haluttu lentokone todellakin lisätään lentokentälle. Haluat ainakin tietää että:
+Aina kun lisäät yksittäisen testin, voit ajaa testit klikkaamalla projektia oikealla hiirennapilla ja valitsemalla "Test".
 
 
-
-    -
-      Kun lentokone on lisätty lentokentälle, tietokannasta samalla tunnuksella haettavalla lentokoneella on asetettu lentokenttä, ja se on juuri se lentokenttä mihin kone on lisätty.
-
-    -
-      Kun lentokone on lisätty lentokentälle, lentokentältä löytyy myös kyseinen kone.
-
-    -
-      Kun lentokone on lisätty yhdelle lentokentälle, se ei ole muilla lentokentillä.
-
-    -
-      Lentokoneen lisääminen samalle lentokentälle useasti ei johda siihen, että lentokenttä sisältää saman koneen monta kertaa.
+<h2>AircraftControllerTest</h2>
 
 
+Luo testikansioon pakkaus `wad.controller` ja lisää sinne luokka `AircraftControllerTest`. Lisää luokkaan tarvittavat määrittelyt, jotta voit käyttää `MockMvc`-komponenttia testeissä.
+
+Tee seuraavat testit:
+
+- Kun osoitteeseen `/aircrafts` tehdään GET-pyyntö, vastauksen status on 200 (ok) ja vastauksen model-oliossa on parametrit `aircrafts` ja `airports`.
+- Kun osoitteeseen `/aircrafts` tehdään POST-pyyntö, jonka parametriksi annetaan `name`-kenttä, jonka arvona on "HA-LOL", pyynnön vastaukseksi tulee uudelleenohjaus. Tee tämän jälkeen erillinen kysely tietokantaan esim. `AircraftRepository`:n avulla, ja varmista, että tietokannasta löytyy lentokone, jonka nimi on `HA-LOL`.
+- Kun osoitteeseen `/aircrafts` tehdään POST-pyyntö, jonka parametriksi annetaan `name`-kenttä, jonka arvona on "XP-55", pyynnön vastaukseksi tulee uudelleenohjaus. Tee tämän jälkeen GET-pyyntö osoitteeseen `/aircrafts`, ja tarkista että pyynnön vastauksena saatavan `model`-olion sisältämässä `"aircrafts"`-listassa on juuri luotu lentokone.
 
 
-    Aina kun lisäät yksittäisen testin, voit ajaa testit klikkaamalla projektia oikealla hiirennapilla ja valitsemalla "Test".
+Tässäkin tehtävässä, aina kun lisäät yksittäisen testin, voit ajaa testit klikkaamalla projektia oikealla hiirennapilla ja valitsemalla "Test".
 
-
-
-  <h2>AircraftControllerTest</h2>
-
-
-    Luo testikansioon pakkaus `wad.controller` ja lisää sinne luokka `AircraftControllerTest`. Lisää luokkaan tarvittavat määrittelyt, jotta voit käyttää `MockMvc`-komponenttia testeissä.
+</programming-exercise>
 
 
 
-    Tee seuraavat testit:
+### FluentLenium
 
 
-
-    - Kun osoitteeseen `/aircrafts` tehdään GET-pyyntö, vastauksen status on 200 (ok) ja vastauksen model-oliossa on parametrit `aircrafts` ja `airports`.
-    - Kun osoitteeseen `/aircrafts` tehdään POST-pyyntö, jonka parametriksi annetaan `name`-kenttä, jonka arvona on "HA-LOL", pyynnön vastaukseksi tulee uudelleenohjaus. Tee tämän jälkeen erillinen kysely tietokantaan esim. `AircraftRepository`:n avulla, ja varmista, että tietokannasta löytyy lentokone, jonka nimi on `HA-LOL`.
-    - Kun osoitteeseen `/aircrafts` tehdään POST-pyyntö, jonka parametriksi annetaan `name`-kenttä, jonka arvona on "XP-55", pyynnön vastaukseksi tulee uudelleenohjaus. Tee tämän jälkeen GET-pyyntö osoitteeseen `/aircrafts`, ja tarkista että pyynnön vastauksena saatavan `model`-olion sisältämässä `"aircrafts"`-listassa on juuri luotu lentokone.
+MockMvc:n lisäksi järjestelmätestaukseen käytetään melko paljon käyttöliittymän testaamiseen tarkoitettua <a href="http://www.seleniumhq.org/" target="_blank">Selenium</a>ia ja siihen liittyviä lisäosia kuten <a href="https://github.com/FluentLenium/FluentLenium" target="_blank">FluentLenium</a>. Käytännössä edellämainitut ovat web-selaimen toimintojen automatisointiin tarkoitettuja välineitä, jotka antavat sovelluskehittäjälle mahdollisuuden käydä läpi sovelluksen käyttöliittymää ohjelmallisesti.
 
 
-
-    Tässäkin tehtävässä, aina kun lisäät yksittäisen testin, voit ajaa testit klikkaamalla projektia oikealla hiirennapilla ja valitsemalla "Test".
-
-
-<% end %>
-
-
-
-###
-  FluentLenium
-
-
-
-  MockMvc:n lisäksi järjestelmätestaukseen käytetään melko paljon käyttöliittymän testaamiseen tarkoitettua <a href="http://www.seleniumhq.org/" target="_blank">Selenium</a>ia ja siihen liittyviä lisäosia kuten <a href="https://github.com/FluentLenium/FluentLenium" target="_blank">FluentLenium</a>. Käytännössä edellämainitut ovat web-selaimen toimintojen automatisointiin tarkoitettuja välineitä, jotka antavat sovelluskehittäjälle mahdollisuuden käydä läpi sovelluksen käyttöliittymää ohjelmallisesti.
-
-
-
-  Lisätään FluentLenium-kirjaston vaatimat riippuvuudet, oletetaan että testit kirjoitetaan JUnit-testikirjaston avulla (FluentLenium tarjoaa myös muita vaihtoehtoja).
-
+Lisätään FluentLenium-kirjaston vaatimat riippuvuudet, oletetaan että testit kirjoitetaan JUnit-testikirjaston avulla (FluentLenium tarjoaa myös muita vaihtoehtoja).
 
 ```xml
-&lt;dependency&gt;
-    &lt;groupId&gt;org.fluentlenium&lt;/groupId&gt;
-    &lt;artifactId&gt;fluentlenium-core&lt;/artifactId&gt;
-    &lt;version&gt;3.4.1&lt;/version&gt;
-    &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.fluentlenium&lt;/groupId&gt;
-    &lt;artifactId&gt;fluentlenium-junit&lt;/artifactId&gt;
-    &lt;version&gt;3.4.1&lt;/version&gt;
-    &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.fluentlenium&lt;/groupId&gt;
-    &lt;artifactId&gt;fluentlenium-assertj&lt;/artifactId&gt;
-    &lt;version&gt;3.4.1&lt;/version&gt;
-    &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;
-    &lt;artifactId&gt;htmlunit-driver&lt;/artifactId&gt;
-&lt;/dependency&gt;
+<dependency>
+  <groupId>org.fluentlenium</groupId>
+  <artifactId>fluentlenium-core</artifactId>
+  <version>3.4.1</version>
+  <scope>test</scope>
+</dependency>
+<dependency>
+  <groupId>org.fluentlenium</groupId>
+  <artifactId>fluentlenium-junit</artifactId>
+  <version>3.4.1</version>
+  <scope>test</scope>
+</dependency>
+<dependency>
+  <groupId>org.fluentlenium</groupId>
+  <artifactId>fluentlenium-assertj</artifactId>
+  <version>3.4.1</version>
+  <scope>test</scope>
+</dependency>
+<dependency>
+  <groupId>org.seleniumhq.selenium</groupId>
+  <artifactId>htmlunit-driver</artifactId>
+</dependency>
 ```
 
 
-  Ajatellaan loppukäyttäjän haluamaa toiminnallisuutta "Käyttäjä voi ilmoittautua oppitunnille". Järjestelmä tarjoaa sivun, jonka ensimmäinen linkki vie ilmoittautumissivulle. Ilmoittautumissivulla tulee olla tietty otsikko -- varmistamme, että olemme oikealla sivulla. Tämän lisäksi ilmoiuttautumissivulla on lomakekenttä, jonka attribuutin <em>id</em> arvo on "name". Jos kentällä on attribuutti <em>id</em>, voidaan se valita kirjoittamalla "#kentannimi". Täytetään kenttään arvo "Bob" ja lähetetään lomake. Tämän jälkeen sivulla tulee olla teksti "Ilmoittautuminen onnistui!".
+Ajatellaan loppukäyttäjän haluamaa toiminnallisuutta "Käyttäjä voi ilmoittautua oppitunnille". Järjestelmä tarjoaa sivun, jonka ensimmäinen linkki vie ilmoittautumissivulle. Ilmoittautumissivulla tulee olla tietty otsikko -- varmistamme, että olemme oikealla sivulla. Tämän lisäksi ilmoittautumissivulla on lomakekenttä, jonka attribuutin `id` arvo on `name`. Jos kentällä on attribuutti `id`, voidaan se valita kirjoittamalla `#kentannimi`. Täytetään kenttään arvo "Bob" ja lähetetään lomake. Tämän jälkeen sivulla tulee olla teksti "Ilmoittautuminen onnistui!".
 
 
 ```java
 // importit
 
+@ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ElokuvatietokantaTest extends FluentTest {
 
-    @LocalServerPort
-    private Integer port;
+  @LocalServerPort
+  private Integer port;
 
-    @Test
-    public void canSignUp() {
-        goTo("http://localhost:" + port);
+  @Test
+  public void canSignUp() {
+      goTo("http://localhost:" + port);
 
-        find("a").first().click();
-        assertEquals("Ilmoittautuminen", window().title());
+      find("a").first().click();
+      assertEquals("Ilmoittautuminen", window().title());
 
-        find("#name").fill().with("Bob");
-        find("form").first().submit();
+      find("#name").fill().with("Bob");
+      find("form").first().submit();
 
-        assertTrue(pageSource().contains("Ilmoittautuminen onnistui!"));
-    }
+      assertTrue(pageSource().contains("Ilmoittautuminen onnistui!"));
+  }
 // ...
 ```
 
+Yllä annotaatio `@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)` käynnistää palvelimen integraatiotestausta satunnaisessa portissa, joka saadaan muuttujaan `port` annotaation `@LocalServerPort` avulla.
 
 
-  Yllä annotaatio `@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)` käynnistää palvelimen integraatiotestausta satunnaisessa portissa, joka saadaan muuttujaan `port` annotaation `@LocalServerPort` avulla.
+Yllä menemme ensin paikalliseen osoitteeseen `http://localhost:*portti*`, missä portin numero on satunnaisesti valittu -- surffaamme siis haluttuun osoitteeseen. Haemme tämän jälkeen ensimmäisen linkin, eli `a`-elementin sivulta, ja klikkaamme sitä. Tämän jälkeen tarkistamme, että sivun otsake on `Ilmoittautuminen`. Tätä seuraa kentän, jonka id on "name" täyttäminen "Bob"-merkkijonolla, jonka jälkeen lomake lähetetään. Kun lomake on lähetetty, haetaan sivun lähdekoodista tekstiä "Ilmoittautuminen onnistui!". Jos tekstiä ei löydy, testi epäonnistuu.
 
 
-
-  Yllä menemme ensin paikalliseen osoitteeseen `http://localhost:<em>portti</em>`, missä portin numero on satunnaisesti valittu -- surffaamme siis haluttuun osoitteeseen. Haemme tämän jälkeen ensimmäisen linkin, eli `a`-elementin sivulta, ja klikkaamme sitä. Tämän jälkeen tarkistamme, että sivun otsake on `Ilmoittautuminen`. Tätä seuraa kentän, jonka id on "name" täyttäminen "Bob"-merkkijonolla, jonka jälkeen lomake lähetetään. Kun lomake on lähetetty, haetaan sivun lähdekoodista tekstiä "Ilmoittautuminen onnistui!". Jos tekstiä ei löydy, testi epäonnistuu.
-
+FluentLenium-kirjastoon liittyvää dokumentaatiota löytyy osoitteesta <a href="http://www.fluentlenium.org/" target="_blank">http://www.fluentlenium.org/</a>, jonka lisäksi googlesta löytyy apua seuraavaan tehtävään.
 
 
-  FluentLenium-kirjastoon liittyvää dokumentaatiota löytyy osoitteesta <a href="http://www.fluentlenium.org/" target="_blank">http://www.fluentlenium.org/</a>, jonka lisäksi googlesta löytyy apua seuraavaan tehtävään.
+<programming-exercise name='Movie Database Redux'>
+
+Muistamme toisesta osiosta myös tehtävän, missä tehtiin sovellus elokuvien ja näyttelijöiden hallintaan. Tässä tehtävässä harjoitellaan hieman järjestelmätestausta FluentLeniumin avulla. Tehtävässä ei ole automaattisia testejä, sillä sinun tehtävänä on toteuttaa ne.
 
 
+<h2>Näyttelijän lisääminen ja poistaminen</h2>
 
 
-<programming-exercise name='Movie Database Redux' } do %>
+Luo testikansioon `wad.selenium` testiluokka `ActorTest`, johon asetat Selenium-testaamiseen tarvittavat komponentit.
 
 
-    Muistamme toisesta osiosta myös tehtävän, missä tehtiin sovellus elokuvien ja näyttelijöiden hallintaan. Tässä tehtävässä harjoitellaan hieman järjestelmätestausta FluentLeniumin avulla. Tehtävässä ei ole automaattisia testejä, sillä sinun tehtävänä on toteuttaa ne.
-
-
-  <h2>Näyttelijän lisääminen ja poistaminen</h2>
-
-
-    Luo testikansioon `wad.selenium` testiluokka `ActorTest`, johon asetat Selenium-testaamiseen tarvittavat komponentit.
-
-
-
-    Toteuta testi, jolla varmistetaan että käyttäjän lisääminen ja poistaminen onnistuu. Testin tulee toimia seuraavasti:
+Toteuta testi, jolla varmistetaan että käyttäjän lisääminen ja poistaminen onnistuu. Testin tulee toimia seuraavasti:
 
 
 1. Menee näyttelijäsivulle
@@ -425,9 +404,7 @@ public class ElokuvatietokantaTest extends FluentTest {
 6. Tarkistaa että sivulla ei ole tekstiä "Van Damme"
 
 
-
-
-    Toteuta seuraavaksi testi, joka tekee seuraavat askeleet:
+Toteuta seuraavaksi testi, joka tekee seuraavat askeleet:
 
 
 1. Menee näyttelijäsivulle
@@ -445,16 +422,13 @@ public class ElokuvatietokantaTest extends FluentTest {
 13. Tarkistaa eteti sivulla ole tekstiä "Chuck Norris"
 
 
+<h2>Elokuvan lisääminen ja näyttelijän lisääminen elokuvaan</h2>
 
 
-  <h2>Elokuvan lisääminen ja näyttelijän lisääminen elokuvaan</h2>
+Luo testikansioon `wad.selenium` testiluokka `MovieTest`, johon asetat Selenium-testaamiseen tarvittavat komponentit.
 
 
-    Luo testikansioon `wad.selenium` testiluokka `MovieTest`, johon asetat Selenium-testaamiseen tarvittavat komponentit.
-
-
-
-    Toteuta seuraavat askeleet
+Toteuta seuraavat askeleet
 
 
 1. Mene elokuvasivulle
@@ -476,31 +450,7 @@ public class ElokuvatietokantaTest extends FluentTest {
 17. Tarkista että sivulla on teksti "Van Damme"
 
 
+Suorita taas testit klikkaamalla projektia oikealla hiirennäppäimellä ja valitsemalla `Test`.
 
 
-    Suorita taas testit klikkaamalla projektia oikealla hiirennäppäimellä ja valitsemalla `Test`.
-
-
-<% end %>
-
-
-##
-  Konfiguraatioprofiilit ja testaaminen
-
-
-
-
-  Testien ajamisessa voidaan käyttää myös konfiguraatioprofiileja. Kun sovellukselle on määritelty erilaisia profiileja, esimerkiksi kirjautumiseen liittyvät konfiguraatiot, voidaan tietty profiili aktivoida testeissä. Testin aktivointi tapahtuu annotaation <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/test/context/ActiveProfiles.html" target="_blank">ActiveProfiles</a> avulla.
-
-
-
-  Alla olevassa esimerkissä testiluokan testit suoritetaan siten, että käytössä on profiiliin "test" liittyvä konfiguraatio, eli se konfiguraatio, joka on määritelty annotaatiolla `@Profile("test")` (tai `@Profile(values = {"test", "muita"})` jos halutaan että samaa konfiguraatiota käytetään useammassa profiilissa.
-
-
-```java
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@ActiveProfiles("dev")
-public class ApplicationTest {
-    // ...
-```
+</programming-exercise>
