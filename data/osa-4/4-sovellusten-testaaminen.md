@@ -241,7 +241,7 @@ Alla ensimmäinen testimetodi varmistaa, että pyynnön käsittelevä kontroller
 MockMvc:n avulla voi testata käytännössä suurinta osaa palvelinsovellusten toiminnallisuudesta, mutta samalla se tarjoaa pääsyn samaan rajapintaan kuin mitä selain käsitteelee.
 
 
-<programming-exercise name='Airports and Airplanes Test' tmcname='osa04-Osa04_03.AirportsAndAirplanesTest'>
+<programming-exercise name='Airports and Aircrafts Test' tmcname='osa04-Osa04_03.AirportsAndAircraftsTest'>
 
 Muistamme edellisestä osiosta tehtävän, missä tehtiin sovellus lentokoneiden ja lentokenttien hallintaan. Tässä tehtävässä harjoitellaan hieman sekä integraatio- että järjestelmätestausta. Tehtävässä ei ole automaattisia testejä, joilla testattaisiin kirjoittamiasi testejä. Aina kun lisäät yksittäisen testin, voit ajaa testit klikkaamalla projektia oikealla hiirennapilla ja valitsemalla "Test".
 
@@ -383,7 +383,7 @@ Oleellista testien kirjoittamisessa on siis mahdollisuus kenttien tunnistamiseen
 <br/>
 
 
-<programming-exercise name='Movie Database Test'>
+<programming-exercise name='Movie Database Test' tmcname='osa04-Osa04_04.MovieDatabaseTest'>
 
 Tehtäväpohjassa on sovellus elokuvien ja näyttelijöiden hallintaan. Tässä tehtävässä harjoitellaan hieman järjestelmätestausta FluentLeniumin avulla. Kuten edellisessä tehtävässä, tässäkään tehtävässä ei ole automaattisia testejä vaan tehtävänäsi on toteuttaa ne.
 
