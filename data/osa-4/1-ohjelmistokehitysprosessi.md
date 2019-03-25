@@ -6,11 +6,10 @@ hidden: true
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- Osaat määritellä tietokantatauluja sekä tietokantataulujen välisiä yhteyksiä.
-- Tiedät mitä annotaatiot `@ManyToMany`, `@ManyToOne` ja `@OneToMany` tarkoittavat, ja tiedät mitä annotaatioille annettava parametri `mappedBy` tarkoittaa.
-- Osaat tallentaa tietokantaan olioita, jotka viittaavat toisiin olioihin.
+- TODO
 
 </text-box>
+
 
 Klassiseen ohjelmiston elinkaareen kuuluu vaatimusmäärittely, suunnittelu, toteutus, testaus, sekä ylläpito ja jatkokehitys. Vaatimusmäärittelyyn kuuluu ohjelmistoon liittyvien toiveiden ja vaatimusten kartoitus, jota seuraa suunnittelu, missä pohditaan miten vaatimukset toteutetaan. Toteutusvaihe sisältää ohjelmointia sekä sovelluksen elinympäristöön liittyvien komponenttien yhteensovittamista. Testaukseen kuuluu sovelluksen testaus niin automaattisesti kuin manuaalisesti. Kun ohjelmisto tai sen osa on toiminnassa, tulee elinkaaren osaksi myös käytössä olevasta ohjelmistosta löytyvien virheiden korjaaminen sekä uusien ominaisuuksien kehittäminen.
 
@@ -26,7 +25,7 @@ Ohjelmistoon liittyvistä toiveista ja vaatimuksista keskustellaan asiakkaan ja 
 Toiminnallisuuksien tärkeysjärjestykseen asettaminen tapahtuu yhdessä asiakkaan ja käyttäjien kanssa. Kun toiminnallisuudet ovat kutakuinkin tärkeysjärjestyksessä, valitaan niistä muutama kerrallaan työstettäväksi. Samalla varmistetaan asiakkaan kanssa, että ohjelmistokehittäjät ja asiakas ymmärtävät toiveen samalla tavalla. Kun toiminnallisuus on valmis, toiminnallisuus näytetään asiakkaalle ja asiakas pääsee kertomaan uusia toiminnallisuustoiveita sekä mahdollisesti uudelleenjärjestelemään vaatimusten tärkeysjärjestystä.
 
 
-Vaatimuksia ja toiveita, sekä niiden kulkemista projektin eri vaiheissa voidaan käsitellä esimerkiksi <a href="https://help.github.com/en/articles/about-project-boards" target="_blank">GitHub projectsin</a> tai <a href="https://trello.com/" target="_blank">Trello</a>n avulla. Mikäli ohjelmistoa kehittävä ryhmä sijaitsee samassa paikassa, eikä prosessia ole esimerkiksi asiakkaan toiveiden takia pakko laittaa verkkoon, on perinteinen valkotaulu ja post-it -laput lähes lyömätön yhdistelmä.
+Vaatimuksia ja toiveita, sekä niiden kulkemista projektin eri vaiheissa voidaan käsitellä esimerkiksi <a href="https://help.github.com/en/articles/about-project-boards" target="_blank">GitHub projectsin</a> tai <a href="https://trello.com/" target="_blank">Trellon</a> avulla. Mikäli ohjelmistoa kehittävä ryhmä sijaitsee samassa paikassa, eikä prosessia ole esimerkiksi asiakkaan toiveiden takia pakko laittaa verkkoon, on perinteinen valkotaulu ja post-it -laput lähes lyömätön yhdistelmä.
 
 <br/>
 
@@ -73,10 +72,7 @@ Käytännössä versioiden päivitys tuotantoon tapahtuu usein automaattisesti. 
 
 <br/>
 
-Kannattaa vielä lukea aiheesta <a href="https://medium.com/@felippepuhle/getting-started-with-spring-boot-travis-and-heroku-4562a723fd0e" target="_blank">blogikirjoitus</a>, joskin osa blogitekstin sisällöstä on jo hieman vanhentunutta.
-
-
-Tarkastelemme tässä osassa web-sovelluksen ohjelmistotuotantoprosessiin liittyviä askeleita... sovelluksen rakentee
+Tarkastelemme tässä osassa web-sovelluksen ohjelmistotuotantoprosessiin liittyviä askeleita...
 
 <text-box variant='hint' name='Teemaan liittyviä kursseja'>
 

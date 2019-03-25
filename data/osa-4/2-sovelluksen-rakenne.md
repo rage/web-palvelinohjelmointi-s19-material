@@ -15,7 +15,6 @@ hidden: true
 Web-sovellusten suunnittelussa noudatetaan useita arkkitehtuurimalleja. Tyypillisimpiä näistä ovat MVC-arkkitehtuuri sekä kerrosarkkitehtuuri. Kummassakin perusperiaatteena on vastuiden jako selkeisiin osakokonaisuuksiin.
 
 
-
 ### MVC-arkkitehtuuri
 
 MVC-arkkitehtuurin tavoitteena on käyttöliittymän erottaminen sovelluksen toiminnasta siten, että käyttöliittymät eivät sisällä sovelluksen toiminnan kannalta tärkeää sovelluslogiikkaa. MVC-arkkitehtuurissa ohjelmisto jaetaan kolmeen osaan: malliin (*model*, tiedon tallennus- ja hakutoiminnallisuus), näkymään (*view*, käyttöliittymän ulkoasu ja tiedon esitystapa) ja käsittelijään (*controller*, käyttäjältä saatujen käskyjen käsittely sekä sovelluslogiikka).
@@ -37,10 +36,11 @@ Web-sovelluksissa käsittelijän ohjelmakoodia suoritetaan vain kun selain lähe
 
 MVC-mallin perusidean noudattamisesta on useita hyötyjä. Käyttöliittymien (näkymien) suunnittelu ja toteutus voidaan eriyttää sovelluslogiikan toteuttamisesta, jolloin niitä voidaan työstää rinnakkain. Samalla ohjelmakoodi selkenee, sillä komponenttien vastuut ovat eriteltyjä -- näkymät eivät sisällä sovelluslogiikkaa, kontrollerin tehtävänä on käsitellä pyynnöt ja ohjata niitä eteenpäin, ja mallin vastuulla on tietoon liittyvät operaatiot. Tämän lisäksi sovellukseen voidaan luoda useampia käyttöliittymiä, joista jokainen käyttää samaa sovelluslogiikkaa, ja pyynnön kulku sovelluksessa selkiytyy.
 
+<quiznator id='5c98a55cddb6b814af32a9e2'></quiznator>
 
-TODO: essee MVP, MVVM
 
 ###  Kerrosarkkitehtuuri
+
 
 Kun sovellus jaetaan selkeisiin vastuualueisiin, selkeytyy myös pyynnön kulku sovelluksessa. Kerrosarkkitehtuuria noudattamalla pyritään tilanteeseen, missä sovellus on jaettu itsenäisiin kerroksiin, jotka toimivat vuorovaikutuksessa muiden kerrosten kanssa.
 
@@ -79,7 +79,7 @@ Kontrollerikerroksen luokissa käytetään annotaatiota `@Controller`, ja luokki
 ### Palvelukerros
 
 
-Palvelukerros tarjoaa kontrollerikerrokselle palveluita, joita kontrollerikerros voi käyttää. Palvelut voivat esimerkiksi abstrahoida kolmannen osapuolen tarjoamia komponentteja tai rajapintoja, tai sisältää toiminnallisuutta, jonka toteuttaminen kontrollerissa ei ole järkevää esimerkiksi sovelluksen ylläpidettävyyden kannalta.
+Palvelukerros tarjoaa kontrollerikerrokselle palveluita. Palvelut voivat esimerkiksi abstrahoida kolmannen osapuolen tarjoamia komponentteja tai rajapintoja, tai sisältää toiminnallisuutta, jonka toteuttaminen kontrollerissa ei ole järkevää esimerkiksi sovelluksen ylläpidettävyyden kannalta.
 
 Palvelukerroksen luokat merkitään annotaatiolla `@Service` tai `@Component`. Tämä annotaatio tarkoittaa käytännössä sitä, että sovelluksen käynnistyessä luokasta tehdään olio, joka ladataan sovelluksen muistiin. Tämän jälkeen jokaiseen luotavaan olioon, jonka luokassa on `@Autowired`-annotaatiolla merkitty oliomuuttuja, sisällytetään muistiin ladattu olio.
 
@@ -212,7 +212,7 @@ public class BankingService {
     }
 
     @Transactional
-    public void transfer(String from,String to, Integer amount) {
+    public void transfer(String from, String to, Integer amount) {
         Account accountFrom = this.accountRepository.findByIban(from);
         Account accountTo = this.accountRepository.findByIban(to);
 
@@ -248,9 +248,13 @@ public class BankingController {
 }
 ```
 
-<programming-exercise name="NIMI">
 
-TODO
+
+<programming-exercise name='Jokes' tmcname='osa04-Osa04_01.Jokes'>
+
+Tehtäväpohjassa on vitsejä kolmannen osapuolen verkkopalvelusta hakeva ja niitä käyttäjälle näyttävä sovellus. Sovellus tarjoaa vitsien tarkastelun lisäksi mahdollisuuden vitsien hyvyyden äänestämiseen. Tällä hetkellä sovelluksen luokka `JokeController` sisältää vitsien äänestämiseen liittyvää toiminnallisuutta.
+
+Muokkaa sovelusta siten, että luot erillisen `VoteService`-luokan, joka kapseloi äänestystoiminnallisuuden. Uudessa versiossa luokan `JokeController` ei tule käyttää rajapintaa `VoteRepository` muuten kuin välillisesti `VoteService`-luokan kautta.
 
 </programming-exercise>
 
@@ -258,17 +262,14 @@ TODO
 ### Tallennuslogiikka
 
 
-Tallennuslogiikkakerros sisältää tietokannan käyttöön liittyvät oleelliset oliot. Pankki saattaisi tarvita esimerkiksi Tilitapahtumiin liittyvää tallennuslogiikkaa. Täällä olisi esimerkiksi `Repository`-rajapinnat, jotka perivät rajapinnan `JpaRepository`.
+Tallennuslogiikkakerros sisältää tiedon tallentamiseen liittyvät oleelliset oliot. Tämä sisältää niin relaatiotietokantojen käsittelyyn tarkoitettujen `JpaRepository`-rajapinnan perivät rajapinnat kuin muiden tietokantojen ja tietovarastojen käsittelyyn tarkoitetut luokat. Spring-sovelluksissa tiedon käsittelyyn käytetään tyypillisesti <a href="https://spring.io/projects/spring-data" target="_blank">Spring Data</a>-projektia, joka tarjoaa välineitä hyvin monenkaltaisten tietokantojen käsittelyyn. Esimerkiksi suositun <a href="https://www.mongodb.com/" target="_blank">MongoDB</a>-tietokannanhallintajärjestelmän käyttöönotto onnistuu <a href="https://spring.io/projects/spring-data-mongodb" target="_blank">Spring Data MongoDB</a>-projektin avulla kun taas hyvin laajat projektit voivat käyttää vaikkapa <a href="https://cassandra.apache.org/" target="_blank">Apache Cassandraa</a> <a href="https://spring.io/projects/spring-data-cassandra" target="_blank">Spring Data Cassandra</a>-projektin avulla.
 
-TODO: esimerkki JpaRepositorystä
 
-TODO: esimerkki ...
+<br/>
 
-TODO: esimerkki Query By Examplesta
-https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/domain/Example.html?is-external=true
+Tällä kurssilla käsittelemme Spring-sovelluskehyksen tarjoamia tallennusmahdollisuuksia hyvin pintapuolisesti, vain <a href="https://spring.io/projects/spring-data-jpa" target="_blank">Spring Data JPA</a>-projektia hyödyntäen. Tämä on tarkoituksenmukaista, sillä oikeastaan yhdellä kurssilla ei voisi mitenkään käsitellä kaikkia tiedon käsittelyyn tarjolla olevia välineitä.
 
-https://en.wikipedia.org/wiki/Query_by_Example
-
+<br/>
 
 
 ### Tietoa sisältävät oliot
@@ -280,10 +281,4 @@ Tiedon esittämiseen liittyvät oliot elävät kerrosarkkitehtuurissa kerrosten 
 Sovellusten kehittämisessä näkee välillä myös jaon useampaan erilaiseen tietoa sisältävään oliotyyppiin. Entiteettejä käytetään tietokantatoiminnallisuudessa, mutta välillä näkymien käsittelyyn palautettavat oliot pidetään erillisinä entiteeteistä. Tähän ei ole oikeastaan yhtä oikeaa tapaa: lähestymistapa valitaan tyypillisesti ohjelmistokehitystiimin kesken.
 
 
-
-<programming-exercise name='Refactoring'>
-
-
-Tehtäväpohjassa on sovellus, joka hakee vitsejä verkkopalvelusta. Sovelluksessa on myös toiminnallisuus vitsien hyvyyden äänestämiseen. Muokkaa sovellusta siten, että vitsien äänestystoiminnallisuus eriytetään omaan Service-luokkaan, jolloin mm. luokan JokeController vastuualueet selkeytyvät.
-
-</programming-exercise>
+<quiznator id='5c98ca353972a9147410bbd0'></quiznator>

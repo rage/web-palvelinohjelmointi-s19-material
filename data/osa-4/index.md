@@ -11,6 +11,7 @@ TODO...
 
 Osaat jakaa sovelluksen osia sovelluksen sisäisiksi palveluiksi ("Service"). Osaat kirjoittaa eri tason testejä sovelluksillesi. Ymmärrät tarpeen web-sovellusten kehitysprosessin automatisoinnille sekä web-sovellusten jatkuvalle inkrementaaliselle kehitykselle. Ymmärrät versionhallintapalvelun (esim. Github), sovelluksen testejä suorittavan integraatiopalvelun (esim. Travis CI) sekä testi- ja tuotantoympäristön (esim. Heroku) yhteistyön.
 
+
 <please-login></please-login>
 
 <pages-in-this-section></pages-in-this-section>

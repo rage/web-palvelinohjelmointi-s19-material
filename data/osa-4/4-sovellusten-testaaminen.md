@@ -14,9 +14,7 @@ hidden: true
 
 Sovellusten testaaminen helpottaa sekä kehitystyötä että tulevaa ylläpitotyötä. Testaaminen voidaan karkeasti jakaa kolmeen osaan: yksikkötestaukseen, integraatiotestaukseen ja järjestelmätestaukseen. Tämän lisäksi on mm. myös käytettävyys- ja tietoturvatestaus, joita emme tässä käsittele tarkemmin.
 
-
 Yksikkötestauksessa tarkastellaan sovellukseen kuuluvia yksittäisiä komponentteja ja varmistetaan että niiden tarjoamat rajapinnat toimivat tarkoitetulla tavalla. Integraatiotestauksessa pyritään varmistamaan, että komponentit toimivat yhdessä kuten niiden pitäisi. Järjestelmätestauksessa varmistetaan, että järjestelmä toimii vaatimusten mukaan järjestelmän käyttäjille tarjotun rajapinnan (esim. selain) kautta.
-
 
 Kaikkien kolmen testaustyypin automaatioon löytyy Springistä välineitä. Tarkastellaan näitä seuraavaksi.
 
@@ -24,20 +22,9 @@ Kaikkien kolmen testaustyypin automaatioon löytyy Springistä välineitä. Tark
 ### Yksikkötestaus
 
 
-Yksikkötestauksella tarkoitetaan lähdekoodiin kuuluvien yksittäisten osien testausta. Termi yksikkö viittaa ohjelman pienimpiin mahdollisiin testattaviin toiminnallisuuksiin, kuten olion tarjoamiin metodeihin. Seuratessamme <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle" target="_blank">single responsibility principle</a>ä, jokaisella oliolla ja metodilla on yksi selkeä vastuu, jota voi myös testata. Testaus tapahtuu yleensä testausohjelmistokehyksen avulla, jolloin luodut testit voidaan suorittaa automaattisesti. Yleisin Javalla käytettävä testauskehys on JUnit, jonka saa käyttöön lisäämällä siihen liittyvän riippuvuuden `pom.xml`-tiedostoon.
+Yksikkötestauksella tarkoitetaan lähdekoodiin kuuluvien yksittäisten osien testausta. Termi yksikkö viittaa ohjelman pienimpiin mahdollisiin testattaviin toiminnallisuuksiin, kuten olion tarjoamiin metodeihin. Seuratessamme <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle" target="_blank">single responsibility principleä</a>, jokaisella oliolla ja metodilla on yksi selkeä vastuu, jota voi myös testata. Testaus tapahtuu yleensä testausohjelmistokehyksen avulla, jolloin luodut testit voidaan suorittaa automaattisesti. Yleisin Javalla käytettävä testauskehys on JUnit, johon on jo tutustuttu pikaisesti kursseilla ohjelmoinnin perusteet (TKT10002) ja ohjelmoinnin jatkokurssi (TKT10003).
 
-<br/>
-
-
-```xml
-<dependency>
-    <groupId>junit</groupId>
-    <artifactId>junit</artifactId>
-</dependency>
-```
-
-
-Yksittäisen riippuvuuden määre `scope` kertoo milloin riippuvuutta tarvitaan. Määrittelemällä `scope`-elementin arvoksi `test` on riippuvuudet käytössä vain testejä ajettaessa. Uusia testiluokkia voi luoda NetBeansissa valitsemalla New -> Other -> JUnit -> JUnit Test. Tämän jälkeen NetBeans kysyy testiluokalle nimeä ja pakkausta. Huomaa että lähdekoodit ja testikoodit päätyvät erillisiin kansioihin -- juurin näin sen pitääkin olla. Kun testiluokka on luotu, on projektin rakenne kutakuinkin seuraavanlainen.
+Uusia testiluokkia voi luoda NetBeansissa valitsemalla New -> Other -> JUnit -> JUnit Test. Tämän jälkeen NetBeans kysyy testiluokalle nimeä ja pakkausta. Huomaa että lähdekoodit ja testikoodit päätyvät erillisiin kansioihin -- juurin näin sen pitääkin olla. Kun testiluokka on luotu, on projektin rakenne kutakuinkin seuraavanlainen.
 
 
 ```
@@ -56,15 +43,14 @@ Yksittäisen riippuvuuden määre `scope` kertoo milloin riippuvuutta tarvitaan.
 ```
 
 
-Tehtäväpohjissa JUnit-testikirjasto on valmiina mukana. Yksikkötestauksesta JUnit-kirjaston avulla löytyy ohjeistusta aiemmin käydyiltä ohjelmointikursseilta sekä kursseilta Ohjelmistotekniikan menetelmät (TKT-20002) ja Ohjelmistotuotanto (TKT-20006).
+Kurssin tehtäväpohjissa JUnit-testikirjasto on valmiina mukana. Yksikkötestauksesta JUnit-kirjaston avulla löytyy ohjeistusta aiemmin käydyiltä ohjelmointikursseilta TKT10002 ja TKT10003 sekä kursseilta Ohjelmistotekniikan menetelmät (TKT-20002) ja Ohjelmistotuotanto (TKT-20006).
 
 
 ### Integraatiotestaus
 
-Spring tarjoaa `spring-test`-kirjaston, jonka avulla JUnit-kirjasto saa `@Autowired`-annotaatiot toimimaan. Tämän kautta pääsemme tilanteeseen, missä voimme injektoida testimetodille esimerkiksi repository-rajapinnan toteuttavan olion sekä testata sen tarjoamien metodien toimintaa. Testattava palvelu voi hyödyntää muita komponentteja, jolloin testauksen kohteena on kokonaisuuden toiminta yhdessä.
+Spring tarjoaa `spring-boot-starter-test`-kirjaston, jonka avulla JUnit-kirjasto saa `@Autowired`-annotaatiot toimimaan. Tämän avulla voimme injektoida testimetodille esimerkiksi repository-rajapinnan toteuttavan olion sekä testata sen tarjoamien metodien toimintaa. Testattava palvelu voi hyödyntää muita komponentteja, jolloin testauksen kohteena on kokonaisuuden toiminta yhdessä.
 
-
-Spring test-komponentista on olemassa Spring Boot -projekti, jonka voimme ottaa käyttöömme lisäämällä seuraavan riippuvuuden pom.xml-tiedostoon. Käytetyn riippuvuuden versio liittyy Spring Boot -projektin versioon, eikä sitä tarvitse määritellä tarkemmin.
+Käytetyn riippuvuuden versio liittyy Spring Boot -projektin versioon, eikä sitä tarvitse määritellä tarkemmin.
 
 
 ```xml
@@ -98,7 +84,6 @@ public class ApplicationTest {
 ```
 
 Käynnistämällä Springin osana testejä, saamme käyttöömme oliokontekstin, jonka avulla voimme asettaa testattavat oliot testiluokkiin testaamista varten. Testattavien olioiden riippuvuudet asetetaan myös automaattisesti, eli jos `BankingService` sisältää muita komponentteja, on ne myös automaattisesti asetettu.
-
 
 Voimme ylläolevalla lähestymistavalla testata myös sitä, että sovelluksemme eri osat toimivat yhteen toivotusti. Oletetaan, että käytössämme on aiemmin esitelty luokka `BankingService`, joka tarjoaa metodin `transfer`. Metodin pitäisi siirtää annettu summan kahden tilin välillä. Tämän lisäksi käytössämme on `AccountRepository`, jonka avulla voimme hakea tietokannasta tietoa tilien nimien perusteella.
 
@@ -147,13 +132,16 @@ Yllä oleva testi testaa vain tilisiirron onnistumista. Se ei kuitenkaan tarkast
 
 #### Testiprofiili
 
-Edellisessä esimerkissä on myös toinenkin ongelma. Kun testissä luodaan uudet tilit ja siirretään rahaa niiden välillä, muutokset tapahtuvat oletuksena käytössä olevaan tietokantaan. Tähän asti käytössämme olevissa sovelluksissa käytössä on ollut H2-tietokannanhallintajärjestelmän tiedostoon kirjoittava versio. Tämä tarkoittaa sitä, että myös yllä toteutetuissa testeissä on käytössä sama tietokannanhallintajärjestelmä. Tämä ei ole toivottu tilanne.
+Edellisessä esimerkissä on toinenkin ongelma. Kun testissä luodaan uudet tilit ja siirretään rahaa niiden välillä, muutokset tapahtuvat oletuksena käytössä olevaan tietokantaan. Tähän asti käytössä on ollut H2-tietokannanhallintajärjestelmän tiedostoon kirjoittava versio. Tämä tarkoittaa sitä, että myös yllä toteutetuissa testeissä on käytössä sama tietokannanhallintajärjestelmä ja testeissä tehtävät muutokset kirjoitetaan tiedostoon, josta ne ovat myös testien ajamisen jälkeen. Tämä ei ole toivottu tilanne.
 
 Luodaan uusi konfiguraatiotiedosto nimeltä `application-test.properties`. Konfiguraatiotiedoston pääte `-test` kertoo Springille, että kyseinen konfiguraatiotiedosto tulee ladata käyttöön mikäli käytössä on profiili `test`.
 
 Määritellään konfiguraatio siten, että tietokantana on muistiin ladattava tietokanta. Tämä onnistuu seuraavasti:
 
 ```
+spring.datasource.url=jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
 ```
 
 Kun lisäämme testit sisältävään lähdekoodiin annotaation `@ActiveProfiles("test")`, käytetään testeissä `test`-profiiliin liittyvää konfiguraatiota.
@@ -178,17 +166,15 @@ Nyt testien käytössä on tietokanta, joka luodaan aina testien käynnistyksen 
 ### Järjestelmätestaus
 
 
-Järjestelmätestauksessa pyritään varmistamaan, että järjestelmä toimii toivotulla tavalla. Järjestelmää testataan saman rajapinnan kautta, kuin mitä sen loppukäyttäjät käyttävät. Järjestelmätestaukseen on monenlaisia työkaluja, joista käsittelemme tässä kahta. Tutustumme ensin integraatiotestauksessa käytetyn `spring-test`-komponenttiin järjestelmätason testaustoiminnallisuuteen, jonka jälkeen tutustumme harjoitustehtävän kautta `Selenium` ja `FluentLenium` -kirjastoihin.
+Järjestelmätestauksessa pyritään varmistamaan, että järjestelmä toimii toivotulla tavalla. Järjestelmää testataan saman rajapinnan kautta, kuin mitä sen loppukäyttäjät käyttävät. Järjestelmätestaukseen on monenlaisia työkaluja, joista käsittelemme tässä kahta. Tutustumme ensin integraatiotestauksessa järjestelmätason testaustoiminnallisuuteen, jonka jälkeen tutustumme harjoitustehtävän `FluentLenium`-kirjastoon.
 
 
 #### MockMvc
 
-Springin tarjoama `spring-test` tarjoaa tuen järjestelmätestaamiseen. Annotaatiolla `@SpringBootTest` testeillä on käytössä myös web-sovelluksen konteksti, jonka avulla voidaan luoda <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/test/web/servlet/MockMvc.html" target="_blank">MockMvc</a>-olio. MockMvc-oliolla pystymme tekemään pyyntöjä sovelluksen tarjoamiin osoitteisiin, tarkistelemaan pyyntöjen onnistumista, sekä tarkastelemaan vastauksena saatua dataa.
+Voimme tuoda halutessamme testien käyttöön koko web-sovelluksen kontekstin. Tämä onnistuu <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/test/web/servlet/MockMvc.html" target="_blank">MockMvc</a>-olion avulla -- MockMvc-olio mahdollistaa pyyntöjen tekemisen sovelluksen tarjoamiin osoitteisiin, pyyntöjen tulosten tarkastelun, sekä pyyntöjen vastauksena tulleen datan tarkastelun. MockMvc-olion käyttö vaatii testeihin ylimääräisen annotaation `@AutoConfigureMockMvc`.
 
 
-TODO: määrittele siten, että mockmvc automaattisesti käytössä
-
-Alla oleva esimerkki käynnistää sovelluksen ja tekee kolme GET-pyyntöä osoitteeseen `/messages`. Ensimmäinen pyyntö liittyy testiin, missä varmistetaan että vastaus on sisältää statuskoodin `200` eli "OK", toinen pyyntö liittyy testiin joka varmistaa että vastauksen tyyppi on JSON-muotoista dataa, ja kolmas pyyntö tarkistaa että vastauksessa on merkkijono "Awesome". Alun `setUp`-metodi luo `MockMvc`-olion injektoidun palveinkontekstin perusteella.
+Alla oleva esimerkki käynnistää sovelluksen ja tekee kaksi GET-pyyntöä osoitteeseen `/messages`. Ensimmäinen pyyntö liittyy testiin, missä varmistetaan että vastaus sisältää statuskoodin `200` eli "OK". Toinen pyyntö liittyy testiin, joka tarkistaa tarkistaa että vastauksessa on merkkijono "Awesome".
 
 
 ```java
@@ -201,29 +187,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@AutoConfigureMockMvc
 public class MessagesTest {
 
   @Autowired
-  private WebApplicationContext webAppContext;
-
   private MockMvc mockMvc;
-
-  @Before
-  public void setUp() {
-      this.mockMvc = MockMvcBuilders.webAppContextSetup(webAppContext).build();
-  }
 
   @Test
   public void statusOk() throws Exception {
       mockMvc.perform(get("/messages"))
               .andExpect(status().isOk());
-  }
-
-
-  @Test
-  public void responseTypeApplicationJson() throws Exception {
-      mockMvc.perform(get("/messages"))
-              .andExpect(content().contentType(MediaType.APPLICATION_JSON));
   }
 
   @Test
@@ -237,8 +210,9 @@ public class MessagesTest {
 }
 ```
 
-
 Voit myös testata modeliin asetettujen attribuuttien olemassaoloa ja oikeellisuutta. Olemassaolon voi tarkistaa `model()`-metodin kautta, ja `MvcResult`-olion kautta pääsee käsiksi modelin sisältöön.
+
+Alla ensimmäinen testimetodi varmistaa, että pyynnön käsittelevä kontrolleri lisää model-olioon attribuutin, jonka nimi on "messages". Toisessa haetaan attribuuttiin "messages" liittyvä tietosisältö -- tässä oletetaan, että se sisältää listan `Message`-tyyppisiä olioita.
 
 
 ```java
@@ -256,7 +230,7 @@ Voit myös testata modeliin asetettujen attribuuttien olemassaoloa ja oikeellisu
       // oletetaan, että kontrolleri asettaa kokoelman Message-tyyppisiä olioita
       // modeliin
 
-      Collection<Message> messages = (Collection) res.getModelAndView().getModel().get("messages");
+      List<Message> messages = (List) res.getModelAndView().getModel().get("messages");
 
       // tarkista kokoelma
   }
@@ -266,36 +240,32 @@ Voit myös testata modeliin asetettujen attribuuttien olemassaoloa ja oikeellisu
 MockMvc:n avulla voi testata käytännössä suurinta osaa palvelinsovellusten toiminnallisuudesta, mutta samalla se tarjoaa pääsyn samaan rajapintaan kuin mitä selain käsitteelee.
 
 
+<programming-exercise name='Airports and Airplanes Test' tmcname='osa04-Osa04_03.AirportsAndAirplanesTest'>
 
+Muistamme edellisestä osiosta tehtävän, missä tehtiin sovellus lentokoneiden ja lentokenttien hallintaan. Tässä tehtävässä harjoitellaan hieman sekä integraatio- että järjestelmätestausta. Tehtävässä ei ole automaattisia testejä, joilla testattaisiin kirjoittamiasi testejä. Aina kun lisäät yksittäisen testin, voit ajaa testit klikkaamalla projektia oikealla hiirennapilla ja valitsemalla "Test".
 
-<programming-exercise name='Airports and Airplanes Redux'>
+Joudut todennäköisesti turvautumaan internetiin tehtävää ratkaistessasi. Pidä kirjaa sivuista, joilta hait apua tehtävän ratkaisemiseen -- tämän sivun lopussa kysytään testaustehtävien ratkaisemiseen käyttämiäsi lähteitä.
 
-Muistamme edellisestä osiosta tehtävän, missä tehtiin sovellus lentokoneiden ja lentokenttien hallintaan. Tässä tehtävässä harjoitellaan hieman sekä integraatio- että järjestelmätestausta.
-
-Huom! Tässä tehtävässä ei ole automaattisia testejä, joilla testattaisiin kirjoittamiasi testejä. Palauttaessasi tehtävän olet tarkistanut, että kirjoittamasi testit toimivat kuten tehtävänannossa on kuvattu.
+Palauttaessasi tehtävän olet tarkistanut, että kirjoittamasi testit toimivat kuten tehtävänannossa on kuvattu.
 
 
 <h2>AirportServiceTest</h2>
 
 
-Sovelluksessa on luokka `AirportService`, mikä sijaitsee pakkauksessa `wad.service`. Sille ei kuitenkaan ole yhtäkään testiä :(
+Sovelluksessa on luokka `AirportService`, mikä sijaitsee pakkauksessa `airports`. Sille ei kuitenkaan ole yhtäkään testiä :(
 
-Lisää testikansioon (`Test Packages`) pakkaus `wad.service`, ja luo sinne luokka `AirportServiceTest`.
+Lisää testikansion (`Test Packages`) pakkaukseen `airports` luokka `AirportServiceTest`.
 
-Lisää luokalle tarvittavat annotaatiot sekä oliomuuttujat, ja toteuta luokalle testimetodit, joiden avulla testataan että haluttu lentokone todellakin lisätään lentokentälle. Haluat ainakin tietää että:
+Lisää luokalle `AirportServiceTest` tarvittavat annotaatiot ja injektoi sinne oliomuuttujiksi `AirportService` ja `AirportRepository` -oliot. Toteuta luokkaan `AirportServiceTest` testimetodit, joiden avulla testataan, että luokan `AirportService` metodit toimivat oikein. Haluat varmistaa että:
 
-- Kun lentokone on lisätty lentokentälle, tietokannasta samalla tunnuksella haettavalla lentokoneella on asetettu lentokenttä, ja se on juuri se lentokenttä mihin kone on lisätty.
-- Kun lentokone on lisätty lentokentälle, lentokentältä löytyy myös kyseinen kone.
-- Kun lentokone on lisätty yhdelle lentokentälle, se ei ole muilla lentokentillä.
-- Lentokoneen lisääminen samalle lentokentälle useasti ei johda siihen, että lentokenttä sisältää saman koneen monta kertaa.
-
-Aina kun lisäät yksittäisen testin, voit ajaa testit klikkaamalla projektia oikealla hiirennapilla ja valitsemalla "Test".
+- Kun uusi lentokenttä luodaan `AirportService`-luokan metodilla `create`, lentokenttä tallentuu tietokantaan ja tietokannasta löytyy annetuilla lentokenttä annetuilla parametreilla. Tee tälle tarkastukselle oma testimetodi.
+- Kun lentokentät haetaan luokan `AirportService` metodilla `list`, metodi palauttaa kaikki tietokannassa olevat lentokentät. Tee tälle tarkastukselle oma testimetodi. Testimetodin alussa kannattaa lisätä tietokantaan muutamia lentokenttiä, jolloin tietokanta ei ole varmasti tyhjä.
+- Kun luokan `AirportService` metodilla `create` luodaan jo tietokannassa oleva lentokenttä, ei tietokantaan tule uutta samannimistä lentokenttää. Tee tälle tarkastukselle oma testimetodi. Kun ajat testit, huomaat, että tätä tarkastusta ei ole toteutettu luokan `AirportService` metodiin `create`. Lisää tarkastus myös `create`-metodiin.
 
 
 <h2>AircraftControllerTest</h2>
 
-
-Luo testikansioon pakkaus `wad.controller` ja lisää sinne luokka `AircraftControllerTest`. Lisää luokkaan tarvittavat määrittelyt, jotta voit käyttää `MockMvc`-komponenttia testeissä.
+Lisää testikansion (`Test Packages`) pakkaukseen `airports` luokka `AircraftControllerTest`. Lisää luokkaan tarvittavat määrittelyt, jotta voit käyttää `MockMvc`-komponenttia testeissä.
 
 Tee seuraavat testit:
 
@@ -303,49 +273,40 @@ Tee seuraavat testit:
 - Kun osoitteeseen `/aircrafts` tehdään POST-pyyntö, jonka parametriksi annetaan `name`-kenttä, jonka arvona on "HA-LOL", pyynnön vastaukseksi tulee uudelleenohjaus. Tee tämän jälkeen erillinen kysely tietokantaan esim. `AircraftRepository`:n avulla, ja varmista, että tietokannasta löytyy lentokone, jonka nimi on `HA-LOL`.
 - Kun osoitteeseen `/aircrafts` tehdään POST-pyyntö, jonka parametriksi annetaan `name`-kenttä, jonka arvona on "XP-55", pyynnön vastaukseksi tulee uudelleenohjaus. Tee tämän jälkeen GET-pyyntö osoitteeseen `/aircrafts`, ja tarkista että pyynnön vastauksena saatavan `model`-olion sisältämässä `"aircrafts"`-listassa on juuri luotu lentokone.
 
-
-Tässäkin tehtävässä, aina kun lisäät yksittäisen testin, voit ajaa testit klikkaamalla projektia oikealla hiirennapilla ja valitsemalla "Test".
-
 </programming-exercise>
 
 
 
-### FluentLenium
+#### FluentLenium
 
 
-MockMvc:n lisäksi järjestelmätestaukseen käytetään melko paljon käyttöliittymän testaamiseen tarkoitettua <a href="http://www.seleniumhq.org/" target="_blank">Selenium</a>ia ja siihen liittyviä lisäosia kuten <a href="https://github.com/FluentLenium/FluentLenium" target="_blank">FluentLenium</a>. Käytännössä edellämainitut ovat web-selaimen toimintojen automatisointiin tarkoitettuja välineitä, jotka antavat sovelluskehittäjälle mahdollisuuden käydä läpi sovelluksen käyttöliittymää ohjelmallisesti.
+MockMvc:n lisäksi järjestelmätestaukseen käytetään melko paljon käyttöliittymän testaamiseen tarkoitettua <a href="http://www.seleniumhq.org/" target="_blank">Selenium</a>ia ja siihen liittyviä lisäosia kuten <a href="https://fluentlenium.com/" target="_blank">FluentLenium</a>ia. Nämä kirjastot ovat web-selaimen toimintojen automatisointiin tarkoitettuja välineitä, jotka antavat sovelluskehittäjälle mahdollisuuden käydä läpi sovelluksen käyttöliittymää ohjelmallisesti. Kirjastot poikkeavat edellä nähdystä `MockMvc`-oliosta siten, että ne mahdollistavat myös testien ajamisen selaimessa --
+
+<br/>
 
 
 Lisätään FluentLenium-kirjaston vaatimat riippuvuudet, oletetaan että testit kirjoitetaan JUnit-testikirjaston avulla (FluentLenium tarjoaa myös muita vaihtoehtoja).
 
 ```xml
 <dependency>
-  <groupId>org.fluentlenium</groupId>
-  <artifactId>fluentlenium-core</artifactId>
-  <version>3.4.1</version>
-  <scope>test</scope>
+    <groupId>org.fluentlenium</groupId>
+    <artifactId>fluentlenium-junit</artifactId>
+    <version>3.7.1</version>
+    <scope>test</scope>
 </dependency>
 <dependency>
-  <groupId>org.fluentlenium</groupId>
-  <artifactId>fluentlenium-junit</artifactId>
-  <version>3.4.1</version>
-  <scope>test</scope>
+    <groupId>org.fluentlenium</groupId>
+    <artifactId>fluentlenium-assertj</artifactId>
+    <version>3.7.1</version>
+    <scope>test</scope>
 </dependency>
 <dependency>
-  <groupId>org.fluentlenium</groupId>
-  <artifactId>fluentlenium-assertj</artifactId>
-  <version>3.4.1</version>
-  <scope>test</scope>
-</dependency>
-<dependency>
-  <groupId>org.seleniumhq.selenium</groupId>
-  <artifactId>htmlunit-driver</artifactId>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>htmlunit-driver</artifactId>
 </dependency>
 ```
 
-
-Ajatellaan loppukäyttäjän haluamaa toiminnallisuutta "Käyttäjä voi ilmoittautua oppitunnille". Järjestelmä tarjoaa sivun, jonka ensimmäinen linkki vie ilmoittautumissivulle. Ilmoittautumissivulla tulee olla tietty otsikko -- varmistamme, että olemme oikealla sivulla. Tämän lisäksi ilmoittautumissivulla on lomakekenttä, jonka attribuutin `id` arvo on `name`. Jos kentällä on attribuutti `id`, voidaan se valita kirjoittamalla `#kentannimi`. Täytetään kenttään arvo "Bob" ja lähetetään lomake. Tämän jälkeen sivulla tulee olla teksti "Ilmoittautuminen onnistui!".
-
+Oletetaan, että käytössämme on sovellus, joka tarjoaa ilmoittautumismahdollisuuden. Testaamme toiminnallisuutta "Käyttäjä voi ilmoittautua oppitunnille". Järjestelmä tarjoaa sivun, jonka ensimmäinen linkki vie ilmoittautumissivulle. Ilmoittautumissivulla tulee olla tietty otsikko -- varmistamme, että olemme oikealla sivulla. Tämän lisäksi ilmoittautumissivulla on lomakekenttä, jonka attribuutin `id` arvo on `name`. Täytetään kenttään arvo "Bob" ja lähetetään lomake. Tämän jälkeen sivulla tulee olla teksti "Ilmoittautuminen onnistui!".
 
 ```java
 // importit
@@ -373,84 +334,69 @@ public class ElokuvatietokantaTest extends FluentTest {
 // ...
 ```
 
-Yllä annotaatio `@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)` käynnistää palvelimen integraatiotestausta satunnaisessa portissa, joka saadaan muuttujaan `port` annotaation `@LocalServerPort` avulla.
+Yllä annotaatio `@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)` käynnistää palvelimen integraatiotestausta varten satunnaisessa portissa. Sovelluksen portti saadaan muuttujaan `port` annotaation `@LocalServerPort` avulla.
 
+Yllä menemme ensin paikalliseen osoitteeseen `http://localhost:*portti*`, missä portin numero on satunnaisesti valittu -- surffaamme siis haluttuun osoitteeseen. Haemme tämän jälkeen ensimmäisen linkin, eli `a`-elementin sivulta, ja klikkaamme sitä. Tämän jälkeen tarkistamme, että sivun otsake on `Ilmoittautuminen`. Tätä seuraa kentän, jonka id-attribuutin arvo on "name" täyttäminen merkkijonolla "Bob"  -- tietyn kentän hakeminen onnistuu `find`-metodilla, jolle annetaan parametrina kentän tiedot: jos kentällä on attribuutti `id`, voidaan se tunnistaa testeissä merkkijonolla `#idattribuutinarvo` eli risuaidalla '#', jota seuraa kentän attribuutin `id` arvo.
 
-Yllä menemme ensin paikalliseen osoitteeseen `http://localhost:*portti*`, missä portin numero on satunnaisesti valittu -- surffaamme siis haluttuun osoitteeseen. Haemme tämän jälkeen ensimmäisen linkin, eli `a`-elementin sivulta, ja klikkaamme sitä. Tämän jälkeen tarkistamme, että sivun otsake on `Ilmoittautuminen`. Tätä seuraa kentän, jonka id on "name" täyttäminen "Bob"-merkkijonolla, jonka jälkeen lomake lähetetään. Kun lomake on lähetetty, haetaan sivun lähdekoodista tekstiä "Ilmoittautuminen onnistui!". Jos tekstiä ei löydy, testi epäonnistuu.
-
+Lopulta lomake lähetetään. Kun lomake on lähetetty, haetaan sivun lähdekoodista tekstiä "Ilmoittautuminen onnistui!". Jos tekstiä ei löydy, testi epäonnistuu.
 
 FluentLenium-kirjastoon liittyvää dokumentaatiota löytyy osoitteesta <a href="http://www.fluentlenium.org/" target="_blank">http://www.fluentlenium.org/</a>, jonka lisäksi googlesta löytyy apua seuraavaan tehtävään.
 
 
 <programming-exercise name='Movie Database Redux'>
 
-Muistamme toisesta osiosta myös tehtävän, missä tehtiin sovellus elokuvien ja näyttelijöiden hallintaan. Tässä tehtävässä harjoitellaan hieman järjestelmätestausta FluentLeniumin avulla. Tehtävässä ei ole automaattisia testejä, sillä sinun tehtävänä on toteuttaa ne.
+Tehtäväpohjassa on sovellus elokuvien ja näyttelijöiden hallintaan. Tässä tehtävässä harjoitellaan hieman järjestelmätestausta FluentLeniumin avulla. Kuten edellisessä tehtävässä, tässäkään tehtävässä ei ole automaattisia testejä vaan tehtävänäsi on toteuttaa ne.
 
+Joudut todennäköisesti turvautumaan internetiin tehtävää ratkaistessasi. Pidä kirjaa sivuista, joilta hait apua tehtävän ratkaisemiseen -- tämän sivun lopussa kysytään testaustehtävien ratkaisemiseen käyttämiäsi lähteitä.
 
 <h2>Näyttelijän lisääminen ja poistaminen</h2>
 
 
-Luo testikansioon `wad.selenium` testiluokka `ActorTest`, johon asetat Selenium-testaamiseen tarvittavat komponentit.
+Luo testikansioon `movies` testiluokka `ActorTest`, johon asetat Fluentlenium-testaamiseen tarvittavat komponentit.
 
 
-Toteuta testi, jolla varmistetaan että käyttäjän lisääminen ja poistaminen onnistuu. Testin tulee toimia seuraavasti:
+Toteuta luokkaan testi, jossa tehdään seuraavat askeleet:
 
 
-1. Menee näyttelijäsivulle
-2. Tarkistaa ettei sivulla ole tekstiä "Van Damme"
-3. Etsii kentän jonka id on "name", asettaa kenttään tekstin "Van Damme", ja lähettää lomakkeeseen liittyvän lomakkeen.
-4. Tarkistaa että sivulla on teksti "Van Damme"
-5. Klikkaa "Van Damme"en liittyvää poista-nappia
-6. Tarkistaa että sivulla ei ole tekstiä "Van Damme"
+1. Mennään näyttelijäsivulle
+2. Tarkistetaan ettei sivulla ole tekstiä "Uuno Turhapuro"
+3. Etsitään kenttä, jonka id on "name" ja asetetaan kenttään teksti "Uuno Turhapuro".
+4. Lähetetään lomake.
+5. Tarkistetaan että sivulla on teksti "Uuno Turhapuro"
+6. Klikataan "Uuno Turhapuro"on liittyvää poista-nappia
+7. Tarkistetaan ettei sivulla ole tekstiä "Uuno Turhapuro"
 
-
-Toteuta seuraavaksi testi, joka tekee seuraavat askeleet:
-
-
-1. Menee näyttelijäsivulle
-2. Tarkistaa ettei sivulla ole tekstiä "Van Damme"
-3. Tarkistaa ettei sivulla ole tekstiä "Chuck Norris"
-4. Etsii kentän jonka id on "name", asettaa kenttään tekstin "Chuck Norris", ja lähettää lomakkeeseen liittyvän lomakkeen.
-5. Tarkistaa ettei sivulla ole tekstiä "Van Damme"
-6. Tarkistaa että sivulla on teksti "Chuck Norris"
-7. Etsii kentän jonka id on "name", asettaa kenttään tekstin "Van Damme", ja lähettää lomakkeeseen liittyvän lomakkeen.
-8. Tarkistaa että sivulla on teksti "Van Damme"
-9. Tarkistaa että sivulla on teksti "Chuck Norris"
-10. Klikkaa "Van Damme"en liittyvää poista-nappia
-11. Klikkaa henkilön "Chuck Norris" poista-nappia
-12. Tarkistaa ettei sivulla ole tekstiä "Van Damme"
-13. Tarkistaa eteti sivulla ole tekstiä "Chuck Norris"
 
 
 <h2>Elokuvan lisääminen ja näyttelijän lisääminen elokuvaan</h2>
 
 
-Luo testikansioon `wad.selenium` testiluokka `MovieTest`, johon asetat Selenium-testaamiseen tarvittavat komponentit.
+Luo testikansioon `movies` testiluokka `MovieTest`, johon asetat Selenium-testaamiseen tarvittavat komponentit.
+
+Toteuta luokkaan testi, jossa tehdään seuraavat askeleet:
 
 
-Toteuta seuraavat askeleet
-
-
-1. Mene elokuvasivulle
-2. Tarkista että sivulla ei ole tekstiä "Bloodsport"
-3. Tarkista että sivulla ei ole tekstiä "Van Damme"
-4. Etsi kenttä jonka id on "name" ja lisää siihen arvo "Bloodsport"
-5. Etsi kenttä jonka id on "lengthInMinutes" ja lisää siihen arvo "92"
-6. Lähetä kenttään liittyvä lomake
-7. Tarkista että sivulla on teksti "Bloodsport"
-8. Tarkista että sivulla ei ole tekstiä "Van Damme"
-9. Mene näyttelijäsivulle
-10. Tarkista ettei sivulla ole tekstiä "Van Damme"
-11. Etsi kenttä jonka id on "name", aseta kenttään teksti "Van Damme", ja lähetä lomake.
-12. Tarkistaa että sivulla on teksti "Van Damme"
-13. Etsi linkki, jossa on teksti "Van Damme" ja klikkaa siitä.
-14. Etsi nappi, jonka id on "add-to-movie", ja klikkaa sitä.
-15. Mene elokuvasivulle
-16. Tarkista että sivulla on teksti "Bloodsport"
-17. Tarkista että sivulla on teksti "Van Damme"
-
-
-Suorita taas testit klikkaamalla projektia oikealla hiirennäppäimellä ja valitsemalla `Test`.
+1. Mennään elokuvasivulle
+2. Tarkistetaan ettei sivulla ole tekstiä "Uuno Epsanjassa"
+3. Tarkistetaan ettei sivulla ole tekstiä "Uuno Turhapuro"
+4. Etsitään kenttä, jonka id on "name" ja lisätään siihen arvo "Uuno Epsanjassa"
+5. Etsitään kenttä, jonka id on "lengthInMinutes" ja lisätään siihen arvo "92"
+6. Lähetetään lomake
+7. Tarkistetaan että sivulla on teksti "Uuno Epsanjassa"
+8. Tarkistetaan ettei sivulla ole tekstiä "Uuno Turhapuro"
+9. Mennään näyttelijäsivulle
+10. Tarkistetaan ettei sivulla ole tekstiä "Uuno Turhapuro"
+11. Etsitään kenttä, jonka id on "name" ja asetetaan kenttään teksti "Uuno Turhapuro"
+12. Lähetetään lomake
+13. Tarkistetaan että sivulla on teksti "Uuno Turhapuro"
+14. Etsitään linkki, jossa on teksti "Uuno Turhapuro" ja klikataan sitä
+15. Etsitään nappi, jonka id on "add-to-movie" ja klikataan sitä.
+16. Mennään elokuvasivulle
+17. Tarkistetaan että sivulla on teksti "Uuno Epsanjassa"
+18. Tarkistetaan että sivulla on teksti "Uuno Turhapuro"
 
 
 </programming-exercise>
+
+
+<quiznator id='5c98ee47ddb6b814af32ab0d'></quiznator>
