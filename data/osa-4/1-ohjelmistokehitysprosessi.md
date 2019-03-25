@@ -6,7 +6,9 @@ hidden: true
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- TODO
+- Osaat nimetä ohjelmiston elinkaaren vaiheita.
+- Tunnet käsitteet Github, Travis ja Heroku.
+- Tiedät mistä jatkuvassa integraatiossa (Continuous Integration) on kyse.
 
 </text-box>
 
@@ -71,8 +73,6 @@ Tuotantoympäristö voi olla yksittäinen palvelin, tai se saattaa olla joukko p
 Käytännössä versioiden päivitys tuotantoon tapahtuu usein automaattisesti. Esimerkiksi ohjelmistoon liittyvä Travis-konfiguraatio voidaan määritellä niin, että jos kaikki testit menevät läpi integraatiopalvelimella, siirretään ohjelmisto <a href="https://docs.travis-ci.com/user/deployment/heroku" target="_blank">automaattisesti tuotantoon</a>. Esimerkiksi Herokussa sijaitsevaan sovellukseen muutokset voidaan hakea automaattisesti Githubista (<a href="https://devcenter.heroku.com/articles/github-integration" target="_blank">ohje</a>).
 
 <br/>
-
-Tarkastelemme tässä osassa web-sovelluksen ohjelmistotuotantoprosessiin liittyviä askeleita...
 
 <text-box variant='hint' name='Teemaan liittyviä kursseja'>
 

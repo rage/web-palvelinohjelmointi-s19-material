@@ -7,7 +7,8 @@ hidden: true
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- TODO
+- Tiedät mitä yksikkötestaus, integraatiotestaus ja järjestelmätestaus tarkoittavat.
+- Osaat toteuttaa automaattisesti suoritettavia integraatiotestejä sekä järjestelmätestejä.
 
 </text-box>
 

@@ -7,7 +7,9 @@ hidden: true
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- TODO
+- Tiedät että sovelluksia voidaan kehittää erilaisissa ympäristöissä.
+- Tiedät miten Springissä määritellään profiilikohtaisia konfiguraatiotiedostoja.
+- Osaat määritellä sovellukseen ympäristökohtaista toiminnallisuutta.
 
 </text-box>
 

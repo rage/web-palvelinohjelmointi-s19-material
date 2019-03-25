@@ -7,7 +7,9 @@ hidden: true
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- TODO
+- Tiedät MVC-arkkitehtuurin ja kerrosarkkitehtuurin.
+- Tiedät mitä Front Controller -suunnittelumalli tarkoittaa.
+- Osaat jakaa sovelluksen pienempiin sovelluksen sisäisiin palveluihin.
 
 </text-box>
 

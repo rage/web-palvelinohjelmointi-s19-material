@@ -7,7 +7,8 @@ hidden: true
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
-- TODO
+- Tiedät mitä muutoksia sovellukseen tulee tehdä, jotta se toimii pilvipalvelussa (tässä Heroku).
+- Osaat siirtää sovelluksesi pilvipalveluun kaikkien nähtäville.
 
 </text-box>
 
@@ -20,11 +21,13 @@ Heroku tarjoaa <a href="https://devcenter.heroku.com/articles/deploying-spring-b
 
 <br/>
 
-Tarkastellaan seuraavaksi miten kurssin tehtävän voi lisätä Herokuun. Lisäämme Herokuun neljännen osan ensimmäisen tehtävän "Jokes". Tehtävän lisääminen verkkoon sisältää oleellisesti muutaman askeleen.
+Tarkastellaan seuraavaksi miten kurssin tehtävän voi lisätä Herokuun. Lisäämme Herokuun neljännen osan ensimmäisen tehtävän "Jokes". Tehtävän lisääminen verkkoon sisältää muutaman askeleen.
 
 1. Herokun käyttämän tietokannanhallintajärjestelmän ajurin määrittely.
 2. Tuotantokonfiguraation määrittely.
-3.
+3. Sovelluksen käynnistämiseen käytetyn ohjetiedoston määrittely.
+4. Sovelluksen lisäämisen versionhallintaan.
+5. Heroku-projektin luomisen sekä sovelluksen lähettämisen herokuun.
 
 
 ### Tietokannanhallintajärjestelmän ajurin määrittely
@@ -81,7 +84,7 @@ user@kone:~projekti$ git commit -m "ensimmäinen versio"
 Nyt sovellus on näennäisesti versionhallinnassa (vain paikallisella koneellamme).
 
 
-### Sovellus Herokuun
+### Heroku-projektin luominen ja sovelluksen siirtäminen herokuun
 
 Sovelluksen lisääminen herokuun vaatii sen, että luomme ensin Herokuun uuden (tyhjän) sovelluksen. Tämä onnistuu Herokun komentorivisovelluksella seuraavasti.
 

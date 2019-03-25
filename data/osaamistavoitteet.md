@@ -53,10 +53,10 @@ Kurssilla Web-palvelinohjelmointi Java opit web-sovellusten toimintaperiaatteet 
     <tr>
         <td>4</td>
         <td>
-            Kerrosarkkitehtuuri, sovellusten automaattinen testaaminen ja web-sovelluskehitykseen liittyvä ohjelmistokehitysprosessi.
+            Ohjelmistokehitysprosessi, kerrosarkkitehtuuri ja sovellusten automaattinen testaaminen. Sovelluksen siirtäminen verkkoon.
         </td>
         <td>
-            Osaat jakaa sovelluksen osia sovelluksen sisäisiksi palveluiksi ("Service"). Osaat kirjoittaa eri tason testejä sovelluksillesi. Ymmärrät tarpeen web-sovellusten kehitysprosessin automatisoinnille sekä web-sovellusten jatkuvalle inkrementaaliselle kehitykselle. Ymmärrät versionhallintapalvelun (esim. Github), sovelluksen testejä suorittavan integraatiopalvelun (esim. Travis CI) sekä testi- ja tuotantoympäristön (esim. Heroku) yhteistyön.
+            Tunnet pintapuolisesti ohjelmistokehitysprosessin eri vaihteet. Tiedät joitakin web-sovelluksiin soveltuvia arkkitehtuurimalleja, ja ymmärrät mitä kerrosarkkitehtuurilla tarkoitetaan. Osaat jakaa sovelluksen osia sovelluksen sisäisiksi palveluiksi ja osaat kirjoittaa automaattisesti suoritettavia testejä sovelluksillesi. Osaat siirtää sovelluksen verkkoon kaikkien nähtäville.
         </td>
     </tr>
     <tr>
@@ -65,7 +65,7 @@ Kurssilla Web-palvelinohjelmointi Java opit web-sovellusten toimintaperiaatteet 
             HTTP-protokolla ja evästeet. Autentikaatio ja autorisaatio. Syötteiden validointi. Hieman tietoturvaa.
         </td>
         <td>
-             Tunnet käsitteen tilattomuus. Tiedät mitä evästeet ovat ja mihin niitä käytetään. Tunnet evästeisiin liittyviä oleellisia lakiteknisia asioita. Osaat luoda sovelluksen, joka pyytää käyttäjää kirjautumaan. Osaat määritellä kirjautumista vaativia polkuja ja metodeja, sekä piilottaa näkymän osia erilaisilta käyttäjäryhmiltä. Osaat selittää autentikaation ja autorisaation erot. Tunnet tapoja tiedon validointiin ja osaat validoida lomakedataa. Tiedät web-sovellusten tyypillisimmät haavoittuvuudet sekä niihin vaikuttavat tekijät (OWASP).
+            Tunnet käsitteen tilattomuus. Tiedät mitä evästeet ovat ja mihin niitä käytetään. Tunnet evästeisiin liittyviä oleellisia lakiteknisia asioita. Osaat luoda sovelluksen, joka pyytää käyttäjää kirjautumaan. Osaat määritellä kirjautumista vaativia polkuja ja metodeja, sekä piilottaa näkymän osia erilaisilta käyttäjäryhmiltä. Osaat selittää autentikaation ja autorisaation erot. Tunnet tapoja tiedon validointiin ja osaat validoida lomakedataa. Tiedät web-sovellusten tyypillisimmät haavoittuvuudet sekä niihin vaikuttavat tekijät (OWASP).
         </td>
     </tr>
     <tr>

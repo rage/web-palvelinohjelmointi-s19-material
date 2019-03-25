@@ -7,10 +7,8 @@ hidden: true
 
 <deadline>8.4.2019</deadline>
 
-TODO...
 
-Osaat jakaa sovelluksen osia sovelluksen sisäisiksi palveluiksi ("Service"). Osaat kirjoittaa eri tason testejä sovelluksillesi. Ymmärrät tarpeen web-sovellusten kehitysprosessin automatisoinnille sekä web-sovellusten jatkuvalle inkrementaaliselle kehitykselle. Ymmärrät versionhallintapalvelun (esim. Github), sovelluksen testejä suorittavan integraatiopalvelun (esim. Travis CI) sekä testi- ja tuotantoympäristön (esim. Heroku) yhteistyön.
-
+Neljännen osan jälkeen tunnet pintapuolisesti ohjelmistokehitysprosessin vaiheita. Ymmärrät web-sovelluksen rakenteen ja osaat tulkita sitä sekä MVC-mallin että kerrosarkkitehtuurin kautta. Osaat määritellä sovellukseesi palveluita. Opit kirjoittamaan automaattisesti suoritettavia integraatio- ja järjestelmätason testejä, ja opit siirtämään sovelluksesi pilvipalveluun kaikkien saataville.
 
 <please-login></please-login>
 
