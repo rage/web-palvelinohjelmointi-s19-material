@@ -280,12 +280,11 @@ Tee seuraavat testit:
 #### FluentLenium
 
 
-MockMvc:n lisäksi järjestelmätestaukseen käytetään melko paljon käyttöliittymän testaamiseen tarkoitettua <a href="http://www.seleniumhq.org/" target="_blank">Selenium</a>ia ja siihen liittyviä lisäosia kuten <a href="https://fluentlenium.com/" target="_blank">FluentLenium</a>ia. Nämä kirjastot ovat web-selaimen toimintojen automatisointiin tarkoitettuja välineitä, jotka antavat sovelluskehittäjälle mahdollisuuden käydä läpi sovelluksen käyttöliittymää ohjelmallisesti. Kirjastot poikkeavat edellä nähdystä `MockMvc`-oliosta siten, että ne mahdollistavat myös testien ajamisen selaimessa --
+MockMvc:n lisäksi järjestelmätestaukseen käytetään melko paljon käyttöliittymän testaamiseen tarkoitettua <a href="http://www.seleniumhq.org/" target="_blank">Selenium</a>ia ja sen kapseloivia kirjastoja kuten <a href="https://fluentlenium.com/" target="_blank">FluentLenium</a>ia. Nämä kirjastot ovat web-selaimen toimintojen automatisointiin tarkoitettuja välineitä, jotka antavat sovelluskehittäjälle mahdollisuuden käydä läpi sovelluksen käyttöliittymää ohjelmallisesti. Kirjastot poikkeavat edellä nähdystä `MockMvc`-oliosta siten, että ne mahdollistavat testien ajamisen selaimen kaltaisessa ympäristössä, missä testeissä voi klikata linkkejä, täyttää lomakkeita ymym.
 
 <br/>
 
-
-Lisätään FluentLenium-kirjaston vaatimat riippuvuudet, oletetaan että testit kirjoitetaan JUnit-testikirjaston avulla (FluentLenium tarjoaa myös muita vaihtoehtoja).
+Tarkastellaan FluentLeniumin käyttöä lyhyesti. Alla on listattuna FluentLenium-kirjaston vaatimat riippuvuudet. Oletamme, että testit kirjoitetaan JUnit-testikirjaston avulla (FluentLenium tarjoaa myös muita vaihtoehtoja). Riippuvuudet ovat valmiina määriteltynä tehtäväpohjissa.
 
 ```xml
 <dependency>
@@ -306,7 +305,37 @@ Lisätään FluentLenium-kirjaston vaatimat riippuvuudet, oletetaan että testit
 </dependency>
 ```
 
-Oletetaan, että käytössämme on sovellus, joka tarjoaa ilmoittautumismahdollisuuden. Testaamme toiminnallisuutta "Käyttäjä voi ilmoittautua oppitunnille". Järjestelmä tarjoaa sivun, jonka ensimmäinen linkki vie ilmoittautumissivulle. Ilmoittautumissivulla tulee olla tietty otsikko -- varmistamme, että olemme oikealla sivulla. Tämän lisäksi ilmoittautumissivulla on lomakekenttä, jonka attribuutin `id` arvo on `name`. Täytetään kenttään arvo "Bob" ja lähetetään lomake. Tämän jälkeen sivulla tulee olla teksti "Ilmoittautuminen onnistui!".
+Oletetaan, että käytössämme on sovellus, joka tarjoaa ilmoittautumismahdollisuuden ja jonka näyttämä HTML-sivu on seuraavanlainen.
+
+```html
+<html>
+  <head>
+    <title>Ilmoittautuminen</title>
+  </head>
+  <body>
+    <h2>Ilmoittautuneet</h2>
+    <ul>
+      <li>Rekku</li>
+      <li>Kaja</li>
+      <li>Vainu</li>
+    </ul>
+
+    <h2>Lisää uusi ilmoittautuminen</h2>
+    <form method="POST" action="/ilmoittautuminen">
+      <input type="text" name="name" id="nimi"/>
+      <input type="submit" value="Lähetä!"/>
+    </h1>
+  </body>
+</html>
+```
+
+Testaamme toiminnallisuutta "Käyttäjä voi ilmoittautua". Lisäämme listalle käyttäjän Rolle. Oletetaan, että yllä oleva lomake löytyy osoitteesta "/ilmoittautuminen" ja että käyttäjää ei ole aluksi listalla, mutta käyttäjän tulee löytyä listalta ilmoittautumisen jälkeen. Testiflow on seuraava:
+
+1. Avaa sivu "/ilmoittautuminen"
+2. Varmistetaan ettei ilmoittautuneissa ole Rollea.
+3. Etsi kenttä, johon syötetään nimi. Tunnistamme kentän sen `id`-attribuutin perusteella. Kirjoita attribuutin `id` arvolla "nimi" tunnistettavaan kenttään uuden ilmoittautuneen nimi. Tässä lisäämme ilmoittautuneisiin Rollen.
+4. Lähetä lomake.
+5. Varmista, että sivulle on lisätty Rolle.
 
 ```java
 // importit
@@ -314,36 +343,46 @@ Oletetaan, että käytössämme on sovellus, joka tarjoaa ilmoittautumismahdolli
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class ElokuvatietokantaTest extends FluentTest {
+public class IlmoittautumisJarjestelmaTest extends org.fluentlenium.adapter.junit.FluentTest {
 
-  @LocalServerPort
-  private Integer port;
+    @LocalServerPort
+    private Integer port;
 
-  @Test
-  public void canSignUp() {
-      goTo("http://localhost:" + port);
+    @Test
+    public void canSignUp() {
+        // Avaa sivu "/ilmoittautuminen"
+        goTo("http://localhost:" + port + "/ilmoittautuminen");
 
-      find("a").first().click();
-      assertEquals("Ilmoittautuminen", window().title());
+        // Varmistetaan ettei ilmoittautuneissa ole Rollea
+        assertFalse(pageSource().contains("Rolle"));
 
-      find("#name").fill().with("Bob");
-      find("form").first().submit();
+        // Etsi kenttä, jonka attribuutin 'id' arvo on nimi ja täytä kentän arvoksi Rolle
+        find("#nimi").fill().with("Rolle");
 
-      assertTrue(pageSource().contains("Ilmoittautuminen onnistui!"));
-  }
+        // Lähetä lomake
+        find("form").first().submit();
+
+        // Varmista, että sivulle on lisätty Rolle
+        assertTrue(pageSource().contains("Rolle"));
+
+    }
 // ...
 ```
 
-Yllä annotaatio `@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)` käynnistää palvelimen integraatiotestausta varten satunnaisessa portissa. Sovelluksen portti saadaan muuttujaan `port` annotaation `@LocalServerPort` avulla.
+Yllä tehdään useita oletuksia. Testi olettaa, että sivulla ei ole merkkijonoa "Rolle" missään tilanteessa. Testi myös olettaa, että sivulla on täsmälleen yksi lomake. Mikäli lomakkeita olisi useampi, voi lomakkeeseen myös määritellä oman `id`-attribuutin, jolloin lomake voidaan tunnistaa attribuutin arvon perusteella. Lopulta, testi olettaa, että lomakkeen lähetyksen jälkeen käyttäjä ohjataan sivulle, missä ilmoittautumiset on listattuna (tai tarkemmin, juuri ilmoittautunut on listattuna). Testi ei toisaalta tarkastele millään tavalla esimerkiksi tietokantaan tehtyjä muutoksia -- näiden tarkastelu onnistuisi injektoimalla käyttöön tietokanta-abstraktion.
 
-Yllä menemme ensin paikalliseen osoitteeseen `http://localhost:*portti*`, missä portin numero on satunnaisesti valittu -- surffaamme siis haluttuun osoitteeseen. Haemme tämän jälkeen ensimmäisen linkin, eli `a`-elementin sivulta, ja klikkaamme sitä. Tämän jälkeen tarkistamme, että sivun otsake on `Ilmoittautuminen`. Tätä seuraa kentän, jonka id-attribuutin arvo on "name" täyttäminen merkkijonolla "Bob"  -- tietyn kentän hakeminen onnistuu `find`-metodilla, jolle annetaan parametrina kentän tiedot: jos kentällä on attribuutti `id`, voidaan se tunnistaa testeissä merkkijonolla `#idattribuutinarvo` eli risuaidalla '#', jota seuraa kentän attribuutin `id` arvo.
+Tarkastellaan yllä toteutettua testiä hieman tarkemmin. Annotaatio `@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)` käynnistää palvelimen integraatiotestausta varten satunnaisessa portissa. Sovelluksen portti asetetaan annotaatiota `@LocalServerPort` seuraavaan muuttujaan `port`.
 
-Lopulta lomake lähetetään. Kun lomake on lähetetty, haetaan sivun lähdekoodista tekstiä "Ilmoittautuminen onnistui!". Jos tekstiä ei löydy, testi epäonnistuu.
+Testissä menemme paikalliseen osoitteeseen `http://localhost:*portti*/ilmoittautuminen`, missä portin numero on satunnaisesti valittu -- surffaamme siis haluttuun osoitteeseen. Tarkastamme tämän jälkeen, että sivulla ei ole merkkijonoa "Rolle". Tätä seuraa kentän, jonka id-attribuutin arvo on "nimi" täyttäminen merkkijonolla "Rolle" -- tietyn kentän hakeminen onnistuu `find`-metodilla, jolle annetaan parametrina kentän tiedot: jos kentällä on attribuutti `id`, voidaan kenttä tunnistaa testeissä merkkijonolla `#idattribuutinarvo` eli risuaidalla '#', jota seuraa kentän attribuutin `id` arvo.
 
-FluentLenium-kirjastoon liittyvää dokumentaatiota löytyy osoitteesta <a href="http://www.fluentlenium.org/" target="_blank">http://www.fluentlenium.org/</a>, jonka lisäksi googlesta löytyy apua seuraavaan tehtävään.
+Tätä seuraa lomakkeen lähettäminen lomakkeeseen liittyvällä submit-metodilla. Kun lomake on lähetetty, haetaan sivun lähdekoodista tekstiä "Rolle". Jos tekstiä ei löydy, testi epäonnistuu.
+
+Oleellista testien kirjoittamisessa on siis mahdollisuus kenttien tunnistamiseen. Tämä onnistuu määrittelemällä sivuilla sopivat `id`-attribuutit. Muita toiminnallisuuksia on listattuna FluentLenium-kirjaston dokumentaatiossa, joka löytyy osoitteesta <a href="http://www.fluentlenium.org/" target="_blank">http://www.fluentlenium.org/</a>. Googlesta on myös apua.
+
+<br/>
 
 
-<programming-exercise name='Movie Database Redux'>
+<programming-exercise name='Movie Database Test'>
 
 Tehtäväpohjassa on sovellus elokuvien ja näyttelijöiden hallintaan. Tässä tehtävässä harjoitellaan hieman järjestelmätestausta FluentLeniumin avulla. Kuten edellisessä tehtävässä, tässäkään tehtävässä ei ole automaattisia testejä vaan tehtävänäsi on toteuttaa ne.
 
@@ -365,7 +404,6 @@ Toteuta luokkaan testi, jossa tehdään seuraavat askeleet:
 5. Tarkistetaan että sivulla on teksti "Uuno Turhapuro"
 6. Klikataan "Uuno Turhapuro"on liittyvää poista-nappia
 7. Tarkistetaan ettei sivulla ole tekstiä "Uuno Turhapuro"
-
 
 
 <h2>Elokuvan lisääminen ja näyttelijän lisääminen elokuvaan</h2>
