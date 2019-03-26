@@ -7,7 +7,7 @@ hidden: true
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
 - Osaat nimetä ohjelmiston elinkaaren vaiheita.
-- Tunnet käsitteet Github, Travis ja Heroku.
+- Tunnet käsitteet GitHub ja Travis.
 - Tiedät mistä jatkuvassa integraatiossa (Continuous Integration) on kyse.
 
 </text-box>
