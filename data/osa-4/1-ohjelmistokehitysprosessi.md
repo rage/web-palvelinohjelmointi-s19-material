@@ -38,9 +38,9 @@ Ohjelmiston lähdekoodi ja dokumentaatio tallennetaan keskitetysti versionhallin
 
 Kun ohjelmistokehittäjä valitsee vaatimuksen työstettäväksi, hän tyypillisesti hakee projektin versionhallinnasta projektin uusimman version, sekä lähtee toteuttamaan uutta vaatimusta. Kun vaatimukseen liittyvä osa tai komponentti on valmis sekä testattu paikallisesti (automaattiset testit on olemassa, toimii ohjelmistokehittäjän koneella), lähetetään uusi versio versionhallintapalvelimelle.
 
-Versionhallintapalvelin sisältää myös mahdollisesti useampia versioita projektista. Versionhallintajärjestelmät mahdollistavat usein ns. branchien käyttämisen, jolloin uusia ominaisuuksia voidaan toteuttaa erillään "päähaarasta". Kun uusi ominaisuus on valmis, voidaan se lisätä päähaaraan. Versionhallinnassa olevia koodeja voidaan myös tägätä julkaisuversioiksi.
+Versionhallintapalvelin sisältää myös mahdollisesti useampia versioita projektista. Versionhallintajärjestelmät mahdollistavat usein  haarojen (engl. "branch") käyttämisen, jolloin uusia ominaisuuksia voidaan toteuttaa erillään "päähaarasta" (useimmiten engl. "master"). Kun uusi ominaisuus on valmis, voidaan se lisätä päähaaraan. Versionhallinnassa olevia koodeja voidaan myös tägätä julkaisuversioiksi.
 
-Yleisin versionhallintatyökalu on <a href="https://en.wikipedia.org/wiki/Git_(software)" target="_blank">Git</a>, joka on käytössä <a href="https://github.com/" target="_blank">Github</a>issa. Netistä löytyy paljon oppaita gitin käyttöön; esim. "<a href="https://guides.github.com/activities/hello-world/" target="_blank">Ensiaskeleet Githubin käyttöön</a>".
+Yleisin versionhallintatyökalu on <a href="https://en.wikipedia.org/wiki/Git_(software)" target="_blank">Git</a>, joka on käytössä <a href="https://github.com/" target="_blank">GitHub</a>issa. Netistä löytyy paljon oppaita gitin käyttöön; esim. "<a href="https://guides.github.com/activities/hello-world/" target="_blank">Ensiaskeleet Githubin käyttöön</a>".
 
 <br/>
 
@@ -70,13 +70,13 @@ Kun uusi vaatimus tai sen osa on saatu valmiiksi, kannattaa viedä palvelimelle 
 Tuotantoympäristö voi olla yksittäinen palvelin, tai se saattaa olla joukko palvelimia, joihin uusin muutos viedään hiljalleen. Tuotantoympäristö on tyypillisesti erillään muista ympäristöistä mahdollisten virheiden minimoimiseksi.
 
 
-Käytännössä versioiden päivitys tuotantoon tapahtuu usein automaattisesti. Esimerkiksi ohjelmistoon liittyvä Travis-konfiguraatio voidaan määritellä niin, että jos kaikki testit menevät läpi integraatiopalvelimella, siirretään ohjelmisto <a href="https://docs.travis-ci.com/user/deployment/heroku" target="_blank">automaattisesti tuotantoon</a>. Esimerkiksi Herokussa sijaitsevaan sovellukseen muutokset voidaan hakea automaattisesti Githubista (<a href="https://devcenter.heroku.com/articles/github-integration" target="_blank">ohje</a>).
+Käytännössä versioiden päivitys tuotantoon tapahtuu usein automaattisesti. Esimerkiksi ohjelmistoon liittyvä Travis-konfiguraatio voidaan määritellä niin, että jos kaikki testit menevät läpi integraatiopalvelimella, siirretään ohjelmisto <a href="https://docs.travis-ci.com/user/deployment/heroku" target="_blank">automaattisesti tuotantoon</a>. Esimerkiksi Herokussa sijaitsevaan sovellukseen muutokset voidaan hakea automaattisesti GitHubista (<a href="https://devcenter.heroku.com/articles/github-integration" target="_blank">ohje</a>).
 
 <br/>
 
 <text-box variant='hint' name='Teemaan liittyviä kursseja'>
 
-Tällä kurssilla ohjelmistokehitysprosessia tarkastellaan hyvin lyhyesti ja pintapuolisesti. Hyviä ohjelmistokehityskäytänteitä tarkastellaan mm. kursseilla Ohjelmistotekniikan menetelmät (TKT-20002) ja Ohjelmistotuotanto (TKT-20006). Näistä jälkimmäisen kurssin syksyn 2018 materiaalit löytyvät osoitteesta <a href="https://github.com/mluukkai/ohjelmistotuotanto2018/wiki/Ohjelmistotuotanto-syksy-2018" target="_blank">https://github.com/mluukkai/ohjelmistotuotanto2018/wiki/Ohjelmistotuotanto-syksy-2018</a>
+Tällä kurssilla ohjelmistokehitysprosessia tarkastellaan hyvin lyhyesti ja pintapuolisesti. Hyviä ohjelmistokehityskäytänteitä tarkastellaan mm. kursseilla Ohjelmistotekniikka (TKT-20002) ja Ohjelmistotuotanto (TKT-20006). Näistä jälkimmäisen kurssin syksyn 2018 materiaalit löytyvät osoitteesta <a href="https://github.com/mluukkai/ohjelmistotuotanto2018/wiki/Ohjelmistotuotanto-syksy-2018" target="_blank">https://github.com/mluukkai/ohjelmistotuotanto2018/wiki/Ohjelmistotuotanto-syksy-2018</a>
 
 <br/>
 
