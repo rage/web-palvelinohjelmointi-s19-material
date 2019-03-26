@@ -121,7 +121,7 @@ user@kone:~projekti$ heroku logs -n 500
 ### Muutosten tekeminen sovellukseen
 
 
-Kun sovellus on Herokussa, muutosten lisääminen sovellukseen on suoraviivaista. Kun lähdekoodia on muokattu ja sovellus toimii paikallisesti, uuden version lähettäminen herokuun onnistuu lisäämällä muutokset gitiin, committaamalla muutokset, ja lähettämällä muutokset herokuun. Tätä ennen kannattaa ajaa komento `mvn clean`, joka poistaa `target`-kansion.
+Kun sovellus on Herokussa, muutosten lisääminen sovellukseen on suoraviivaista. Kun lähdekoodia on muokattu ja sovellus toimii paikallisesti, uuden version lähettäminen herokuun onnistuu lisäämällä muutokset gitiin, committaamalla muutokset, ja lähettämällä muutokset Herokuun. Tätä ennen kannattaa ajaa komento `mvn clean`, joka poistaa `target`-kansion.
 
 ```console
 user@kone:~projekti$ mvn clean
