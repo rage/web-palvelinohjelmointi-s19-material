@@ -44,7 +44,7 @@ Uusia testiluokkia voi luoda NetBeansissa valitsemalla New -> Other -> JUnit -> 
 ```
 
 
-Kurssin tehtäväpohjissa JUnit-testikirjasto on valmiina mukana. Yksikkötestauksesta JUnit-kirjaston avulla löytyy ohjeistusta aiemmin käydyiltä ohjelmointikursseilta TKT10002 ja TKT10003 sekä kursseilta Ohjelmistotekniikan menetelmät (TKT-20002) ja Ohjelmistotuotanto (TKT-20006).
+Kurssin tehtäväpohjissa JUnit-testikirjasto on valmiina mukana. Yksikkötestauksesta JUnit-kirjaston avulla löytyy ohjeistusta aiemmin käydyiltä ohjelmointikursseilta TKT10002 ja TKT10003 sekä kursseilta Ohjelmistotekniikka (TKT-20002) ja Ohjelmistotuotanto (TKT-20006).
 
 
 ### Integraatiotestaus
@@ -128,7 +128,7 @@ public class ApplicationTest {
 ```
 
 
-Yllä oleva testi testaa vain tilisiirron onnistumista. Se ei kuitenkaan tarkasta esimerkiksi sivuvaikutuksia. Auki jäävät muunmuassa kysymykset: siirtääkö palvelu rahaa jollekin toiselle tilille? Mitä käy jos tilillä ei ole rahaa?
+Yllä oleva testi testaa vain tilisiirron onnistumista. Se ei kuitenkaan tarkasta esimerkiksi sivuvaikutuksia. Auki jäävät muun muassa kysymykset: siirtääkö palvelu rahaa jollekin toiselle tilille? Mitä käy jos tilillä ei ole rahaa?
 
 
 #### Testiprofiili
@@ -370,7 +370,7 @@ public class IlmoittautumisJarjestelmaTest extends org.fluentlenium.adapter.juni
 // ...
 ```
 
-Yllä tehdään useita oletuksia. Testi olettaa, että sivulla ei ole merkkijonoa "Rolle" missään tilanteessa. Testi myös olettaa, että sivulla on täsmälleen yksi lomake. Mikäli lomakkeita olisi useampi, voi lomakkeeseen myös määritellä oman `id`-attribuutin, jolloin lomake voidaan tunnistaa attribuutin arvon perusteella. Lopulta, testi olettaa, että lomakkeen lähetyksen jälkeen käyttäjä ohjataan sivulle, missä ilmoittautumiset on listattuna (tai tarkemmin, juuri ilmoittautunut on listattuna). Testi ei toisaalta tarkastele millään tavalla esimerkiksi tietokantaan tehtyjä muutoksia -- näiden tarkastelu onnistuisi injektoimalla käyttöön tietokanta-abstraktion.
+Yllä tehdään useita oletuksia. Testi olettaa, että sivulla ei ole merkkijonoa "Rolle" missään tilanteessa. Testi myös olettaa, että sivulla on täsmälleen yksi lomake. Mikäli lomakkeita olisi useampi, voi lomakkeeseen myös määritellä oman `id`-attribuutin, jolloin lomake voidaan tunnistaa attribuutin arvon perusteella. Lopulta, testi olettaa, että lomakkeen lähetyksen jälkeen käyttäjä ohjataan sivulle, missä ilmoittautumiset ovat listattuna (tai tarkemmin, juuri ilmoittautunut on listattuna). Testi ei toisaalta tarkastele millään tavalla esimerkiksi tietokantaan tehtyjä muutoksia -- näiden tarkastelu onnistuisi injektoimalla käyttöön tietokanta-abstraktion.
 
 Tarkastellaan yllä toteutettua testiä hieman tarkemmin. Annotaatio `@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)` käynnistää palvelimen integraatiotestausta varten satunnaisessa portissa. Sovelluksen portti asetetaan annotaatiota `@LocalServerPort` seuraavaan muuttujaan `port`.
 
