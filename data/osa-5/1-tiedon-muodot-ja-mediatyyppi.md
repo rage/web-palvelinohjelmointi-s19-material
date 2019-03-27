@@ -1,14 +1,24 @@
 ---
-path: '/osa-x/5-tiedon-muodot-ja-mediatyypit'
+path: '/osa-5/1-tiedon-muodot-ja-mediatyypit'
 title: 'Tiedon muoto ja mediatyypit'
 hidden: true
 ---
+
+<text-box variant='learningObjectives' name='Oppimistavoitteet'>
+
+- Tunnet käsitteen mediatyyppi.
+- Osaat käsitellä eri muodossa olevaa tietoa.
+- Osaat luoda sovelluksen, joka mahdollistaa tiedoston lähettämisen palvelimelle.
+- Osaat luoda sovelluksen, joka palauttaa tiedoston palvelimelta.
+- Osaat tallentaa tiedostoja tietokantaan.
+
+</text-box>
 
 
 Palvelimelle tehtävät pyynnöt ja palvelimelta saatavat vastaukset voivat sisältää erimuotoista tietoa. Pyyntö tai vastaus voi sisältää esimerkiksi tekstidokumentin, kuvatiedoston tai vaikkapa PDF-tiedoston. Palvelin vastaanottaa ja kertoo pyynnön tyypin HTTP-protokollan mukana kulkevalla otsakkeella `Content-Type`.
 
 
-Tätä tietoa lähetettävän tai vastaanotettavan datan muodosta kutsutaan <a href="http://en.wikipedia.org/wiki/Internet_media_type" target="_blank" norel>mediatyypiksi</a>. Tietoa käsittelevä ohjelmisto päättää mediatyypin perusteella miten data käsitellään. Mediatyyppi sisältää yleensä kaksi osaa; mediatyypin sekä tarkenteen (esim `application/json`). Kattava lista eri mediatyypeistä löytyy IANA-organisaation ylläpitämästä <a href="http://www.iana.org/assignments/media-types/media-types.xhtml" target="_blank" norel>mediatyyppilistasta</a>.
+Tätä tietoa lähetettävän tai vastaanotettavan datan muodosta kutsutaan [mediatyypiksi](https://en.wikipedia.org/wiki/Internet_media_type). Tietoa käsittelevä ohjelmisto päättää mediatyypin perusteella miten data käsitellään. Mediatyyppi sisältää yleensä kaksi osaa; mediatyypin sekä tarkenteen (esim `application/json`). Kattava lista eri mediatyypeistä löytyy IANA-organisaation ylläpitämästä [mediatyyppilistasta](http://www.iana.org/assignments/media-types/media-types.xhtml).
 
 Tyypillisiä mediatyyppejä ovat erilaiset kuvat `image/*`, videot `video/*`, äänet `audio/*` sekä erilaiset tekstimuodot kuten JSON `application/json`.
 
@@ -25,25 +35,25 @@ public void copyImage(OutputStream out) throws IOException {
 
 Yllä olevassa esimerkissä kerromme että metodi kuuntelee polkua `/images/1` ja tuottaa `image/png`-tyyppistä sisältöä. Spring asettaa kontrollerin metodin parametriksi pyynnön vastaukseen liittyvän `OutputStream`-olion, johon vastaus voidaan kirjoittaa. `Files`-luokan tarjoama `copy`-metodi kopioi kuvan suoraan tiedostosta pyynnön vastaukseksi.
 
-Ylläolevan kontrollerimetodin palauttaman kuvan voi näyttää osana sivua `img`-elementin avulla. Jos metodi kuuntelee osoitetta `/media/image.png`, HTML-elementti `&lt;img src="/media/image.png" /&gt;` hakee kuvan automaattisesti osoitteesta sivun latautuessa.
+Ylläolevan kontrollerimetodin palauttaman kuvan voi näyttää osana sivua `img`-elementin avulla. Jos metodi kuuntelee osoitetta `/media/image.png`, HTML-elementti `<img src="/media/image.png" />` hakee kuvan automaattisesti osoitteesta sivun latautuessa.
 
-**Huom!** Jos kuvat ovat staattisia eikä niitä esimerkiksi lisäillä tai poisteta, tulee niiden olla esimerkiksi projektin kansiossa `/src/main/resources/public/img` -- tällaisille staattisille kuville <strong>ei</strong> tule määritellä kontrollerimetodia. Kansion `public` alla olevat tiedostot kopioidaan web-sovelluksen käyttöön, ja niihin pääsee käsiksi web-selaimella ilman tarvetta kontrollerille.
+**Huom!** Jos kuvat ovat staattisia eikä niitä esimerkiksi lisäillä tai poisteta, tulee niiden olla esimerkiksi projektin kansiossa `/src/main/resources/public/img` -- tällaisille staattisille kuville **ei** tule määritellä kontrollerimetodia. Kansion `public` alla olevat tiedostot kopioidaan web-sovelluksen käyttöön, ja niihin pääsee käsiksi web-selaimella ilman tarvetta kontrollerille.
 
 
 
 ## Tiedostojen tallentaminen ja lataaminen
 
-Web-sivuilta voi lähettää tiedostoja palvelimelle. Alla oleva lomake HTML-koodi luo lomakkeen, joka voi sisältää myös binääridataa (kts. <a href="http://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.2" target="_blank">multipart/form-data</a>).
+Web-sivuilta voi lähettää tiedostoja palvelimelle määrittelemällä `input`-elementin `type`-parametrin arvoksi `file`. Tämän lisäksi lomakkeelle tulee kertoa, että se voi sisältää myös tiedostoja -- tämä tapahtuu `form`-elementin attribuutilla `enctype`, jonka arvoksi asetetaan [multipart/form-data](http://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.2)).
 
 
 ```xml
-&lt;form th:action="@{/files}" method="POST" enctype="multipart/form-data"&gt;
-    &lt;input type="file" name="file" /&gt;
-    &lt;input type="submit" value="Send!"/&gt;
-&lt;/form&gt;
+<form th:action="@{/files}" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <input type="submit" value="Send!"/>
+</form>
 ```
 
-Lomake lähettää tiedot palvelimelle, jonka tulee käsitellä pyyntö. Pyynnön käsittely tapahtuu aivan kuten minkä tahansa muunkin pyynnön, mutta tässä tapauksessa pyynnön parametrin tyyppi on <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/multipart/MultipartFile.html" target="_blank">MultipartFile</a>, joka sisältää lähetettävän tiedoston tiedot.
+Lomake lähettää tiedot palvelimelle, jonka tulee käsitellä pyyntö. Pyynnön käsittely tapahtuu aivan kuten minkä tahansa muunkin pyynnön, mutta tässä tapauksessa pyynnön parametrin tyyppi on [MultipartFile](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/multipart/MultipartFile.html), joka sisältää lähetettävän tiedoston tiedot.
 
 Alla oleva kontrollerimetodi vastaanottaa pyynnön, ja tulostaa pyynnössä lähetetyn tiedoston koon ja tyypin. Se ei kuitenkaan tee vielä muuta.
 
@@ -57,7 +67,7 @@ public String create(@RequestParam("file") MultipartFile file) {
 }
 ```
 
-`MultipartFile`-olio sisältää myös viitteen tavutaulukkoon, joka sisältää pyynnössä lähetetyn datan. Tavutaulukon -- eli tässä tapauksessa datan -- tallennus tietokantaan onnistuu seuraavasti. Alla määritelty entiteetti `FileObject` kapseloi tavutaulukon ja mahdollistaa sen tallentamisen tietokantaan.
+`MultipartFile`-olio sisältää viitteen tavutaulukkoon, joka sisältää pyynnössä lähetetyn datan. Tavutaulukon -- eli tässä tapauksessa datan -- tallennus tietokantaan onnistuu seuraavasti. Alla määritelty entiteetti `FileObject` kapseloi tavutaulukon ja mahdollistaa sen tallentamisen tietokantaan.
 
 
 ```java
@@ -67,7 +77,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 // muita sopivia annotaatioita
 @Entity
-public class FileObject extends AbstractPersistable&lt;Long&gt; {
+public class FileObject extends AbstractPersistable<Long> {
 
     @Lob
     private byte[] content;
@@ -75,7 +85,7 @@ public class FileObject extends AbstractPersistable&lt;Long&gt; {
 }
 ```
 
-Annotaatiolla <a href="http://docs.oracle.com/javaee/6/api/javax/persistence/Lob.html" target="_blank">@Lob</a> kerrotaan että annotoitu muuttuja tulee tallentaa tietokantaan isona dataobjektina. Tietokantamoottorit tallentavat nämä tyypillisesti erilliseen isommille tiedostoille tarkoitettuun sijaintiin, jolloin tehokkuus ei juurikaan kärsi erikokoisten kenttien takia.
+Annotaatiolla <a href="http://docs.oracle.com/javaee/6/api/javax/persistence/Lob.html" target="_blank">@Lob</a> kerrotaan että annotoitu muuttuja tulee tallentaa tietokantaan isona dataobjektina. Tietokantamoottorit tallentavat nämä tyypillisesti erilliseen isommille tiedostoille tarkoitettuun sijaintiin, jolloin tietokannan tehokkuus ei juurikaan kärsi erikokoisten kenttien takia.
 
 Kun entiteetille tekee repository-olion, voi sen ottaa käyttöön myös kontrollerissa. Tietokantaan tallentaminen tapahtuu tällöin seuraavasti:
 
@@ -133,7 +143,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 // muut annotaatiot
 @Entity
-public class FileObject extends AbstractPersistable&lt;Long&gt; {
+public class FileObject extends AbstractPersistable<Long> {
 
     @Lob
     @Basic(fetch = FetchType.LAZY)
@@ -147,7 +157,7 @@ Ylläoleva `@Basic(fetch = FetchType.LAZY)` annotaatio luo annotoidun muuttujan 
 
 ## Yleiskäyttöinen tiedoston tallennus ja lataaminen
 
-Edellisessä esimerkissä määrittelimme kontrollerimetodin palauttaman mediatyypin osaksi `@RequestMapping` annotaatiota. Usein tiedostopalvelimet voivat kuitenkin palauttaa lähes minkätyyppisiä tiedostoja tahansa. Tutustutaan tässä yleisempään tiedoston tallentamiseen ja lataukseen.
+Edellisessä esimerkissä määrittelimme kontrollerimetodin palauttaman mediatyypin osaksi `@GetMapping` annotaatiota. Usein tiedostopalvelimet voivat kuitenkin palauttaa lähes minkätyyppisiä tiedostoja tahansa. Tutustutaan tässä yleisempään tiedoston tallentamiseen ja lataukseen.
 
 Käytämme edellisessä esimerkissä käytettyä `FileObject`-entiteettiä toteutuksen pohjana.
 
@@ -162,7 +172,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 // muut annotaatiot
 @Entity
-public class FileObject extends AbstractPersistable&lt;Long&gt; {
+public class FileObject extends AbstractPersistable<Long> {
 
     private String name;
     private String mediaType;
@@ -175,7 +185,7 @@ public class FileObject extends AbstractPersistable&lt;Long&gt; {
 }
 ```
 
-Pääsemme kaikkiin kenttiin käsiksi `MultipartFile`-olion kautta; muokataan aiemmin näkemäämme kontrolleria siten, että otamme kaikki yllämääritellyt kentät tietokantaan tallennettavaan olioon.
+Pääsemme kaikkiin kenttiin käsiksi `MultipartFile`-olion kautta; muokataan aiemmin näkemäämme kontrolleria siten, että täytämme kaikki yllä määritellyt kentät tietokantaan tallennettavaan olioon.
 
 
 ```java
@@ -197,31 +207,31 @@ public String save(@RequestParam("file") MultipartFile file) throws IOException 
 Nyt tietokantaan tallennettu olio tietää myös siihen liittyvän mediatyypin. Haluamme seuraavaksi pystyä myös kertomaan kyseisen mediatyypin tiedostoa hakevalle käyttäjälle.
 
 
-<a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/http/ResponseEntity.html" target="_blank">ResponseEntity</a>-oliota käytetään vastauksen paketointiin; voimme palauttaa kontrollerista ResponseEntity-olion, jonka pohjalta Spring luo vastauksen käyttäjälle. ResponseEntity-oliolle voidaan myös asettaa otsaketietoja, joihin saamme asetettua mediatyypin.
+[ResponseEntity](http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/http/ResponseEntity.html)-oliota käytetään vastauksen paketointiin; voimme palauttaa kontrollerista ResponseEntity-olion, jonka pohjalta Spring luo vastauksen käyttäjälle. ResponseEntity-oliolle voidaan myös asettaa otsaketietoja, joihin saamme asetettua mediatyypin.
 
 
 ```java
 @GetMapping("/files/{id}")
-public ResponseEntity&lt;byte[]&gt; viewFile(@PathVariable Long id) {
+public ResponseEntity<byte[]> viewFile(@PathVariable Long id) {
     FileObject fo = fileObjectRepository.findOne(id);
 
     final HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.parseMediaType(fo.getContentType()));
     headers.setContentLength(fo.getSize());
 
-    return new ResponseEntity&lt;&gt;(fo.getContent(), headers, HttpStatus.CREATED);
+    return new ResponseEntity<>(fo.getContent(), headers, HttpStatus.CREATED);
 }
 ```
 
-Ylläolevassa esimerkissä vastaanotetaan pyyntö, minkä pohjalta tietokannasta haetaan FileObject-olio. Tämän jälkeen luodaan otsakeolio `HttpHeaders` ja asetetaan sille palautettavan datan mediatyyppi ja koko. Lopuksi palautetaan `ResponseEntity`-olio, mihin data, otsaketiedot ja pyyntöön liittyvä statusviesti (tässä tapauksessa CREATED eli tiedosto luotu palvelimelle) liitetään.
+Ylläolevassa esimerkissä vastaanotetaan pyyntö, minkä pohjalta tietokannasta haetaan FileObject-olio. Tämän jälkeen luodaan otsakeolio `HttpHeaders` ja asetetaan sille palautettavan datan mediatyyppi ja koko. Lopuksi palautetaan `ResponseEntity`-olio, mihin data, otsaketiedot ja pyyntöön liittyvä statusviesti (tässä tapauksessa `CREATED` eli tiedosto luotu palvelimelle) liitetään.
 
 
-Edeltävä esimerkki ei ota kantaa tiedoston nimeen tai siihen, miten se ladataan. Voimme lisäksi vastaukseen <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html" target="_blank">Content-Disposition</a>-otsakkeen, minkä avulla voidaan ehdottaa tiedoston tallennusnimeä sekä kertoa että tiedosto on liitetiedosto, jolloin se tulee tallentaa.
+Edeltävä esimerkki ei ota kantaa tiedoston nimeen tai siihen, miten se ladataan. Voimme lisäksi vastaukseen [Content-Disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html)-otsakkeen, minkä avulla voidaan ehdottaa tiedoston tallennusnimeä sekä kertoa että tiedosto on liitetiedosto, jolloin se tulee tallentaa.
 
 
 ```java
 @GetMapping("/files/{id}")
-public ResponseEntity&lt;byte[]&gt; viewFile(@PathVariable Long id) {
+public ResponseEntity<byte[]> viewFile(@PathVariable Long id) {
     FileObject fo = fileObjectRepository.findOne(id);
 
     final HttpHeaders headers = new HttpHeaders();
@@ -229,10 +239,11 @@ public ResponseEntity&lt;byte[]&gt; viewFile(@PathVariable Long id) {
     headers.setContentLength(fo.getSize());
     headers.add("Content-Disposition", "attachment; filename=" + fo.getName());
 
-    return new ResponseEntity&lt;&gt;(fo.getContent(), headers, HttpStatus.CREATED);
+    return new ResponseEntity<>(fo.getContent(), headers, HttpStatus.CREATED);
 }
 ```
 
+TODO: vinkki deletemappingista ja tarkempi selitys mitä tapahtuu
 
 <programming-exercise name='FileManager'>
 
@@ -243,11 +254,8 @@ Kuten edellisessä tehtävässä, pääset toteuttamaan huomattavan osan sovellu
 Toteuta toiminnallisuus, jonka avulla seuraavat toiminnot ovat käytössä.
 
 - Kun käyttäjä tekee GET-tyyppisen pyynnön osoitteeseen `/files`, pyyntöön lisätään tietokannasta löytyvät tiedostot ja käyttäjä ohjataan sivulle `files.html`.
-
 - Kun käyttäjä lähettää lomakkeella tiedoston osoitteeseen `/files`, pyynnöstä otetaan talteen kaikki tiedot mitä näkymässä halutaan näyttää, ja tallennetaan ne tietokantaan. Pyyntö ohjataan lopuksi uudelleen osoitteeseen `/files`.
-
 - Kun käyttäjä klikkaa yksittäiseen tiedostoon liittyvää delete-nappia, tulee tiedosto poistaa tietokannasta. Lopuksi pyyntö uudelleenohjataan osoitteeseen `/files`.
-
 - Kun käyttäjä klikkaa yksittäiseen tiedostoon liittyvää nimeä sen lataamista varten, tulee tiedosto lähettää käyttäjälle. Aseta pyyntöön datan lisäksi myös tiedoston mediatyyppi että ja ehdotus tiedoston tallennusnimestä.
 
 

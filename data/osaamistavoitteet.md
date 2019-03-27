@@ -62,19 +62,19 @@ Kurssilla Web-palvelinohjelmointi Java opit web-sovellusten toimintaperiaatteet 
     <tr>
         <td>5</td>
         <td>
-            HTTP-protokolla ja evästeet. Autentikaatio ja autorisaatio. Syötteiden validointi. Hieman tietoturvaa.
+            Mediatyypit ja tiedostojen tallentaminen. HTTP-protokolla ja evästeet. Autentikaatio ja autorisaatio.
         </td>
         <td>
-            Tunnet käsitteen tilattomuus. Tiedät mitä evästeet ovat ja mihin niitä käytetään. Tunnet evästeisiin liittyviä oleellisia lakiteknisia asioita. Osaat luoda sovelluksen, joka pyytää käyttäjää kirjautumaan. Osaat määritellä kirjautumista vaativia polkuja ja metodeja, sekä piilottaa näkymän osia erilaisilta käyttäjäryhmiltä. Osaat selittää autentikaation ja autorisaation erot. Tunnet tapoja tiedon validointiin ja osaat validoida lomakedataa. Tiedät web-sovellusten tyypillisimmät haavoittuvuudet sekä niihin vaikuttavat tekijät (OWASP).
+            Osaat käsitellä eri muodossa olevaa tietoa ja tunnet käsitteen mediatyyppi. Tunnet käsitteen tilattomuus. Tiedät mitä evästeet ovat ja mihin niitä käytetään. Tunnet evästeisiin liittyviä oleellisia lakiteknisia asioita. Osaat selittää autentikaation ja autorisaation erot. Osaat luoda sovelluksen, joka pyytää käyttäjää kirjautumaan. Osaat määritellä kirjautumista vaativia polkuja ja metodeja, sekä piilottaa näkymän osia erilaisilta käyttäjäryhmiltä.
         </td>
     </tr>
     <tr>
         <td>6</td>
         <td>
-            REST. Javascript-pohjaisten selainohjelmistojen ja palvelinohjelmistojen yhteistyö.
+            Syötteiden validointi. Hieman tietoturvaa. REST. Javascript-pohjaisten selainohjelmistojen ja palvelinohjelmistojen yhteistyö.
         </td>
         <td>
-            Osaat käsitellä eri muodossa olevaa tietoa ja tunnet käsitteen mediatyyppi. Ymmärrät REST-arkkitehtuurimallin perusperiaatteet. Osaat toteuttaa palvelun, joka tarjoaa dataa REST-muotoisen rajapinnan yli. Osaat toteuttaa palvelun, joka hyödyntää REST-rajapintaa. Tiedät, että Javascript-koodia voi suorittaa selaimessa käyttäjän koneella. Osaat tehdä selainohjelmistosta Javascript-pyynnön palvelimelle. Osaat päivittää näkymää Javascript-pyynnön vastauksen perusteella.
+            Tunnet tapoja tiedon validointiin ja osaat validoida lomakedataa. Tiedät web-sovellusten tyypillisimmät haavoittuvuudet sekä niihin vaikuttavat tekijät (OWASP). Ymmärrät REST-arkkitehtuurimallin perusperiaatteet. Osaat toteuttaa palvelun, joka tarjoaa dataa REST-muotoisen rajapinnan yli. Osaat toteuttaa palvelun, joka hyödyntää REST-rajapintaa. Tiedät, että Javascript-koodia voi suorittaa selaimessa käyttäjän koneella. Osaat tehdä selainohjelmistosta Javascript-pyynnön palvelimelle. Osaat päivittää näkymää Javascript-pyynnön vastauksen perusteella.
         </td>
     </tr>
     <tr>
