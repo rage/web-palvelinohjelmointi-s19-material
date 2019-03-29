@@ -1,9 +1,8 @@
 ---
-path: '/osa-4/3-konfiguraatioprofiilit'
+path: '/osa-4/4-konfiguraatioprofiilit'
 title: 'Konfiguraatioprofiilit'
-hidden: true
+hidden: false
 ---
-
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
@@ -56,7 +55,7 @@ Ei ole kovin harvinaista, että sovelluskehittäjä testaa paikallisessa ympäri
 Profiilien avulla konkreettista käyttäjälle näkyvää sovellusta voi muuttaa. Esimerkiksi sovelluksen ylläpitäjille tarkoitetussa käyttöliittymässä voisi hyvin lukea isoilla kirjaimilla "TUOTANTOYMPÄRISTÖ" kun taas paikallisessa käytössä olevassa sovelluksessa voisi lukea isoilla kirjaimilla "TESTIYMPÄRISTÖ". Vastaavasti koko värimaailman voisi muokata toisenlaiseksi yms. Tutustutaan tähän mahdollisuuteen seuraavaksi tehtävän kautta.
 
 
-<programming-exercise name='Jokes' tmcname='osa04-Osa04_02.Profiles'>
+<programming-exercise name='Profiles' tmcname='osa04-Osa04_04.Profiles'>
 
 Harjoittelet tässä käytössä olevan profiilin tunnistamista ja näyttämistä. Muokkaa sovellusta siten, että...
 

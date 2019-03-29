@@ -1,9 +1,8 @@
 ---
-path: '/osa-4/2-sovelluksen-rakenne'
+path: '/osa-4/3-sovelluksen-rakenne'
 title: 'Sovelluksen rakenne'
-hidden: true
+hidden: false
 ---
-
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
@@ -252,7 +251,7 @@ public class BankingController {
 
 
 
-<programming-exercise name='Jokes' tmcname='osa04-Osa04_01.Jokes'>
+<programming-exercise name='Jokes' tmcname='osa04-Osa04_03.Jokes'>
 
 Tehtäväpohjassa on vitsejä kolmannen osapuolen verkkopalvelusta hakeva ja niitä käyttäjälle näyttävä sovellus. Sovellus tarjoaa vitsien tarkastelun lisäksi mahdollisuuden vitsien hyvyyden äänestämiseen. Tällä hetkellä sovelluksen luokka `JokeController` sisältää vitsien äänestämiseen liittyvää toiminnallisuutta.
 

@@ -1,9 +1,8 @@
 ---
-path: '/osa-4/4-sovellusten-testaaminen'
+path: '/osa-4/5-sovellusten-testaaminen'
 title: 'Sovellusten testaaminen'
-hidden: true
+hidden: false
 ---
-
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
@@ -24,6 +23,8 @@ Kaikkien kolmen testaustyypin automaatioon löytyy Springistä välineitä. Tark
 
 
 Yksikkötestauksella tarkoitetaan lähdekoodiin kuuluvien yksittäisten osien testausta. Termi yksikkö viittaa ohjelman pienimpiin mahdollisiin testattaviin toiminnallisuuksiin, kuten olion tarjoamiin metodeihin. Seuratessamme <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle" target="_blank">single responsibility principleä</a>, jokaisella oliolla ja metodilla on yksi selkeä vastuu, jota voi myös testata. Testaus tapahtuu yleensä testausohjelmistokehyksen avulla, jolloin luodut testit voidaan suorittaa automaattisesti. Yleisin Javalla käytettävä testauskehys on JUnit, johon on jo tutustuttu pikaisesti kursseilla ohjelmoinnin perusteet (TKT10002) ja ohjelmoinnin jatkokurssi (TKT10003).
+
+<br/>
 
 Uusia testiluokkia voi luoda NetBeansissa valitsemalla New -> Other -> JUnit -> JUnit Test. Tämän jälkeen NetBeans kysyy testiluokalle nimeä ja pakkausta. Huomaa että lähdekoodit ja testikoodit päätyvät erillisiin kansioihin -- juurin näin sen pitääkin olla. Kun testiluokka on luotu, on projektin rakenne kutakuinkin seuraavanlainen.
 
@@ -174,6 +175,7 @@ Järjestelmätestauksessa pyritään varmistamaan, että järjestelmä toimii to
 
 Voimme tuoda halutessamme testien käyttöön koko web-sovelluksen kontekstin. Tämä onnistuu <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/test/web/servlet/MockMvc.html" target="_blank">MockMvc</a>-olion avulla -- MockMvc-olio mahdollistaa pyyntöjen tekemisen sovelluksen tarjoamiin osoitteisiin, pyyntöjen tulosten tarkastelun, sekä pyyntöjen vastauksena tulleen datan tarkastelun. MockMvc-olion käyttö vaatii testeihin ylimääräisen annotaation `@AutoConfigureMockMvc`.
 
+<br/>
 
 Alla oleva esimerkki käynnistää sovelluksen ja tekee kaksi GET-pyyntöä osoitteeseen `/messages`. Ensimmäinen pyyntö liittyy testiin, missä varmistetaan että vastaus sisältää statuskoodin `200` eli "OK". Toinen pyyntö liittyy testiin, joka tarkistaa tarkistaa että vastauksessa on merkkijono "Awesome".
 
@@ -241,7 +243,7 @@ Alla ensimmäinen testimetodi varmistaa, että pyynnön käsittelevä kontroller
 MockMvc:n avulla voi testata käytännössä suurinta osaa palvelinsovellusten toiminnallisuudesta, mutta samalla se tarjoaa pääsyn samaan rajapintaan kuin mitä selain käsitteelee.
 
 
-<programming-exercise name='Airports and Aircrafts Test' tmcname='osa04-Osa04_03.AirportsAndAircraftsTest'>
+<programming-exercise name='Airports and Aircrafts Test' tmcname='osa04-Osa04_05.AirportsAndAircraftsTest'>
 
 Muistamme edellisestä osiosta tehtävän, missä tehtiin sovellus lentokoneiden ja lentokenttien hallintaan. Tässä tehtävässä harjoitellaan hieman sekä integraatio- että järjestelmätestausta. Tehtävässä ei ole automaattisia testejä, joilla testattaisiin kirjoittamiasi testejä. Aina kun lisäät yksittäisen testin, voit ajaa testit klikkaamalla projektia oikealla hiirennapilla ja valitsemalla "Test".
 
@@ -383,7 +385,7 @@ Oleellista testien kirjoittamisessa on siis mahdollisuus kenttien tunnistamiseen
 <br/>
 
 
-<programming-exercise name='Movie Database Test' tmcname='osa04-Osa04_04.MovieDatabaseTest'>
+<programming-exercise name='Movie Database Test' tmcname='osa04-Osa04_06.MovieDatabaseTest'>
 
 Tehtäväpohjassa on sovellus elokuvien ja näyttelijöiden hallintaan. Tässä tehtävässä harjoitellaan hieman järjestelmätestausta FluentLeniumin avulla. Kuten edellisessä tehtävässä, tässäkään tehtävässä ei ole automaattisia testejä vaan tehtävänäsi on toteuttaa ne.
 

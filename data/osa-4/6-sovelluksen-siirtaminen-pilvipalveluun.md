@@ -1,9 +1,8 @@
 ---
-path: '/osa-4/5-sovelluksen-siirtaminen-pilvipalveluun'
+path: '/osa-4/6-sovelluksen-siirtaminen-pilvipalveluun'
 title: 'Sovelluksen siirtäminen pilvipalveluun'
-hidden: true
+hidden: false
 ---
-
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
 
@@ -33,6 +32,8 @@ Tarkastellaan seuraavaksi miten kurssin tehtävän voi lisätä Herokuun. Lisä�
 ### Tietokannanhallintajärjestelmän ajurin määrittely
 
 Sovelluksen käytössä olevaan tiedostojärjestelmään mahdollisesti tehtävät muutokset eivät säily sovelluksen uudelleenkäynnistyksen yhteydessä, joten tähän asti käyttämämme tiedostopohjainen H2-tietokannanhallintajärjestelmä ei sovellu sovellukseemme. Heroku käyttää oletuksena <a href="https://www.postgresql.org/" target="_blank">PostgreSQL</a>-tietokannanhallintajärjestelmää, jonka se tarjoaa käyttöömme erillisenä palveluna.
+
+<br/>
 
 Jotta voimme käyttää PostgreSQL-tietokannanhallintajärjestelmää, tarvitsemme sovellukseemme PostgreSQL-ajurin. Ajurin saa käyttöön lisäämällä projektin `pom.xml`-tiedostoon seuraavan riippuvuuden.
 

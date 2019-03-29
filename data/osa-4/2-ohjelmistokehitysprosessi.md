@@ -1,7 +1,7 @@
 ---
-path: '/osa-4/1-ohjelmistokehitysprosessi'
+path: '/osa-4/2-ohjelmistokehitysprosessi'
 title: 'Muutama sana ohjelmistokehityksestä'
-hidden: true
+hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>

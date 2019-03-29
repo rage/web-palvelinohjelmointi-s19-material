@@ -18,7 +18,6 @@ hidden: true
 HTTP on tilaton protokolla. Tämä tarkoittaa sitä, että jokainen pyyntö on erillinen kokonaisuus, joka ei liity aiempiin pyyntöihin. Suunnittelupäätöksen taustalla oli ajatus siitä, että verkkosivulle ladattava sisältö voi sijaita useammalla eri palvelimella. Jos HTTP ottaisi kantaa käyttäjän tilaan, tulisi myös hajautettujen ratkaisujen tilan ylläpitoon ottaa kantaa -- tämä olisi myös ollut melko tehotonta ([Basic HTTP as defined in 1992](https://www.w3.org/Protocols/HTTP/HTTP2.html)). Päätös tilattomuudesta on ollut järkevä: suurin osa verkkoliikenteestä liittyy muuttumattoman sisällön hakemiseen, jolloin palvelinten ei tarvitse varata resursseja käyttäjän tilan ylläpitämiseen, eikä palvelinten ja selainohjelmistojen toteuttajien ole tarvinnut toteuttaa mekanismeja käyttäjien tilan ylläpitämiseen.
 
 
-
 Käyttäjän tunnistamiseen pyyntöjen välillä on kuitenkin tarvetta. Esimerkiksi verkkokaupat ja muut käyttäjän kirjautumista vaativat palvelut tarvitsevat tavan käyttäjän tunnistamiseen. Klassinen -- mutta huono -- tapa ylläpitää käyttäjän tilaa on ollut säilyttää GET-muotoisessa osoitteessa parametreja, joiden perusteella asiakas voidaan tunnistaa palvelinsovelluksessa. Tämä ei kuitenkaan ole suositeltavaa, sillä osoitteessa olevia parametreja voi muokata käsin.
 
 

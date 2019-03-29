@@ -53,19 +53,19 @@ Kurssilla Web-palvelinohjelmointi Java opit web-sovellusten toimintaperiaatteet 
     <tr>
         <td>4</td>
         <td>
-            Ohjelmistokehitysprosessi, kerrosarkkitehtuuri ja sovellusten automaattinen testaaminen. Sovelluksen siirtäminen verkkoon.
+            Mediatyypit ja tiedostojen tallentaminen. Ohjelmistokehitysprosessi, kerrosarkkitehtuuri ja sovellusten automaattinen testaaminen. Sovelluksen siirtäminen verkkoon.
         </td>
         <td>
-            Tunnet pintapuolisesti ohjelmistokehitysprosessin eri vaihteet. Tiedät joitakin web-sovelluksiin soveltuvia arkkitehtuurimalleja, ja ymmärrät mitä kerrosarkkitehtuurilla tarkoitetaan. Osaat jakaa sovelluksen osia sovelluksen sisäisiksi palveluiksi ja osaat kirjoittaa automaattisesti suoritettavia testejä sovelluksillesi. Osaat siirtää sovelluksen verkkoon kaikkien nähtäville.
+            Tunnet käsitteen mediatyyppi ja osaat käsitellä tiedostoja tietokannassa. Tunnet pintapuolisesti ohjelmistokehitysprosessin eri vaihteet. Tiedät joitakin web-sovelluksiin soveltuvia arkkitehtuurimalleja, ja ymmärrät mitä kerrosarkkitehtuurilla tarkoitetaan. Osaat jakaa sovelluksen osia sovelluksen sisäisiksi palveluiksi ja osaat kirjoittaa automaattisesti suoritettavia testejä sovelluksillesi. Osaat siirtää sovelluksen verkkoon kaikkien nähtäville.
         </td>
     </tr>
     <tr>
         <td>5</td>
         <td>
-            Mediatyypit ja tiedostojen tallentaminen. HTTP-protokolla ja evästeet. Autentikaatio ja autorisaatio.
+            HTTP-protokolla ja evästeet. Autentikaatio ja autorisaatio.
         </td>
         <td>
-            Osaat käsitellä eri muodossa olevaa tietoa ja tunnet käsitteen mediatyyppi. Tunnet käsitteen tilattomuus. Tiedät mitä evästeet ovat ja mihin niitä käytetään. Tunnet evästeisiin liittyviä oleellisia lakiteknisia asioita. Osaat selittää autentikaation ja autorisaation erot. Osaat luoda sovelluksen, joka pyytää käyttäjää kirjautumaan. Osaat määritellä kirjautumista vaativia polkuja ja metodeja, sekä piilottaa näkymän osia erilaisilta käyttäjäryhmiltä.
+            Tunnet käsitteen tilattomuus. Tiedät mitä evästeet ovat ja mihin niitä käytetään. Tunnet evästeisiin liittyviä oleellisia lakiteknisia asioita. Osaat selittää autentikaation ja autorisaation erot. Osaat luoda sovelluksen, joka pyytää käyttäjää kirjautumaan. Osaat määritellä kirjautumista vaativia polkuja ja metodeja, sekä piilottaa näkymän osia erilaisilta käyttäjäryhmiltä.
         </td>
     </tr>
     <tr>

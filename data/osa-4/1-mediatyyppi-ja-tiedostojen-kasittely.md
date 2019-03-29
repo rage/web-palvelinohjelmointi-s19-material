@@ -1,7 +1,7 @@
 ---
-path: '/osa-5/1-tiedon-muodot-ja-mediatyypit'
-title: 'Tiedon muoto ja mediatyypit'
-hidden: true
+path: '/osa-4/1-mediatyyppi-ja-tiedostojen-kasittely'
+title: 'Mediatyyppi ja tiedostojen käsittely'
+hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
@@ -16,7 +16,6 @@ hidden: true
 
 
 Palvelimelle tehtävät pyynnöt ja palvelimelta saatavat vastaukset voivat sisältää erimuotoista tietoa. Pyyntö tai vastaus voi sisältää esimerkiksi tekstidokumentin, kuvatiedoston tai vaikkapa PDF-tiedoston. Palvelin vastaanottaa ja kertoo pyynnön tyypin HTTP-protokollan mukana kulkevalla otsakkeella `Content-Type`.
-
 
 Tätä tietoa lähetettävän tai vastaanotettavan datan muodosta kutsutaan [mediatyypiksi](https://en.wikipedia.org/wiki/Internet_media_type). Tietoa käsittelevä ohjelmisto päättää mediatyypin perusteella miten data käsitellään. Mediatyyppi sisältää yleensä kaksi osaa; mediatyypin sekä tarkenteen (esim `application/json`). Kattava lista eri mediatyypeistä löytyy IANA-organisaation ylläpitämästä [mediatyyppilistasta](http://www.iana.org/assignments/media-types/media-types.xhtml).
 
@@ -87,6 +86,8 @@ public class FileObject extends AbstractPersistable<Long> {
 
 Annotaatiolla <a href="http://docs.oracle.com/javaee/6/api/javax/persistence/Lob.html" target="_blank">@Lob</a> kerrotaan että annotoitu muuttuja tulee tallentaa tietokantaan isona dataobjektina. Tietokantamoottorit tallentavat nämä tyypillisesti erilliseen isommille tiedostoille tarkoitettuun sijaintiin, jolloin tietokannan tehokkuus ei juurikaan kärsi erikokoisten kenttien takia.
 
+<br/>
+
 Kun entiteetille tekee repository-olion, voi sen ottaa käyttöön myös kontrollerissa. Tietokantaan tallentaminen tapahtuu tällöin seuraavasti:
 
 
@@ -113,7 +114,7 @@ public byte[] get(@PathVariable Long id) {
 }
 ```
 
-<programming-exercise name='GifBin'>
+<programming-exercise name='GifBin' tmcname='osa04-Osa04_01.GifBin'>
 
 Tässä tehtävässä toteutetaan sovellus gif-kuvien varastointiin ja selaamiseen.
 
@@ -243,9 +244,7 @@ public ResponseEntity<byte[]> viewFile(@PathVariable Long id) {
 }
 ```
 
-TODO: vinkki deletemappingista ja tarkempi selitys mitä tapahtuu
-
-<programming-exercise name='FileManager'>
+<programming-exercise name='FileManager' tmcname='osa04-Osa04_02.FileManager'>
 
 Tässä tehtävässä toteutetaan yleisempi tiedostojen varastointiin ja näyttämiseen käytettävä sovellus.
 
@@ -255,7 +254,6 @@ Toteuta toiminnallisuus, jonka avulla seuraavat toiminnot ovat käytössä.
 
 - Kun käyttäjä tekee GET-tyyppisen pyynnön osoitteeseen `/files`, pyyntöön lisätään tietokannasta löytyvät tiedostot ja käyttäjä ohjataan sivulle `files.html`.
 - Kun käyttäjä lähettää lomakkeella tiedoston osoitteeseen `/files`, pyynnöstä otetaan talteen kaikki tiedot mitä näkymässä halutaan näyttää, ja tallennetaan ne tietokantaan. Pyyntö ohjataan lopuksi uudelleen osoitteeseen `/files`.
-- Kun käyttäjä klikkaa yksittäiseen tiedostoon liittyvää delete-nappia, tulee tiedosto poistaa tietokannasta. Lopuksi pyyntö uudelleenohjataan osoitteeseen `/files`.
 - Kun käyttäjä klikkaa yksittäiseen tiedostoon liittyvää nimeä sen lataamista varten, tulee tiedosto lähettää käyttäjälle. Aseta pyyntöön datan lisäksi myös tiedoston mediatyyppi että ja ehdotus tiedoston tallennusnimestä.
 
 
