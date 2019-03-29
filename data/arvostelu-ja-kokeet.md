@@ -7,7 +7,7 @@ information_page: true
 
 Kurssin arvostelu perustuu viikoittain julkaistavan materiaalin tehtäviin sekä laajempaan ohjelmointiprojektiin. Viikottaisten tehtävien painoarvo on 70% kurssin arvostelussa ja projektin sekä sen yhteydessä tehtävien vertaisarvioiden painoarvo on 30% kurssin arvostelussa.
 
-Projekti julkaistaan 29.3. kurssin neljännen osan yhteydessä ja se tulee palauttaa 3.5. mennessä. Palautus vertaisarvioidaan -- vertaisarviot tulee palauttaa 9.5. mennessä.
+Projekti julkaistaan 29.3. kurssin neljännen osan yhteydessä ja se tulee palauttaa viimeistään 6.5. klo 23:59. Palautus itse- ja vertaisarvioidaan -- itse- ja vertaisarviointimahdollisuus aukeaa 7.5. ja arvioinnit tulee tehdä viimeistään 13.5. klo 23:59.
 
 Kurssin lopussa on koe, joka arvostellaan skaalalla hyväksytty / hylätty. Arvosana muodostuu tehdyistä tehtävistä ja projektista.
 
