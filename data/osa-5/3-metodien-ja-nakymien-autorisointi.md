@@ -1,12 +1,11 @@
 ---
-path: '/osa-x/x-johdanto'
-title: 'tunnusten-ja-salattavien-sivujen-maarittely'
+path: '/osa-5/3-metodien-ja-nakymien-autorisointi'
+title: 'Näkymätason ja metoditason autorisointi'
 hidden: true
 ---
 
-## Tunnusten ja salattavien sivujen määrittely
 
-Tutustuimme edellä käyttäjän tunnistamiseen eli autentikointiin. Autentikoinnin lisäksi sovelluksissa on tärkeää varmistaa, että käyttäjä saa tehdä asioita, joita hän yrittää tehdä: autorisointi. Jos käyttäjän tunnistaminen toimii mutta sovellus ei tarkista oikeuksia tarkemmin, on mahdollista päätyä esimerkiksi tilanteeseen, missä [käyttäjä pääsee tekemään epätoivottuja asioita](https://www.telegraph.co.uk/technology/facebook/10251869/Mark-Zuckerberg-Facebook-profile-page-hacked.html).
+Tutustuimme juuri käyttäjän tunnistamiseen eli autentikointiin. Autentikoinnin lisäksi sovelluksissa on tärkeää varmistaa, että käyttäjä saa tehdä asioita, joita hän yrittää tehdä: autorisointi. Jos käyttäjän tunnistaminen toimii mutta sovellus ei tarkista oikeuksia tarkemmin, on mahdollista päätyä esimerkiksi tilanteeseen, missä [käyttäjä pääsee tekemään epätoivottuja asioita](https://www.telegraph.co.uk/technology/facebook/10251869/Mark-Zuckerberg-Facebook-profile-page-hacked.html).
 
 
 ### Näkymätason autorisointi

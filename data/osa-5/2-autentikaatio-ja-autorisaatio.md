@@ -1,5 +1,5 @@
 ---
-path: '/osa-5/3-autentikaatio-ja-autorisaatio'
+path: '/osa-5/2-autentikaatio-ja-autorisaatio'
 title: 'Autentikaatio ja autorisaatio'
 hidden: true
 ---
