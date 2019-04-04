@@ -18,7 +18,7 @@ hidden: true
 HTTP on tilaton protokolla. Tämä tarkoittaa sitä, että jokainen pyyntö on erillinen kokonaisuus, joka ei liity aiempiin pyyntöihin. Suunnittelupäätöksen taustalla oli ajatus siitä, että verkkosivulle ladattava sisältö voi sijaita useammalla eri palvelimella. Jos HTTP ottaisi kantaa käyttäjän tilaan, tulisi myös hajautettujen ratkaisujen tilan ylläpitoon ottaa kantaa -- tämä olisi myös ollut melko tehotonta ([Basic HTTP as defined in 1992](https://www.w3.org/Protocols/HTTP/HTTP2.html)). Päätös tilattomuudesta on ollut järkevä: suurin osa verkkoliikenteestä liittyy muuttumattoman sisällön hakemiseen, jolloin palvelinten ei tarvitse varata resursseja käyttäjän tilan ylläpitämiseen, eikä palvelinten ja selainohjelmistojen toteuttajien ole tarvinnut toteuttaa mekanismeja käyttäjien tilan ylläpitämiseen.
 
 
-Käyttäjän tunnistamiseen pyyntöjen välillä on kuitenkin tarvetta. Esimerkiksi verkkokaupat ja muut käyttäjän kirjautumista vaativat palvelut tarvitsevat tavan käyttäjän tunnistamiseen. Klassinen -- mutta huono -- tapa ylläpitää käyttäjän tilaa on ollut säilyttää GET-muotoisessa osoitteessa parametreja, joiden perusteella asiakas voidaan tunnistaa palvelinsovelluksessa. Tämä ei kuitenkaan ole suositeltavaa, sillä osoitteessa olevia parametreja voi muokata käsin.
+Käyttäjän tunnistamiseen pyyntöjen välillä on kuitenkin tarvetta. Esimerkiksi verkkokaupat ja muut käyttäjän kirjautumista vaativat palvelut tarvitsevat tavan käyttäjän tunnistamiseen. Klassinen -- mutta huono -- tapa käyttäjän tunnistamiseen on ollut säilyttää GET-muotoisessa osoitteessa parametreja, joiden perusteella asiakas voidaan tunnistaa palvelinsovelluksessa. Tämä ei kuitenkaan ole suositeltavaa, sillä osoitteessa olevia parametreja voi muokata käsin.
 
 
 <text-box variant='hint' name='Case: GET-parametri tunnistautumiseen'>
@@ -75,8 +75,7 @@ Yleisesti ottaen evästeet ovat sekä hyödyllisiä että haitallisia: niiden av
 
 Painamalla F12 tai valitsemalla Tools -> Developer tools, pääset tutkimaan sivun lataamiseen ja sisältöön liittyvää statistiikkaa. Lisäneuvoja löytyy [Google Developers](https://developers.google.com/web/tools/chrome-devtools/)-sivustolta.
 
-
-Avaa developer tools, ja mene osoitteeseen [https://www.hs.fi](https://www.hs.fi). Valitsemalla developer toolsien välilehden `Resources`, löydät valikon erilaisista sivuun liittyvistä resursseista. Avaa `Cookies` ja valitse vaihtoehto `www.hs.fi`. Kuinka moni palvelu pitää sinusta kirjaa kun menet Helsingin sanomien sivuille?
+Avaa developer tools, ja mene osoitteeseen [https://www.hs.fi](https://www.hs.fi). Valitsemalla developer toolsien välilehden `Application`, löydät valikon erilaisista sivuun liittyvistä resursseista. Etsi kohta `Storage` ja avaa sen alla oleva `Cookies`-kohta. Valitse vaihtoehto `https://www.hs.fi`. Kuinka monta eri evästettä selain lähettää tehdessäsi pyynnön osoitteeseen `https://www.hs.fi`?
 
 </text-box>
 
@@ -84,7 +83,7 @@ Avaa developer tools, ja mene osoitteeseen [https://www.hs.fi](https://www.hs.fi
 ## Evästeet ja istunnot eli sessiot
 
 
-Kun selain lähettää palvelimelle pyynnön yhteydessä evästeen, palvelin etsii evästeen perusteella käynnissä olevaa istuntoa eli sessiota. Jos sessio löytyy, annetaan siihen liittyvät tiedot sovelluksen käyttöön käyttäjän pyynnön käsittelyä varten. Jos sessiota taas ei löydy, voidaan selaimelle palauttaa uusi eväste ja aloittaa uusi sessio, jolloin session tiedot löytyvät jatkossa palvelimelta.
+Kun selain lähettää palvelimelle pyynnön yhteydessä evästeen, palvelin etsii evästeen perusteella käynnissä olevaa istuntoa eli sessiota. Jos sessio löytyy, annetaan siihen liittyvät tiedot sovelluksen käyttöön käyttäjän pyynnön käsittelyä varten. Jos sessiota taas ei löydy, aloitetaan uusi sessio, johon liittyvä eväste palautetaan käyttäjälle vastauksen yhteydessä.
 
 Javassa sessioiden käsittelyyn löytyy [HttpSession](https://docs.oracle.com/javaee/7/api/javax/servlet/http/HttpSession.html)-luokka, joka tarjoaa välineet sessio- ja käyttäjäkohtaisen tiedon tallentamiseen. Oleellisimmat luokan metodit ovat `public void setAttribute(String name, Object value)`, joka tallentaa sessioon arvon, sekä `public Object getAttribute(String name)`, jonka avulla kyseinen arvo löytyy.
 
@@ -120,9 +119,11 @@ public class VisitCountController {
 Kun käyttäjä tekee ensimmäistä kertaa pyynnön sovellukseen, palauttaa sovellus merkkijonon "Visits: 1". Vastauksen yhteydessä palautetaan myös eväste. Kun käyttäjä tekee seuraavan kerran pyynnön sovellukseen, lähettää selain pyynnön yhteydessä myös evästeen palvelimelle, jolloin palvelin osaa tunnistaa käyttäjän ja hakee oikean istunnon tiedot -- vastaukseksi palautuu lopulta merkkijono "Visits: 2".
 
 
-<programming-exercise name='Hello Session'>
+<programming-exercise name='Hello Session' tmcname='osa05-Osa05_01.HelloSession'>
 
 Toteuta sovellus, joka palauttaa käyttäjälle merkkijonon "Hello there!" jos käyttäjä ei ole ennen vieraillut sovelluksessa. Jos käyttäjä on vieraillut sovelluksessa aiemmin, tulee sovelluksen palauttaa käyttäjälle merkkijono "Hello again!".
+
+Palauta merkkijono ensimmäisestä osasta tutun annotaation `@ResponseBody` avulla.
 
 </programming-exercise>
 
@@ -181,7 +182,7 @@ public class VisitCountController {
 }
 ```
 
-<programming-exercise name='Reload Heroes'>
+<programming-exercise name='Reload Heroes' tmcname='osa05-Osa05_02.ReloadHeroes'>
 
 Reload Heroes -sovellus pitää kirjaa käyttäjän tekemistä sivun uudelleenlatauksista. Kun käyttäjä saapuu sovellukseen ensimmäistä kertaa, hänelle luodaan satunnainen käyttäjätunnus ja hänen vierailujen määrä asetetaan yhteen. Jokaisen uudelleenvierailun yhteydessä käyttäjän vierailujen määrä kasvaa yhdellä.
 
@@ -241,37 +242,34 @@ Tarkempaa tietoa em. annotaatiosta löytyy [Springin dokumentaatiosta](https://d
 
 
 
-<programming-exercise name='EuroShopper (3 osaa)'>
+<programming-exercise name='EuroShopper (3 osaa)' tmcname='osa05-Osa05_03.EuroShopper'>
 
 Tässä tehtävässä toteutetaan verkkokauppaan ostoskoritoiminnallisuus.
 
 
 <h2>Ostoskori</h2>
 
-Luo pakkaukseen `wad.domain` luokka `ShoppingCart`, joka tarjoaa seuraavat toiminnallisuudet.
+Luo pakkaukseen `euroshopper` luokka `ShoppingCart`, joka tarjoaa seuraavat toiminnallisuudet.
 
 - Metodi `getItems()` palauttaa `Map<Item, Long>`-tyyppisen olion, joka sisältää ostoskorissa olevien tuotteiden tuotekohtaisen lukumäärän.
 - Metodi `addToCart(Item item)` lisää ostoskoriin yhden kappaleen `Item`-tyyppistä esinettä.
-- Metodi `removeFromCart(Item item)` poistaa ostoskorista yhden kappaleen `Item`-tyyppistä esinettä. Jos lukumäärä laskee nollaan, `getItems()`-metodin ei tule sisältää enää kyseistä tuotetta.
 
 
 <h2>Kontrolleri ostoskorille</h2>
 
-Tee ostoskorista sessiokohtainen, eli eri käyttäjien tulee saada eri ostoskori käyttöönsä. Annotaatiosta `Scope` on tässä hyötyä.
+Tee ostoskorista sessiokohtainen, jolloin eri käyttäjien tulee saada eri ostoskori käyttöönsä. Annotaatiosta `@Scope` on tässä hyötyä.
 
 Luo projektiin sopiva kontrolleri, joka tarjoaa seuraavat osoitteet ja toiminnallisuudet.
 
 - GET `/cart` asettaa model-olion "items"-nimiseen attribuuttiin ostoskorin sisällön (aiempi `getItems()`). Pyynnön vastauksena käyttäjälle näytetään sivu, joka luodaan polussa `/src/main/resources/templates/cart.html` olevasta näkymästä.
 - POST `/cart/items/{id}` lisää ostoskoriin yhden {id}-tunnuksella tietokannasta löytyvän Item-olion. Pyyntö ohjataan osoitteeseen `/cart`.
-- DELETE `/cart/items/{id}` poistaa ostoskorista yhden {id}-tunnuksella tietokannasta löytyvän Item-olion. Pyyntö ohjataan osoitteeseen `/cart`.
 
 
 <h2>Tilauksen tekeminen</h2>
 
+Muokkaa luokkaa `euroshopper.OrderController` siten, että kun käyttäjä tekee POST-tyyppisen pyynnön osoitteeseen `/orders`, tilaus tallennetaan tietokantaan. Tutustu luokkiin `Order` ja `OrderItem` ennen toteutusta. Varmista että esimerkiksi `OrderItem` viittaa oikeaan tietokantatauluun.
 
-Muokkaa luokkaa `wad.controller.OrderController` siten, että tilaus tallennetaan tietokantaan. Tutustu luokkiin `Order` ja `OrderItem` ennen toteutusta. Varmista että esimerkiksi `OrderItem` viittaa oikeaan tietokantatauluun.
-
-Kun tilaus on tehty, tyhjennä ostoskori.
+Kun tilaus on tehty, tyhjennä myös ostoskori.
 
 </programming-exercise>
 

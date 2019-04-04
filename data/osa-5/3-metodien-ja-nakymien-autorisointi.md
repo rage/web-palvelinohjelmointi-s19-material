@@ -15,7 +15,7 @@ Määrittelimme aiemmin oikeuksia sovelluksen polkuihin liittyen. Tämä ei kuit
 ```xml
 <dependency>
     <groupId>org.thymeleaf.extras</groupId>
-    <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+    <artifactId>thymeleaf-extras-springsecurity5</artifactId>
 </dependency>
 ```
 
@@ -64,11 +64,11 @@ public String post() {
 ```
 
 
-<programming-exercise name='Hidden fields'>
+<programming-exercise name='Hidden fields' tmcname='osa05-Osa05_08.HiddenFields'>
 
 Tehtävässä on hahmoteltu viestien näyttämiseen tarkoitettua sovellusta.
 
-Luo sovellukseen tietoturvakonfiguraatio, missä määritellään kaksi käyttäjää. Ensimmäisellä käyttäjällä "user", jonka salasana on "password" on "USER"-oikeus. Toisella käyttäjällä "postman", jonka salasana on "pat", on "POSTER"-oikeus.
+Luo sovellukseen tietoturvakonfiguraatio, missä määritellään kaksi käyttäjää. Ensimmäisellä käyttäjällä "user", jonka salasana on "password" on "USER"-oikeus. Toisella käyttäjällä "postman", jonka salasana on "pat", on "POSTER"-oikeus. Toteuta tietoturvakonfiguraatio siten, että käyttäjiä ei lisätä tietokantaan.
 
 Muokkaa näkymää `messages.html` siten, että vain käyttäjät, joilla on "POSTER"-oikeus näkee lomakkeen, jolla voi lisätä uusia viestejä.
 
@@ -87,11 +87,13 @@ Lisää tämän jälkeen sovellukseen metoditason suojaus millä rajoitat POST-p
 
 </programming-exercise>
 
-Käyttäjän identiteetin varmistaminen vaatii käyttäjälistan, joka taas yleensä ottaen tarkoittaa käyttäjän rekisteröintiä jonkinlaiseen palveluun. Käyttäjän rekisteröitymisen vaatiminen heti sovellusta käynnistettäessä voi rajoittaa käyttäjien määrää huomattavasti, joten rekisteröitymistä kannattaa pyytää vasta kun siihen on tarve.
 
+<text-box variant='hint' name='Rekisteröitymiseen liittyvää pohdintaa..'>
+
+Käyttäjän identiteetin varmistaminen vaatii käyttäjälistan, joka taas yleensä ottaen tarkoittaa käyttäjän rekisteröintiä jonkinlaiseen palveluun. Käyttäjän rekisteröitymisen vaatiminen heti sovellusta käynnistettäessä voi rajoittaa käyttäjien määrää huomattavasti, joten rekisteröitymistä kannattaa pyytää vasta kun siihen on tarve.
 
 Erillinen rekisteröityminen ja uuden salasanan keksiminen ei ole aina tarpeen. Web-sovelluksille on käytössä useita kolmannen osapuolen tarjoamia keskitettyjä identiteetinhallintapalveluita. Esimerkiksi [OAuth2](https://oauth.net/2/):n avulla sovelluskehittäjä voi antaa käyttäjilleen mahdollisuuden käyttää jo olemassaolevia tunnuksia. Myös erilaiset sosiaalisen median palveluihin perustuvat autentikointimekanismit ovat yleistyneet viime aikoina.
 
 Merkittävään osaan näistä löytyy myös Spring-komponentit. Esimerkiki Facebookin käyttäminen kirjautumisessa on melko suoraviivaista -- aiheeseen löytyy opas mm. osoitteesta [http://www.baeldung.com/facebook-authentication-with-spring-security-and-social](http://www.baeldung.com/facebook-authentication-with-spring-security-and-social).
 
-
+</text-box>

@@ -28,7 +28,7 @@ Kirjautumissivuja ja -palveluita on kirjoitettu useita, ja sellainen löytyy lä
 </dependency>
 ```
 
-Yllä kuvattu riippuvuus tuo käyttöömme komponentin, joka tarkastelee pyyntöjä ennen kuin pyynnöt ohjataan kontrollerien metodeille. Jos käyttäjän tulee olla kirjautunut päästäkseen haluamaansa osoitteeseen, komponentti ohjaa pyynnön tarvittaessa erilliselle kirjautumisivulle -- tästä esimerkki mm. oppaassa[https://www.baeldung.com/spring-security-login](https://www.baeldung.com/spring-security-login).
+Yllä kuvattu riippuvuus tuo käyttöömme komponentin, joka tarkastelee pyyntöjä ennen kuin pyynnöt ohjataan kontrollerien metodeille. Jos käyttäjän tulee olla kirjautunut päästäkseen haluamaansa osoitteeseen, komponentti ohjaa pyynnön tarvittaessa erilliselle kirjautumisivulle -- tästä esimerkki mm. oppaassa [https://www.baeldung.com/spring-security-login](https://www.baeldung.com/spring-security-login).
 
 
 <text-box variant='hint' name='Mistä käyttäjätunnus ja salasana?'>
@@ -47,17 +47,30 @@ Salasanan lisääminen julkiseen versionhallintaan ei ole kuitenkaan hyvä idea.
 security.user.password=${MYPASSWORD}
 ```
 
+Voit vaihtoehtoisesti myös luoda käyttöösi väliaikaisen konfiguraation, joka toteaa ettei pyyntöjä tarkasteta. Yksinkertaisimmillaan tämä näyttää seuraavalta.
+
+```java
+// importit ym
+
+@Configuration
+public class DevelopmentSecurityConfiguration
+        extends WebSecurityConfigurerAdapter {
+
+    @Override
+    public void configure(WebSecurity sec) throws Exception {
+        sec.ignoring().antMatchers("/**");
+    }
+}
+```
+
 </text-box>
 
 
-## Tunnusten ja salattavien sivujen määrittely
-
-TODO: pakko -- uuden käyttäjän luominen
-
+## Tunnusten ja suojattavien sivujen määrittely
 
 Kirjautumista varten luodaan erillinen konfiguraatiotiedosto, jossa määritellään sovellukseen liittyvät salattavat sivut. Oletuskonfiguraatiolla pääsy estetään käytännössä kaikkiin sovelluksen resursseihin, ja ohjelmoijan tulee kertoa ne resurssit, joihin käyttäjillä on pääsy.
 
-Luodaan oma konfiguraatiotiedosto `SecurityConfiguration`, joka sisältää sovelluksemme tietoturvakonfiguraation. Huom! Konfiguraatiotiedostoja kannattaa luoda useampia -- ainakin yksi tuotantokäyttöön ja yksi sovelluksen kehittämiseen tarkoitetulle hiekkalaatikolle. Kun konfiguraatiotiedostoja alkaa olla useampia, kannattaa ne lisätä erilliseen pakkaukseen.
+Luodaan oma konfiguraatiotiedosto `SecurityConfiguration`, joka sisältää sovelluksemme tietoturvakonfiguraation. Huom! Konfiguraatiotiedostoja kannattaa luoda useampia -- ainakin yksi tuotantokäyttöön ja yksi sovelluksen kehittämiseen tarkoitetulle hiekkalaatikolle. Edellisessä osassa käytetyt konfiguraatioprofiilit ovat tässä erittäin hyödyllisiä.
 
 ```java
 // pakkaus
@@ -74,7 +87,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity sec) throws Exception {
         // Ei päästetä käyttäjää mihinkään sovelluksen resurssiin ilman
         // kirjautumista. Tarjotaan kuitenkin lomake kirjautumiseen, mihin
         // pääsee vapaasti. Tämän lisäksi uloskirjautumiseen tarjotaan
@@ -85,31 +98,29 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout().permitAll();
     }
 
-
-    // TODO: muuta, aina userdetailsservice
-
-
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
         // withdefaultpasswordencoder deprekoitu
-        UserDetails user = User.withDefaultPasswordEncoder().username("maxwell_smart").password("kenkapuhelin").authorities("user").build();
+        UserDetails user = User.withDefaultPasswordEncoder()
+                               .username("hei")
+                               .password("maailma")
+                               .authorities("USER")
+                               .build();
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(user);
         return manager;
     }
-
-    // alle wanha
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        // käyttäjällä jack, jonka salasana on bauer, on rooli USER
-        auth.inMemoryAuthentication()
-                .withUser("jack").password("bauer").roles("USER");
-    }
 }
 ```
 
-Yllä oleva tietoturvakonfiguraatio koostuu kahdesta osasta. Ensimmäisessä osassa `configure(HttpSecurity http)` määritellään sovelluksen osoitteet, joihin on pääsy kielletty tai pääsy sallittu. Toisessa osassa `public void configureGlobal(AuthenticationManagerBuilder auth)` taas määritellään  -- tässä tapauksessa -- käytössä olevat käyttäjätunnukset ja salasanat. Käyttäjälle tulee määritellä rooli -- yllä oletuksena on `USER`.
+Yllä oleva tietoturvakonfiguraatio koostuu kahdesta osasta.
+
+Ensimmäisessä osassa `configure(HttpSecurity http)` määritellään sovelluksen osoitteet, joihin on pääsy kielletty tai pääsy sallittu. Yllä todetaan, että käyttäjä tulee tunnistaa jokaisen pyynnön yhteydessä (`anyRequest().authenticated()`), mutta kirjautumiseen käytettyyn lomakkeeseen on kaikilla pääsy (`formLogin().permitAll()`). Vastaavasti uloskirjautumistoiminnallisuus on kaikille sallittu.
+
+Toisessa osassa `public UserDetailsService userDetailsService()` määritellään käyttäjätietojen hakemiseen tarkoitetun `UserDetailsService`-rajapinnan toteuttava olio. Yllä luodaan ensin käyttäjätunnus `hei` salasanalla `maailma`. Käyttäjätunnuksella on rooli `USER` (tarkemmin pääsy resursseihin, joihin `USER`-käyttäjällä on pääsy -- palaamme näihin myöhemmin). Luotu käyttäjätunnus lisätään uuteen olevaan käyttäjien hallinnasta vastaavaan `InMemoryUserDetailsManager`-olioon -- olio toteuttaa `UserDetailsService`-rajapinnan.
+
+<hr/>
 
 Kun määritellään osoitteita, joihin käyttäjä pääsee käsiksi, on hyvä varmistaa, että määrittelyssä on mukana lause `anyRequest().authenticated()` -- tämä käytännössä johtaa tilanteeseen, missä kaikki osoitteet, joita ei ole erikseen määritelty, vaatii kirjautumista. Voimme määritellä osoitteita, jotka eivät vaadi kirjautumista seuraavasti:
 
@@ -132,7 +143,7 @@ protected void configure(HttpSecurity http) throws Exception {
 Ylläolevassa esimerkissä osoitteisiin `/free` ja `/access` ei tarvitse kirjautumista. Tämän lisäksi kaikki osoitteet polun `/to/` alla on kaikkien käytettävissä. Loput osoitteet on kaikilta kielletty. Komento `formLogin().permitAll()` määrittelee sivun käyttöön kirjautumissivun, johon annetaan kaikille pääsy, jonka lisäksi komento `logout().permitAll()` antaa kaikille pääsyn uloskirjautumistoiminnallisuuteen.
 
 
-<programming-exercise name='Hello Authentication'>
+<programming-exercise name='Hello Authentication' tmcname='osa05-Osa05_04.HelloAuthentication'>
 
 Tehtävässä on sovellus viestien näyttämiseen. Tehtävänäsi on lisätä siihen salaustoiminnallisuus -- kenenkään muun kuin käyttäjän "maxwell_smart" ei tule päästä viesteihin käsiksi. Aseta Maxwellin salasanaksi "kenkapuhelin".
 
@@ -150,7 +161,7 @@ SQL-kielen spesifikaatiota heikosti tunteva aloitteleva web-ohjelmoija tekee use
 </text-box>
 
 
-Käyttäjätunnuksen ja salasanan noutamista varten luomme käyttäjälle entiteetin sekä sopivan repository-toteutuksen. Tarvitsemme lisäksi oman [UserDetailsService](https://docs.spring.io/spring-security/site/docs/current/apidocs/org/springframework/security/core/userdetails/UserDetailsService.html)-rajapinnan toteutuksen, jota käytetään käyttäjän hakemiseen tietokannasta. Allaolevassa esimerkissä rajapinta on toteutettu siten, että tietokannasta haetaan käyttäjää. Jos käyttäjä löytyy, luomme siitä [User](https://docs.spring.io/spring-security/site/docs/current/apidocs/org/springframework/security/core/userdetails/User.html)-olion, jonka palvelu palauttaa.
+Käyttäjätunnuksen ja salasanan noutamista varten luomme käyttäjälle entiteetin sekä sopivan repository-toteutuksen. Tarvitsemme lisäksi oman [UserDetailsService](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/core/userdetails/UserDetailsService.html)-rajapinnan toteutuksen, jota käytetään käyttäjän hakemiseen tietokannasta. Allaolevassa esimerkissä rajapinta on toteutettu siten, että tietokannasta haetaan käyttäjää. Jos käyttäjä löytyy, luomme siitä [User](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/core/userdetails/User.html)-olion, jonka palvelu palauttaa.
 
 
 ```java
@@ -200,7 +211,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().sameOrigin();
 
         http.authorizeRequests()
-                .antMatchers("/h2-console/*").permitAll()
+                .antMatchers("/h2-console", "/h2-console/**").permitAll()
                 .anyRequest().authenticated();
         http.formLogin()
                 .permitAll();
@@ -218,9 +229,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 }
 ```
 
-Edellisessä esimerkissä salasanojen tallentamisessa käytetään [BCrypt](https://docs.spring.io/spring-security/site/docs/current/apidocs/org/springframework/security/crypto/bcrypt/BCryptPasswordEncoder.html)-algoritmia, joka rakentaa merkkijonomuotoisesta salasanasta hajautusarvon. Tällöin tietokantaan tallennettujen salasanojen vuoto ei ole täysi kriisi, vaikka ei siltikään toivottavaa.
+Edellisessä esimerkissä salasanojen tallentamisessa käytetään [BCrypt](https://docs.spring.io/spring-security/site/docs/current/apidocs/org/springframework/security/crypto/bcrypt/BCryptPasswordEncoder.html)-algoritmia, joka rakentaa merkkijonomuotoisesta salasanasta hajautusarvon. Tällöin salasanoja ei ole tallennettu selkokielisenä, mutta salasanojen koneellinen arvaaminen on toki yhä mahdollista -- kts. [hyvä salasana](https://xkcd.com/936/).
 
-<programming-exercise name='Hello Db Authentication'>
+<programming-exercise name='Hello Db Authentication' tmcname='osa05-Osa05_05.HelloDbAuthentication'>
 
 Tehtävän ohjelmakoodiin on toteutettu käyttäjät tunnistava sovellus, joka tallentaa käyttäjien salasanat tietokantaan. Tutustu sovelluksen ohjelmakoodiin ja lisää `DefaultController`-luokassa olevaa ohjelmakoodia mukaillen sovellukseen toinen käyttäjä, jonka salasana on myös "smart".
 
@@ -230,6 +241,9 @@ Tehtävässä ei ole testejä.
 
 </programming-exercise>
 
+<quiznator id='5ca674b599236814c5bc2cff'></quiznator>
+
+
 Kun käyttäjä on kirjautuneena, saa häneen liittyvän käyttäjätunnuksen ns. tietoturvakontekstista.
 
 ```java
@@ -237,12 +251,7 @@ Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 String username = auth.getName();
 ```
 
-
-<text-box variant='hint' name='Uloskirjautuminen'>
-
-Pohdi: Käyttäjä voi uloskirjautua tekemällä POST-pyynnön sovelluksen osoitteeseen `/logout`. Miksi tavallinen GET-pyyntö ei riitä? Minkälaisia rajoitteita ja määreitä HTTP-protokollan GET-pyyntöihin liittyi?
-
-</text-box>
+<quiznator id='5ca66f08fd9fd71425c6cc67'></quiznator>
 
 
 Autentikaation tarpeen voi määritellä myös pyyntökohtaisesti. Alla olevassa esimerkissä GET-tyyppiset pyynnöt ovat sallittuja juuriosoitteeseen, mutta POST-tyyppiset pyynnöt juuriosoitteeseen eivät ole sallittuja.
@@ -256,7 +265,7 @@ protected void configure(HttpSecurity http) throws Exception {
     http.headers().frameOptions().sameOrigin();
 
     http.authorizeRequests()
-        .antMatchers("/h2-console/*").permitAll()
+        .antMatchers("/h2-console","/h2-console/**").permitAll()
         .antMatchers(HttpMethod.GET, "/").permitAll()
         .antMatchers(HttpMethod.POST, "/").authenticated()
         .anyRequest().authenticated();
@@ -265,21 +274,22 @@ protected void configure(HttpSecurity http) throws Exception {
 }
 ```
 
-<programming-exercise name='Reservations'>
+<programming-exercise name='Reservations' tmcname='osa05-Osa05_06.Reservations'>
 
 Tehtävänäsi on täydentää kesken jäänyttä varaussovellusta siten, että kaikki käyttäjät näkevät varaukset, mutta vain kirjautuneet käyttäjät pääsevät lisäämään varauksia.
 
 Kun käyttäjä tekee pyynnön sovelluksen juuripolkuun `/reservations`, tulee hänen nähdä varaussivu. Allaolevassa esimerkissä tietokannassa ei ole varauksia, mutta jos niitä on, tulee ne listata kohdan Current reservations alla.
 
-<img src="/img/2016-mooc/ex38-emptylist.png" class="browser-img"/>
 
-Jos kirjautumaton käyttäjä yrittää tehdä varauksen, hänet ohjataan kirjautumissivulle.
+<img src="../img/exercises/reservations-emptylist.png" />
 
-<img src="/img/2016-mooc/ex38-login.png" class="browser-img"/>
+Jos kirjautumaton käyttäjä yrittää tehdä varauksen, hänet ohjataan kirjautumissivulle. Kirjautumissivun ulkoasu on todennäköisesti erilainen kuin alla kuvattu kirjautumissivu.
+
+<img src="../img/exercises/reservations-login.png" />
 
 Kun kirjautuminen onnistuu, voi käyttäjä tehdä varauksia.
 
-<img src="/img/2016-mooc/ex38-reservations.png" class="browser-img"/>
+<img src="../img/exercises/reservations-reservations.png" />
 
 Sovelluksen tulee kirjautumis- ja varaustoiminnallisuuden lisäksi myös varmistaa, että varaukset eivät mene päällekkäin.
 
@@ -348,21 +358,17 @@ protected void configure(HttpSecurity http) throws Exception {
 Oikeuksia varten määritellään tyypillisesti erillinen tietokantataulu, ja käyttäjällä voi olla useampia oikeuksia.
 
 
-<programming-exercise name='Only for the Selected'>
+<programming-exercise name='Only for the Selected' tmcname='osa05-Osa05_07.OnlyForTheSelected'>
 
-Sovelluksessa on toteutettuna käyttäjienhallinta tällä hetkellä siten, että käyttäjillä ei ole erillisiä oikeuksia. Muokkaa sovellusta ja lisää sovellukseen käyttäjäkohtaiset oikeudet. Suojaa tämän jälkeen sovelluksen polut seuraavasti:
+Sovelluksessa on `Account` entiteetti, jolle on määritelty käyttäjätunnus, salasana ja lista oikeuksia. Sovelluksessa näitä oikeuksia ei kuitenkaan oteta huomioon.
+
+Muokkaa ensin luokkaa `CustomUserDetailsService` siten, että sovellus ottaa käyttäjän oikeudet huomioon.
+
+Kun luokka `CustomUserDetailsService` huomioi käyttäjän oikeudet, suojaa sovelluksen polut seuraavasti:
 
 - Kuka tahansa saa nähdä polusta `/happypath` palautetun tiedon
 - Vain USER tai ADMIN -käyttäjät saavat nähdä polusta `/secretpath` palautetun tiedon
 - Vain ADMIN-käyttäjät saavat nähdä polusta `/adminpath` palautetun tiedon
-
-Lisää sovellukseen myös seuraavat käyttäjät:
-
-| Käyttäjätunnus  | Salasana  | Oikeudet       |
-| --              | --        | --             |
-| larry           | larry     | USER           |
-| moe             | moe       | USER ja ADMIN  |
-| curly           | curly     | ADMIN          |
 
 
 </programming-exercise>
@@ -440,27 +446,10 @@ Voimme luoda erillisen tietoturvaprofiilin, jota käytetään oletuksena sovellu
 @EnableWebSecurity
 public class DefaultSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        // sallitaan h2-konsolin käyttö
-        http.csrf().disable();
-        http.headers().frameOptions().sameOrigin();
-
-        http.authorizeRequests()
-                .antMatchers("/h2-console/*").permitAll()
-                .anyRequest().authenticated();
-        http.formLogin()
-                .permitAll();
-    }
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("jack").password("bauer").roles("USER");
-    }
+    // paikallinen profiili
 }
 ```
 
 
-Nyt tuotantoympäristössä käyttäjät noudetaan tietokannasta, mutta kehitysympäristössä on erillinen testikäyttäjä. Jos profiilia ei ole erikseen määritelty, käytetään oletusprofiilia (default).
+Nyt tuotantoympäristössä käyttäjät noudetaan tietokannasta, mutta kehitysympäristössä on täysin erillinen konfiguraatio. Jos profiilia ei ole erikseen määritelty, käytetään oletusprofiilia (default).
 
