@@ -1,6 +1,6 @@
 ---
-path: '/osa-5/3-metodien-ja-nakymien-autorisointi'
-title: 'Näkymätason ja metoditason autorisointi'
+path: '/osa-5/3-nakymatason-ja-metoditason-autorisointi'
+title: 'Näkymä- ja metoditason autorisointi'
 hidden: true
 ---
 
@@ -24,8 +24,8 @@ Kun näkymiien `html`-elementtiin lisätään `sec:`-nimiavaruuden määrittely,
 
 ```xml
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.springframework.org/security/tags">
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.springframework.org/security/tags">
 
     ...
     <div sec:authorize="hasAuthority('ADMIN')">
@@ -34,7 +34,7 @@ xmlns:sec="http://www.springframework.org/security/tags">
     ...
 ```
 
-Attribuutilla `sec:authorize` määritellään säännöt, joita tarkistuksessa käytetään. Attribuutille käy mm. arvot `isAuthenticated()`, `hasAuthority('...')` ja `hasAnyAuthority('...')`. Lisää sääntöjä löytyy Spring Securityn [dokumentaatiosta](https://docs.spring.io/spring-security/site/docs/current/reference/html/el-access.html).
+Attribuutilla `sec:authorize` määritellään säännöt, joita tarkistuksessa käytetään. Attribuutille käy mm. arvot `isAuthenticated()`, `hasAuthority('...')` ja `hasAnyAuthority('...')`. Lisää sääntöjä löytyy Spring Securityn dokumentaation kohdasta [Expression-Based Access Control](https://docs.spring.io/spring-security/site/docs/current/reference/html/authorization.html#el-access).
 
 
 <text-box variant='hint' name='Näkymän muutokset liittyvät käytettävyyteen'>
@@ -51,7 +51,7 @@ Pelkän näkymätason autorisoinnin ongelmana on se, että usein toimintaa halut
 
 Saamme sovellukseemme käyttöön myös metoditason autorisoinnin. Lisäämällä tietoturvakonfiguraatiotiedostoon annotaation `@EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true)`, Spring Security etsii metodeja, joissa käytetään sopivia annotaatioita ja suojaa ne. Suojaus tapahtuu käytännössä siten, että metodeihin luodaan proxy-metodit; aina kun metodia kutsutaan, kutsutaan ensin tietoturvakomponenttia, joka tarkistaa onko käyttäjä kirjautunut.
 
-Kun konfiguraatiotiedostoon on lisätty annotaatio, on käytössämme muunmuassa annotaatio [@Secured](https://docs.spring.io/spring-security/site/docs/current/reference/html/jc.html#jc-method). Alla olevassa esimerkissä `post`-metodin käyttöön vaaditaan "ADMIN"-oikeudet.
+Kun konfiguraatiotiedostoon on lisätty annotaatio, on käytössämme muunmuassa annotaatio [@Secured](https://docs.spring.io/spring-security/site/docs/current/reference/html/jc.html#jc-method). Annotaation avulla voidaan määritellä roolit (tai oikeudet), joiden kohdalla annotoidun metodin kutsuminen on sallittua. Alla olevassa esimerkissä `post`-metodin käyttöön vaaditaan "ADMIN"-oikeudet.
 
 
 ```java
@@ -62,6 +62,30 @@ public String post() {
     return "redirect:/posts";
 }
 ```
+
+Esimerkiksi jos käyttäjien tunnistaminen tapahtuu alla olevalla `UserDetailsService`-rajapinnan olettamalla metodilla, kukaan ei pääse tekemään POST-pyyntöä polkuun `/posts`.
+
+
+```java
+@Override
+public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    Account account = accountRepository.findByUsername(username);
+    if (account == null) {
+        throw new UsernameNotFoundException("No such user: " + username);
+    }
+
+    return new org.springframework.security.core.userdetails.User(
+            account.getUsername(),
+            account.getPassword(),
+            true,
+            true,
+            true,
+            true,
+            Arrays.asList(new SimpleGrantedAuthority("USER")));
+}
+```
+
+Jos taas roolin tai oikeuden "USER" vaihtaa muotoon "ADMIN", pääsevät kaikki tekemään pyynnön kyseiseen metodiin.
 
 
 <programming-exercise name='Hidden fields' tmcname='osa05-Osa05_08.HiddenFields'>
@@ -86,6 +110,8 @@ http.formLogin()
 Lisää tämän jälkeen sovellukseen metoditason suojaus millä rajoitat POST-pyyntöjen tekemisen osoitteeseen `/message` vain käyttäjille, joilla on "POSTER"-oikeus. Vaikka testit päästäisivät sinut läpi jo ennen tämän toteutusta, tee se silti.
 
 </programming-exercise>
+
+Annotaatio `@Secured` määrittelee roolit, joilla metodia voi käyttää. Mikäli sovelluksessa haluaa tehdä tarkempaa tarkastelua, käytetään edellisen sijaan annotaatioita `@PreAuthorize` ja `@PostAuthorize`-annotaatioita. Lisää aiheesta mm. [Baeldungin oppaassa](https://www.baeldung.com/spring-security-method-security).
 
 
 <text-box variant='hint' name='Rekisteröitymiseen liittyvää pohdintaa..'>
