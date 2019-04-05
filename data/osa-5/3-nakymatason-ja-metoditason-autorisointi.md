@@ -1,7 +1,7 @@
 ---
 path: '/osa-5/3-nakymatason-ja-metoditason-autorisointi'
 title: 'Näkymä- ja metoditason autorisointi'
-hidden: true
+hidden: false
 ---
 
 

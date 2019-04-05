@@ -1,7 +1,7 @@
 ---
 path: '/osa-5/1-http-protokollan-tilattomuus-ja-evasteet'
 title: 'HTTP-protokollan tilattomuus ja evästeet'
-hidden: true
+hidden: false
 ---
 
 

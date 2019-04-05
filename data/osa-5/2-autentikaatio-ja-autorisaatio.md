@@ -1,7 +1,7 @@
 ---
 path: '/osa-5/2-autentikaatio-ja-autorisaatio'
 title: 'Autentikaatio ja autorisaatio'
-hidden: true
+hidden: false
 ---
 
 
@@ -132,7 +132,7 @@ protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
             .antMatchers("/free").permitAll()
             .antMatchers("/access").permitAll()
-            .antMatchers("/to/*").permitAll()
+            .antMatchers("/to", "/to/*").permitAll()
             .anyRequest().authenticated().and()
             .formLogin().permitAll().and()
             .logout().permitAll();
@@ -229,7 +229,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 }
 ```
 
-Edellisessä esimerkissä salasanojen tallentamisessa käytetään [BCrypt](https://docs.spring.io/spring-security/site/docs/current/apidocs/org/springframework/security/crypto/bcrypt/BCryptPasswordEncoder.html)-algoritmia, joka rakentaa merkkijonomuotoisesta salasanasta hajautusarvon. Tällöin salasanoja ei ole tallennettu selkokielisenä, mutta salasanojen koneellinen arvaaminen on toki yhä mahdollista -- kts. [hyvä salasana](https://xkcd.com/936/).
+Edellisessä esimerkissä salasanojen tallentamisessa käytetään [BCrypt](https://docs.spring.io/spring-security/site/docs/current/apidocs/org/springframework/security/crypto/bcrypt/BCryptPasswordEncoder.html)-algoritmia, joka rakentaa merkkijonomuotoisesta salasanasta hajautusarvon. Tällöin salasanoja ei ole tallennettu selkokielisenä, mutta salasanojen mekaaninen arvaaminen on toki yhä mahdollista.
 
 <programming-exercise name='Hello Db Authentication' tmcname='osa05-Osa05_05.HelloDbAuthentication'>
 
