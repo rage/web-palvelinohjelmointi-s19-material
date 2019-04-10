@@ -101,7 +101,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
-        // withdefaultpasswordencoder deprekoitu
+        // withdefaultpasswordencoder on deprekoitu mutta toimii yhä
         UserDetails user = User.withDefaultPasswordEncoder()
                                .username("hei")
                                .password("maailma")
@@ -233,9 +233,9 @@ Edellisessä esimerkissä salasanojen tallentamisessa käytetään [BCrypt](http
 
 <programming-exercise name='Hello Db Authentication' tmcname='osa05-Osa05_05.HelloDbAuthentication'>
 
-Tehtävän ohjelmakoodiin on toteutettu käyttäjät tunnistava sovellus, joka tallentaa käyttäjien salasanat tietokantaan. Tutustu sovelluksen ohjelmakoodiin ja lisää `DefaultController`-luokassa olevaa ohjelmakoodia mukaillen sovellukseen toinen käyttäjä, jonka salasana on myös "smart".
+Tehtävän ohjelmakoodiin on toteutettu käyttäjät tunnistava sovellus, joka tallentaa käyttäjien salasanat salattuna tietokantaan. Luo sovellukseen kaksi käyttäjää, joilla on samat salasanat. Käyttäjien luominen onnistuu polun `/accounts` kautta.
 
-Käy tämän jälkeen tarkastelemassa sovelluksen tietokantaa H2-konsolissa. Vaikka kummankin lisäämäsi käyttäjän salasana on "smart", pitäisi tietokannassa olevien hajautusarvojen olla erilaiset.
+Käy tämän jälkeen tarkastelemassa sovelluksen tietokantaa H2-konsolissa. Vaikka kummankin lisäämäsi käyttäjän salasana on sama, pitäisi tietokannassa olevien hajautusarvojen olla erilaiset.
 
 Tehtävässä ei ole testejä.
 
@@ -293,11 +293,13 @@ Kun kirjautuminen onnistuu, voi käyttäjä tehdä varauksia.
 
 Sovelluksen tulee kirjautumis- ja varaustoiminnallisuuden lisäksi myös varmistaa, että varaukset eivät mene päällekkäin.
 
-Luokassa `DefaultController` luodaan muutamia testikäyttäjiä, joita voi (esimerkiksi) käyttää sovelluksen testauksessa. Tarvitset ainakin:
+Tarvitset ainakin:
 
-- Palvelun käyttäjän tunnistautumiseen, jolla täydennät luokkaa SecurityConfiguration
-- Tavan aikaleimojen käsittelyyn (kertaa materiaalin kolmas osa)
-- Kontrollerin varausten käsittelyyn ja tekemiseen
+- Palvelun käyttäjän tunnistautumiseen, jolla täydennät luokkaa SecurityConfiguration.
+- Tavan aikaleimojen käsittelyyn.
+- Kontrollerin varausten käsittelyyn ja tekemiseen.
+
+Lisätty 10.4. -- lisäapua aikaleimojen käsittelyyn löytyy [tämän linkin takaa](/ekstra/ajan-kasittely-tietokannassa).
 
 </programming-exercise>
 
