@@ -71,19 +71,19 @@ Kurssilla Web-palvelinohjelmointi Java opit web-sovellusten toimintaperiaatteet 
     <tr>
         <td>6</td>
         <td>
-            Syötteiden validointi. Hieman tietoturvaa. REST. Javascript-pohjaisten selainohjelmistojen ja palvelinohjelmistojen yhteistyö.
+            Toistuvat rakenteet ja fragmentit. Tyylitiedostojen käyttäminen. Syötteiden validointi. Rajapinnat ja REST.
         </td>
         <td>
-            Tunnet tapoja tiedon validointiin ja osaat validoida lomakedataa. Tiedät web-sovellusten tyypillisimmät haavoittuvuudet sekä niihin vaikuttavat tekijät (OWASP). Ymmärrät REST-arkkitehtuurimallin perusperiaatteet. Osaat toteuttaa palvelun, joka tarjoaa dataa REST-muotoisen rajapinnan yli. Osaat toteuttaa palvelun, joka hyödyntää REST-rajapintaa. Tiedät, että Javascript-koodia voi suorittaa selaimessa käyttäjän koneella. Osaat tehdä selainohjelmistosta Javascript-pyynnön palvelimelle. Osaat päivittää näkymää Javascript-pyynnön vastauksen perusteella.
+            Tunnet menetelmiä toistuvien sivurakenteiden määrittelyyn sekä uudelleenkäyttöön. Tiedät mikä Twitter Bootstrap on ja osaat määritellä sen avulla tyylejä sovellukseen. Tunnet menetelmiä tiedon validointiin ja osaat validoida lomakedataa. Tunnet käsitteen rajapinta ja tiedät mitä REST-rajapinnat ovat. Osaat toteuttaa palvelun, joka tarjoaa dataa REST-muotoisen rajapinnan yli.
         </td>
     </tr>
     <tr>
         <td>7</td>
         <td>
-            Skaalautuvuus. Reaktiivinen ohjelmointi.
+            Selainohjelmistot ja palvelinohjelmistot. Hieman tietoturvaa. Sovellusten skaalautuvuus. Reaktiivinen ohjelmointi.
         </td>
         <td>
-            Tunnet menetelmiä sovellusten skaalaamiseen isoille käyttäjäjoukoille. Ymmärrät reaktiivisen ohjelmoinnin perusteet ja osaat tehdä yksinkertaisen palvelinohjelmiston reaktiivisella ohjelmointiparadigmalla.
+            Tiedät mikä jQuery on ja osaat tehdä selainohjelmistosta Javascript-pyynnön palvelimelle. Osaat päivittää selaimessa näkyvää näkymää Javascript-pyynnön vastauksen perusteella. Tiedät web-sovellusten tyypillisimmät haavoittuvuudet sekä niihin vaikuttavat tekijät (OWASP). Tunnet menetelmiä sovellusten skaalaamiseen isoille käyttäjäjoukoille. Ymmärrät reaktiivisen ohjelmoinnin perusteet ja osaat tehdä yksinkertaisen palvelinohjelmiston reaktiivisella ohjelmointiparadigmalla.
         </td>
     </tr>
     </tbody>
