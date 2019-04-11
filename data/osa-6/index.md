@@ -15,6 +15,6 @@ Kuudennen osan jälkeen tunnet menetelmiä toistuvien sivurakenteiden määritte
 
 <pages-in-this-section></pages-in-this-section>
 
-Yllä oleva sisällysluettelo sisältää kurssin kuudennen osan aihealueet. Osa on suunniteltu siten, että siinä on työtä yhden viikon ajaksi.
+Yllä oleva sisällysluettelo sisältää kurssin kuudennen osan aihealueet. Osa on suunniteltu siten, että se tukee harjoitustyön tekemistä ja että siinä on työtä noin yhden viikon ajaksi.
 
 <exercises-in-this-section></exercises-in-this-section>
