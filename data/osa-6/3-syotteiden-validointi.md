@@ -284,7 +284,7 @@ Jos entiteeteille on määritelty validointisäännöt, määritellään osassa 
 
 Tehtävän mukana tulee sovellus, jota käytetään ilmoittatumiseen. Tällä hetkellä käyttäjä voi ilmoittautua juhliin oikeastaan minkälaisilla tiedoilla tahansa. Tehtävänäsi on toteuttaa parametreille seuraavanlainen validointi:
 
-* Nimen (`name`) tulee olla vähintään 4 merkkiä pitkä ja enintään 30 merkkiä pitkä.
+* Nimen (`name`) tulee olla vähintään 4 merkkiä pitkä ja enintään 50 merkkiä pitkä.
 * Osoitteen (`address`) tulee olla vähintään 4 merkkiä pitkä ja enintään 50 merkkiä pitkä.
 * Sähköpostiosoitteen (`email`) tulee olla validi sähköpostiosoite.
 
