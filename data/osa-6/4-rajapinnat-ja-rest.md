@@ -18,9 +18,7 @@ hidden: true
 
 Olemme tähän asti tarkastelleet sovelluksia, jotka tuottavat käyttäjälle jonkinlaisen näkymän ja mahdollistavat sitä kautta sovelluksen käytön. Tutustutaan seuraavaksi sovelluksiin, jotka näkymän sijaan tarjoavat rajapinnan tiedon hakemiseen. Tällaisten rajapinnan tarjoavien sovellusten käyttäjiä ovat ensisijaisesti muut sovellukset sekä niiden kehittäjät.
 
-Eräs paljon puhuttu arkkitehtuurimalli (tai tyyli) rajapintojen toteuttamiseen on Representational state transfer (REST).
-
-TODO: lead-in
+Aloitamme eräästä ehkäpä tämän hetken suosituimmasta tavasta rajapintojen toteuttamiseen.
 
 
 ## Representational state transfer
