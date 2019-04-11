@@ -185,7 +185,7 @@ public class BookController {
 
 Avoimen rajapinnan kolmannen osapuolen ohjelmistoille tarjoavat palvelinohjelmistot eivät aina sisällä erillistä käyttöliittymää. Niiden testaaminen tapahtuu sekä automaattisilla testeillä, että erilaisilla selainohjelmistoilla. Yksi hyvin hyödyllinen apuväline on Postman, jonka saa sekä [työpöytäsovelluksena](https://www.getpostman.com) että [Chromen liitännäisenä](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop).
 
-Postmanin hyödyntäminen on erittäin suositeltavaa -- kannattaa katsoa sen johdatusvideo, joka löytyy Postmanin sivulta. Katso myös [Restiä käsittelevä](https://www.youtube.com/watch?v=7YcW25PHnAA" target="_blank">RESTiä käsittelevä) Youtube-video, missä Postmania käytetään hieman (alkaa kohdasta 6:33).
+Postmanin hyödyntäminen on erittäin suositeltavaa -- kannattaa katsoa sen johdatusvideo, joka löytyy Postmanin sivulta. Katso myös [Restiä käsittelevä](https://www.youtube.com/watch?v=7YcW25PHnAA) Youtube-video, missä Postmania käytetään hieman (alkaa kohdasta 6:33).
 
 </text-box>
 
