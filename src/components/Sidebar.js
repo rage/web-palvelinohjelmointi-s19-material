@@ -117,10 +117,7 @@ var content2 = [
   { separator: true },
 ]
 
-var futurePages = [
-  { title: "Osa 6", tba: "12.4.2019" },
-  { title: "Osa 7", tba: "28.4.2019" },
-]
+var futurePages = [{ title: "Osa 7", tba: "26.4.2019" }]
 
 const MobileWrapper = styled.div`
   @media only screen and (max-width: ${SMALL_MEDIUM_BREAKPOINT}) {
