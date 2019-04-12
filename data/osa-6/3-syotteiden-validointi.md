@@ -1,7 +1,7 @@
 ---
 path: '/osa-6/3-syotteiden-validointi'
 title: 'Syötteiden validointi'
-hidden: true
+hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>

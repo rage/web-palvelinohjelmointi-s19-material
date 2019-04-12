@@ -1,7 +1,7 @@
 ---
 path: '/osa-6/4-rajapinnat-ja-rest'
 title: 'Rajapinnat ja REST'
-hidden: true
+hidden: false
 ---
 
 

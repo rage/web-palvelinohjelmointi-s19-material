@@ -1,7 +1,7 @@
 ---
 path: '/osa-6/2-tyylitiedostot-ja-asettelu'
 title: 'Tyylitiedostot ja sivun asettelun määrittely'
-hidden: true
+hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>

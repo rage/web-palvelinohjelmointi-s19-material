@@ -1,7 +1,7 @@
 ---
 path: '/osa-6/1-toistuvat-rakenteet-html-sivuilla'
 title: 'Toistuvat rakenteet HTML-sivuilla'
-hidden: true
+hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
