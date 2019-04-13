@@ -87,7 +87,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
-    protected void configure(HttpSecurity sec) throws Exception {
+    protected void configure(HttpSecurity http) throws Exception {
         // Ei päästetä käyttäjää mihinkään sovelluksen resurssiin ilman
         // kirjautumista. Tarjotaan kuitenkin lomake kirjautumiseen, mihin
         // pääsee vapaasti. Tämän lisäksi uloskirjautumiseen tarjotaan
