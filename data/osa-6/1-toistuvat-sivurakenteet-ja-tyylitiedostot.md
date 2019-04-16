@@ -362,7 +362,7 @@ Alla olevassa sivussa vaihtuu nyt myös otsaketiedosto.
 ```
 
 
-<programming-exercise name='Hello Fragments' tmcname=''>
+<programming-exercise name='Hello Fragments' tmcname='osa06-Osa06_01.HelloFragments'>
 
 Tehtäväpohjassa on sovellus, joka käyttää kolmea Thymeleaf-tiedostoa (`index.html`, `list.html`, `form.html`). Tarkastele näitä tiedostoja, tunnista niiden yhteiset osat ja tee sovellukseen fragmenttitiedosto, joka sisältää sivujen toistuvat osat.
 
@@ -469,7 +469,7 @@ Näistä lisää mm. seuraavissa osoitteissa:
 <quiznator id="5cae259cfd9fd71425c6d60d"></quiznator>
 
 
-<programming-exercise name='Playlists' tmcname=''>
+<programming-exercise name='Playlists' tmcname='osa06-Osa06_02.Playlists'>
 
 Tehtäväpohjassa on kappaleiden ja soittolistojen käsittelyyn tarkoitettu sovellus. Sovelluksessa on kolme Thymeleaf-tiedostoa (`index.html`, `playlists.html`, `tracks.html`) sekä erillinen tiedosto fragmenteille (kansiossa `fragments` oleva tiedosto `layout.html`).
 

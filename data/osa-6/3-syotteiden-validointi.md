@@ -98,7 +98,7 @@ public String create(@ModelAttribute Person person) {
 Kun annotaatiota `@ModelAttribute` käytetään metodin parametrina olevan olion kanssa, annotaatio kertoo Springille, että parametrina olevan olion oliomuuttujien arvot tulee asettaa pyynnössä olevista arvoista. Pyynnössä olevien arvojen nimien tulee vastata oliomuuttujien nimiä -- esimerkiksi yllä `Person`-luokan arvot liittyvät suoraan käytettyyn lomakkeeseen.
 
 
-<programming-exercise name='Links'>
+<programming-exercise name='Links' tmcname='osa06-Osa06_05.Links'>
 
 Tehtäväpohjassa on linkkien tallentamiseen ja listaamiseen tarkoitettu sovellus. Muokkaa sovelluksen `LinkController`-luokkaa siten, että se käyttää `@ModelAttribute`-annotaatiota `@RequestParam`-annotaation sijaan.
 
@@ -280,7 +280,7 @@ Toisaalta, lomakkeet voivat usein sisältää tietoa, joka liittyy useaan eri ta
 Jos entiteeteille on määritelty validointisäännöt, määritellään osassa ORM-sovelluskehyksistä validointi myös osaksi tietokantaa. Tällöin tiedon validointi tapahtuu kontrollerin lisäksi myös tietokantatallennusten yhteydessä.
 
 
-<programming-exercise name='Registration'>
+<programming-exercise name='Registration' tmcname='osa06-Osa06_06.Registration'>
 
 Tehtävän mukana tulee sovellus, jota käytetään ilmoittatumiseen. Tällä hetkellä käyttäjä voi ilmoittautua juhliin oikeastaan minkälaisilla tiedoilla tahansa. Tehtävänäsi on toteuttaa parametreille seuraavanlainen validointi:
 

@@ -188,7 +188,7 @@ Postmanin hyödyntäminen on erittäin suositeltavaa -- kannattaa katsoa sen joh
 </text-box>
 
 
-<programming-exercise name='ScoreService (2 osaa)'>
+<programming-exercise name='ScoreService (2 osaa)' tmcname='osa06-Osa06_07.ScoreService'>
 
 Tässä tehtävässä toteutetaan pelitulospalvelu, joka tarjoaa REST-rajapinnan pelien ja tuloksien käsittelyyn. *Huom! Kaikki syötteet ja vasteet ovat JSON-muotoisia olioita.*
 

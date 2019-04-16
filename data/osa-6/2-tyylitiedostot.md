@@ -132,7 +132,7 @@ Yllä olevissa esimerkeissä solujen koko määriteltiin eksplisiittisesti. Solu
 
 
 
-<programming-exercise name='Layout' tmcname=''>
+<programming-exercise name='Layout' tmcname='osa06-Osa06_03.Layout'>
 
 Toteuta tehtäväpohjan `index.html`-tiedostoon Twitter Bootstrapin avulla seuraavanlainen neljä riviä sisältävä käyttöliittymän asettelu:
 
@@ -165,7 +165,7 @@ Yllä olevassa esimerkissä käyttöliittymäelementit ovat koko sivun levyisiä
 <iframe width="100%" height="600" src="https://jsfiddle.net/qn7p6fat/embedded/html,result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 
-<programming-exercise name='Form'>
+<programming-exercise name='Form' tmcname='osa06-Osa06_04.Form'>
 
 Tehtäväpohjassa on valmiina sovellus, jossa pääset tarkastelemaan pienten tyylimuutosten vaikutusta siihen, miltä taulukko näyttää käyttäjälle.
 
