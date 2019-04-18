@@ -83,7 +83,7 @@ Kurssilla Web-palvelinohjelmointi Java opit web-sovellusten toimintaperiaatteet 
             Selainohjelmistot ja palvelinohjelmistot. Hieman tietoturvaa. Sovellusten skaalautuvuus. Reaktiivinen ohjelmointi.
         </td>
         <td>
-            Tiedät mikä jQuery on ja osaat tehdä selainohjelmistosta Javascript-pyynnön palvelimelle. Osaat päivittää selaimessa näkyvää näkymää Javascript-pyynnön vastauksen perusteella. Tiedät web-sovellusten tyypillisimmät haavoittuvuudet sekä niihin vaikuttavat tekijät (OWASP). Tunnet menetelmiä sovellusten skaalaamiseen isoille käyttäjäjoukoille. Ymmärrät reaktiivisen ohjelmoinnin perusteet ja osaat tehdä yksinkertaisen palvelinohjelmiston reaktiivisella ohjelmointiparadigmalla.
+            Osaat tehdä selainohjelmistosta JavaScript-pyynnön palvelimelle ja osaat päivittää selaimessa näkyvää näkymää Javascript-pyynnön vastauksen perusteella. Tiedät web-sovellusten tyypillisimmät haavoittuvuudet sekä niihin vaikuttavat tekijät (OWASP). Tunnet menetelmiä sovellusten skaalaamiseen isoille käyttäjäjoukoille. Tiedät reaktiivisen ohjelmoinnin perusteet ja osaat tehdä yksinkertaisen palvelinohjelmiston reaktiivisella ohjelmointiparadigmalla.
         </td>
     </tr>
     </tbody>

@@ -116,7 +116,7 @@ Sovelluksen kehitykseen käytettävässä profiilissa kannattaa kytkeä välimui
 spring.thymeleaf.prefix=file:src/main/resources/templates/
 spring.thymeleaf.cache=false
 
-spring.resources.static-locations=file:src/main/resources/static/
+spring.resources.static-locations=file:src/main/resources/public/
 spring.resources.cache.period=0
 ```
 
