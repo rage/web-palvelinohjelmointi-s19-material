@@ -115,8 +115,15 @@ Web-sovellusten kontekstissa reaktiivisilla web-sovelluksilla tarkoitetaan tyypi
 
 <programming-exercise name='Reactive Web Service'>
 
-Osoitteessa [https://spring.io/guides/gs/reactive-rest-service/](https://spring.io/guides/gs/reactive-rest-service/) on opas reaktiivisen web-sovelluksen kehittämiseen.
+Osoitteessa [https://spring.io/guides/gs/reactive-rest-service/](https://spring.io/guides/gs/reactive-rest-service/) on opas reaktiivisen web-sovelluksen kehittämisen aloittamiseen.
 
 Käy opas läpi ja toteuta se tehtäväpohjaan. Kun olet valmis, palauta tehtävä TMC:lle. Riippuvuudet ovat tehtäväpohjassa valmiina.
 
+Huom! Oppaassa pakkauksena käytetään pakkausta *hello*. Käytä tehtävässä pakkausta *reactiveweb*.
+
+Tehtävään ei ole automaattisia testejä, mutta toteutat tehtävässä testejä.
+
 </programming-exercise>
+
+
+<quiznator id="5cb986e4c61e1845af259667"></quiznator>

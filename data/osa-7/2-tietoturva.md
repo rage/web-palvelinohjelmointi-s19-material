@@ -70,8 +70,8 @@ Edellä mainittujen lisäksi käytössämme on myös useita pieniä asioita, joi
 
 
 
-<text-box variant='hint' name='Lisää tietoturvasta'>
+<text-box variant='hint' name='Cyber Security Base'>
 
-Kurssin Web-palvelinohjelmointi Java jälkeen kannattaa tutustua kurssisarjan [Cyber Security Base](https://cybersecuritybase.mooc.fi/) ensimmäiseen kolmeen osaan: (1) Introduction to Cyber Security, (2) Securing Software, ja (3) Course Project I.
+Kurssin Web-palvelinohjelmointi Java jälkeen kannattaa tehdä kurssisarjan [Cyber Security Base](https://cybersecuritybase.mooc.fi/) ensimmäiset kolme osaa: (1) Introduction to Cyber Security, (2) Securing Software, ja (3) Course Project I.
 
 </text-box>

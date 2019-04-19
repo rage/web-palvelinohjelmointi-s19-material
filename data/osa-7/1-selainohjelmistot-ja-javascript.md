@@ -326,7 +326,7 @@ Tehtäväpohjassa on valmiina edellisen esimerkin plus- ja kertotoiminnallisuude
 
 Älä muokkaa palvelinpuolen toiminnallisuutta vaan keskity selainpuoleen. Varmista myös, että sivu on käytettävä ilman erillistä ohjetekstiä, eli että käyttämäsi napit ja tekstit kertovat käyttäjälle kaiken oleellisen.
 
-Tehtävään ei ole TMC:ssä testejä. Palauta se palvelimelle kun laskimessa toimii plus- ja kertotoiminnallisuuden lisäksi myös miinus- ja jakolaskutoiminnallisuus.
+Tehtävään ei ole TMC:ssä testejä. Palauta tehtävä palvelimelle kun laskimessa toimii plus- ja kertotoiminnallisuuden lisäksi myös miinus- ja jakolaskutoiminnallisuus.
 
 </programming-exercise>
 
@@ -504,11 +504,15 @@ Välimuistin pois päältä laittaminen onnistuu Chromen DevToolsin asetuksista 
 
 <programming-exercise name='Books'>
 
-TODO: Hae satunnainen kirja nappia painamalla ja näytä se sivulla.
+Tehtäväpohjassa on sovellus, joka tarjoaa mahdollisuuden kirjojen lisäämiseen lomakkeen avulla sekä kontrollerimetodin satunnaisen kirjan tietojen hakemiseen JSON-muodossa.
+
+Toteuta sovelluksessa olevaan `books.js`-tiedostoon toiminnallisuus, jonka avulla palvelimelta haetaan satunnaisen kirjan tiedot. Kirjan tiedot tulee hakea kun `books.html`-sivulla olevaa nappia painetaan -- kirjan tiedot tulee asettaa `books.html`-sivulla olevaan tauluun.
+
+Tehtävässä ei ole testejä. Palauta tehtävä kun se toimii halutulla tavalla.
 
 </programming-exercise>
 
-Vastaavasti JSON-muotoisen datan lähettäminen onnistuu liittämällä JSON-muotoinen data `send`-metodin parametriksi. Alla olevassa esimerkissä lähetetään JSON-muotoista tietoa [JSONPlaceholder](https://jsonplaceholder.typicode.com/)-palvelulle, joka palauttaa id-arvon JSON-oliona.
+Vastaavasti JSON-muotoisen datan lähettäminen onnistuu liittämällä JSON-muotoinen data `send`-metodin parametriksi. Alla olevassa esimerkissä lähetetään JSON-muotoista tietoa [JSONPlaceholder](https://jsonplaceholder.typicode.com/)-palvelulle.
 
 
 
@@ -525,7 +529,9 @@ Uudemmissa JavaScriptin versioissa on myös palvelimelle tehtäviä kyselyitä s
 
 <programming-exercise name='Tasks'>
 
-Tehtävään on hahmoteltu tehtävien hallintaan tarkoitetun sovelluksen palvelinpuolen toiminnallisuutta. Lisää sovellukseen selainpuolen toiminnallisuus, joka mahdollistaa tehtävien lisäämisen sivulle JavaScriptin avulla. Uusien tehtävien lisäämisen ei siis pidä aiheuttaa sivun uudelleenlatausta, vaan uusi tehtävä tulee lähettää palvelimelle JavaScript-pyyntönä.
+Tehtävään on hahmoteltu tehtävien hallintaan tarkoitetun sovelluksen palvelinpuolen toiminnallisuutta. Lisää sovellukseen selainpuolen toiminnallisuus, joka mahdollistaa (1) tehtävien listaamisen sivulla JavaScriptin avulla ja (2) tehtävien lisäämisen JavaScriptin avulla.
+
+Kummatkin (listaaminen ja lisääminen) tulee siis toteuttaa JavaScriptin avulla.
 
 Sovellukselle ei ole automaattisia testejä.
 

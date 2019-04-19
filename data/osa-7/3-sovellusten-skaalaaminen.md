@@ -228,7 +228,7 @@ Kun sovelluksesi toimii oikein, laskennan lisäyksen pitäisi olla nopeaa ja kä
 </programming-exercise>
 
 
-###Rinnakkain suoritettavat metodikutsut
+### Rinnakkain suoritettavat metodikutsut
 
 Koostepalvelut, eli palvelut jotka keräävät tietoa useammasta palvelusta ja yhdistävät tietoja käyttäjälle, tyypillisesti haluavat näyttää käyttäjälle vastauksen.
 
