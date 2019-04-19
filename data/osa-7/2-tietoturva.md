@@ -43,7 +43,7 @@ Jos selaimen käyttäjä käyttää sovellusta avoimen (salasanattoman) langatto
 
 ## OWASP ja tyypillisimpiä tietoturvauhkia
 
-[Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page) on kansainvälinen non-profit organisaatio, jonka pyrkimyksenä on sovelluksiin liittyvän tietoturvatietoisuuden kasvattaminen. OWASP pitää yllä web-sovelluksiin liittyvien tietoturvauhkien [Top 10](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)-listaa.
+[Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page) on kansainvälinen voittoa tavoittelematon (non-profit) organisaatio, jonka pyrkimyksenä on sovelluksiin liittyvän tietoturvatietoisuuden kasvattaminen. OWASP pitää yllä web-sovelluksiin liittyvien tietoturvauhkien [Top 10](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)-listaa.
 
 Vuoden 2017 lista löytyy [tästä linkistä](https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf). Vuoden 2013 ja 2017 versiossa osa top 10 -listan tietoturvauhkista on muuttunut, mutta ensimmäisellä ja toisella sijalla ovat yhä samat tietoturvauhkat.
 
