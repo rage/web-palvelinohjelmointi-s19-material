@@ -252,7 +252,7 @@ Alla olevassa esimerkissä sivulla on tekstielementti `p`, jossa ei ole lainkaan
 
 Myös tekstielementin sisälle voi asettaa arvoja. Tämä onnistuu näppärästi `span`-elementin avulla.
 
-<iframe width="100%" height="200" src="//jsfiddle.net/akhyw6bs/embedded/result,js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<iframe width="100%" height="200" src="//jsfiddle.net/ryf3zetx/embedded/result,js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 
 ### Esimerkki: Laskin
