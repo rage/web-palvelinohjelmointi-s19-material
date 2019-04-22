@@ -320,7 +320,7 @@ Kokonaisuudessaan laskin näyttää seuraavalta:
 <iframe width="100%" height="400" src="//jsfiddle.net/0evta6x9/embedded/result,js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 
-<programming-exercise name='Calculator'>
+<programming-exercise name='Calculator' tmcname='osa07-Osa07_01.Calculator'>
 
 Tehtäväpohjassa on valmiina edellisen esimerkin plus- ja kertotoiminnallisuuden tarjoava laskin. Täydennä laskinta siten, että siinä on aiemman toiminnallisuuden lisäksi mahdollisuus miinus- ja jakolaskutoiminnallisuuteen.
 
@@ -502,7 +502,7 @@ Välimuistin pois päältä laittaminen onnistuu Chromen DevToolsin asetuksista 
 </text-box>
 
 
-<programming-exercise name='Books'>
+<programming-exercise name='Books' tmcname='osa07-Osa07_02.Books'>
 
 Tehtäväpohjassa on sovellus, joka tarjoaa mahdollisuuden kirjojen lisäämiseen lomakkeen avulla sekä kontrollerimetodin satunnaisen kirjan tietojen hakemiseen JSON-muodossa.
 
@@ -527,7 +527,7 @@ Uudemmissa JavaScriptin versioissa on myös palvelimelle tehtäviä kyselyitä s
 </text-box>
 
 
-<programming-exercise name='Tasks'>
+<programming-exercise name='Tasks' tmcname='osa07-Osa07_03.Tasks'>
 
 Tehtävään on hahmoteltu tehtävien hallintaan tarkoitetun sovelluksen palvelinpuolen toiminnallisuutta. Lisää sovellukseen selainpuolen toiminnallisuus, joka mahdollistaa (1) tehtävien listaamisen sivulla JavaScriptin avulla ja (2) tehtävien lisäämisen JavaScriptin avulla.
 

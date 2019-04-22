@@ -74,7 +74,7 @@ Välimuistitoteutuksen vastuulla ei ole pitää kirjaa tietokantaan tehtävistä
 
 
 
-<programming-exercise name='Weather Service'>
+<programming-exercise name='Weather Service' tmcname='osa07-Osa07_04.WeatherService'>
 
 Kumpulan kampuksella majaileva ilmatieteen laitos kaipailee pientä viritystä omaan sääpalveluunsa. Tällä hetkellä palvelussa on toiminnallisuus sijaintien hakemiseen ja lisäämiseen. Ilmatieteen laitos on lisäksi toteuttanut säähavaintojen lisäämisen suoraan tuotantotietokantaan, mihin ei tässä palvelussa päästä käsiksi. Palvelussa halutaan kuitenkin muutama lisätoiminnallisuus:
 
@@ -207,7 +207,7 @@ public void create(Item item) {
 Nyt metodi on asynkroninen, eikä sitä kutsuva metodi jää odottamaan suoritusta. Käytännössä asynkroniset metodikutsut toteutetaan asettamalla metodikutsu suoritusjonoon, josta se suoritetaan kun sovelluksella on siihen mahdollisuus.
 
 
-<programming-exercise name='Calculations'>
+<programming-exercise name='Calculations' tmcname='osa07-Osa07_05.Calculations'>
 
 Tehtäväpohjassa on sovellus, joka tekee "raskasta laskentaa". Tällä hetkellä käyttäjä joutuu odottamaan laskentapyynnön suoritusta pitkään, mutta olisi hienoa jos käyttäjälle kerrottaisiin laskennan tilasta jo laskentavaiheessa.
 

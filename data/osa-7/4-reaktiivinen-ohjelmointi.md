@@ -113,7 +113,7 @@ Lainattu: [https://www.reactivemanifesto.org/](https://www.reactivemanifesto.org
 
 Web-sovellusten kontekstissa reaktiivisilla web-sovelluksilla tarkoitetaan tyypillisesti funktionaalista reaktiivista ohjelmointia. Tutustutaan aiheeseen lyhyesti seuraavassa tehtävässä käsiteltävän oppaan avulla.
 
-<programming-exercise name='Reactive Web Service'>
+<programming-exercise name='Reactive Web Service' tmcname='osa07-Osa07_06.ReactiveWebService'>
 
 Osoitteessa [https://spring.io/guides/gs/reactive-rest-service/](https://spring.io/guides/gs/reactive-rest-service/) on opas reaktiivisen web-sovelluksen kehittämisen aloittamiseen.
 
