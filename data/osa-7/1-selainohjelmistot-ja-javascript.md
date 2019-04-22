@@ -432,7 +432,7 @@ Alla olevassa esimerkissä napin painaminen johtaa uuden elementin lisäämiseen
 
 Kommunikointin palvelimen kanssa tapahtuu JavaScriptin [XMLHttpRequest](https://www.w3schools.com/js/js_ajax_http.asp)-olion avulla. Oliolla on kaksi tärkeää metodia:
 
-- `open`, jolla määritellään pyynnön tyyppi, pyynnön metodi (GET/POST) ja pyynnön osoite.
+- `open`, jolle määritellään pyynnön tyyppi (GET/POST) ja pyynnön osoite.
 
 - `send`, jota käytetään parametrittomana `GET`-pyynnön yhteydessä -- `POST`-pyynnön yhteydessä metodille annetaan parametrina palvelimelle lähetettävä data.
 
@@ -442,7 +442,7 @@ Alla olevassa esimerkissä esitellään JSON-muotoista dataa tuottavan verkkopal
 
 Itse napin painamiseen liittyvä toiminnallisuus on suoraviivainen. Nappia painettaessa kutsutaan funktiota, jossa tehdään GET-tyyppinen asynkroninen pyyntö annettuun osoitteeseen.
 
-<iframe width="100%" height="400" src="//jsfiddle.net/qga2pyd7/embedded/result,js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<iframe width="100%" height="400" src="//jsfiddle.net/txwduzg5/embedded/result,js,html/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 
 <text-box variant='hint' name='JSON merkkijonoksi ja takaisin'>
