@@ -2,7 +2,7 @@
 path: '/osa-7'
 title: 'Osa 7'
 overview: true
-hidden: true
+hidden: false
 ---
 
 <deadline>6.5.2019</deadline>
@@ -15,6 +15,6 @@ Seitsemännen osan jälkeen osaat tehdä JavaScript-pyynnön palvelimelle ja osa
 
 <pages-in-this-section></pages-in-this-section>
 
-Yllä oleva sisällysluettelo sisältää kurssin seitsemännen osan aihealueet. Osa on suunniteltu siten, että se tukee harjoitustyön tekemistä ja että siinä on työtä noin yhden viikon ajaksi.
+Yllä oleva sisällysluettelo sisältää kurssin seitsemännen osan aihealueet.
 
 <exercises-in-this-section></exercises-in-this-section>

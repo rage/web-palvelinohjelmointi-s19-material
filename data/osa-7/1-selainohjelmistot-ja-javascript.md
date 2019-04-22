@@ -1,7 +1,7 @@
 ---
 path: '/osa-7/1-selainohjelmistot-ja-javascript'
 title: 'Selainohjelmistot ja JavaScript'
-hidden: true
+hidden: false
 ---
 
 

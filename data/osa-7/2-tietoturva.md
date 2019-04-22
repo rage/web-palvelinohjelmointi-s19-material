@@ -1,7 +1,7 @@
 ---
 path: '/osa-7/2-tietoturva'
 title: 'Muutama sana tietoturvasta'
-hidden: true
+hidden: false
 ---
 
 

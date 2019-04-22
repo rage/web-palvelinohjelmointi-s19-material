@@ -1,7 +1,7 @@
 ---
 path: '/osa-7/4-reaktiivinen-ohjelmointi'
 title: 'Reaktiivinen ohjelmointi'
-hidden: true
+hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Oppimistavoitteet'>
@@ -81,7 +81,7 @@ Reaktiivista ohjelmointia hyödynnetään esimerkiksi taulukkolaskentaohjelmisto
 
 <text-box variant='hint' name='Reaktiivisen ohjelmoinnin kehitys'>
 
-Tutustu osoitteessa [http://soft.vub.ac.be/Publications/2012/vub-soft-tr-12-13.pdf](http://soft.vub.ac.be/Publications/2012/vub-soft-tr-12-13.pdf) olevaan Survey-artikkeliin, joka käsittelee reaktiivisen ohjelmoinnin kehitystä. Myös Andre Staltzin kirjoittama osoitteessa [https://gist.github.com/staltz/868e7e9bc2a7b8c1f754](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) löytyvä johdanto kannattaa lukea.
+Osoitteessa [http://soft.vub.ac.be/Publications/2012/vub-soft-tr-12-13.pdf](http://soft.vub.ac.be/Publications/2012/vub-soft-tr-12-13.pdf) on hyvä johdanto reaktiivisen ohjelmoinnin kehitykseen. Lisää aiheesta on myös Andre Staltzin johdannossa, joka löytyy osoitteesta [https://gist.github.com/staltz/868e7e9bc2a7b8c1f754](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754). Nämä eivät kuitenkaan ole kurssin Web-palvelinohjelmointi Java kannalta oleellisia.
 
 </text-box>
 

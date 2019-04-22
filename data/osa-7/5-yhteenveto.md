@@ -1,7 +1,7 @@
 ---
 path: '/osa-7/5-yhteenveto'
 title: 'Yhteenveto'
-hidden: true
+hidden: false
 ---
 
 Tässä osassa tutustuttiin selainohjelmistojen luomiseen ja tehtiin pyyntöjä palvelimelle JavaScriptin avulla. Opimme muutamia web-sovelluksissa esiintyviä tietoturvaongelmia ja tarkastelimme pikaisesti miten näitä estetään omissa sovelluksissamme. Tarkastelimme joitakin sovellusten skaalautumiseen liittyviä menetelmiä ja harjoittelimme yksinkertaisen palvelinohjelmiston toteuttamista reaktiivisella ohjelmointiparadigmalla.

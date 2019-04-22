@@ -1,7 +1,7 @@
 ---
 path: '/osa-7/3-sovellusten-skaalautuminen'
 title: 'Isommille käyttäjämäärille skaalautuvat sovellukset'
-hidden: true
+hidden: false
 ---
 
 
