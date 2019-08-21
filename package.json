@@ -70,7 +70,7 @@
     "prettier-check": "prettier  --list-different 'src/**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "now-dev": "gatsby develop -p $PORT",
-    "now-build": "npm run build"
+    "now-build": "yum -y install libpng-devel && npm run build"
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
