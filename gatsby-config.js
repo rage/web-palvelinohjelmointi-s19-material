@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: "Web-palvelinohjelmointi Java 2019",
-    siteUrl: `https://web-palvelinohjelmointi-19.mooc.fi`,
+    siteUrl: `https://web-palvelinohjelmointi-s19.mooc.fi`,
   },
   plugins: [
     "gatsby-plugin-react-helmet",

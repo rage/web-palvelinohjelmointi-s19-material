@@ -42,7 +42,7 @@ export function createAccount(data) {
   data.username = uuidv4()
   const body = {
     user: data,
-    origin: "Web-palvelinohjelmointi Java 2019",
+    origin: "Web-palvelinohjelmointi Java Syksy 2019",
     language: "fi",
   }
   return new Promise((resolve, reject) => {
@@ -102,7 +102,7 @@ export function onLoginStateChanged(callback) {
 
 export async function userDetails() {
   const res = await axios.get(
-    `${BASE_URL}/users/current?show_user_fields=true&extra_fields=web-palvelinohjelmointi-19`,
+    `${BASE_URL}/users/current?show_user_fields=true&extra_fields=wepa-s19`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -143,7 +143,7 @@ export async function updateUserDetails({ extraFields, userField }) {
     {
       user: {
         extra_fields: {
-          namespace: "web-palvelinohjelmointi-19",
+          namespace: "web-palvelinohjelmointi-s19",
           data: extraFields,
         },
       },
