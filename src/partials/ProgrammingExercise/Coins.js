@@ -1,21 +1,9 @@
 import React, { Fragment, Component } from "react"
 import styled from "styled-components"
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPencilAlt as icon } from "@fortawesome/free-solid-svg-icons"
-import { OutboundLink } from "gatsby-plugin-google-analytics"
-
-import {
-  fetchProgrammingExerciseDetails,
-  fetchProgrammingExerciseModelSolution,
-} from "../../services/moocfi"
-import { Button, Paper, Card, CardContent, Divider } from "@material-ui/core"
+import { fetchProgrammingExerciseModelSolution } from "../../services/moocfi"
+import { Button, Paper, Card, CardContent } from "@material-ui/core"
 import Modal from "@material-ui/core/Modal"
-import LoginStateContext from "../../contexes/LoginStateContext"
-import LoginControls from "../../components/LoginControls"
 import withSimpleErrorBoundary from "../../util/withSimpleErrorBoundary"
-import { normalizeExerciseId } from "../../util/strings"
-import Loading from "../../components/Loading"
 
 const ModalContent = styled(Paper)`
   padding: 5rem;
@@ -83,9 +71,14 @@ class Coins extends Component {
           <Fragment>
             <TokenContainer>
               <p>
-                Joka kerta kun olet saanut <i>{tokenThreshHold}</i> tehtävää
-                tehtyä, saat kolikon. Kolikoilla voi ostaa tehtävien vastauksia
-                ja lunastaa itsesi mahdollisesta jumista.{" "}
+                Mallivastauksen voi katsoa joko ennen tehtävän ratkaisemista tai
+                tehtävän ratkaisemisen jälkeen. Jos haluat katsoa vastauksen
+                ennen ratkaisemista, joudut käyttämään mallivastauskolikoita.
+              </p>
+              <p>
+                Saat aina uuden mallivastauskolikon, kun olet saanut{" "}
+                <i>{tokenThreshHold}</i> tehtävää tehtyä. Kolikoilla voi ostaa
+                tehtävien vastauksia ja lunastaa itsesi mahdollisesta jumista.{" "}
                 {availableTokens === 1 ? (
                   <span> Käytössäsi on tällä hetkellä 1 kolikko.</span>
                 ) : availableTokens > 0 ? (
@@ -111,6 +104,7 @@ class Coins extends Component {
                   onClick={this.onShowModelSolution}
                   variant="outlined"
                   color="secondary"
+                  style={{ marginRight: "0.5rem" }}
                 >
                   Katso mallivastaus (
                   {modelSolutionTokenUsedOnThisExercise

@@ -5,7 +5,6 @@ import ContentArea from "../components/ContentArea"
 import TopBar from "../components/TopBar"
 import { StaticQuery, graphql } from "gatsby"
 import * as store from "store"
-import withMaterialUiRoot from "./withMaterialUiRoot"
 import Pheromones from "../util/pheromones"
 import styled from "styled-components"
 
@@ -30,6 +29,7 @@ import {
   MEDIUM_LARGE_BREAKPOINT,
   SMALL_MEDIUM_BREAKPOINT,
 } from "../util/constants"
+import withSimpleErrorBoundary from "../util/withSimpleErrorBoundary"
 
 fontAwesomeConfig.autoAddCss = false
 
@@ -72,13 +72,6 @@ class Layout extends React.Component {
   componentDidMount() {
     const user = store.get("tmc.user")
     if (typeof window !== "undefined" && user) {
-      if (typeof window.Quiznator === "undefined") {
-        document.addEventListener("quiznatorLoaded", () => {
-          this.setQuiznatorUser(user)
-        })
-      } else {
-        this.setQuiznatorUser(user)
-      }
       if (canDoResearch()) {
         setTimeout(() => {
           this.removePheromones = Pheromones.init({
@@ -110,13 +103,6 @@ class Layout extends React.Component {
     })
   }
 
-  setQuiznatorUser = user => {
-    window.Quiznator.setUser({
-      id: user.username,
-      accessToken: user.accessToken,
-    })
-  }
-
   render() {
     const { children } = this.props
 
@@ -135,12 +121,12 @@ class Layout extends React.Component {
                     {
                       name: "description",
                       content:
-                        "Helsingin yliopiston kaikille avoin ja ilmainen web-palvelinohjelmoinnin perusteet opettava verkkokurssi. Kurssilla perehdytään web-sovellusten perusideoihin sekä niiden toteuttamiseen. Kurssin käyminen edellyttää kurssien Ohjelmoinnin perusteet (TKT10002), Ohjelmoinnin jatkokurssi (TKT10003) ja Tietokantojen perusteet (TKT10004) tuntemisen.",
+                        "Helsingin yliopiston kaikille avoin ja ilmainen ohjelmoinnin perusteet opettava verkkokurssi. Kurssilla perehdytään nykyaikaisen ohjelmoinnin perusideoihin sekä ohjelmoinnissa käytettävien työvälineiden lisäksi algoritmien laatimiseen. Kurssille osallistuminen ei vaadi ennakkotietoja ohjelmoinnista.",
                     },
                     {
                       name: "keywords",
                       content:
-                        "ohjelmointi, web-ohjelmointi, java, spring, jpa, orm, 2019, ohjelmointikurssi, avoin, ilmainen, helsingin yliopisto",
+                        "ohjelmointi, java, programming, CS1, MOOC, 2019, ohjelmointikurssi, avoin, ilmainen, helsingin yliopisto",
                     },
                   ]}
                 />
@@ -169,4 +155,4 @@ class Layout extends React.Component {
   }
 }
 
-export default withMaterialUiRoot(Layout)
+export default withSimpleErrorBoundary(Layout)

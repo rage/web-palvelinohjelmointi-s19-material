@@ -13,36 +13,64 @@ export async function fetchManyQuizDetails(quizIds) {
   return res.data
 }
 
-export async function fetchQuiznatorProgress() {
+export async function fetchQuizProgress() {
   let res = []
   const partToTag = [
     {
       part: "osa01",
-      tag: "web-palvelinohjelmointi-java-19-1",
+      tag: "wepa-s19-1",
     },
     {
       part: "osa02",
-      tag: "web-palvelinohjelmointi-java-19-2",
+      tag: "wepa-s19-2",
     },
     {
       part: "osa03",
-      tag: "web-palvelinohjelmointi-java-19-3",
+      tag: "wepa-s19-3",
     },
     {
       part: "osa04",
-      tag: "web-palvelinohjelmointi-java-19-4",
+      tag: "wepa-s19-4",
     },
     {
       part: "osa05",
-      tag: "web-palvelinohjelmointi-java-19-5",
+      tag: "wepa-s19-5",
     },
     {
       part: "osa06",
-      tag: "web-palvelinohjelmointi-java-19-6",
+      tag: "wepa-s19-6",
     },
     {
       part: "osa07",
-      tag: "web-palvelinohjelmointi-java-19-7",
+      tag: "wepa-s19-7",
+    },
+    {
+      part: "osa08",
+      tag: "wepa-s19-8",
+    },
+    {
+      part: "osa09",
+      tag: "wepa-s19-9",
+    },
+    {
+      part: "osa10",
+      tag: "wepa-s19-10",
+    },
+    {
+      part: "osa11",
+      tag: "wepa-s19-11",
+    },
+    {
+      part: "osa12",
+      tag: "wepa-s19-12",
+    },
+    {
+      part: "osa13",
+      tag: "wepa-s19-13",
+    },
+    {
+      part: "osa14",
+      tag: "wepa-s19-14",
     },
   ]
   const quizIdInformation = await fetchQuizIds()
@@ -74,7 +102,7 @@ export async function fetchQuiznatorProgress() {
 export async function fetchQuizIds() {
   const res = await axios.post(
     `${BASE_URL}/api/v1/tags/quizids`,
-    { tags: ["web-palvelinohjelmointi-java-19"] },
+    { tags: ["wepa-s19"] },
     { headers: { Authorization: `Bearer ${accessToken()}` } },
   )
   return res.data

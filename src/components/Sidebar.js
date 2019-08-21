@@ -107,17 +107,22 @@ var content2 = [
     path: "/arvostelu-ja-kokeet",
   },
   {
-    title: "Tukiväylät",
-    path: "/tukivaylat",
+    title: "Mahdollisuus opinto-oikeuteen",
+    path: "/opinto-oikeus",
+  },
+  { title: "Tukiväylät", path: "/tukivaylat" },
+  {
+    title: "Opettajille ja opinto-ohjaajille",
+    path: "/opettajille",
   },
   {
     title: "Usein kysytyt kysymykset",
     path: "/usein-kysytyt-kysymykset",
   },
-  { separator: true },
+  { separator: true, title: "Ohjelmoinnin perusteet" },
 ]
 
-var futurePages = [] // { title: "Osa 7", tba: "26.4.2019" }
+var futurePages = [] // { title: "Osa 14", tba: "19.4.2019" }
 
 const MobileWrapper = styled.div`
   @media only screen and (max-width: ${SMALL_MEDIUM_BREAKPOINT}) {
@@ -147,8 +152,20 @@ class Sidebar extends React.Component {
     if (process.env.NODE_ENV === "production") {
       edges = edges.filter(o => !o.hidden)
     }
+    edges.sort((a, b) =>
+      a.title.localeCompare(b.title, undefined, {
+        numeric: true,
+        sensitivity: "base",
+      }),
+    )
     let content = content2.concat(edges)
     content = content.concat(futurePages)
+    let middlepoint = content.findIndex(o => o.title === "Osa 7")
+    content.splice(middlepoint + 1, 0, {
+      separator: true,
+      title: "Ohjelmoinnin jatkokurssi",
+    })
+
     return (
       <MobileWrapperOrFragment mobileMenuOpen={this.props.mobileMenuOpen}>
         <MenuExpanderWrapper>
@@ -171,7 +188,7 @@ class Sidebar extends React.Component {
           </Button>
         </MenuExpanderWrapper>
         <SidebarContainer mobileMenuOpen={this.props.mobileMenuOpen}>
-          <Brand>Web-palvelinohjelmointi Java 2019</Brand>
+          <Brand>Web-palvelinohjelmointi Java Syksy 2019</Brand>
           <TreeViewContainer>
             <TreeView data={content} />
           </TreeViewContainer>
