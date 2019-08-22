@@ -5,7 +5,7 @@ overview: true
 hidden: true
 ---
 
-<deadline>1.4.2019</deadline>
+<deadline>18.11.2019</deadline>
 
 Kolmannen osan jälkeen osaat luoda useampia tietokantatauluja sisältäviä ja käsitteleviä web-sovelluksia. Osaat määritellä yhdestä moneen ja monesta moneen -yhteyksiä luokkien välille ja tiedät miten näihin yhteyksiin lisätään tietoa sovelluksessa. Tiedät miten sovelluksessa voidaan määritellä tietokantatransaktio.  Tunnet N+1 kyselyn ongelman ja tiedät joitakin menetelmiä sen välttämiseen. Osaat järjestää ja rajata tietokannasta haettavaa tietoa.
 

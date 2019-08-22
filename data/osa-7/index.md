@@ -5,7 +5,7 @@ overview: true
 hidden: true
 ---
 
-<deadline>6.5.2019</deadline>
+<deadline>16.12.2019</deadline>
 
 
 Seitsemännen osan jälkeen osaat tehdä JavaScript-pyynnön palvelimelle ja osaat päivittää selaimessa näkyvää näkymää Javascript-pyynnön vastauksen perusteella. Tiedät Open Web Application Security Projectin (OWASP) ja tiedät web-sovellusten tyypillisimpiä haavoittuvuuksia sekä niihin vaikuttavia tekijöitä. Tunnet menetelmiä sovellusten skaalaamiseen isoille käyttäjäjoukoille. Tiedät reaktiivisen ohjelmoinnin perusteet ja osaat tehdä yksinkertaisen palvelinohjelmiston reaktiivisella ohjelmointiparadigmalla.

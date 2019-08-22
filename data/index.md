@@ -14,7 +14,7 @@ Tietokantojen perusteet (TKT10004) tuntemisen.
 
 ## Sisältö ja aikataulu ##
 
-<b style="color:firebrick;">Sisältöön ja aikatauluihin saattaa tulla vielä muutoksia; pohjana on keväällä pidetty web-palvelinohjelmointi java</b>
+<b style="color:firebrick;">Sisältöön ja aikatauluihin saattaa tulla vielä muutoksia; pohjana on keväällä pidetty web-palvelinohjelmointi java</b> <!-- TODO -->
 
 Kurssi koostuu seitsemästä tehtäväsarjasta, ohjelmointiprojektista sekä kokeesta.
 

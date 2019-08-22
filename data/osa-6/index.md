@@ -5,7 +5,7 @@ overview: true
 hidden: true
 ---
 
-<deadline>29.4.2019</deadline>
+<deadline>09.12.2019</deadline>
 
 
 Kuudennen osan jälkeen tunnet menetelmiä toistuvien sivurakenteiden määrittelyyn ja uudelleenkäyttöön. Tutustut tyylitiedostojen käyttöön sekä Twitter Bootstrap -kirjastoon ja opit määrittelemään Twitter Bootstrapia käyttäen tyylejä sovelluksen sivuille. Opit menetelmiä tiedon validointiin ja harjoittelet lomakedatan validointia. Tunnet käsitteen rajapinta ja tiedät mitä REST-rajapinnat ovat. Osaat toteuttaa palvelun, joka tarjoaa dataa REST-muotoisen rajapinnan yli.

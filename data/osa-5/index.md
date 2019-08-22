@@ -5,7 +5,7 @@ overview: true
 hidden: true
 ---
 
-<deadline>15.4.2019</deadline>
+<deadline>02.12.2019</deadline>
 
 
 Viidennen osan jälkeen tunnet käsitteen tilattomuus. Tiedät mitä evästeet ovat ja tiedät mihin evästeitä käytetään, ja osaat luoda sovelluksen, joka pitää kirjaa käyttäjistä evästeiden avulla. Tunnet evästeisiin liittyviä oleellisia lakiteknisia asioita. Tiedät autentikaation ja autorisaation erot, ja osaat luoda sovelluksen, joka pyytää käyttäjää kirjautumaan. Osaat määritellä kirjautumista vaativia polkuja ja metodeja, sekä piilottaa näkymän osia erilaisilta käyttäjäryhmiltä.

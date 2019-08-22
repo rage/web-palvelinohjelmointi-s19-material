@@ -5,7 +5,7 @@ overview: true
 hidden: true
 ---
 
-<deadline>8.4.2019</deadline>
+<deadline>25.11.2019</deadline>
 
 Neljännen osan jälkeen tunnet käsitteen mediatyyppi ja osaat tallentaa tiedostoja tietokantaan sekä hakea niitä sieltä. Tutustut pintapuolisesti ohjelmistokehitysprosessin vaiheisiin. Ymmärrät web-sovelluksen rakenteen ja osaat tulkita sitä sekä MVC-mallin että kerrosarkkitehtuurin kautta. Osaat määritellä sovellukseesi palveluita. Opit kirjoittamaan automaattisesti suoritettavia integraatio- ja järjestelmätason testejä, ja opit siirtämään sovelluksesi pilvipalveluun kaikkien saataville.
 

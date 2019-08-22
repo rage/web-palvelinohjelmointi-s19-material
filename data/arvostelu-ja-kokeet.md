@@ -7,16 +7,15 @@ information_page: true
 
 Kurssin arvostelu perustuu viikoittain julkaistavan materiaalin tehtäviin sekä laajempaan ohjelmointiprojektiin. Viikottaisten tehtävien painoarvo on 70% kurssin arvostelussa ja projektin sekä sen yhteydessä tehtävien vertaisarvioiden painoarvo on 30% kurssin arvostelussa.
 
-Projekti julkaistaan 29.3. kurssin neljännen osan yhteydessä ja se tulee palauttaa viimeistään 6.5. klo 23:59. Palautus itse- ja vertaisarvioidaan -- itse- ja vertaisarviointimahdollisuus aukeaa 7.5. ja arvioinnit tulee tehdä viimeistään 13.5. klo 23:59.
+Projekti julkaistaan 15.11. kurssin neljännen osan yhteydessä ja se tulee palauttaa viimeistään 16.12. klo 23:59. Palautus itse- ja vertaisarvioidaan -- itse- ja vertaisarviointimahdollisuus aukeaa 17.12. ja arvioinnit tulee tehdä viimeistään 23.12. klo 23:59.
 
 Kurssin lopussa on koe, joka arvostellaan skaalalla hyväksytty / hylätty. Arvosana muodostuu tehdyistä tehtävistä ja projektista.
 
-Kurssin koe tehdään Moodlessa sekä kurssilla käytössä olevassa TMC-järjestelmässä. Kurssikoe järjestetään 10.5. Uusinnat järjestetään 7.6. ja 6.7. Kurssin koe kestää 4 tuntia ja sen voi tehdä tenttipäivänä välillä 10-20.
+Kurssin koe tehdään Moodlessa sekä kurssilla käytössä olevassa TMC-järjestelmässä. Kurssikoe järjestetään 20.12. Uusinnat järjestetään 31.1.2020 ja 28.2.2020. Kurssin koe kestää 4 tuntia ja sen voi tehdä tenttipäivänä välillä 10-20.
 
 Jokaisen osan kaikista tehtävistä (kyselyt, ohjelmointitehtävät, ...) saa tehtäväpisteitä -- kukin osa on kokonaisuudessaan 10% arvoinen kurssiarvostelussa. Löydät osan kaikki tehtävät valitsemalla kyseisen osan yleisnäkymästä "Lista osan tehtävistä". Näet tehtäväpisteesi kurssimateriaalin oikeassa alakulmassa olevasta pistevisualisaatiosta kohdan "Tehtäväpisteet yhteensä" kohdalta.
 
 Täydet pisteet tehtävistä saa tekemällä kaikki kunkin osan tehtävät. Tehtäviksi lasketaan materiaalissa olevat ohjelmointitehtävät, kyselyt, itsearvioinnit, Moodleen laitettavat tehtävät sekä muut mahdollisesti erikseen materiaalissa mainittavat tehtävät. Ohjelmointiprojektin tarkempi arvostelu julkaistaan myöhemmin.
-
 
 ## Arvosanan muodostuminen
 
@@ -57,14 +56,14 @@ Kurssin arvosana muodostuu seuraavalla asteikolla:
     </tbody>
 </table>
 
-
 ## Ilmoittautuminen
-
 
 Kurssilla käytetään Moodlea keskustelualustana, kurssiprojektin palautus- ja vertaisarviointialustana, ja koealustana.
 
 Kurssin suorittamiseksi sinun täytyy tehdä muodollinen ilmoittautuminen, jotta pääset kirjautumaan Moodle-ympäristöön. Ilmoittautuminen on pakollinen kaikille niille, jotka haluavat osallistua Moodle-keskusteluun, palauttaa kurssiprojektin, tai osallistua kurssin kokeeseen. Ilmoittautuminen koskee kaikkia kurssilaisia, eli myös Helsingin yliopiston opiskelijoita ja myös niitä, jotka ovat ilmoittautuneet kurssille jossakin muualla.
 
+Ilmoittautuminen avautuu viimeistään viikkoa ennen kurssin alkua 29.10. Tarkemmat tiedot tulevat tähän syksyn mittaan. <!-- TODO -->
+<!--
 1. Jos olet Helsingin yliopiston läsnäoleva opiskelija, ja olet ilmoittautunut kurssille WebOodissa, siirry kohtaan 5.
 
 2. Tee Avoimen yliopiston ilmainen ilmoittautuminen täältä: <registration-link></registration-link>.
@@ -75,3 +74,4 @@ Kurssin suorittamiseksi sinun täytyy tehdä muodollinen ilmoittautuminen, jotta
 4. Luo Helsingin yliopiston käyttäjätunnukset. Saat tunnukset seuraamalla Helsingin yliopiston ohjetta käyttäjätunnusten aktivointiin: https://helpdesk.it.helsinki.fi/ohjeet/kirjautuminen-ja-yhteydet/kayttajatunnus/ohjeet-yliopiston-kayttajatunnuksen-aktivointiin. Huom! Osa oppilaista on raportoinut, että aktivointi ei toimi Safari-selaimella. Suosittelemme että teet aktivoinnin joko Chromella tai Firefoxilla.
 
 5. Pääset Moodleen osoitteessa <a href="https://moodle.helsinki.fi/course/view.php?id=33156" target="_blank">https://moodle.helsinki.fi/course/view.php?id=33156</a>. Moodle-alueen salasana on "wepa-19".
+--->
