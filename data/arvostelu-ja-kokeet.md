@@ -56,22 +56,12 @@ Kurssin arvosana muodostuu seuraavalla asteikolla:
     </tbody>
 </table>
 
-## Ilmoittautuminen
+## Ilmoittautuminen ja opintosuoritusmerkintä
 
 Kurssilla käytetään Moodlea keskustelualustana, kurssiprojektin palautus- ja vertaisarviointialustana, ja koealustana.
 
-Kurssin suorittamiseksi sinun täytyy tehdä muodollinen ilmoittautuminen, jotta pääset kirjautumaan Moodle-ympäristöön. Ilmoittautuminen on pakollinen kaikille niille, jotka haluavat osallistua Moodle-keskusteluun, palauttaa kurssiprojektin, tai osallistua kurssin kokeeseen. Ilmoittautuminen koskee kaikkia kurssilaisia, eli myös Helsingin yliopiston opiskelijoita ja myös niitä, jotka ovat ilmoittautuneet kurssille jossakin muualla.
+Sinun tulee olla ilmoittautunut kurssille Avoimeen yliopistoon, jotta voit saada kurssista opintosuoritusmerkinnän Helsingin yliopiston opintorekisteriin, osallistua kurssin mahdollisiin verkkotentteihin tai keskusteluihin ja palauttaa tehtäviä verkko-oppimisympäristö Moodlessa. Huomiothan, että pääset kurssin Moodleen vasta ilmoittautumistasi seuraavana päivänä.
 
-Ilmoittautuminen avautuu viimeistään viikkoa ennen kurssin alkua 29.10. Tarkemmat tiedot tulevat tähän syksyn mittaan. <!-- TODO -->
-<!--
-1. Jos olet Helsingin yliopiston läsnäoleva opiskelija, ja olet ilmoittautunut kurssille WebOodissa, siirry kohtaan 5.
+Ilmoittautuminen koskee kaikkia kurssilaisia eli myös Helsingin yliopiston opiskelijoita. Opintoihin ilmoittaudutaan kurssin avoimen yliopiston opinto-ohjelman (=kurssisivun) kautta, josta löydät tarkemmat ohjeet ilmoittautumiseen, Moodlen kurssiavaimen ja lisätietoja opintosuorituksen rekisteröinnistä. Ilmoittautuminen on auki vain määritellyn ajan, joka on ilmoitettu kurssin opinto-ohjelmassa.
 
-2. Tee Avoimen yliopiston ilmainen ilmoittautuminen täältä: <registration-link></registration-link>.
-<br>Huom 1! Ilmoittautumisen jälkeen Avoimen sivu tarjoaa Avoimen Yliopiston yleisiä tentti-ilmoittautumiskäytäntöjä. Nämä käytännöt eivät koske tätä kurssia.<br/><br/>
-
-3. Odota 24h, jotta tietosi voi siirtyä seuraavana yönä järjestelmien välillä
-
-4. Luo Helsingin yliopiston käyttäjätunnukset. Saat tunnukset seuraamalla Helsingin yliopiston ohjetta käyttäjätunnusten aktivointiin: https://helpdesk.it.helsinki.fi/ohjeet/kirjautuminen-ja-yhteydet/kayttajatunnus/ohjeet-yliopiston-kayttajatunnuksen-aktivointiin. Huom! Osa oppilaista on raportoinut, että aktivointi ei toimi Safari-selaimella. Suosittelemme että teet aktivoinnin joko Chromella tai Firefoxilla.
-
-5. Pääset Moodleen osoitteessa <a href="https://moodle.helsinki.fi/course/view.php?id=33156" target="_blank">https://moodle.helsinki.fi/course/view.php?id=33156</a>. Moodle-alueen salasana on "wepa-19".
---->
+Kurssin opinto-ohjelma: https://courses.helsinki.fi/fi/aytkt21007/129637264
