@@ -3,11 +3,11 @@ const courseSettings = {
   name: "Web-palvelinohjelmointi Java syksy 2019",
   siteUrl: "https://web-palvelinohjelmointi-s19.mooc.fi",
   subtitle: "Opi tekemään verkossa toimivia sovelluksia",
-  slug: "web-palvelinohjelmointi-java-2019",
-  tmcCourse: "web-palvelinohjelmointi-java-19",
+  slug: "web-palvelinohjelmointi-s19",
+  tmcCourse: "web-palvelinohjelmointi-s19",
   quizzesId: "38240a7b-7e64-4202-91e2-91f6d46f6198",
   tmcOrganization: "mooc",
-  bannerPath: "banner.svg",
+  bannerPath: "banner.jpg",
   sidebarEntries: [
     {
       title: "Tietoa kurssista",
