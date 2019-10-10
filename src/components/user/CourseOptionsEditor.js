@@ -20,7 +20,6 @@ import styled from "styled-components"
 import withSimpleErrorBoundary from "../../util/withSimpleErrorBoundary"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInfoCircle as icon } from "@fortawesome/free-solid-svg-icons"
-import DropdownMenu from "./DropdownMenu"
 import { Link } from "gatsby"
 
 const Row = styled.div`
@@ -221,7 +220,7 @@ class CourseOptionsEditor extends React.Component {
                   onBlur={this.handleUnFocus}
                 />
               </Row>
-
+{/*
               <Row>
                 <DropdownMenu
                   selectedVariant={
@@ -266,7 +265,7 @@ class CourseOptionsEditor extends React.Component {
                   label="Aion hakea aikataulutetun Ohjelmoinnin MOOCin kautta opinto-oikeutta Helsingin yliopistoon."
                 />
               </Row>
-
+*/}
               <Row>
                 <FormControlLabel
                   control={
