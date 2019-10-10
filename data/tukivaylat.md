@@ -23,12 +23,10 @@ Kurssilla on mahdollisuus saada hyvää ohjelmointiseuraa sekä saada apua teht�
 
 Katso Exactum-rakennuksen tarkempi sijainti seuraavasta linkistä: https://www.google.com/maps?hl=en&q=Exactum,+Kumpula+Campus,+Pietari+Kalmin+katu+5,+00560+Helsinki
 
-Ohjauksen aikataulu tulee tähän syksyn mittaan. <!-- TODO -->
+Ohjausta järjestetään Exactum-rakennuksen salissa B221 seuraavasti:
 
-<!-- Ohjausta järjestetään Exactum-rakennuksen salissa BK107 seuraavasti:
-
- - Maanantaisin 12-18 (18.3.-29.4.)
- - Perjantaisin 14-16 (15.3.-3.5.) -->
+ - Maanantaisin 12-14 (28.10.-16.12.)
+ - Keskiviikkoisin 14-16 (30.10.-11.12.)
 
 <!-- Pääsiäistauon aikana ohjausta ei ole (18.4.-24.4.) -->
 
