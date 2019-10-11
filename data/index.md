@@ -15,13 +15,11 @@ Tietokantojen perusteet (TKT10004) tuntemisen.
 
 ## Sisältö ja aikataulu ##
 
-<b style="color:firebrick;">Sisältöön ja aikatauluihin saattaa tulla vielä muutoksia; pohjana on keväällä pidetty web-palvelinohjelmointi java</b> <!-- TODO -->
-
 Kurssi koostuu seitsemästä tehtäväsarjasta, ohjelmointiprojektista sekä kokeesta.
 
 Kurssin laskennallinen työkuorma on noin 135 tuntia. Kunkin tehtäväsarjan tekemiseen kannattaa varata noin 12 tuntia, projektiin ja siihen liittyviin vertaisarviointeihin noin 40 tuntia, ja kokeeseen kertaamiseen noin 8 tuntia. Varaamme oikeuden aikataulun ja aiheiden muutoksiin.
 
-Kurssin sisältö tarkentuu kurssin edetessä. Tietoa kurssin aikatauluista sekä sisällöstä lisätään tälle sivulle kurssin aloituksen lähestyessä.
+Kurssin sisältö tarkentuu kurssin edetessä. Kurssin aikatauluun saattaa tulla pieniä muutoksia ja muutoksista ilmoitetaan tällä sivulla.
 
 | Aikataulu | Julkaisu   | Deadline   |
 | ----------|------------|------------|
