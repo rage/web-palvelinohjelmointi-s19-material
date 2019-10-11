@@ -1,8 +1,9 @@
 ---
-path: "/"
-title: "Tietoa kurssista"
+path: '/'
+title: 'Tietoa kurssista'
 hidden: false
 information_page: true
+banner: true
 ---
 
 Web-palvelinohjelmointi Java on Helsingin yliopiston kaikille avoin ja

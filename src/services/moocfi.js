@@ -3,10 +3,11 @@ import fetchPonyfill from "fetch-ponyfill"
 import axios from "axios"
 import * as store from "store"
 import uuidv4 from "uuid/v4"
+import CourseSettings from "../../course-settings"
 
 const { fetch } = fetchPonyfill()
 const BASE_URL = "https://tmc.mooc.fi/api/v8"
-const ORGANIZATION = "mooc"
+const ORGANIZATION = CourseSettings.default.tmcOrganization
 
 const tmcClient = new TmcClient(
   "59a09eef080463f90f8c2f29fbf63014167d13580e1de3562e57b9e6e4515182",
@@ -33,7 +34,7 @@ export function createAccount(data) {
   data.username = uuidv4()
   const body = {
     user: data,
-    origin: "Web-palvelinohjelmointi Java Syksy 2019",
+    origin: CourseSettings.default.name,
     language: "fi",
   }
   return new Promise((resolve, reject) => {
@@ -87,7 +88,7 @@ export function onLoginStateChanged(callback) {
 
 export async function userDetails() {
   const res = await axios.get(
-    `${BASE_URL}/users/current?show_user_fields=true&extra_fields=wepa-s19`,
+    `${BASE_URL}/users/current?show_user_fields=true&extra_fields=${CourseSettings.default.slug}`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -128,7 +129,7 @@ export async function updateUserDetails({ extraFields, userField }) {
     {
       user: {
         extra_fields: {
-          namespace: "wepa-s19",
+          namespace: CourseSettings.default.slug,
           data: extraFields,
         },
       },
@@ -227,5 +228,24 @@ export async function getCourseVariant() {
 }
 
 async function getCourse() {
-  return "web-palvelinohjelmointi-java-19"
+  if (!accessToken()) {
+    return CourseSettings.default.tmcCourse
+  }
+  const variant = await getCourseVariant()
+  if (variant === "nodl") {
+    return "2019-ohjelmointi-nodl"
+  }
+  if (variant === "ohja-dl") {
+    return "2019-mooc-vain-jatkokurssi"
+  }
+  if (variant === "ohja-nodl") {
+    return "2019-mooc-vain-jatkokurssi-nodl"
+  }
+  if (variant === "kesa-dl") {
+    return "2019-ohjelmointi-kesa"
+  }
+  if (variant === "kesa-ohja-dl") {
+    return "2019-mooc-vain-jatkokurssi-kesa"
+  }
+  return CourseSettings.default.tmcCourse
 }
