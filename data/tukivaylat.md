@@ -26,7 +26,7 @@ Katso Exactum-rakennuksen tarkempi sijainti seuraavasta linkistä: https://www.g
 Ohjausta järjestetään Exactum-rakennuksen salissa B221 seuraavasti:
 
  - Maanantaisin 12-14 (28.10.-16.12.)
- - Keskiviikkoisin 14-16 (30.10.-11.12.)
+ - Keskiviikkoisin 12-16 (30.10.-11.12.)
 
 <!-- Pääsiäistauon aikana ohjausta ei ole (18.4.-24.4.) -->
 
