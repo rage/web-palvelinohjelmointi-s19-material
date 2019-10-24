@@ -139,7 +139,6 @@ class Layout extends React.Component {
                   <ContentArea mobileMenuOpen={this.state.mobileMenuOpen}>
                     {children}
                   </ContentArea>
-                  <PointsBalloon />
                   <Footer />
                 </SidebarPush>
               </Wrapper>
