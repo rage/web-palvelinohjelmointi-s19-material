@@ -47,7 +47,7 @@ Apumateriaalia tietokannassa olevan ajan käsittelyyn: https://web-palvelinohjel
 
 ## Työn tekeminen ja palautus ##
 
-TMC:ssä on erillinen kurssi “Web-palvelinohjelmointi Java 2019, projekti”, joka sisältää tehtäväpohjan sekä projektin käytössä olevat riippuvuudet - voit halutessasi lisätä projektiin myös muita riippuvuuksia. Saat pohjan käyttöösi valitsemalla TMC:n asetuksista organisaation “MOOC” sekä valitsemalla kurssiksi “Web-palvelinohjelmointi Java 2019, projekti”. Tämän jälkeen TMC lataa käyttöösi projektipohjan.
+TMC:ssä on erillinen kurssi “Web-palvelinohjelmointi Java Syksy 2019, projekti”, joka sisältää tehtäväpohjan sekä projektin käytössä olevat riippuvuudet - voit halutessasi lisätä projektiin myös muita riippuvuuksia. Saat pohjan käyttöösi valitsemalla TMC:n asetuksista organisaation “MOOC” sekä valitsemalla kurssiksi “Web-palvelinohjelmointi Java Syksy 2019, projekti”. Tämän jälkeen TMC lataa käyttöösi projektipohjan.
 
 Työ palautetaan TMC:hen, Moodleen ja Herokuun. Palautus TMC:hen tapahtuu TMC:n submit-nappia painamalla ja sen voi tehdä useaan otteeseen. Vastaavasti Moodleen voi tehdä useamman palautuksen. Vain viimeinen palautus arvioidaan. Sovellus tulee myös lisätä Herokuun. Huomaa, että **TMC-palautuksessa saatat saada virheen “Failed to process submission. Likely sent in incorrect format”, mahdollisesti myös virheen joka alkaa “Unable to run tests because this course's teacher has not configured...” tai jonkun toisen virheen. Tästä ei kannata välittää, palautus menee silti läpi.**
 
