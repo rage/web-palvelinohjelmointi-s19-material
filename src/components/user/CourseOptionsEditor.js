@@ -220,51 +220,6 @@ class CourseOptionsEditor extends React.Component {
               </Row>
 
               <Row>
-                <DropdownMenu
-                  selectedVariant={
-                    this.state.currentCourseVariant ||
-                    this.props.courseVariant ||
-                    "dl"
-                  }
-                  setSelectedVariant={this.setSelectedVariant}
-                />
-              </Row>
-              {!this.props.courseVariant &&
-                (this.state.currentCourseVariant === "nodl" ||
-                  this.state.currentCourseVariant === "ohja-nodl") && (
-                  <Row>
-                    <InfoBox>
-                      <Card>
-                        <CardContent>
-                          <StyledIcon icon={icon} />
-                          Jos olet vaihtamassa aikataulullisesta kurssista
-                          aikatauluttomaan, katso tämä ohje ohjelmointitehtävien
-                          pisteiden siirtämiseksi:{" "}
-                          <Link to="/vaihda-aikatauluttomaan">
-                            Kurssin vaihto aikatauluttomaan versioon
-                          </Link>
-                          .
-                        </CardContent>
-                      </Card>
-                    </InfoBox>
-                  </Row>
-                )}
-
-              <Row>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={this.state.applies_for_study_right}
-                      onChange={this.handleCheckboxInput}
-                      name="applies_for_study_right"
-                      value="1"
-                    />
-                  }
-                  label="Aion hakea aikataulutetun Ohjelmoinnin MOOCin kautta opinto-oikeutta Helsingin yliopistoon."
-                />
-              </Row>
-
-              <Row>
                 <FormControlLabel
                   control={
                     <Checkbox
