@@ -22,6 +22,7 @@ const courseSettings = {
       path: "/arvostelu-ja-kokeet",
     },
     { title: "Tukiväylät", path: "/tukivaylat" },
+    // { title: "Projekti", path: "/projekti"},
     {
       title: "Usein kysytyt kysymykset",
       path: "/usein-kysytyt-kysymykset",
