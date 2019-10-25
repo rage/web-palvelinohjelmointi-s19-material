@@ -5,7 +5,7 @@ const courseSettings = {
   subtitle: "Opi tekemään verkossa toimivia sovelluksia",
   slug: "web-palvelinohjelmointi-s19",
   tmcCourse: "web-palvelinohjelmointi-s19",
-  quizzesId: "38240a7b-7e64-4202-91e2-91f6d46f6198",
+  quizzesId: "490d23d9-baa0-4daf-a505-c235f7dba170",
   tmcOrganization: "mooc",
   bannerPath: "banner.jpg",
   sidebarEntries: [
