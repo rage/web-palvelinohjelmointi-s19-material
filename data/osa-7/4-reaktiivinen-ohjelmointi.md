@@ -126,4 +126,4 @@ Teht채v채채n ei ole automaattisia testej채, mutta toteutat teht채v채ss채 testej�
 </programming-exercise>
 
 
-<quiz id="5cb986e4c61e1845af259667"></quiz>
+<quiz id="3514ed96-21c9-40d7-8ac5-1b24fa91c401"></quiz>
