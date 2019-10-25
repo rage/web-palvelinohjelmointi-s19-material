@@ -9,6 +9,6 @@ Tässä osassa tutustuttiin selainohjelmistojen luomiseen ja tehtiin pyyntöjä 
 Vastaa lopuksi seuraavaan itsearviointikyselyyn ja keksi kurssimateriaalin seitsemännestä osasta monivalintakysymys.
 
 
-<quiz id="553cd3c7-3640-4798-be76-2b9687c08af4"></quiz>
+<quiz id="f8ddcfec-b566-5876-81d4-0f8cee62e674"></quiz>
 
-<quiz id="56560c80-36f3-4774-bf73-2c2656b80c66"></quiz>
+<quiz id="39b1a8a0-4310-5af2-80fc-8d795361309c"></quiz>

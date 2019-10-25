@@ -9,6 +9,6 @@ Tässä osassa tutustuttiin käsitteeseen mediatyyppi sekä tietokannassa olevie
 Vastaa lopuksi seuraavaan itsearviointikyselyyn ja keksi kurssimateriaalin neljännestä osasta monivalintakysymys.
 
 
-<quiz id="3a93c591-2548-47a4-82a0-1df465b68b64"></quiz>
+<quiz id="e17ad817-caa4-5ae9-9d4f-e1662f5b0327"></quiz>
 
-<quiz id="44f38f56-2be2-4d40-81d8-23427d48fd03"></quiz>
+<quiz id="820f8f27-0a13-5658-b5e1-b7bac91f3df3"></quiz>

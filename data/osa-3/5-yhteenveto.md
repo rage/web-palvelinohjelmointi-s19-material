@@ -9,6 +9,6 @@ Tässä osassa harjoiteltiin useamman tietokantataulun luomista ja käyttöä se
 
 Vastaa lopuksi seuraavaan itsearviointikyselyyn ja keksi kurssimateriaalin kolmannesta osasta monivalintakysymys.
 
-<quiz id="29d09f12-1a9d-4415-8f5d-d5d44a4f3afe"></quiz>
+<quiz id="c9556b2d-150f-5143-8bfc-14aa46f0cbbd"></quiz>
 
-<quiz id="33d3272a-20fc-43ff-bf12-1a806eb50ccd"></quiz>
+<quiz id="00e1bf40-ec58-5a9f-bd44-32ce1a3c1ae7"></quiz>

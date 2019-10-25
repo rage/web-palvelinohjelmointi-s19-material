@@ -427,4 +427,4 @@ Palauta tehtävä TMC:lle kun olet valmis.
 </programming-exercise>
 
 
-<quiz id="254bc15f-ed61-45ac-84a8-beb86ac9f6ad"></quiz>
+<quiz id="34b08e94-e65c-5fe2-9c00-b16d94d6cb52"></quiz>

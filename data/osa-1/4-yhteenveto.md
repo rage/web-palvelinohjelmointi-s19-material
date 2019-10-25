@@ -8,6 +8,6 @@ Tässä osassa tutustuttiin internetin toimintaan sekä siihen liittyviin oleell
 
 Vastaa lopuksi seuraavaan itsearviointikyselyyn ja keksi kurssimateriaalin ensimmäisestä osasta monivalintakysymys.
 
-<quiz id="494931a3-2ea5-415e-b124-2579ec70fcb2"></quiz>
+<quiz id="f0186bf5-d636-594e-82b2-ed464943e9b0"></quiz>
 
-<quiz id="4cbd26c8-30d7-4b48-909e-273df41ea0d4"></quiz>
+<quiz id="9b0c608a-612c-5bba-a58f-2e124bc6d320"></quiz>

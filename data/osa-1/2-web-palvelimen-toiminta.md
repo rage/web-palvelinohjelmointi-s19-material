@@ -26,7 +26,7 @@ Asiakas-palvelin -malli mahdollistaa hajautetut ohjelmistot: selainta käyttäv�
 
 
 
-<quiz id="345f74fc-2155-48ce-a21d-1ac82e068781"></quiz>
+<quiz id="8b0c4088-31b6-5110-bf7f-ed9a0e01740c"></quiz>
 
 
 ###  Yhteyden muodostaminen palvelimelle Java-maailmassa

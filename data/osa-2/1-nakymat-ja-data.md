@@ -14,7 +14,7 @@ hidden: false
 
 </text-box>
 
-<quiz id="34e0e26a-21a7-4ed9-b0ef-1b0a5d7f2dc4"></quiz>
+<quiz id="b3342ee5-23e7-5796-bf93-8487b1ee7c0a"></quiz>
 
 
 Sovelluksemme ovat vastaanottaneet tiettyyn polkuun tulevan pyynnön ja palauttaneet käyttäjälle merkkijonomuodossa olevaa tietoa. Palvelin voi myös luoda käyttäjälle näkymän, jonka selain lopulta näyttää käyttäjälle.
@@ -189,7 +189,7 @@ Palauta tehtävä TMC:lle kun olet valmis.
 
 </programming-exercise>
 
-<quiz id="1b57606c-ae05-47c9-9bc3-8bd0c1b8b989"></quiz>
+<quiz id="f36b3950-9e4f-54af-a55f-59ecf3fad17f"></quiz>
 
 
 ## Kokoelmien näyttäminen Thymeleaf-sivulla
