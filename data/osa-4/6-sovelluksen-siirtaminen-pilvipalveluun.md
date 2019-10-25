@@ -139,4 +139,4 @@ Jos Herokun PostgreSQL ei lähde edellä kuvatulla esimerkillä käyntiin, tarka
 </text-box>
 
 
-<quiznator id='5c9941aefd9fd71425c6b9ad'></quiznator>
+<quiz id='5c9941aefd9fd71425c6b9ad'></quiz>

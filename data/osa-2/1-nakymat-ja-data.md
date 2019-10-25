@@ -14,7 +14,7 @@ hidden: false
 
 </text-box>
 
-<quiznator id="5c850ca5c41ed4148d971b7c"></quiznator>
+<quiz id="5c850ca5c41ed4148d971b7c"></quiz>
 
 
 Sovelluksemme ovat vastaanottaneet tiettyyn polkuun tulevan pyynnön ja palauttaneet käyttäjälle merkkijonomuodossa olevaa tietoa. Palvelin voi myös luoda käyttäjälle näkymän, jonka selain lopulta näyttää käyttäjälle.
@@ -189,7 +189,7 @@ Palauta tehtävä TMC:lle kun olet valmis.
 
 </programming-exercise>
 
-<quiznator id="5c8512b33972a9147410971c"></quiznator>
+<quiz id="5c8512b33972a9147410971c"></quiz>
 
 
 ## Kokoelmien näyttäminen Thymeleaf-sivulla
@@ -458,5 +458,3 @@ Alla olevassa esimerkissä sovellukseen on lisätty olemassaolevan taikurin hatu
 <img src="../img/exercises/helloobjects.png"/>
 
 </programming-exercise>
-
-

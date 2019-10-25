@@ -241,7 +241,7 @@ Tehtävässä ei ole testejä.
 
 </programming-exercise>
 
-<quiznator id='5ca674b599236814c5bc2cff'></quiznator>
+<quiz id='5ca674b599236814c5bc2cff'></quiz>
 
 
 Kun käyttäjä on kirjautuneena, saa häneen liittyvän käyttäjätunnuksen ns. tietoturvakontekstista.
@@ -251,7 +251,7 @@ Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 String username = auth.getName();
 ```
 
-<quiznator id='5ca66f08fd9fd71425c6cc67'></quiznator>
+<quiz id='5ca66f08fd9fd71425c6cc67'></quiz>
 
 
 Autentikaation tarpeen voi määritellä myös pyyntökohtaisesti. Alla olevassa esimerkissä GET-tyyppiset pyynnöt ovat sallittuja juuriosoitteeseen, mutta POST-tyyppiset pyynnöt juuriosoitteeseen eivät ole sallittuja.
@@ -454,4 +454,3 @@ public class DefaultSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
 Nyt tuotantoympäristössä käyttäjät noudetaan tietokannasta, mutta kehitysympäristössä on täysin erillinen konfiguraatio. Jos profiilia ei ole erikseen määritelty, käytetään oletusprofiilia (default).
-

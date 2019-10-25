@@ -176,4 +176,4 @@ Tehtävässä ei ole automaattisia testejä. Palauta tehtävä kun olet saanut l
 </programming-exercise>
 
 
-<quiznator id="5cae34ee3972a9147410d97e"></quiznator>
+<quiz id="5cae34ee3972a9147410d97e"></quiz>

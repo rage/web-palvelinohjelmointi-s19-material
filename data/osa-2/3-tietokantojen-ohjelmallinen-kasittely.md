@@ -276,5 +276,4 @@ Tehtäväpohjassa ei ole automaattisia testejä. Palauta tehtävä palvelimelle 
 </programming-exercise>
 
 
-<quiznator id="5c8517713972a91474109725"></quiznator>
-
+<quiz id="5c8517713972a91474109725"></quiz>

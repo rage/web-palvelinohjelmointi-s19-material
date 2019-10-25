@@ -47,7 +47,7 @@ Springin dokumentaatiossa käsitellään kyselyiden muodostamista tarkemmin, kts
 
 </br>
 
-<quiznator id="5c8e799d99236814c5bc0405"></quiznator>
+<quiz id="5c8e799d99236814c5bc0405"></quiz>
 
 
 #### Tietokantakyselyiden tulosten rajaaminen ja järjestäminen
