@@ -55,7 +55,7 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     if (!result.data.allMarkdownRemark) {
-      console.log("No markdown pages generated. Did you hide all of them?")
+      // console.log("No markdown pages generated. Did you hide all of them?")
       return
     }
 

@@ -27,7 +27,7 @@ export async function fetchProgress() {
 
   zip(serviceIdentifiers, progressesCollection).forEach(
     ([identifier, progresses]) => {
-      console.log(JSON.stringify(progresses))
+      // console.log(JSON.stringify(progresses))
       progresses.forEach(progressEntry => {
         if (!progressByGroup[progressEntry.group]) {
           progressByGroup[progressEntry.group] = {}
