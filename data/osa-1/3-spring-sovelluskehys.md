@@ -313,8 +313,6 @@ Toteuta pakkauksessa `hellorequestparam` olevaan luokkaan `HelloRequestParamCont
 
 - Pyyntö polkuun `/hello` palauttaa käyttäjälle merkkijonon "Hello ", johon on liitetty `param`-nimisen parametrin sisältämä arvo.
 
-TODO: kuva?
-
 </programming-exercise>
 
 
