@@ -158,7 +158,7 @@ server.close();
 
 `ServerSocket`-olion `accept`-metodi on blokkaava. Tämä tarkoittaa sitä, että `accept`-metodia kutsuttaessa ohjelman suoritus jää odottamaan kunnes palvelimeen otetaan yhteys. Kun yhteys on muodostettu, `accept`-metodi palauttaa `Socket`-olion, jota käytetään palvelimen ja yhteyden ottaneen koneen väliseen kommunikointiin.
 
-Kokeile ylläolevaa ohjelmaa omalla koneellasi. Ohjelma käynnistää palvelimen, joka kuuntelee pyyntöä paikallisen kokeen porttiin `8080`. Voit tehdä HTTP-muotoisen pyynnön porttiin 8080 selaimella kirjoittamalla selaimeen osoitteeksi `http://localhost:8080`.
+Kokeile ylläolevaa ohjelmaa omalla koneellasi. Ohjelma käynnistää palvelimen, joka kuuntelee pyyntöä paikallisen koneen porttiin `8080`. Voit tehdä HTTP-muotoisen pyynnön porttiin 8080 selaimella kirjoittamalla selaimeen osoitteeksi `http://localhost:8080`.
 
 <br/>
 
