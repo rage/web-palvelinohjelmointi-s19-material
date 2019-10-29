@@ -15,6 +15,8 @@ Tietokantojen perusteet (TKT10004) tuntemisen.
 
 ## Sisältö ja aikataulu ##
 
+Aloitusluennon [kalvot saatavilla tästä](https://docs.google.com/presentation/d/10PFnsl7bDhXmAqPI0BNTwYnL1xR2YdPyFOYTkDXZKL8/edit?usp=sharing). Kalvot eivät sisällä mitään mitä ei olisi kurssimateriaalissa tai tehtävissä.
+
 Kurssi koostuu seitsemästä tehtäväsarjasta, ohjelmointiprojektista sekä kokeesta.
 
 Kurssin laskennallinen työkuorma on noin 135 tuntia. Kunkin tehtäväsarjan tekemiseen kannattaa varata noin 12 tuntia, projektiin ja siihen liittyviin vertaisarviointeihin noin 40 tuntia, ja kokeeseen kertaamiseen noin 8 tuntia. Varaamme oikeuden aikataulun ja aiheiden muutoksiin.
