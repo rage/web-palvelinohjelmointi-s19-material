@@ -5,7 +5,7 @@ hidden: false
 information_page: true
 ---
 
-Kurssiin kuuluu ohjelmointiprojekti, jossa luodaan kaveri- ja kuvasovellus eli tuttavallisemmin vanhan kansan Facebook.
+Kurssiin kuuluu ohjelmointiprojekti, jossa luodaan kaveri- ja kuvasovellus eli tuttavallisemmin vanhan kansan Twitter.
 
 Sovellukselta odotetut ominaisuudet:
 
