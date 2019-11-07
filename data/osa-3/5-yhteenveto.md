@@ -21,7 +21,7 @@ tehostamiseksi kerrata käsitteitä lisäämällä niitä Concepts-työkaluun.
 **Linkki työkaluun: https://concepts.cs.helsinki.fi/join/pcaezzU0s6LGP7c0tIta3lypV**
 
 Kirjaudu sisään mooc.fi tunnuksilla, joita käytit kurssilla. Käsitteiden
-lisäämisestä saa pisteitä. Halutessasi voit piirtää yhteyksiä käsitteiden ja
+lisäämisestä saa pisteitä. Jokaisesta yhdestä lisäämästäsi käsitteestä saat 0.25 bonuspistettä ja maksimissaan 1 bonuspiste per osa. Halutessasi voit piirtää yhteyksiä käsitteiden ja
 niiden esitietona olevien käsitteiden välille "mapper"-näkymässä, ja tutkia
 niistä muodostuvaa verkkoa "graph"-näkymässä.
 
