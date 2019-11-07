@@ -17,7 +17,11 @@ const introductionCourseGroups = [
 
 export async function fetchProgress() {
   // await fetchQuizzesProgress()
-  const serviceIdentifiers = ["Ohjelmointitehtävät", "Kyselyt", "Concepts (bonus)"]
+  const serviceIdentifiers = [
+    "Ohjelmointitehtävät",
+    "Kyselyt",
+    "Concepts (bonus)",
+  ]
   const progressesCollection = await Promise.all([
     fetchProgrammingProgress(),
     fetchQuizzesProgress(),
