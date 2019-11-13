@@ -5,7 +5,7 @@ hidden: false
 information_page: true
 ---
 
-Kurssiin kuuluu ohjelmointiprojekti, jossa luodaan kaveri- ja kuvasovellus eli tuttavallisemmin vanhan kansan Twitter.
+Kurssiin kuuluu ohjelmointiprojekti, jossa luodaan seuraus- ja kuvasovellus eli tuttavallisemmin vanhan kansan Twitter.
 
 Sovellukselta odotetut ominaisuudet:
 
@@ -13,13 +13,13 @@ Sovellukselta odotetut ominaisuudet:
 
 Käyttäjä rekisteröityy sovellukseen kirjaamalla sovellukseen käyttäjätunnuksen, salasanan sekä nimen. Tämän lisäksi käyttäjältä kysytään profiilin näyttämisessä käytettävää merkkijonoa, jonka perusteella käyttäjän sivu voidaan löytää sovelluksesta. Esim. “https://sovellus.net/kayttajat/profiili-merkkijono”
 
-#### Käyttäjien etsiminen ja kaveripyynnön tekeminen ####
+#### Käyttäjien etsiminen ja seuraaminen ####
 
-Käyttäjä voi etsiä muita käyttäjiä nimen perusteella. Käyttäjä voi lähettää kaveripyyntöjä muille järjestelmässä oleville käyttäjille. Käyttäjä myös tietää kaverinsa.
+Käyttäjä voi etsiä muita käyttäjiä nimen perusteella. Käyttäjä voi seurata muita järjestelmässä olevia käyttäjiä. Käyttäjä myös tietää keitä hän seuraa.
 
-#### Kaveripyynnön hyväksyntä ####
+#### Seuraajat ####
 
-Käyttäjä voi tarkastella saamiaan kaveripyyntöjä. Kaveripyynnön yhteydessä näytetään kaveripyynnön tekijän nimi sekä kaveripyynnön tekoaika. Mikäli kaveripyyntö hyväksytään, kaveripyynnön tekijä lisätään käyttäjän kaveriksi. Kaveripyynnön voi myös halutessaan hylätä.
+Käyttäjä voi tarkastella omia seuraajiaan. Seurauksen yhteydessä näytetään seuraajan nimi sekä seurauksen aloitusaika. Seuraajan voi myös halutessaan torjua seuraamasta, tällöin seuraus ei näy kummankaan profiilissa.
 
 #### Kuva-albumi ####
 
@@ -29,17 +29,17 @@ Jokaisella käyttäjällä on kuva-albumi. Käyttäjä voi lisätä albumiinsa k
 
 Käyttäjä voi määritellä yhden kuva-albumissa olevan kuvan profiilikuvaksi.
 
-#### Henkilökohtainen seinä ####
+#### Henkilökohtainen etusivu ####
 
-Jokaisella käyttäjällä on henkilökohtainen “seinä”, joka sisältää henkilön nimen sekä mahdollisesti määritellyn profiilikuvan. Sekä käyttäjä että käyttäjän kaverit voivat lähettää seinälle tekstimuotoisia viestejä. Jokaisesta viestistä näytetään viestin lähettäjän nimi, viestin lähetysaika, sekä viestin tekstimuotoinen sisältö. Viestit näytetään seinällä niiden saapumisjärjestyksessä siten, että seinällä näkyy aina korkeintaan 25 uusinta viestiä.
+Jokaisella käyttäjällä on henkilökohtainen “seinä”, joka sisältää henkilön nimen sekä mahdollisesti määritellyn profiilikuvan. Vain käyttäjä voi lähettää seinälle tekstimuotoisia viestejä, mutta seinällä näkyy myös seurattavien henkilöiden omat viestit. Jokaisesta viestistä näytetään viestin lähettäjän nimi, viestin lähetysaika, sekä viestin tekstimuotoinen sisältö. Viestit näytetään seinällä niiden saapumisjärjestyksessä siten, että seinällä näkyy aina korkeintaan 25 uusinta viestiä.
 
 #### Tykkääminen ####
 
-Käyttäjän kaverit voivat tykätä kuvista ja seinällä olevista viesteistä. Tykkääminen tapahtuu viestin ja kuvan yhteydessä olevaa tykkäysnappia painamalla. Kukin käyttäjä voi tykätä tietystä kuvasta ja tietystä viestistä korkeintaan kerran (sama käyttäjä ei saa lisätä useampaa tykkäystä tiettyyn kuvaan tai viestiin). Viestien ja kuvien näytön yhteydessä näytetään niihin liittyvä tykkäysten lukumäärä.
+Kirjautuneet käyttäjät voivat tykätä kuvista ja seinällä olevista viesteistä. Tykkääminen tapahtuu viestin ja kuvan yhteydessä olevaa tykkäysnappia painamalla. Kukin käyttäjä voi tykätä tietystä kuvasta ja tietystä viestistä korkeintaan kerran (sama käyttäjä ei saa lisätä useampaa tykkäystä tiettyyn kuvaan tai viestiin). Viestien ja kuvien näytön yhteydessä näytetään niihin liittyvä tykkäysten lukumäärä.
 
 #### Kommentointi ####
 
-Samalla tavalla kuin tykkääminen, kaverit voivat myös kommentoida kuvia ja viestejä. Kommentointi tapahtuu viestin ja kuvan yhteydessä olevan kommentointikentän avulla. Kuvien ja viestien yhteydessä näytetään aina korkeintaan 10 uusinta kommenttia.
+Seuraajat voivat kommentoida kuvia ja viestejä. Kommentointi tapahtuu viestin ja kuvan yhteydessä olevan kommentointikentän avulla. Kuvien ja viestien yhteydessä näytetään aina korkeintaan 10 uusinta kommenttia.
 
 #### Apuresursseja: ####
 
