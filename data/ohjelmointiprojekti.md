@@ -53,7 +53,7 @@ Työ palautetaan TMC:hen, Moodleen ja Herokuun. Palautus TMC:hen tapahtuu TMC:n 
 
 Moodleen työstä palautetaan sekä linkki sovelluksen Herokussa toimivaan versioon että sovelluksen lähdekoodit sisältävä zip-paketti. Lähdekoodit sisältävä zip-paketti ei saa sisältää sovelluksen käännetyn version sisältävää target-kansiota.
 
-**Työ tulee palauttaa sekä Moodleen että TMC:hen 16.12.2019. klo 23:59 mennessä.** Huomaa, että työn palauttaminen sekä Moodleen että TMC:hen voi kestää, eli varaa pelkälle palautuksellekin aikaa.
+**Työ tulee palauttaa sekä Moodleen että TMC:hen 16.12.2019. klo 23:59 mennessä.** Huomaa, että työn palauttaminen sekä Moodleen että TMC:hen voi kestää, eli varaa pelkälle palautuksellekin aikaa. Moodleavain löytyy mm. osoitteesta https://web-palvelinohjelmointi-s19.mooc.fi/tukivaylat
 
 
 Arviointi
