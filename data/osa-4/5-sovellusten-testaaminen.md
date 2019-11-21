@@ -257,6 +257,8 @@ Palauttaessasi tehtävän olet tarkistanut, että kirjoittamasi testit toimivat 
 
 Sovelluksessa on luokka `AirportService`, mikä sijaitsee pakkauksessa `airports`. Sille ei kuitenkaan ole yhtäkään testiä :(
 
+Testaustehtävät saattavat vaatia toiminnallisuuksia aiemmin toteuttamistasi tehtävistä. Voit käyttää apuna toteutuksessa joko omaa vastaustasi tai mallivastausta.
+
 Lisää testikansion (`Test Packages`) pakkaukseen `airports` luokka `AirportServiceTest`.
 
 Lisää luokalle `AirportServiceTest` tarvittavat annotaatiot ja injektoi sinne oliomuuttujiksi `AirportService` ja `AirportRepository` -oliot. Toteuta luokkaan `AirportServiceTest` testimetodit, joiden avulla testataan, että luokan `AirportService` metodit toimivat oikein. Haluat varmistaa että:
