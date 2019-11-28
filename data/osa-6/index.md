@@ -2,7 +2,7 @@
 path: '/osa-6'
 title: 'Osa 6'
 overview: true
-hidden: true
+hidden: false
 ---
 
 <deadline>09.12.2019</deadline>
