@@ -60,8 +60,8 @@ Kurssin arvosana muodostuu seuraavalla asteikolla:
 
 Kurssilla käytetään Moodlea keskustelualustana, kurssiprojektin palautus- ja vertaisarviointialustana, ja koealustana.
 
-Sinun tulee olla ilmoittautunut kurssille Avoimeen yliopistoon, jotta voit saada kurssista opintosuoritusmerkinnän Helsingin yliopiston opintorekisteriin, osallistua kurssin mahdollisiin verkkotentteihin tai keskusteluihin ja palauttaa tehtäviä verkko-oppimisympäristö Moodlessa. Huomiothan, että pääset kurssin Moodleen vasta ilmoittautumistasi seuraavana päivänä.
+Sinun tulee olla ilmoittautunut kurssille, jotta voit saada kurssista opintosuoritusmerkinnän Helsingin yliopiston opintorekisteriin, osallistua kurssin mahdollisiin verkkotentteihin tai keskusteluihin ja palauttaa tehtäviä verkko-oppimisympäristö Moodlessa. Huomiothan, että pääset kurssin Moodleen vasta ilmoittautumistasi seuraavana päivänä.
 
-Ilmoittautuminen koskee kaikkia kurssilaisia eli myös Helsingin yliopiston opiskelijoita. Opintoihin ilmoittaudutaan kurssin avoimen yliopiston opinto-ohjelman (=kurssisivun) kautta, josta löydät tarkemmat ohjeet ilmoittautumiseen, Moodlen kurssiavaimen ja lisätietoja opintosuorituksen rekisteröinnistä. Ilmoittautuminen on auki vain määritellyn ajan, joka on ilmoitettu kurssin opinto-ohjelmassa.
+Ilmoittautuminen koskee kaikkia kurssilaisia eli myös Helsingin yliopiston opiskelijoita. Avoimen opintoihin ilmoittaudutaan kurssin avoimen yliopiston opinto-ohjelman (=kurssisivun) kautta, josta löydät tarkemmat ohjeet ilmoittautumiseen, Moodlen kurssiavaimen ja lisätietoja opintosuorituksen rekisteröinnistä. Helsingin yliopiston opiskelijat voivat ilmoittautua kurssin vastaavaan ei-avoimeen versioon Weboodin kautta. Ilmoittautuminen on auki vain määritellyn ajan, joka on ilmoitettu kurssin opinto-ohjelmassa.
 
-Kurssin opinto-ohjelma: https://courses.helsinki.fi/fi/aytkt21007/129637264
+Avoimen kurssin opinto-ohjelma: https://courses.helsinki.fi/fi/aytkt21007/129637264
